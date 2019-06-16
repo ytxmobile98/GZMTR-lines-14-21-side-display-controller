@@ -10,6 +10,14 @@ class Station {
 
 class StationList {
   constructor(stations) {
+    /* Mapping: ChineseName: { Chinese: ChineseName, English: EnglishName }
+      e.g. {
+        "嘉禾望岗": { Chinese: "嘉禾望岗", English: "Jiahewanggang" },
+        "白云东平": { Chinese: "白云东平", English: "Baiyun Dongping" },
+        ...
+      }
+    */
+
     const that = this;
 
     if (!(stations instanceof Array)) {
