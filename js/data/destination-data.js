@@ -13,7 +13,7 @@ class StationList {
     const that = this;
 
     if (!(stations instanceof Array)) {
-      throw new TypeError(`${stations} shall be of an array`);
+      throw new TypeError(`${stations} shall be an array`);
     }
 
     stations.forEach((station) => {
