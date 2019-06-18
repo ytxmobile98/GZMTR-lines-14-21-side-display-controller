@@ -1,10 +1,12 @@
 "use strict";
 
-import { destinations } from "./all-destinations.js";
 import { TypeChecker } from "../type-checker.js";
+import { DESTINATIONS } from "./DESTINATIONS.js";
 
 class RawFilter {
   constructor(name, stationNames, serviceType = undefined) {
+    TypeChecker.checkTypeOf(name, "string");
+
     this.name = name;
     this.stationNames = stationNames;
     this.serviceType = serviceType;
@@ -26,6 +28,7 @@ class Filter extends RawFilter {
 
     else if ((args.length === 1) && (args[0] instanceof RawFilter)) {
       // new Filter(line, rawFilter);
+
       const rawFilter = args[0];
       name = rawFilter.name;
       stationNames = rawFilter.stationNames;
@@ -46,19 +49,19 @@ class Filter extends RawFilter {
   }
 
   getStation(ChineseName) {
-    let line = destinations[this.line];
+    let line = DESTINATIONS[this.line];
     return line && line[ChineseName];
     // if the line or the station does not exist, then return undefined
   }
 
   getStationsFromNames(stationNames) {
+    TypeChecker.checkInstanceOf(stationNames, Array);
+
     const that = this;
     let stations = [];
 
     stationNames.forEach((stationName, index) => {
-      if (typeof stationName !== "string") {
-        throw new TypeError(`${stationName} should be a string`);
-      }
+      TypeChecker.checkTypeOf(stationName, "string");
       stations[index] = that.getStation(stationName);
     });
 
@@ -86,9 +89,7 @@ class FilterList extends Map {
       ]
     */
 
-    if (typeof line !== "string") {
-      throw new TypeError(`${line} should be a string`);
-    }
+    TypeChecker.checkTypeOf(line, "string");
 
     super();
     const that = this;
@@ -105,12 +106,15 @@ class FilterList extends Map {
 
 class FullServiceList extends Map {
 	constructor(filterLists) {
+
+    TypeChecker.checkInstanceOf(filterLists, Array);
+
 		super();
 
 		let that = this;
 
 		filterLists.forEach((filterList) => {
-			TypeChecker.checkType(filterList, FilterList);
+			TypeChecker.checkInstanceOf(filterList, FilterList);
 			that.set(filterList.line, filterList);
 		});
 
@@ -118,54 +122,4 @@ class FullServiceList extends Map {
 	}
 }
 
-const allServices = new FullServiceList([
-
-	new FilterList("不载客", [
-
-		new RawFilter("全部",
-			["不载客", "回厂", "试车"],
-		),
-
-	]),
-
-
-	new FilterList("14号线", [
-
-		new RawFilter("常用",
-			["嘉禾望岗", "新和", "东风", "镇龙"],
-		),
-
-		new RawFilter("全部",
-			["嘉禾望岗", "白云东平", "夏良", "太和", "竹料", "钟落潭", "马沥", "新和", "太平", "神岗", "赤草", "从化客运站", "东风", "红卫", "新南", "枫下", "知识城", "何棠下", "旺村", "汤村", "镇龙北", "镇龙"],
-		),
-
-		new RawFilter("快速",
-			["嘉禾望岗", "新和", "从化客运站", "东风", "镇龙"],
-			"快速"
-		),
-
-		new RawFilter("主线",
-			["嘉禾望岗", "白云东平", "夏良", "太和", "竹料", "钟落潭", "马沥", "新和", "太平", "神岗", "赤草", "从化客运站", "东风"],
-		),
-
-		new RawFilter("支线",
-			["新和", "红卫", "新南", "枫下", "知识城", "何棠下", "旺村", "汤村", "镇龙北", "镇龙"],
-		),
-
-	]),
-
-	new FilterList("21号线", [
-
-		new RawFilter("常用",
-			["镇龙西", "增城广场"],
-		),
-
-		new RawFilter("全部",
-			["镇龙西", "镇龙", "中新", "坑贝", "凤岗", "朱村", "山田", "钟岗", "增城广场"],
-		),
-
-	]),
-
-]);
-
-console.log(allServices);
+export { RawFilter, Filter, FilterList, FullServiceList };
