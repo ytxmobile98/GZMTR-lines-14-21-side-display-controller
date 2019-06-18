@@ -6,7 +6,7 @@ const strSelfMap = (str) => str;
 
 const	line = strSelfMap;
 const rawFilters = Array;
-	const name = strSelfMap;
+const name = strSelfMap;
 const stationNames = Array;
 const	serviceType = strSelfMap;
 
