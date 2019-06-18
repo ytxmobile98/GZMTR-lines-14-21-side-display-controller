@@ -67,3 +67,5 @@ const SERVICES = new FullServiceList([
 ]);
 
 console.log(SERVICES);
+
+export { SERVICES };
