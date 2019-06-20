@@ -12,6 +12,27 @@ const	serviceType = strSelfMap;
 
 const SERVICES = new FullServiceList([
 
+	/* Format of FilterList:
+		new FilterList(
+			line(nameOfLine),
+			rawFilters(
+				// rawFilter 1
+				new RawFilter(
+					name(nameOfFilter),
+					stationNames("One", "Two", "Three", ...),
+				),
+				// rawFilter 2
+				new RawFilter(
+					name(nameOfFilter),
+					stationNames("One", "Five", "Ten", ...),
+					serviceType(specialServiceType),
+				),
+				...
+			)
+		),
+		...
+	*/
+
 	new FilterList(
 		line("不载客"),
 		rawFilters(
