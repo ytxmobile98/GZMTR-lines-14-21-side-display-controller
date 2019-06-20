@@ -1,6 +1,7 @@
 "use strict";
 
 import { RawFilter, FilterList, FullServiceList } from "./filters.js";
+import { ServiceType, ServiceTypeList } from "./service-type-classes.js";
 
 const selfMap = (myVar) => myVar;
 
@@ -11,7 +12,14 @@ const name = selfMap;
 const stationNames = Array;
 const	serviceType = selfMap;
 
-const SERVICES = new FullServiceList([
+const SERVICE_TYPES = new ServiceTypeList(
+	new ServiceType("不载客", "Not in Service"),
+	new ServiceType("普通", "Local"),
+	new ServiceType("快速", "Express"),
+	new ServiceType("特别服务", "Special"),
+);
+
+const SERVICES = new FullServiceList(
 
 	/* Format of FilterList:
 		new FilterList(
@@ -90,8 +98,8 @@ const SERVICES = new FullServiceList([
 		),
 	),
 
-]);
+);
 
-console.log(SERVICES);
+console.log(SERVICE_TYPES, SERVICES);
 
 export { SERVICES };

@@ -114,7 +114,7 @@ class FilterList extends Map {
 }
 
 class FullServiceList extends Map {
-	constructor(filterLists) {
+	constructor(...filterLists) {
 
     TypeChecker.checkInstanceOf(filterLists, Array);
 

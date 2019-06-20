@@ -4,13 +4,13 @@ import { Station, StationList } from "./station-classes.js";
 
 const DESTINATIONS = Object.freeze({
 
-  "不载客": new StationList([
+  "不载客": new StationList(
     new Station("不载客", "Not in service"),
     new Station("回厂", "To yard"),
     new Station("试车", "Test run"),
-  ]),
+  ),
 
-  "14号线": new StationList([
+  "14号线": new StationList(
     new Station("嘉禾望岗", "Jiahewanggang"),
     new Station("白云东平", "Baiyun Dongping"),
     new Station("夏良", "Xialiang"),
@@ -33,9 +33,9 @@ const DESTINATIONS = Object.freeze({
     new Station("汤村", "Tangcun"),
     new Station("镇龙北", "Zhenlongbei"),
     new Station("镇龙", "Zhenlong"),
-  ]),
+  ),
 
-  "21号线": new StationList([
+  "21号线": new StationList(
     new Station("镇龙西", "Zhenlongxi"),
     new Station("镇龙", "Zhenlong"),
     new Station("中新", "Zhongxin"),
@@ -45,7 +45,7 @@ const DESTINATIONS = Object.freeze({
     new Station("山田", "Shantian"),
     new Station("钟岗", "Zhonggang"),
     new Station("增城广场", "Zengcheng Square"),
-  ]),
+  ),
 
 });
 
