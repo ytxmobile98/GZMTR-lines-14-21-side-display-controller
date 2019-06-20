@@ -1,0 +1,24 @@
+{
+  "name": "GZMTR-lines-14-21-side-display-controller",
+  "version": "1.0.0",
+  "description": "Web app demonstration for the side display controller on Guangzhou Metro Lines 14 &amp; 21 trains",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller/issues"
+  },
+  "homepage": "https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2"
+  }
+}
