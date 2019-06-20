@@ -102,4 +102,4 @@ const SERVICES = new FullServiceList(
 
 console.log(SERVICE_TYPES, SERVICES);
 
-export { SERVICES };
+export { SERVICE_TYPES, SERVICES };
