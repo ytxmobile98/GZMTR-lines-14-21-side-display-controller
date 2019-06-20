@@ -2,19 +2,21 @@
 
 import { RawFilter, FilterList, FullServiceList } from "./filters.js";
 
-const strSelfMap = (str) => str;
+const selfMap = (myVar) => myVar;
 
-const	line = strSelfMap;
+const	line = selfMap;
+const isPassengerService = selfMap;
 const rawFilters = Array;
-const name = strSelfMap;
+const name = selfMap;
 const stationNames = Array;
-const	serviceType = strSelfMap;
+const	serviceType = selfMap;
 
 const SERVICES = new FullServiceList([
 
 	/* Format of FilterList:
 		new FilterList(
 			line(nameOfLine),
+			isPassengerService(true | false);
 			rawFilters(
 				// rawFilter 1
 				new RawFilter(
@@ -35,6 +37,7 @@ const SERVICES = new FullServiceList([
 
 	new FilterList(
 		line("不载客"),
+		isPassengerService(false),
 		rawFilters(
 			new RawFilter(
 				name("全部"),
@@ -46,6 +49,7 @@ const SERVICES = new FullServiceList([
 
 	new FilterList(
 		line("14号线"),
+		isPassengerService(true),
 		rawFilters(
 			new RawFilter(
 				name("常用"),
@@ -73,6 +77,7 @@ const SERVICES = new FullServiceList([
 
 	new FilterList(
 		line("21号线"),
+		isPassengerService(true),
 		rawFilters(
 			new RawFilter(
 				name("常用"),

@@ -70,16 +70,17 @@ class Filter extends RawFilter {
 }
 
 class FilterList extends Map {
-  constructor(line, rawFilters) {
+  constructor(line, isPassengerService, rawFilters) {
     /* Format of arguments:
       line: "14号线",
+      isPassengerService: true | false,
       rawFiters: [
         // MUST BE CONSTRUCTED USING:
           new RawFilter(name, stationNames, serviceType)
         {
           name: "全部",
           stationNames: ["一号站", "二号站", "三号站", "四号站", ...],
-          serviceType: "快速", // this key is optional
+          serviceType: "快速", // this key is optional, value in Chinese
         },
         {
           name: "快速",
@@ -92,8 +93,16 @@ class FilterList extends Map {
     TypeChecker.checkTypeOf(line, "string");
 
     super();
+
     const that = this;
 		that.line = line;
+
+    const defaultServiceType = "普通";
+    const defaultCrossLineServiceType = "特别服务";
+    const deadMileageServiceType = "不载客";
+    that.defaultServiceType = isPassengerService ? defaultServiceType : deadMileageServiceType;
+    that.defaultCrossLineServiceType = isPassengerService ? defaultCrossLineServiceType : deadMileageServiceType;
+
     rawFilters.forEach((rawFilter) => {
       TypeChecker.checkInstanceOf(rawFilter, RawFilter);
       let filter = new Filter(line, rawFilter);
@@ -111,7 +120,7 @@ class FullServiceList extends Map {
 
 		super();
 
-		let that = this;
+		const that = this;
 
 		filterLists.forEach((filterList) => {
 			TypeChecker.checkInstanceOf(filterList, FilterList);
