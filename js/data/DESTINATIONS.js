@@ -5,7 +5,7 @@ import { Station, StationList } from "./station-classes.js";
 const DESTINATIONS = Object.freeze({
 
   "不载客": new StationList(
-    new Station("不载客", "Not in service"),
+    new Station("不载客列车", "Not in service"),
     new Station("回厂", "To yard"),
     new Station("试车", "Test run"),
   ),

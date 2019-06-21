@@ -33,8 +33,12 @@ class LEDDestination extends React.Component {
 		that.destArray = [destination.Chinese, destination.English];
 		that.state = {
 			currentIndex: 0,
+			useT2TextSize: false,
 		};
 		that.flipInterval = Math.max(1000, props.flipInterval) || 2500; // in ms
+
+		that.destTextRef = React.createRef();
+		that.containerRef = props.containerRef;
 	}
 
 	setTimer() {
@@ -47,6 +51,7 @@ class LEDDestination extends React.Component {
 		const flipDisplay = () => {
 			that.setState({
 				currentIndex: getNextIndex(),
+				useT2TextSize: false,
 			});
 			that.timer = window.setTimeout(flipDisplay, that.flipInterval);
 		}
@@ -63,6 +68,17 @@ class LEDDestination extends React.Component {
 		this.setTimer();
 	}
 
+	setT2TextSize() {
+		const destText = this.destTextRef.current;
+		const container = this.containerRef.current;
+
+		if (destText.scrollHeight > container.scrollHeight) {
+			this.setState({
+				useT2TextSize: true,
+			});
+		}
+	}
+
 	componentDidMount() {
 		this.resetTimer();
 	}
@@ -71,10 +87,18 @@ class LEDDestination extends React.Component {
 		this.clearTimer();
 	}
 
+	componentDidUpdate() {
+		this.setT2TextSize();
+	}
+
 	render() {
 		return (
 			<div className="LED__destination-container">
-				<div className="LED__destination-text">
+				<div
+					className="LED__destination-text"
+					data-js-t2-size={this.state.useT2TextSize ? true : null}
+					ref={this.destTextRef}
+				>
 					{this.destArray[this.state.currentIndex]}
 				</div>
 			</div>
@@ -98,6 +122,13 @@ class LED extends React.Component {
 			destination: destination,
 		};
 		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
+		this.containerRef = React.createRef();
+		this.destRef = React.createRef();
+	}
+
+	componentDidMount() {
+		const destComponent = this.destRef.current;
+		destComponent.setT2TextSize();
 	}
 
 	updateDisplay(...args) {
@@ -159,7 +190,10 @@ class LED extends React.Component {
 
 	render() {
 		return (
-			<div className="LED__container">
+			<div
+				className="LED__container"
+				ref={this.containerRef}
+			>
 				{ this.state.showContent ?
 					<div className="LED__content">
 						<LEDServiceType
@@ -168,6 +202,8 @@ class LED extends React.Component {
 						<LEDDestination
 							destination={this.state.destination}
 							flipInterval={this.props.flipInterval}
+							containerRef={this.containerRef}
+							ref={this.destRef}
 						/>
 					</div>
 					: null
@@ -177,8 +213,4 @@ class LED extends React.Component {
 	}
 }
 
-ReactDOM.render(<LED
-	showContent={true}
-	serviceType={new ServiceType("快速", "Express")}
-	destination={new Station("东风", "Dongfeng")}
-/>, document.getElementById("js-root"));
+export { LEDServiceType, LEDDestination, LED };
