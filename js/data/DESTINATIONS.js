@@ -94,11 +94,11 @@ const DESTINATIONS = Object.freeze((() => {
     const DESTINATIONS = new StationList(...tempStations);
     console.log(DESTINATIONS);
     return DESTINATIONS;
-  })());
+  })();
 
   return DESTINATIONS;
 
-})();
+})());
 
 const DESTINATIONS_BY_LINE = Object.freeze({
 
