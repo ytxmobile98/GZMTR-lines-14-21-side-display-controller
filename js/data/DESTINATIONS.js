@@ -46,7 +46,7 @@ const DESTINATION_NAMES = [
 
 ];
 
-const DESTINATIONS = (() => {
+const DESTINATIONS = Object.freeze((() => {
 
   /* Converts DESTINATION_NAMES to key-value pairs
     Each key is a destination in Chinese
@@ -92,7 +92,7 @@ const DESTINATIONS = (() => {
     const DESTINATIONS = new StationList(...tempStations);
     console.log(DESTINATIONS);
     return DESTINATIONS;
-  })();
+  })());
 
   return DESTINATIONS;
 
