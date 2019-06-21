@@ -100,6 +100,26 @@ const DESTINATIONS = Object.freeze((() => {
 
 const DESTINATIONS_BY_LINE = Object.freeze({
 
+  /* Allows accessing destinations by line
+
+    Output: {
+      "14号线": {
+        "嘉禾望岗": {
+          Chinese: "嘉禾望岗",
+          English: "Jiahewanggang",
+        },
+        "白云东平": {
+          Chinese: "白云东平",
+          English: "Baiyun Dongping",
+        },
+        ...
+      },
+      ...
+    }
+
+    Access: DESTINATIONS_BY_LINE["14号线"]["嘉禾望岗"]
+  */
+
   "不载客": new StationList(
     DESTINATIONS["不载客"],
     DESTINATIONS["回厂"],
