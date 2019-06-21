@@ -52,7 +52,7 @@ const DESTINATIONS = Object.freeze((() => {
     Each key is a destination in Chinese
     Each value is a station object
 
-    Final output:
+    Output:
     {
       "嘉禾望岗": {
         Chinese: "嘉禾望岗",
@@ -64,6 +64,8 @@ const DESTINATIONS = Object.freeze((() => {
       },
       ...
     }
+
+    Access: DESTINATIONS["嘉禾望岗"];
   */
 
   const tempDestNames = [];
@@ -117,7 +119,7 @@ const DESTINATIONS_BY_LINE = Object.freeze({
       ...
     }
 
-    Access: DESTINATIONS_BY_LINE["14号线"]["嘉禾望岗"]
+    Access: DESTINATIONS_BY_LINE["14号线"]["嘉禾望岗"];
   */
 
   "不载客": new StationList(
