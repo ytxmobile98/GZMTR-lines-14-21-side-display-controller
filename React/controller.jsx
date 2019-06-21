@@ -14,7 +14,7 @@ class Controller extends React.Component {
 				<LED
 					showContent={true}
 					serviceType={SERVICE_TYPES["不载客"]}
-					destination={DESTINATIONS["不载客"]["不载客列车"]}
+					destination={DESTINATIONS["不载客"]["不载客"]}
 				/>
 			</div>
 		);
