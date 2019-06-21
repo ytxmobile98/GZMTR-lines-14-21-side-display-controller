@@ -13,7 +13,7 @@ class Controller extends React.Component {
 			React.createElement(LED, {
 				showContent: true,
 				serviceType: SERVICE_TYPES["不载客"],
-				destination: DESTINATIONS["不载客"]["不载客"]
+				destination: DESTINATIONS["不载客"]
 			})
 		);
 	}

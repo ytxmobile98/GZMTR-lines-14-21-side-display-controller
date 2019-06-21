@@ -1,7 +1,7 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
-import { DESTINATIONS } from "./DESTINATIONS.js";
+import { DESTINATIONS_BY_LINE } from "./DESTINATIONS.js";
 import { SERVICE_TYPES } from "./SERVICES.js";
 
 class RawFilter {
@@ -56,7 +56,7 @@ class Filter extends RawFilter {
   }
 
   getStation(ChineseName) {
-    let line = DESTINATIONS[this.line];
+    let line = DESTINATIONS_BY_LINE[this.line];
     return line && line[ChineseName];
     // if the line or the station does not exist, then return undefined
   }
