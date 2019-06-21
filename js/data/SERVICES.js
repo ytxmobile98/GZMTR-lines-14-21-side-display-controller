@@ -19,7 +19,7 @@ const SERVICE_TYPES = new ServiceTypeList(
 	new ServiceType("特别服务", "Special"),
 );
 
-const SERVICES = new FullServiceList(
+const SERVICES = Object.freeze(new FullServiceList(
 
 	/* Format of FilterList:
 		new FilterList(
@@ -100,7 +100,7 @@ const SERVICES = new FullServiceList(
 		),
 	),
 
-);
+));
 
 console.log(SERVICE_TYPES, SERVICES);
 
