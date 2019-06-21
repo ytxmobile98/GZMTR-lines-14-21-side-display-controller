@@ -2,28 +2,34 @@
 
 import { TypeChecker } from "../type-checker.js";
 import { DESTINATIONS } from "./DESTINATIONS.js";
+import { SERVICE_TYPES } from "./SERVICES.js";
 
 class RawFilter {
-  constructor(name, stationNames, serviceType = undefined) {
+  constructor(name, stationNames, serviceTypeStr = undefined) {
     TypeChecker.checkTypeOf(name, "string");
-
     this.name = name;
     this.stationNames = stationNames;
-    this.serviceType = serviceType;
+    if (typeof serviceTypeStr === "string") {
+      SERVICE_TYPES.checkServiceType(serviceTypeStr);
+    }
+    this.serviceTypeStr = serviceTypeStr;
   }
 }
 
 class Filter extends RawFilter {
 
   constructor(line, ...args) {
-    let name, stationNames, serviceType = undefined;
+    let name, stationNames, serviceTypeStr = undefined;
 
     if (args.length === 2 || args.length === 3) {
       // new Filter(line, name, stationNames, serviceType = undefined);
       name = args[0];
       stationNames = args[1];
-      serviceType = args[2];
-      super(name, stationNames, serviceType);
+      serviceTypeStr = args[2];
+      if (typeof serviceTypeStr === "string") {
+        SERVICE_TYPES.checkServiceType(serviceTypeStr);
+      }
+      super(name, stationNames, serviceTypeStr);
     }
 
     else if ((args.length === 1) && (args[0] instanceof RawFilter)) {
@@ -32,18 +38,19 @@ class Filter extends RawFilter {
       const rawFilter = args[0];
       name = rawFilter.name;
       stationNames = rawFilter.stationNames;
-      serviceType = rawFilter.serviceType;
-      super(rawFilter.name, rawFilter.stationNames, rawFilter.serviceType);
+      serviceTypeStr = rawFilter.serviceTypeStr;
+      super(name, stationNames, serviceTypeStr);
     }
 
     else {
       throw new TypeError(`Filter constructor format:
-        new Filter(line, name, stationNames, serviceType = undefined); OR
+        new Filter(line, name, stationNames, serviceTypeStr = undefined); OR
         new Filter(line, rawFilter);
       `);
     }
 
     this.line = line;
+    this.serviceType = SERVICE_TYPES[this.serviceTypeStr];
     this.stations = this.getStationsFromNames(stationNames);
     Object.freeze(this);
   }

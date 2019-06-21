@@ -43,6 +43,8 @@ const SERVICES = new FullServiceList(
 		...
 	*/
 
+	// PLEASE CHECK DESTINATIONS.js TO ENSURE THAT ALL DESTINATION NAMES ARE VALID
+
 	new FilterList(
 		line("不载客"),
 		isPassengerService(false),

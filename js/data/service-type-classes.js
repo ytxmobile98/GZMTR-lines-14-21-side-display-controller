@@ -16,7 +16,14 @@ class ServiceTypeList {
 		serviceTypes.forEach((serviceType) => {
 			TypeChecker.checkInstanceOf(serviceType, ServiceType);
 			that[serviceType.Chinese] = serviceType;
-		})
+		});
+	}
+
+	checkServiceType(serviceTypeStr) {
+		if (!(this.hasOwnProperty(serviceTypeStr))) {
+			throw new Error(`${serviceTypeStr} is not a avalid service type`);
+		}
+		return true;
 	}
 }
 
