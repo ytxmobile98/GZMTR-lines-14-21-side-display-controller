@@ -1,19 +1,16 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
-import { TranslationPair, TranslationsObj } from "./translation-pairs.js";
+import { TranslationPair } from "./translation-pairs.js";
 
-const processTranslations = (translationsArray, subClass, collectionObj) => {
+const processTranslations = (translationsArray, subClass) => {
 	TypeChecker.checkInstanceOf(translationsArray, Array);
 	TypeChecker.checkIsPrototypeOf(TranslationPair, subClass);
-	TypeChecker.checkIsPrototypeOf(TranslationsObj, collectionObj);
 
-	const translationsObj = collectionObj.fromEntries(translationsArray);
-
+	const translationsObj = Object.fromEntries(translationsArray);
 	for (let [Chinese, English] of Object.entries(translationsObj)) {
 		translationsObj[Chinese] = new subClass(Chinese, English);
 	}
-
 	return translationsObj;
 }
 

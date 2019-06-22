@@ -1,6 +1,6 @@
 "use strict";
 
-import { TranslationPair, TranslationsObj } from "./translation-pairs.js";
+import { TranslationPair } from "./translation-pairs.js";
 import { TypeChecker } from "../type-checker.js";
 
 class ServiceType extends TranslationPair {
@@ -10,8 +10,8 @@ class ServiceType extends TranslationPair {
 	}
 }
 
-class ServiceTypesObj extends TranslationsObj {
-	
+class ServiceTypesObj {
+
 	checkServiceType(serviceTypeStr) {
 		if (!(this.hasOwnProperty(serviceTypeStr))) {
 			throw new Error(`${serviceTypeStr} is not a avalid service type`);

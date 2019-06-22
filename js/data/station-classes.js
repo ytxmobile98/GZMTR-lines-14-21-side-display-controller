@@ -1,6 +1,6 @@
 "use strict";
 
-import { TranslationPair, TranslationsObj } from "./translation-pairs.js";
+import { TranslationPair } from "./translation-pairs.js";
 import { TypeChecker } from "../type-checker.js";
 
 class Station extends TranslationPair {
@@ -10,7 +10,7 @@ class Station extends TranslationPair {
   }
 }
 
-class StationsObj extends TranslationsObj {
+class StationsObj {
 
   /* Mapping: ChineseName: { Chinese: ChineseName, English: EnglishName }
     e.g. "14号线": {

@@ -12,6 +12,4 @@ class TranslationPair {
   }
 }
 
-class TranslationsObj extends Object {};
-
-export { TranslationPair, TranslationsObj };
+export { TranslationPair };
