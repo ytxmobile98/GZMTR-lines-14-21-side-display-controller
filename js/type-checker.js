@@ -19,12 +19,27 @@ class TypeChecker {
 		return true;
 	}
 
+	static checkArrayType(array, type) {
+		const that = this;
+
+		that.checkInstanceOf(array, Array);
+		array.forEach((element) => {
+			if (typeof type === "string") {
+				that.checkTypeOf(element, type);
+			}
+			else {
+				that.checkInstanceOf(element, type);
+			}
+		});
+	}
+
 	static checkIsPrototypeOf(superClass, subClass, errMsg = undefined) {
 		if (!(superClass.isPrototypeOf(subClass))) {
 			throw new TypeError(errMsg || `ERROR: ${superClass.name} is not a prototype of ${subClass.name}`);
 		}
 		return true;
 	}
+
 }
 
 export { TypeChecker };
