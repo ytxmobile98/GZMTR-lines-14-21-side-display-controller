@@ -18,6 +18,13 @@ class TypeChecker {
 		}
 		return true;
 	}
+
+	static checkIsPrototypeOf(superClass, subClass, errMsg = undefined) {
+		if (!(superClass.isPrototypeOf(subClass))) {
+			throw new TypeError(errMsg || `ERROR: ${superClass.name} is a prototype of ${subClass.name}`);
+		}
+		return true;
+	}
 }
 
 export { TypeChecker };
