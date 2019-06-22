@@ -11,10 +11,10 @@ const DestNames = DestNameChineseArray;
 class RawLineInfo {
 	constructor(serviceTypesChinese, destNamesChinese) {
 		TypeChecker.checkInstanceOf(serviceTypesChinese, ServiceTypesChineseArray);
-		this.serviceTypes = serviceTypesChinese.valueOf();
+		this.serviceTypes = serviceTypesChinese;
 
 		TypeChecker.checkInstanceOf(destNamesChinese, DestNameChineseArray);
-		this.destNames = destNamesChinese.valueOf();
+		this.destNames = destNamesChinese;
 	}
 }
 
