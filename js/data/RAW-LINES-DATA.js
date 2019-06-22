@@ -9,7 +9,7 @@ const RAW_SERVICE_TYPES_TRANSLATIONS = [
 	["特别服务", "Special"],
 ];
 
-const RAW_STATION_NAMES_TRANSLATIONS = [
+const RAW_DESTINATIONS_TRANSLATIONS = [
 	// 不载客
   ["不载客", "Not in service"],
   ["回厂", "To yard"],
@@ -51,21 +51,30 @@ const RAW_STATION_NAMES_TRANSLATIONS = [
   ["增城广场", "Zengcheng Square"],
 ];
 
-const RAW_LINES_INFO = {
-	"不载客": new RawLineInfo(
-		new ServiceTypes("不载客"),
-		new DestNames("不载客", "回厂", "试车"),
-	),
+const RAW_LINES_INFO = [
+	[
+		"不载客",
+		new RawLineInfo(
+			new ServiceTypes("不载客"),
+			new DestNames("不载客", "回厂", "试车"),
+		),
+	],
 
-	"14号线": new RawLineInfo(
-		new ServiceTypes("普通", "快速", "特别服务"),
-		new DestNames("嘉禾望岗", "白云东平", "夏良", "太和", "竹料", "钟落潭", "马沥", "新和", "太平", "神岗", "赤草", "从化客运站", "东风", "红卫", "新南", "枫下", "知识城", "何棠下", "旺村", "汤村", "镇龙北",  "镇龙"),
-	),
+	[
+		"14号线",
+		new RawLineInfo(
+			new ServiceTypes("普通", "快速", "特别服务"),
+			new DestNames("嘉禾望岗", "白云东平", "夏良", "太和", "竹料", "钟落潭", "马沥", "新和", "太平", "神岗", "赤草", "从化客运站", "东风", "红卫", "新南", "枫下", "知识城", "何棠下", "旺村", "汤村", "镇龙北",  "镇龙"),
+		),
+	],
 
-	"21号线": new RawLineInfo(
-		new ServiceTypes("普通", "快速", "特别服务"),
-		new DestNames("镇龙西", "镇龙", "中新", "坑贝", "凤岗", "朱村", "山田", "钟岗", "增城广场"),
-	),
-};
+	[
+		"21号线",
+		new RawLineInfo(
+			new ServiceTypes("普通", "快速", "特别服务"),
+			new DestNames("镇龙西", "镇龙", "中新", "坑贝", "凤岗", "朱村", "山田", "钟岗", "增城广场"),
+		),
+	],
+];
 
-export { RAW_LINES_INFO, RAW_SERVICE_TYPES_TRANSLATIONS, RAW_STATION_NAMES_TRANSLATIONS };
+export { RAW_LINES_INFO, RAW_SERVICE_TYPES_TRANSLATIONS, RAW_DESTINATIONS_TRANSLATIONS };
