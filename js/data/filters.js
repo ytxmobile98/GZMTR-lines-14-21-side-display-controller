@@ -1,6 +1,9 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
+import { ServiceType } from "./service-type-classes.js";
+import { Station } from "./station-classes.js";
+
 import { DESTINATIONS_BY_LINE } from "./DESTINATIONS.js";
 import { SERVICE_TYPES } from "./SERVICES.js";
 
@@ -16,6 +19,24 @@ class RawFilter {
   }
 }
 
+class Filter {
+  constructor(line, serviceType, crossLineServiceType, destinations) {
+    TypeChecker.checkTypeOf(line, "string");
+
+    TypeChecker.checkInstanceOf(serviceType, ServiceType);
+    TypeChecker.checkInstanceOf(crossLineServiceType, ServiceType);
+
+    TypeChecker.checkArrayType(destinations, Station);
+
+    this.line = line;
+    this.defaultServiceType = serviceType;
+    this.crossLineServiceType = crossLineServiceType'
+    this.destinations = destinations;
+
+    console.log(this);
+  }
+}
+
 class LineFiltersMap extends Map {
   constructor(line, ...filters) {
     super();
@@ -27,69 +48,8 @@ class LineFiltersMap extends Map {
       if (!((DESTINATIONS_BY_LINE.hasOwnProperty(line)) && (line === filter.line))) {
         throw new Error("${line} is not a valid line");
       }
-
       that.set(filter.name, filter);
     });
-  }
-}
-
-class Filter extends RawFilter {
-
-  constructor(line, ...args) {
-    let name, stationNames, serviceTypeStr = undefined;
-
-    if (args.length === 2 || args.length === 3) {
-      // new Filter(line, name, stationNames, serviceType = undefined);
-      name = args[0];
-      stationNames = args[1];
-      serviceTypeStr = args[2];
-      if (typeof serviceTypeStr === "string") {
-        SERVICE_TYPES.checkServiceType(serviceTypeStr);
-      }
-      super(name, stationNames, serviceTypeStr);
-    }
-
-    else if ((args.length === 1) && (args[0] instanceof RawFilter)) {
-      // new Filter(line, rawFilter);
-
-      const rawFilter = args[0];
-      name = rawFilter.name;
-      stationNames = rawFilter.stationNames;
-      serviceTypeStr = rawFilter.serviceTypeStr;
-      super(name, stationNames, serviceTypeStr);
-    }
-
-    else {
-      throw new TypeError(`Filter constructor format:
-        new Filter(line, name, stationNames, serviceTypeStr = undefined); OR
-        new Filter(line, rawFilter);
-      `);
-    }
-
-    this.line = line;
-    this.serviceType = SERVICE_TYPES[this.serviceTypeStr];
-    this.stations = this.getStationsFromNames(stationNames);
-    Object.freeze(this);
-  }
-
-  getStation(ChineseName) {
-    let line = DESTINATIONS_BY_LINE[this.line];
-    return line && line[ChineseName];
-    // if the line or the station does not exist, then return undefined
-  }
-
-  getStationsFromNames(stationNames) {
-    TypeChecker.checkInstanceOf(stationNames, Array);
-
-    const that = this;
-    let stations = [];
-
-    stationNames.forEach((stationName, index) => {
-      TypeChecker.checkTypeOf(stationName, "string");
-      stations[index] = that.getStation(stationName);
-    });
-
-    return stations;
   }
 }
 
