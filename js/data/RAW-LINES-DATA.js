@@ -51,7 +51,7 @@ const RAW_DESTINATIONS_TRANSLATIONS = [
   ["增城广场", "Zengcheng Square"],
 ];
 
-const RAW_LINES_INFO = [
+const RAW_LINES_INFO = new Map([
 	[
 		"不载客",
 		new RawLineInfo(
@@ -75,6 +75,6 @@ const RAW_LINES_INFO = [
 			new DestNames("镇龙西", "镇龙", "中新", "坑贝", "凤岗", "朱村", "山田", "钟岗", "增城广场"),
 		),
 	],
-];
+]);
 
 export { RAW_LINES_INFO, RAW_SERVICE_TYPES_TRANSLATIONS, RAW_DESTINATIONS_TRANSLATIONS };

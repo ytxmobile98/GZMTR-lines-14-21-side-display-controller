@@ -1,36 +1,30 @@
 "use strict";
 
-import { TranslationPairs } from "./translation-pairs.js";
+import { TranslationPair, TranslationsObj } from "./translation-pairs.js";
 import { TypeChecker } from "../type-checker.js";
 
-class Station extends TranslationPairs {
+class Station extends TranslationPair {
   constructor(Chinese, English) {
     super(Chinese, English);
     Object.freeze(this);
   }
 }
 
-class StationsObj {
-  constructor(stations) {
-    /* Mapping: ChineseName: { Chinese: ChineseName, English: EnglishName }
-      e.g. "14号线": {
-        "嘉禾望岗": { Chinese: "嘉禾望岗", English: "Jiahewanggang" },
-        "白云东平": { Chinese: "白云东平", English: "Baiyun Dongping" },
-        ...
-      }
-    */
+class StationsObj extends TranslationsObj {
 
-    TypeChecker.checkInstanceOf(stations, Array);
+  /* Mapping: ChineseName: { Chinese: ChineseName, English: EnglishName }
+    e.g. "14号线": {
+      "嘉禾望岗": { Chinese: "嘉禾望岗", English: "Jiahewanggang" },
+      "白云东平": { Chinese: "白云东平", English: "Baiyun Dongping" },
+      ...
+    }
+  */
 
-    const that = this;
-
-    stations.forEach((station) => {
-      TypeChecker.checkInstanceOf(station, Station);
-      let Chinese = station.Chinese;
-      that[Chinese] = station;
-    });
-
-    Object.freeze(that);
+  checkDestination(ChineseStationName) {
+    if (!(this.hasOwnProperty(ChineseStationName))) {
+      throw new Error(`${ChineseStationName} is not a valid destination`);
+    }
+    return true;
   }
 }
 
