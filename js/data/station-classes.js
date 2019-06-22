@@ -10,7 +10,7 @@ class Station extends TranslationPairs {
   }
 }
 
-class StationList {
+class StationsObj {
   constructor(...stations) {
     /* Mapping: ChineseName: { Chinese: ChineseName, English: EnglishName }
       e.g. "14号线": {
@@ -34,4 +34,4 @@ class StationList {
   }
 }
 
-export { Station, StationList };
+export { Station, StationsObj };

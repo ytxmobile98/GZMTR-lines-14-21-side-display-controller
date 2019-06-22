@@ -10,7 +10,7 @@ class ServiceType extends TranslationPairs {
 	}
 }
 
-class ServiceTypeList {
+class ServiceTypesObj {
 	constructor(...serviceTypes) {
 		const that = this;
 		serviceTypes.forEach((serviceType) => {
@@ -27,4 +27,4 @@ class ServiceTypeList {
 	}
 }
 
-export { ServiceType, ServiceTypeList };
+export { ServiceType, ServiceTypesObj };

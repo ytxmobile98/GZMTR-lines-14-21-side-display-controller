@@ -1,7 +1,7 @@
 "use strict";
 
 import { RawFilter, FilterList, FullServiceList } from "./filters.js";
-import { ServiceType, ServiceTypeList } from "./service-type-classes.js";
+import { ServiceType, ServiceTypesObj } from "./service-type-classes.js";
 
 const selfMap = (myVar) => myVar;
 
@@ -12,7 +12,7 @@ const name = selfMap;
 const stationNames = Array;
 const	serviceType = selfMap;
 
-const SERVICE_TYPES = new ServiceTypeList(
+const SERVICE_TYPES = new ServiceTypesObj(
 	new ServiceType("不载客", "Not in Service"),
 	new ServiceType("普通", "Local"),
 	new ServiceType("快速", "Express"),

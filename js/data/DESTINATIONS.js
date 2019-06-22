@@ -1,6 +1,6 @@
 "use strict";
 
-import { Station, StationList } from "./station-classes.js";
+import { Station, StationsObj } from "./station-classes.js";
 
 const DESTINATION_NAMES = [
 
@@ -93,7 +93,7 @@ const DESTINATIONS = Object.freeze((() => {
   })();
 
   // Add keys (Chinese names) to each station after removing repeated names
-  const DESTINATIONS = new StationList(...uniqueDestinations);
+  const DESTINATIONS = new StationsObj(...uniqueDestinations);
   return DESTINATIONS;
 
 })());
@@ -120,13 +120,13 @@ const DESTINATIONS_BY_LINE = Object.freeze({
     Access: DESTINATIONS_BY_LINE["14号线"]["嘉禾望岗"];
   */
 
-  "不载客": new StationList(
+  "不载客": new StationsObj(
     DESTINATIONS["不载客"],
     DESTINATIONS["回厂"],
     DESTINATIONS["试车"],
   ),
 
-  "14号线": new StationList(
+  "14号线": new StationsObj(
     DESTINATIONS["嘉禾望岗"],
     DESTINATIONS["白云东平"],
     DESTINATIONS["夏良"],
@@ -151,7 +151,7 @@ const DESTINATIONS_BY_LINE = Object.freeze({
     DESTINATIONS["镇龙"],
   ),
 
-  "21号线": new StationList(
+  "21号线": new StationsObj(
     DESTINATIONS["镇龙西"],
     DESTINATIONS["镇龙"],
     DESTINATIONS["中新"],
