@@ -75,19 +75,18 @@ const DESTINATIONS = Object.freeze((() => {
 
     const separator = "\t";
 
-    const destNamesStrs = [];
-    DESTINATION_NAMES.forEach((destName) => {
-      destNamesStrs.push(destName.join(separator));
+    const destNamesStrs = DESTINATION_NAMES.map((destName) => {
+      return destName.join(separator);
     });
     const uniqueDestNames = Array.from(new Set(destNamesStrs));
 
-    const uniqueDestinations = [];
-    uniqueDestNames.forEach((destName) => {
+    const uniqueDestinations = uniqueDestNames.map((destName) => {
       const pair = destName.split(separator, 2);
       const Chinese = pair[0];
       const English = pair[1];
-      uniqueDestinations.push(new Station(Chinese, English));
+      return new Station(Chinese, English);
     });
+
     return uniqueDestinations;
 
   })();
@@ -164,5 +163,11 @@ const DESTINATIONS_BY_LINE = Object.freeze({
   ]),
 
 });
+
+Object.getPrototypeOf(DESTINATIONS_BY_LINE).checkLine = (line) => {
+  if (!(this.hasOwnProperty(line))) {
+    throw new Error("${line} is not a valid line");
+  }
+}
 
 export { DESTINATIONS, DESTINATIONS_BY_LINE };
