@@ -1,25 +1,17 @@
 "use strict";
 
-import { TranslationPairs } from "./translation-pairs.js";
+import { TranslationPair, TranslationsObj } from "./translation-pairs.js";
 import { TypeChecker } from "../type-checker.js";
 
-class ServiceType extends TranslationPairs {
+class ServiceType extends TranslationPair {
 	constructor(Chinese, English) {
 		super(Chinese, English);
 		Object.freeze(this);
 	}
 }
 
-class ServiceTypesObj {
-	constructor(serviceTypes) {
-		const that = this;
-		TypeChecker.checkInstanceOf(serviceTypes, Array);
-		serviceTypes.forEach((serviceType) => {
-			TypeChecker.checkInstanceOf(serviceType, ServiceType);
-			that[serviceType.Chinese] = serviceType;
-		});
-	}
-
+class ServiceTypesObj extends TranslationsObj {
+	
 	checkServiceType(serviceTypeStr) {
 		if (!(this.hasOwnProperty(serviceTypeStr))) {
 			throw new Error(`${serviceTypeStr} is not a avalid service type`);

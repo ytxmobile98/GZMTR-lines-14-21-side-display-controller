@@ -2,7 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-class TranslationPairs {
+class TranslationPair {
   constructor(Chinese, English) {
     [Chinese, English].forEach((element) => {
       TypeChecker.checkTypeOf(element, "string");
@@ -12,4 +12,6 @@ class TranslationPairs {
   }
 }
 
-export { TranslationPairs };
+class TranslationsObj extends Object {};
+
+export { TranslationPair, TranslationsObj };
