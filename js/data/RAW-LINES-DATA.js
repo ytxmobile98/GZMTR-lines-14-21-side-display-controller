@@ -1,22 +1,6 @@
 "use strict";
 
-import { TypeChecker } from "../type-checker.js";
-
-class ServiceTypesChineseArray extends Array {};
-const ServiceTypes = ServiceTypesChineseArray;
-
-class DestNameChineseArray extends Array {};
-const DestNames = DestNameChineseArray;
-
-class RawLineInfo {
-	constructor(serviceTypesChinese, destNamesChinese) {
-		TypeChecker.checkInstanceOf(serviceTypesChinese, ServiceTypesChineseArray);
-		this.serviceTypesChinese = serviceTypesChinese.valueOf();
-
-		TypeChecker.checkInstanceOf(destNamesChinese, DestNameChineseArray);
-		this.destNamesChinese = destNamesChinese.valueOf();
-	}
-}
+import { ServiceTypes, DestNames, RawLineInfo } from "./raw-lines-data-classes.js";
 
 const RAW_SERVICE_TYPES_TRANSLATIONS = [
 	["不载客", "Not in Service"],
@@ -84,32 +68,10 @@ const RAW_LINES_INFO = {
 	),
 };
 
-const ALL_SERVICE_TYPES_CHINESE = (() => {
+const PROCESSED_SERVICE_TYPES_TRANSLATIONS = Object.fromEntries(RAW_SERVICE_TYPES_TRANSLATIONS);
 
-	let ALL_SERVICE_TYPES_CHINESE = new ServiceTypes;
+const PROCESSED_STATION_NAMES_TRANSLATIONS = Object.fromEntries(RAW_STATION_NAMES_TRANSLATIONS);
 
-	Object.keys(RAW_LINES_INFO).forEach((line) => {
-		ALL_SERVICE_TYPES_CHINESE = ALL_SERVICE_TYPES_CHINESE.concat(RAW_LINES_INFO[line].serviceTypesChinese);
-	});
+console.log(RAW_SERVICE_TYPES_TRANSLATIONS, RAW_STATION_NAMES_TRANSLATIONS, RAW_LINES_INFO, PROCESSED_SERVICE_TYPES_TRANSLATIONS, PROCESSED_STATION_NAMES_TRANSLATIONS);
 
-	ALL_SERVICE_TYPES_CHINESE = ServiceTypes.from(new Set(ALL_SERVICE_TYPES_CHINESE));
-	return ALL_SERVICE_TYPES_CHINESE;
-
-})();
-
-const ALL_DESTINATION_NAMES_CHINESE = (() => {
-
-	let ALL_DESTINATION_NAMES_CHINESE = new DestNames;
-
-	Object.keys(RAW_LINES_INFO).forEach((line) => {
-		ALL_DESTINATION_NAMES_CHINESE = ALL_DESTINATION_NAMES_CHINESE.concat(RAW_LINES_INFO[line].destNamesChinese);
-	});
-
-	ALL_DESTINATION_NAMES_CHINESE = DestNames.from(new Set(ALL_DESTINATION_NAMES_CHINESE));
-	return ALL_DESTINATION_NAMES_CHINESE;
-
-})();
-
-console.log(RAW_SERVICE_TYPES_TRANSLATIONS, RAW_STATION_NAMES_TRANSLATIONS, RAW_LINES_INFO, ALL_SERVICE_TYPES_CHINESE, ALL_DESTINATION_NAMES_CHINESE);
-
-export { RAW_SERVICE_TYPES_TRANSLATIONS, RAW_STATION_NAMES_TRANSLATIONS, RAW_LINES_INFO, ALL_SERVICE_TYPES_CHINESE, ALL_DESTINATION_NAMES_CHINESE };
+export { RAW_SERVICE_TYPES_TRANSLATIONS, RAW_STATION_NAMES_TRANSLATIONS, RAW_LINES_INFO, PROCESSED_SERVICE_TYPES_TRANSLATIONS, PROCESSED_STATION_NAMES_TRANSLATIONS };
