@@ -68,34 +68,32 @@ const DESTINATIONS = Object.freeze((() => {
     Access: DESTINATIONS["嘉禾望岗"];
   */
 
-  const tempDestNames = [];
-  const separator = "\t";
+  const uniqueDestinations = (() => {
 
-  const tempDestNamesSet = (() => {
+    // remove repeated station names, and form an array of stations
+    // each element is an instance of class Station
+
+    const separator = "\t";
+
+    const destNamesStrs = [];
     DESTINATION_NAMES.forEach((destName) => {
-      tempDestNames.push(destName.join(separator));
+      destNamesStrs.push(destName.join(separator));
     });
-    const tempDestNamesSet = new Set(tempDestNames);
-    return tempDestNamesSet;
-  })();
+    const uniqueDestNames = Array.from(new Set(destNamesStrs));
 
-  const DESTINATIONS = (() => {
-    const tempStations = [];
-
-    tempDestNamesSet.forEach((element) => {
-      const pair = element.split(separator, 2);
+    const uniqueDestinations = [];
+    uniqueDestNames.forEach((destName) => {
+      const pair = destName.split(separator, 2);
       const Chinese = pair[0];
       const English = pair[1];
-
-      const station = new Station(Chinese, English);
-      tempStations.push(station);
+      uniqueDestinations.push(new Station(Chinese, English));
     });
+    return uniqueDestinations;
 
-    const DESTINATIONS = new StationList(...tempStations);
-    console.log(DESTINATIONS);
-    return DESTINATIONS;
   })();
 
+  // Add keys (Chinese names) to each station after removing repeated names
+  const DESTINATIONS = new StationList(...uniqueDestinations);
   return DESTINATIONS;
 
 })());
