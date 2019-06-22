@@ -1,6 +1,6 @@
 "use strict";
 
-import { ServiceTypes, DestNames, RawLineInfo } from "./raw-lines-data-classes.js";
+import { ServiceTypes, DestNames, RawLineInfo } from "./raw-line-data-classes.js";
 
 const RAW_SERVICE_TYPES_TRANSLATIONS = [
 	["不载客", "Not in Service"],
