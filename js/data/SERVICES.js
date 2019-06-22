@@ -12,12 +12,12 @@ const name = selfMap;
 const stationNames = Array;
 const	serviceType = selfMap;
 
-const SERVICE_TYPES = new ServiceTypesObj(
+const SERVICE_TYPES = new ServiceTypesObj([
 	new ServiceType("不载客", "Not in Service"),
 	new ServiceType("普通", "Local"),
 	new ServiceType("快速", "Express"),
 	new ServiceType("特别服务", "Special"),
-);
+]);
 
 const SERVICES = Object.freeze(new FullServiceList(
 

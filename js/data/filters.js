@@ -16,6 +16,23 @@ class RawFilter {
   }
 }
 
+class LineFiltersMap extends Map {
+  constructor(line, ...filters) {
+    super();
+
+    const that = this;
+
+    filters.forEach((filter) => {
+      TypeChecker.checkInstanceOf(filter, Filter);
+      if (!((DESTINATIONS_BY_LINE.hasOwnProperty(line)) && (line === filter.line))) {
+        throw new Error("${line} is not a valid line");
+      }
+
+      that.set(filter.name, filter);
+    });
+  }
+}
+
 class Filter extends RawFilter {
 
   constructor(line, ...args) {

@@ -93,7 +93,7 @@ const DESTINATIONS = Object.freeze((() => {
   })();
 
   // Add keys (Chinese names) to each station after removing repeated names
-  const DESTINATIONS = new StationsObj(...uniqueDestinations);
+  const DESTINATIONS = new StationsObj(uniqueDestinations);
   return DESTINATIONS;
 
 })());
@@ -120,13 +120,13 @@ const DESTINATIONS_BY_LINE = Object.freeze({
     Access: DESTINATIONS_BY_LINE["14号线"]["嘉禾望岗"];
   */
 
-  "不载客": new StationsObj(
+  "不载客": new StationsObj([
     DESTINATIONS["不载客"],
     DESTINATIONS["回厂"],
     DESTINATIONS["试车"],
-  ),
+  ]),
 
-  "14号线": new StationsObj(
+  "14号线": new StationsObj([
     DESTINATIONS["嘉禾望岗"],
     DESTINATIONS["白云东平"],
     DESTINATIONS["夏良"],
@@ -149,9 +149,9 @@ const DESTINATIONS_BY_LINE = Object.freeze({
     DESTINATIONS["汤村"],
     DESTINATIONS["镇龙北"],
     DESTINATIONS["镇龙"],
-  ),
+  ]),
 
-  "21号线": new StationsObj(
+  "21号线": new StationsObj([
     DESTINATIONS["镇龙西"],
     DESTINATIONS["镇龙"],
     DESTINATIONS["中新"],
@@ -161,7 +161,7 @@ const DESTINATIONS_BY_LINE = Object.freeze({
     DESTINATIONS["山田"],
     DESTINATIONS["钟岗"],
     DESTINATIONS["增城广场"],
-  ),
+  ]),
 
 });
 

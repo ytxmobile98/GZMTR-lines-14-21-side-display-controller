@@ -11,8 +11,9 @@ class ServiceType extends TranslationPairs {
 }
 
 class ServiceTypesObj {
-	constructor(...serviceTypes) {
+	constructor(serviceTypes) {
 		const that = this;
+		TypeChecker.checkInstanceOf(serviceTypes, Array);
 		serviceTypes.forEach((serviceType) => {
 			TypeChecker.checkInstanceOf(serviceType, ServiceType);
 			that[serviceType.Chinese] = serviceType;

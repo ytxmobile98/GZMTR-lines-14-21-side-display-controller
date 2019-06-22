@@ -11,7 +11,7 @@ class Station extends TranslationPairs {
 }
 
 class StationsObj {
-  constructor(...stations) {
+  constructor(stations) {
     /* Mapping: ChineseName: { Chinese: ChineseName, English: EnglishName }
       e.g. "14号线": {
         "嘉禾望岗": { Chinese: "嘉禾望岗", English: "Jiahewanggang" },
