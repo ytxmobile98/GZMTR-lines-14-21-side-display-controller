@@ -164,10 +164,4 @@ const DESTINATIONS_BY_LINE = Object.freeze({
 
 });
 
-Object.getPrototypeOf(DESTINATIONS_BY_LINE).checkLine = (line) => {
-  if (!(this.hasOwnProperty(line))) {
-    throw new Error("${line} is not a valid line");
-  }
-}
-
 export { DESTINATIONS, DESTINATIONS_BY_LINE };
