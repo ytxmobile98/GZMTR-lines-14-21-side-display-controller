@@ -10,14 +10,4 @@ class ServiceType extends TranslationPair {
 	}
 }
 
-class ServiceTypesObj {
-
-	checkServiceType(serviceTypeStr) {
-		if (!(this.hasOwnProperty(serviceTypeStr))) {
-			throw new Error(`${serviceTypeStr} is not a avalid service type`);
-		}
-		return true;
-	}
-}
-
-export { ServiceType, ServiceTypesObj };
+export { ServiceType };
