@@ -2,34 +2,36 @@
 
 import { TypeChecker } from "../type-checker.js";
 import { ServiceType } from "./service-type-classes.js";
+import { Station } from "./station-classes.js";
 import { RawFilter, Filter } from "./filter-classes.js";
 
 import { SERVICE_TYPES, DESTINATIONS } from "./PROCESSED-LINES-DATA.js";
 
 class LineInfo {
-	constructor(line, serviceTypes, defaultServiceType, defaultCrossLineServiceType, destinations, rawFilters) {
+	constructor(line, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters) {
 
 		TypeChecker.checkTypeOf(line, "string");
+		TypeChecker.checkArrayType(destinations, Station);
+
 		TypeChecker.checkArrayType(serviceTypes, ServiceType);
     TypeChecker.checkInstanceOf(defaultServiceType, ServiceType);
     TypeChecker.checkInstanceOf(crossLineServiceType, ServiceType);
-    TypeChecker.checkArrayType(destinations, Station);
-		TypeChecker.checkArrayType(rawFilters, Filter);
+
+		TypeChecker.checkArrayType(rawFilters, RawFilter);
 
 		const that = this;
 
 		that.line = line;
+		that.destinations = destinations;
+
 		that.serviceTypes = serviceTypes;
 		that.defaultServiceType = defaultServiceType;
 		that.crossLineServiceType = crossLineServiceType;
-		that.destinations = destinations;
 
 		that.filters = new Map();
-		rawFilter.forEach((rawFilter) => {
+		rawFilters.forEach((rawFilter) => {
 			that.addFilter(rawFilter.name, rawFilter.destinations, rawFilter.serviceType);
 		});
-
-		console.log(that);
 	}
 
 	addFilter(name, destinations, serviceType = undefined) {
@@ -42,15 +44,16 @@ class LineInfo {
 
 		const that = this;
 
-		/* Filter Constructor:
+		/* Filter constructor:
 			new Filter(line, name, destinations, serviceType, crossLineServiceType);
 		*/
-		const line = that.line;
-		destinations = that.destinations.map((ChineseName) => {
+		const line = that.line;;
+		destinations = destinations.map((ChineseName) => {
 			return DESTINATIONS[ChineseName];
 		});
-		serviceType = SERVICES[serviceType || that.defaultServiceType];
-		crossLineServiceType = SERVICES[that.crossLineServiceType];
+
+		serviceType = SERVICE_TYPES[serviceType] || that.defaultServiceType;
+		const crossLineServiceType = that.crossLineServiceType;
 
 		const newFilter = new Filter(line, name, destinations, serviceType, crossLineServiceType);
 		that.filters.set(newFilter.name, newFilter);

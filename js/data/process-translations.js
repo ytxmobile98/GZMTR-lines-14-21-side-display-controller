@@ -10,7 +10,7 @@ const processTranslations = (translations, subClass) => {
 	const mappedTranslations = translations.map((translation) => {
 		const Chinese = translation[0];
 		return [Chinese, new subClass(...translation)];
-	})
+	});
 
 	const translationsObj = Object.fromEntries(mappedTranslations);
 	return translationsObj;
