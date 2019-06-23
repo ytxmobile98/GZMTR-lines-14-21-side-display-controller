@@ -54,17 +54,18 @@ const RAW_DESTINATIONS_TRANSLATIONS = [
 
 ];
 
-const line = String;
-const serviceTypes = Array;
-const defaultServiceType = String;
-const crossLineServiceType = String;
-const destinations = Array;
-const rawFilters = Array;
-const name = String;
-const serviceType = String;
+const RAW_LINES_INFO = (() => {
 
-const RAW_LINES_INFO = new Map([
-	["不载客",
+	const line = String;
+	const serviceTypes = Array;
+	const defaultServiceType = String;
+	const crossLineServiceType = String;
+	const destinations = Array;
+	const rawFilters = Array;
+	const name = String;
+	const serviceType = String;
+
+	return [
 		new RawLineInfo(
 			line("不载客"),
 			serviceTypes("不载客"),
@@ -78,9 +79,7 @@ const RAW_LINES_INFO = new Map([
 				),
 			),
 		),
-	],
 
-	["14号线",
 		new RawLineInfo(
 			line("14号线"),
 			serviceTypes("普通", "快速", "特别服务"),
@@ -111,9 +110,7 @@ const RAW_LINES_INFO = new Map([
 				),
 			)
 		),
-	],
 
-	["21号线",
 		new RawLineInfo(
 			line("21号线"),
 			serviceTypes("普通", "快速", "特别服务"),
@@ -131,9 +128,9 @@ const RAW_LINES_INFO = new Map([
 				),
 			),
 		),
-	],
-
-]);
+	];
+	
+})();
 
 console.log(RAW_LINES_INFO);
 
