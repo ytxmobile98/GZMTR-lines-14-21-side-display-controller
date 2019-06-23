@@ -67,6 +67,19 @@ const RAW_LINES_INFO = (() => {
 
 	/* RawLineInfo constructor:
 		new RawLineInfo(line, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters);
+
+		Argument types:
+			line, defaultServiceType, crossLineServiceType: strings
+			destinations, serviceTypes: array of strings
+			rawFilters: array of type RawFilter
+	*/
+
+	/* RawFilter constructor:
+		constructor(name, destinations, serviceType = undefined)
+
+		Argument types:
+			name, serviceType: strings
+			destinations: array of strings
 	*/
 
 	return [

@@ -33,6 +33,12 @@ const LINES_INFO = Object.freeze((() => {
 
 		/* LineInfo constructor:
 			new LineInfo(line, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters)
+
+			Argument types:
+				line, destinations: string
+				serviceTypes: array of ServiceType
+				defaultServiceType, crossLineServiceType: ServiceType
+				rawFilters: array of RawFilter
 		*/
 
 		const line = rawLineInfo.line;

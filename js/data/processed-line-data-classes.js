@@ -46,7 +46,13 @@ class LineInfo {
 
 		/* Filter constructor:
 			new Filter(line, name, destinations, serviceType, crossLineServiceType);
+
+			Argument types:
+				line, name: strings
+				destinations: array of type Station
+				serviceType, crossLineServiceType: ServiceType
 		*/
+
 		const line = that.line;;
 		destinations = destinations.map((ChineseName) => {
 			return DESTINATIONS[ChineseName];
