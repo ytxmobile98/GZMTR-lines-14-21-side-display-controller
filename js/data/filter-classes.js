@@ -19,20 +19,18 @@ class RawFilter {
 }
 
 class Filter {
-  constructor(line, name, serviceType, crossLineServiceType, destinations) {
+  constructor(line, name, destinations, serviceType, crossLineServiceType) {
     TypeChecker.checkTypeOf(line, "string");
     TypeChecker.checkTypeOf(name, "string");
-
+    TypeChecker.checkArrayType(destinations, Station);
     TypeChecker.checkInstanceOf(serviceType, ServiceType);
     TypeChecker.checkInstanceOf(crossLineServiceType, ServiceType);
 
-    TypeChecker.checkArrayType(destinations, Station);
-
     this.line = line;
     this.name = name;
+    this.destinations = destinations;
     this.serviceType = serviceType;
     this.crossLineServiceType = crossLineServiceType;
-    this.destinations = destinations;
   }
 }
 
