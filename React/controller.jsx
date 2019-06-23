@@ -1,7 +1,6 @@
 "use strict";
 
-import { SERVICE_TYPES, SERVICES } from "./data/SERVICES.js";
-import { DESTINATIONS } from "./data/DESTINATIONS.js";
+import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
 import { LED } from "./LED.js";
 
 class Controller extends React.Component {
