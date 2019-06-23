@@ -1,8 +1,8 @@
 "use strict";
 
-import { TypeChecker } from "./type-checker.js";
-import { ServiceType } from "./data/service-type-classes.js";
-import { Station } from "./data/station-classes.js";
+import { TypeChecker } from "../type-checker.js";
+import { ServiceType } from "../data/service-type-classes.js";
+import { Station } from "../data/station-classes.js";
 
 class LEDServiceType extends React.Component {
 	render() {
