@@ -31,6 +31,8 @@ class TypeChecker {
 				that.checkInstanceOf(element, type);
 			}
 		});
+
+		return true;
 	}
 
 	static checkIsPrototypeOf(superClass, subClass, errMsg = undefined) {
