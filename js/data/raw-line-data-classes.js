@@ -1,21 +1,24 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
-
-class ServiceTypesChineseArray extends Array {};
-const ServiceTypes = ServiceTypesChineseArray;
-
-class DestNameChineseArray extends Array {};
-const DestNames = DestNameChineseArray;
+import { RawFilter } from "./filter-classes.js"
 
 class RawLineInfo {
-	constructor(serviceTypesChinese, destNamesChinese) {
-		TypeChecker.checkInstanceOf(serviceTypesChinese, ServiceTypesChineseArray);
-		this.serviceTypes = serviceTypesChinese;
+	constructor(line, serviceTypes, defaultServiceType, crossLineServiceType, destinations, rawFilters) {
+		TypeChecker.checkTypeOf(line, "string");
+		TypeChecker.checkArrayType(serviceTypes, "string");
+		TypeChecker.checkTypeOf(defaultServiceType, "string");
+		TypeChecker.checkTypeOf(crossLineServiceType, "string");
+		TypeChecker.checkArrayType(destinations, "string");
+		TypeChecker.checkArrayType(rawFilters, RawFilter);
 
-		TypeChecker.checkInstanceOf(destNamesChinese, DestNameChineseArray);
-		this.destNames = destNamesChinese;
+		this.line = line;
+		this.serviceTypes = serviceTypes;
+		this.defaultServiceType = defaultServiceType;
+		this.crossLineServiceType = crossLineServiceType;
+		this.destinations = destinations;
+		this.rawFiters = rawFilters;
 	}
 }
 
-export { ServiceTypes, DestNames, RawLineInfo };
+export { RawLineInfo };

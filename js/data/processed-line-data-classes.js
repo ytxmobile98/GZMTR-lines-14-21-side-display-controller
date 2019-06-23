@@ -2,11 +2,10 @@
 
 import { TypeChecker } from "../type-checker.js";
 import { ServiceType } from "./service-type-classes.js";
-
-import { Filter } from "./filters.js";
+import { Filter } from "./filter-classes.js";
 
 class LineInfo {
-	constructor(line, serviceTypes, defaultServiceType, defaultCrossLineServiceType, destinations) {
+	constructor(line, serviceTypes, defaultServiceType, defaultCrossLineServiceType, destinations, filters) {
 
 		TypeChecker.checkTypeOf(line, "string");
 
@@ -17,10 +16,22 @@ class LineInfo {
 
     TypeChecker.checkArrayType(destinations, Station);
 
-		this.filters = new Map();
+		TypeChecker.checkArrayType(filters, Filter);
+
+		this.line = line;
+		this.serviceTypes = serviceTypes;
+		this.defaultServiceType = defaultServiceType;
+		this.crossLineServiceType = crossLineServiceType;
+		this.destinations = destinations;
+
+		this.filters = new Map(
+			filters.map((filter) => {
+				return [filter.name, filter];
+			})
+		);
 	}
 
-	addFilter(filterName, destinations, serviceType) {
+	addFilter(filterName, serviceType, destinations) {
 
 	}
 }
