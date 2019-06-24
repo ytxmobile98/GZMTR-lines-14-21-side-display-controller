@@ -10,11 +10,11 @@
 	width: var(--controller-screen-width);
 	height: var(--controller-screen-height);
 	background-color: whitesmoke;
-	border: 10px solid black;
+	border: 8px solid black;
 }
 
 .controller__top {
-	flex-basis: 80px;
+	flex-basis: 100px;
 
 	display: flex;
 	flex-direction: row;
