@@ -10,7 +10,11 @@
 }
 
 .clock__date {
-	margin-right: 0.5em;
+	margin-right: 0.25em;
+}
+
+.clock__day {
+	margin-left: 0.25em;
 }
 
 .clock__time {
