@@ -20,8 +20,7 @@ class Controller extends React.Component {
 				"div",
 				{ className: "controller__top" },
 				React.createElement(LED, {
-					ref: this.outputLED,
-					showContent: true
+					ref: this.outputLED
 				})
 			),
 			React.createElement("div", { className: "controller__center" }),

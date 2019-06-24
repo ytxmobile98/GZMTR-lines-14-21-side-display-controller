@@ -130,7 +130,7 @@ class LED extends React.PureComponent {
 		super(props);
 
 		this.state = {
-			showContent: this.props.showContent !== undefined ? !!this.props.showContent : false,
+			showContent: true,
 			serviceType: serviceType,
 			destination: destination
 		};

@@ -112,7 +112,7 @@ class LEDDestination extends React.PureComponent {
 
 class LED extends React.PureComponent {
 	constructor(props) {
-		
+
 		const defaultServiceType = SERVICE_TYPES["不载客"];
 		const serviceType = props.serviceType || defaultServiceType;
 		TypeChecker.checkInstanceOf(serviceType, ServiceType);
@@ -124,8 +124,7 @@ class LED extends React.PureComponent {
 		super(props);
 
 		this.state = {
-			showContent: (this.props.showContent !== undefined) ?
-				!!this.props.showContent : false,
+			showContent: true,
 			serviceType: serviceType,
 			destination: destination,
 		};

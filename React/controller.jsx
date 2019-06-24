@@ -18,7 +18,6 @@ class Controller extends React.Component {
 				<div className="controller__top">
 					<LED
 						ref={this.outputLED}
-						showContent={true}
 					/>
 				</div>
 				<div className="controller__center"></div>
