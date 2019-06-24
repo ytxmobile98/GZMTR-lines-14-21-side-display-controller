@@ -2,7 +2,7 @@
 
 .controller {
 	--controller-screen-width: 800px;
-	--controller-screen-height: 500px;
+	--controller-screen-height: 480px;
 
 	display: flex;
 	flex-direction: column;
