@@ -131,14 +131,13 @@ class LED extends React.PureComponent {
 		destComponent.setT2TextSize();
 	}
 
+	/* Usage:
+		updateDisplay(newServiceType, newDestination) OR
+		updateDisplay(newDestination, newServiceType) OR
+		updateDisplay(newServiceType) OR
+		updateDisplay(newDestination)
+	*/
 	updateDisplay(...args) {
-
-		/* Usage:
-			updateDisplay(newServiceType, newDestination) OR
-			updateDisplay(newDestination, newServiceType) OR
-			updateDisplay(newServiceType) OR
-			updateDisplay(newDestination)
-		*/
 
 		const that = this;
 
