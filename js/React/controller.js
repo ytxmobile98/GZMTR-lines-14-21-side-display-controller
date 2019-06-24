@@ -11,11 +11,15 @@ class Controller extends React.Component {
 		return React.createElement(
 			"div",
 			{ className: "controller" },
-			React.createElement(LED, {
-				showContent: true,
-				serviceType: SERVICE_TYPES["不载客"],
-				destination: DESTINATIONS["不载客"]
-			}),
+			React.createElement(
+				"div",
+				{ className: "controller__top" },
+				React.createElement(LED, {
+					showContent: true,
+					serviceType: SERVICE_TYPES["不载客"],
+					destination: DESTINATIONS["不载客"]
+				})
+			),
 			React.createElement(Clock, null)
 		);
 	}

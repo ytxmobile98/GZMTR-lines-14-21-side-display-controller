@@ -1,9 +1,26 @@
+@import url("clock.css");
+
 .controller {
 	--controller-screen-width: 800px;
 	--controller-screen-height: 500px;
+
+	display: flex;
+	flex-direction: column;
 
 	width: var(--controller-screen-width);
 	height: var(--controller-screen-height);
 	background-color: lightgray;
 	border: 10px solid black;
+}
+
+.controller__top {
+	flex-basis: 80px;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	text-align: center;
+	font-size: 20px;
 }
