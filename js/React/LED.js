@@ -4,7 +4,7 @@ import { TypeChecker } from "../type-checker.js";
 import { ServiceType } from "../data/service-type-classes.js";
 import { Station } from "../data/station-classes.js";
 
-class LEDServiceType extends React.Component {
+class LEDServiceType extends React.PureComponent {
 	render() {
 		const serviceType = this.props.serviceType;
 		TypeChecker.checkInstanceOf(serviceType, ServiceType);
@@ -26,7 +26,7 @@ class LEDServiceType extends React.Component {
 	}
 }
 
-class LEDDestination extends React.Component {
+class LEDDestination extends React.PureComponent {
 	constructor(props) {
 		const destination = props.destination;
 		TypeChecker.checkInstanceOf(destination, Station);
@@ -112,7 +112,7 @@ class LEDDestination extends React.Component {
 	}
 }
 
-class LED extends React.Component {
+class LED extends React.PureComponent {
 	constructor(props) {
 		const serviceType = props.serviceType;
 		TypeChecker.checkInstanceOf(serviceType, ServiceType);
