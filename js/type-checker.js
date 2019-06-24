@@ -12,9 +12,23 @@ class TypeChecker {
 		return true;
 	}
 
+	static checkOptionalTypeOf(obj, type, errMsg = undefined) {
+		if (obj !== undefined) {
+			return this.checkTypeOf(obj, type, errMsg);
+		}
+		return true;
+	}
+
 	static checkInstanceOf(obj, type, errMsg = undefined) {
 		if (!(obj instanceof type)) {
 			throw new TypeError(errMsg || `ERROR: ${obj} is not of type ${type.name}`);
+		}
+		return true;
+	}
+
+	static checkOptionalInstanceOf(obj, type, errMsg = undefined) {
+		if (obj !== undefined) {
+			return this.checkInstanceOf(obj, type, errMsg);
 		}
 		return true;
 	}

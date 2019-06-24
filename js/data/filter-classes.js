@@ -8,9 +8,7 @@ class RawFilter {
   constructor(name, destinations, serviceType = undefined) {
     TypeChecker.checkTypeOf(name, "string");
     TypeChecker.checkArrayType(destinations, "string");
-    if (serviceType !== undefined) {
-      TypeChecker.checkTypeOf(serviceType, "string");
-    }
+    TypeChecker.checkOptionalTypeOf(serviceType, "string");
 
     this.name = name;
     this.destinations = destinations;

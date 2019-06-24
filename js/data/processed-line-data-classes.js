@@ -38,9 +38,7 @@ class LineInfo {
 
 		TypeChecker.checkTypeOf(name, "string");
 		TypeChecker.checkArrayType(destinations, "string");
-		if (serviceType !== undefined) {
-			TypeChecker.checkTypeOf(serviceType, "string");
-		}
+		TypeChecker.checkOptionalTypeOf(serviceType, "string");
 
 		const that = this;
 
