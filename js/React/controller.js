@@ -7,6 +7,11 @@ import { Clock } from "./clock.js";
 
 class Controller extends React.Component {
 
+	constructor(props) {
+		super(props);
+		this.outputLED = React.createRef();
+	}
+
 	render() {
 		return React.createElement(
 			"div",
@@ -15,9 +20,8 @@ class Controller extends React.Component {
 				"div",
 				{ className: "controller__top" },
 				React.createElement(LED, {
-					showContent: true,
-					serviceType: SERVICE_TYPES["不载客"],
-					destination: DESTINATIONS["不载客"]
+					ref: this.outputLED,
+					showContent: true
 				})
 			),
 			React.createElement("div", { className: "controller__center" }),

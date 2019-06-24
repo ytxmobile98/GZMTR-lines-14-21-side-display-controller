@@ -4,8 +4,11 @@ import { TypeChecker } from "../type-checker.js";
 import { ServiceType } from "../data/service-type-classes.js";
 import { Station } from "../data/station-classes.js";
 
+import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
+
 class LEDServiceType extends React.PureComponent {
 	render() {
+
 		const serviceType = this.props.serviceType;
 		TypeChecker.checkInstanceOf(serviceType, ServiceType);
 
@@ -24,6 +27,7 @@ class LEDServiceType extends React.PureComponent {
 
 class LEDDestination extends React.PureComponent {
 	constructor(props) {
+
 		const destination = props.destination;
 		TypeChecker.checkInstanceOf(destination, Station);
 
@@ -108,9 +112,13 @@ class LEDDestination extends React.PureComponent {
 
 class LED extends React.PureComponent {
 	constructor(props) {
-		const serviceType = props.serviceType;
+		
+		const defaultServiceType = SERVICE_TYPES["不载客"];
+		const serviceType = props.serviceType || defaultServiceType;
 		TypeChecker.checkInstanceOf(serviceType, ServiceType);
-		const destination = props.destination;
+
+		const defaultDestination = DESTINATIONS["不载客"];
+		const destination = props.destination || defaultDestination;
 		TypeChecker.checkInstanceOf(destination, Station);
 
 		super(props);
@@ -128,7 +136,9 @@ class LED extends React.PureComponent {
 
 	componentDidMount() {
 		const destComponent = this.destRef.current;
-		destComponent.setT2TextSize();
+		if (destComponent) {
+			destComponent.setT2TextSize();
+		}
 	}
 
 	/* Usage:
