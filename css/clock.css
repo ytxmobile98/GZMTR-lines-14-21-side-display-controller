@@ -15,4 +15,5 @@
 
 .clock__time {
 	flex-basis: 100%;
+	font-size: 24px;
 }

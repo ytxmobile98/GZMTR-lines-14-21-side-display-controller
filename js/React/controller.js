@@ -20,7 +20,17 @@ class Controller extends React.Component {
 					destination: DESTINATIONS["不载客"]
 				})
 			),
-			React.createElement(Clock, null)
+			React.createElement("div", { className: "controller__center" }),
+			React.createElement(
+				"div",
+				{ className: "controller__bottom" },
+				React.createElement(Clock, null),
+				React.createElement(
+					"div",
+					{ className: "controller__bottom-notes" },
+					"\u6CE8\u610F\uFF1A\u59821\u5206\u949F\u5185\u65E0\u64CD\u4F5C\uFF0C\u6B64\u8BBE\u5907\u5C06\u8FDB\u5165\u5F85\u673A\u6A21\u5F0F\u3002"
+				)
+			)
 		);
 	}
 }

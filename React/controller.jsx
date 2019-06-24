@@ -17,7 +17,13 @@ class Controller extends React.Component {
 						destination={DESTINATIONS["不载客"]}
 					/>
 				</div>
-				<Clock />
+				<div className="controller__center"></div>
+				<div className="controller__bottom">
+					<Clock />
+					<div className="controller__bottom-notes">
+						注意：如1分钟内无操作，此设备将进入待机模式。
+					</div>
+				</div>
 			</div>
 		);
 	}
