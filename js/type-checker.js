@@ -13,7 +13,7 @@ class TypeChecker {
 	}
 
 	static checkOptionalTypeOf(obj, type, errMsg = undefined) {
-		if (obj !== undefined) {
+		if (obj != undefined) {
 			return this.checkTypeOf(obj, type, errMsg);
 		}
 		return true;
@@ -27,7 +27,7 @@ class TypeChecker {
 	}
 
 	static checkOptionalInstanceOf(obj, type, errMsg = undefined) {
-		if (obj !== undefined) {
+		if (obj != undefined) {
 			return this.checkInstanceOf(obj, type, errMsg);
 		}
 		return true;
