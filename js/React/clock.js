@@ -38,8 +38,8 @@ class Clock extends React.PureComponent {
 		const date = dateObj.getDate();
 
 		const dateStr = `${year}-${month}-${date}`;
-		const timeStr = `${dateObj.toTimeString().split(" ", 1)[0]}`;
 		const dayStr = this.days[dateObj.getDay()];
+		const timeStr = `${dateObj.toTimeString().split(" ", 1)[0]}`;
 
 		return React.createElement(
 			"div",
