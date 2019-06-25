@@ -156,25 +156,34 @@ class LED extends React.PureComponent {
 	}
 
 	/* Usage:
-		updateDisplay(newServiceType, newDestination) OR
-		updateDisplay(newDestination, newServiceType) OR
-		updateDisplay(null, null) OR
-		updateDisplay(newServiceType) OR
-		updateDisplay(newDestination) OR
-		updateDisplay(null)
+		Two parameters:
+			updateDisplay(newServiceType, newDestination) OR
+			updateDisplay(newDestination, newServiceType) OR
+			updateDisplay(null, null) // clear display
+
+		One parameter:
+			updateDisplay(newServiceType) OR
+			updateDisplay(newDestination) OR
+			updateDisplay(null) // clear display
+
+		Note: you may NOT call updateDisplay(newServiceType) or updateDisplay(newDestination) if you have both service time and destination cleared
 	*/
 	updateDisplay(...args) {
 
 		const that = this;
 
 		const showUsageInfo = () => {
-			throw new TypeError(`Usage:
+			throw new TypeError(`Two parameters:
 				updateDisplay(newServiceType, newDestination) OR
 				updateDisplay(newDestination, newServiceType) OR
-				updateDisplay(null, null) OR
-				updateDisplay(newServiceType) OR
-				updateDisplay(newDestination) OR
-				updateDisplay(null)
+				updateDisplay(null, null) // clear display
+
+				One parameter:
+					updateDisplay(newServiceType) OR
+					updateDisplay(newDestination) OR
+					updateDisplay(null) // clear display
+
+				Note: you may NOT call updateDisplay(newServiceType) or updateDisplay(newDestination) if you have both service time and destination cleared
 			`);
 		}
 
