@@ -7,10 +7,14 @@ import { Station } from "../data/station-classes.js";
 import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
 
 class LEDServiceType extends React.PureComponent {
+
 	render() {
 
 		const serviceType = this.props.serviceType;
-		TypeChecker.checkInstanceOf(serviceType, ServiceType);
+		TypeChecker.checkOptionalInstanceOf(serviceType, ServiceType);
+		if (!serviceType) {
+			return null;
+		}
 
 		return (
 			<div className="LED__service-type" data-js-service-type={serviceType.Chinese}>
@@ -29,18 +33,17 @@ class LEDDestination extends React.PureComponent {
 	constructor(props) {
 
 		const destination = props.destination;
-		TypeChecker.checkInstanceOf(destination, Station);
+		TypeChecker.checkOptionalInstanceOf(destination, Station);
 
 		super(props);
 
 		const that = this;
-		that.destArray = [destination.Chinese, destination.English];
+		that.destArray = (destination) ? [destination.Chinese, destination.English] : [ null ];
 		that.state = {
 			currentIndex: 0,
 			useT2TextSize: false,
 		};
 		that.flipInterval = Math.max(1000, props.flipInterval) || 2500; // in ms
-
 		that.destTextRef = React.createRef();
 		that.containerRef = props.containerRef;
 	}
@@ -49,6 +52,9 @@ class LEDDestination extends React.PureComponent {
 		const that = this;
 
 		const getNextIndex = () => {
+			if (that.destArray.length === 0) {
+				throw new Error(`${that.destArray} is of length 0`);
+			}
 			return (that.state.currentIndex + 1) % (that.destArray.length);
 		};
 
@@ -76,7 +82,7 @@ class LEDDestination extends React.PureComponent {
 		const destText = this.destTextRef.current;
 		const container = this.containerRef.current;
 
-		if (destText.scrollHeight > container.scrollHeight) {
+		if (destText && destText.scrollHeight > container.scrollHeight) {
 			this.setState({
 				useT2TextSize: true,
 			});
@@ -85,6 +91,7 @@ class LEDDestination extends React.PureComponent {
 
 	componentDidMount() {
 		this.resetTimer();
+		this.setT2TextSize();
 	}
 
 	componentWillUnmount() {
@@ -96,6 +103,12 @@ class LEDDestination extends React.PureComponent {
 	}
 
 	render() {
+		const destination = this.props.destination;
+		TypeChecker.checkOptionalInstanceOf(destination, Station);
+		if (!destination) {
+			return null;
+		}
+
 		return (
 			<div className="LED__destination-container">
 				<div
@@ -111,22 +124,15 @@ class LEDDestination extends React.PureComponent {
 }
 
 class LED extends React.PureComponent {
+
 	constructor(props) {
-
-		const defaultServiceType = SERVICE_TYPES["不载客"];
-		const serviceType = props.serviceType || defaultServiceType;
-		TypeChecker.checkInstanceOf(serviceType, ServiceType);
-
-		const defaultDestination = DESTINATIONS["不载客"];
-		const destination = props.destination || defaultDestination;
-		TypeChecker.checkInstanceOf(destination, Station);
 
 		super(props);
 
 		this.state = {
 			showContent: true,
-			serviceType: serviceType,
-			destination: destination,
+			serviceType: null,
+			destination: null,
 		};
 		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
 		this.containerRef = React.createRef();
@@ -135,16 +141,17 @@ class LED extends React.PureComponent {
 
 	componentDidMount() {
 		const destComponent = this.destRef.current;
-		if (destComponent) {
-			destComponent.setT2TextSize();
-		}
+		const that = this;
+		that.updateDisplay(SERVICE_TYPES["不载客"], DESTINATIONS["不载客"]);
 	}
 
 	/* Usage:
 		updateDisplay(newServiceType, newDestination) OR
 		updateDisplay(newDestination, newServiceType) OR
+		updateDisplay(null, null) OR
 		updateDisplay(newServiceType) OR
-		updateDisplay(newDestination)
+		updateDisplay(newDestination) OR
+		updateDisplay(null)
 	*/
 	updateDisplay(...args) {
 
@@ -154,8 +161,10 @@ class LED extends React.PureComponent {
 			throw new TypeError(`Usage:
 				updateDisplay(newServiceType, newDestination) OR
 				updateDisplay(newDestination, newServiceType) OR
+				updateDisplay(null, null) OR
 				updateDisplay(newServiceType) OR
-				updateDisplay(newDestination)
+				updateDisplay(newDestination) OR
+				updateDisplay(null)
 			`);
 		}
 
@@ -164,6 +173,9 @@ class LED extends React.PureComponent {
 		}
 
 		else {
+
+			// set current state
+
 			args.forEach((arg) => {
 				if (arg instanceof ServiceType) {
 					that.setState({
@@ -175,12 +187,29 @@ class LED extends React.PureComponent {
 						destination: arg,
 					});
 				}
+				else if (args[0] == null && args[1] == null) {
+					that.setState({
+						serviceType: null,
+						destination: null,
+					});
+				}
 				else {
 					showUsageInfo();
 				}
 			});
 
+			// refresh display
+
 			that.setState((prevState) => {
+
+				const xor = (a, b) => {
+					return (!!a !== !!b);
+				}
+
+				if (xor(prevState.serviceType, prevState.destination)) {
+					throw new Error(`serviceType and prevState must be both null or both not null`);
+				}
+
 				return {
 					showContent: false,
 				}
@@ -197,6 +226,7 @@ class LED extends React.PureComponent {
 	}
 
 	render() {
+
 		return (
 			<div
 				className="LED__container"

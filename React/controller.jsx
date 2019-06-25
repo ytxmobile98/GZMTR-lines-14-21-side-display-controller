@@ -16,9 +16,7 @@ class Controller extends React.Component {
 		return (
 			<div className="controller">
 				<div className="controller__top">
-					<LED
-						ref={this.outputLED}
-					/>
+					<LED ref={this.outputLED} />
 				</div>
 				<div className="controller__center"></div>
 				<div className="controller__bottom">
