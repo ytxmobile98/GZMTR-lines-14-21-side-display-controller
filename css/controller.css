@@ -1,14 +1,18 @@
+@import url("LED.css");
 @import url("clock.css");
+@import url("modal.css");
 
 .controller {
 	--controller-screen-width: 800px;
 	--controller-screen-height: 480px;
 
+	position: relative;
+	
 	display: flex;
 	flex-direction: column;
-
 	width: var(--controller-screen-width);
 	height: var(--controller-screen-height);
+
 	background-color: whitesmoke;
 	border: 8px solid black;
 }

@@ -1,15 +1,14 @@
 @import url("controller.css");
-@import url("LED.css");
 
 body {
+	margin: auto;
+	min-height: 100vh;
+	
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	align-content: center;
 	justify-content: center;
-
-	margin: auto;
-	min-height: 100vh;
 
 	font-family: Unifont, monospace;
 }
