@@ -18,10 +18,12 @@ class Controller extends React.Component {
 		that.state = {
 			modalMode: MODAL_MODES.standby
 		};
+	}
 
+	componentDidMount() {
 		const action = () => {
-			if (!that.state.modalMode) {
-				that.resetTimeout();
+			if (!this.state.modalMode) {
+				this.resetTimeout();
 			}
 		};
 		document.body.addEventListener("click", action);
