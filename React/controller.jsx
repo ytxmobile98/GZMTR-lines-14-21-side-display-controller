@@ -26,8 +26,16 @@ class Controller extends React.Component {
 				this.resetTimeout();
 			}
 		};
-		document.body.addEventListener("click", action);
-		document.body.addEventListener("keyup", action);
+		const body = document.body;
+		this.bodyClickListener = body.addEventListener("click", action);
+		this.bodyKeyUpListener = body.addEventListener("keyup", action);
+	}
+
+	componentWillUnmount() {
+		const that = this;
+		const body = document.body;
+		body.removeEventListener(that.bodyClickListener);
+		body.removeEventListener(that.bodyKeyUpListener);
 	}
 
 	setTimeout() {
