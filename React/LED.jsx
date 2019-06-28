@@ -146,8 +146,6 @@ class LED extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		const destComponent = this.destRef.current;
-		console.log(destComponent);
 		const serviceType = this.state.serviceType;
 		const destination = this.state.destination;
 		this.updateDisplay(serviceType, destination);
