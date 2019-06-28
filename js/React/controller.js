@@ -79,10 +79,7 @@ class Controller extends React.Component {
 			React.createElement(
 				"div",
 				{ className: "controller__top" },
-				React.createElement(LED, { ref: this.outputLED,
-					serviceType: SERVICE_TYPES["快速"],
-					destination: DESTINATIONS["东风"]
-				})
+				React.createElement(LED, { ref: this.outputLED })
 			),
 			React.createElement("div", { className: "controller__center" }),
 			React.createElement(
