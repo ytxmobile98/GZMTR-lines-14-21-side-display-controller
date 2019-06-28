@@ -13,3 +13,7 @@
 
 	background-color: whitesmoke;
 }
+
+.modal-dialog__center {
+	flex-grow: 1;
+}

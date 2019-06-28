@@ -32,7 +32,39 @@ class DialogHeader extends React.Component {
 	}
 }
 
-class DialogFooter extends React.Component {}
+class DialogFooter extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			doneText: props.doneText || "完成",
+			onDone: props.onDone,
+
+			closeText: props.closeText || "取消",
+			onClose: props.onClose
+		};
+	}
+
+	render() {
+		return React.createElement(
+			"div",
+			{ className: "modal-dialog__footer" },
+			React.createElement(
+				"button",
+				{
+					className: "modal-dialog__footer-button modal-dialog__footer-button--done",
+					onClick: this.state.onDone },
+				this.state.doneText
+			),
+			React.createElement(
+				"button",
+				{
+					className: "modal-dialog__footer-button modal-dialog__footer-button--close",
+					onClick: this.state.onClose },
+				"\u53D6\u6D88"
+			)
+		);
+	}
+}
 
 class Dialog extends React.Component {
 	constructor(props) {
@@ -64,6 +96,11 @@ class Dialog extends React.Component {
 			{ className: "modal-dialog" },
 			React.createElement(DialogHeader, {
 				title: this.state.title,
+				onClose: this.close.bind(this)
+			}),
+			React.createElement("div", { className: "modal-dialog__center" }),
+			React.createElement(DialogFooter, {
+				onDone: this.close.bind(this),
 				onClose: this.close.bind(this)
 			})
 		);

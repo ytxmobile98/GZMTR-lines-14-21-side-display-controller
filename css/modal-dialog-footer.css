@@ -1,0 +1,27 @@
+:root {
+	--footer-size: 60px;
+}
+
+.modal-dialog__footer {
+	flex-basis: var(--footer-size);
+	margin: 0.5em;
+
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	justify-content: flex-end;
+
+	font-size: calc(0.5 * var(--footer-size));
+}
+
+.modal-dialog__footer-button {
+	margin: 0.25em;
+	padding: 0.25em 0.5em;
+
+	background: none;
+	border: 1px solid black;
+
+
+	font-family: inherit;
+	font-size: 0.8em;
+}
