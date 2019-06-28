@@ -4,8 +4,7 @@ import { TypeChecker } from "../type-checker.js";
 
 import { Dialog } from "./dialog.js";
 
-const MODAL_MODE_NAMES = ["standby"];
-
+const MODAL_MODE_NAMES = ["standby", "setDisplayMode", "setDestination"];
 const MODAL_MODES = Object.freeze(new (function() {
 	TypeChecker.checkArrayType(MODAL_MODE_NAMES, "string");
 	const that = this;
@@ -13,6 +12,7 @@ const MODAL_MODES = Object.freeze(new (function() {
 		that[name] = Symbol();
 	})
 })());
+console.log(MODAL_MODES);
 
 class Modal extends React.Component {
 	constructor(props) {
