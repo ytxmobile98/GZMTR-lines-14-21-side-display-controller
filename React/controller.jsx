@@ -34,8 +34,8 @@ class Controller extends React.Component {
 	componentWillUnmount() {
 		const that = this;
 		const body = document.body;
-		body.removeEventListener(that.bodyClickListener);
-		body.removeEventListener(that.bodyKeyUpListener);
+		body.removeEventListener("click", that.bodyClickListener);
+		body.removeEventListener("keyup", that.bodyKeyUpListener);
 	}
 
 	setTimeout() {

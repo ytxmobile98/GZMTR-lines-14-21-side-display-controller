@@ -5,16 +5,15 @@ import { ServiceType } from "../data/service-type-classes.js";
 import { Station } from "../data/station-classes.js";
 
 import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
+const DEFAULT_SERVICE_TYPE = SERVICE_TYPES["不载客"];
+const DEFAULT_DESTINATION = DESTINATIONS["不载客"];
 
 class LEDServiceType extends React.PureComponent {
 
 	render() {
 
 		const serviceType = this.props.serviceType;
-		TypeChecker.checkOptionalInstanceOf(serviceType, ServiceType);
-		if (!serviceType) {
-			return null;
-		}
+		TypeChecker.checkInstanceOf(serviceType, ServiceType);
 
 		return React.createElement(
 			"div",
@@ -37,12 +36,12 @@ class LEDDestination extends React.PureComponent {
 	constructor(props) {
 
 		const destination = props.destination;
-		TypeChecker.checkOptionalInstanceOf(destination, Station);
+		TypeChecker.checkInstanceOf(destination, Station);
 
 		super(props);
 
 		const that = this;
-		that.destArray = destination ? [destination.Chinese, destination.English] : [null];
+		that.destArray = [destination.Chinese, destination.English];
 		that.state = {
 			currentIndex: 0,
 			useT2TextSize: false
@@ -86,10 +85,12 @@ class LEDDestination extends React.PureComponent {
 		const destText = this.destTextRef.current;
 		const container = this.containerRef.current;
 
-		if (destText && destText.scrollHeight > container.scrollHeight) {
-			this.setState({
-				useT2TextSize: true
-			});
+		if (destText && container) {
+			if (destText.scrollHeight > container.scrollHeight) {
+				this.setState({
+					useT2TextSize: true
+				});
+			}
 		}
 	}
 
@@ -108,10 +109,7 @@ class LEDDestination extends React.PureComponent {
 
 	render() {
 		const destination = this.props.destination;
-		TypeChecker.checkOptionalInstanceOf(destination, Station);
-		if (!destination) {
-			return null;
-		}
+		TypeChecker.checkInstanceOf(destination, Station);
 
 		return React.createElement(
 			"div",
@@ -143,8 +141,8 @@ class LED extends React.PureComponent {
 
 		this.state = {
 			showContent: true,
-			serviceType: null,
-			destination: null
+			serviceType: DEFAULT_SERVICE_TYPE,
+			destination: DEFAULT_DESTINATION
 		};
 		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
 		this.containerRef = React.createRef();
@@ -153,41 +151,34 @@ class LED extends React.PureComponent {
 
 	componentDidMount() {
 		const destComponent = this.destRef.current;
-
+		console.log(destComponent);
 		const that = this;
-		const serviceType = that.props.serviceType || SERVICE_TYPES["不载客"];
-		const destination = that.props.destination || DESTINATIONS["不载客"];
-
+		const serviceType = that.props.serviceType || DEFAULT_SERVICE_TYPE;
+		const destination = that.props.destination || DEFAULT_DESTINATION;
 		that.updateDisplay(serviceType, destination);
 	}
 
 	/* Usage:
- 	Two parameters:
- 		updateDisplay(newServiceType, newDestination) OR
- 		updateDisplay(newDestination, newServiceType) OR
- 		updateDisplay(null, null) // clear display
- 		One parameter:
- 		updateDisplay(newServiceType) OR
- 		updateDisplay(newDestination) OR
- 		updateDisplay(null) // clear display
- 		Note: you may NOT call updateDisplay(newServiceType) or updateDisplay(newDestination) if you have both service time and destination cleared
+ Two parameters:
+ 	updateDisplay(newServiceType, newDestination) OR
+ 	updateDisplay(newDestination, newServiceType)
+ 	One parameter:
+ 	updateDisplay(newServiceType) OR
+ 	updateDisplay(newDestination)
  */
 	updateDisplay(...args) {
 
 		const that = this;
 
 		const showUsageInfo = () => {
-			throw new TypeError(`Two parameters:
-				updateDisplay(newServiceType, newDestination) OR
-				updateDisplay(newDestination, newServiceType) OR
-				updateDisplay(null, null) // clear display
+			throw new TypeError(`
+				Two parameters:
+					updateDisplay(newServiceType, newDestination) OR
+					updateDisplay(newDestination, newServiceType)
 
 				One parameter:
 					updateDisplay(newServiceType) OR
-					updateDisplay(newDestination) OR
-					updateDisplay(null) // clear display
-
-				Note: you may NOT call updateDisplay(newServiceType) or updateDisplay(newDestination) if you have both service time and destination cleared
+					updateDisplay(newDestination)
 			`);
 		};
 
@@ -206,11 +197,6 @@ class LED extends React.PureComponent {
 					that.setState({
 						destination: arg
 					});
-				} else if (args[0] == null && args[1] == null) {
-					that.setState({
-						serviceType: null,
-						destination: null
-					});
 				} else {
 					showUsageInfo();
 				}
@@ -218,16 +204,9 @@ class LED extends React.PureComponent {
 
 			// refresh display
 
+			const showContent = this.state.showContent;
+
 			that.setState(prevState => {
-
-				const xor = (a, b) => {
-					return !!a !== !!b;
-				};
-
-				if (xor(prevState.serviceType, prevState.destination)) {
-					throw new Error(`serviceType and prevState must be both null or both not null`);
-				}
-
 				return {
 					showContent: false
 				};
@@ -236,7 +215,7 @@ class LED extends React.PureComponent {
 			window.setTimeout(() => {
 				that.setState(prevState => {
 					return {
-						showContent: true
+						showContent: showContent
 					};
 				});
 			}, that.refreshTime);
