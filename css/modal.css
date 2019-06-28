@@ -1,3 +1,5 @@
+@import url("modal-dialog.css");
+
 .modal {
 	position: absolute;
 	top: 0;
@@ -26,7 +28,7 @@
 	color: white;
 
 	font-family: inherit;
-	font-size: 24pt;
+	font-size: 36px;
 }
 .modal__close-button:focus, .modal__close-button:hover {
 	color: gold;

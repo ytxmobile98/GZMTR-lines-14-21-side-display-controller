@@ -1,0 +1,47 @@
+:root {
+	--header-size: 48px;
+}
+
+.modal-dialog__header {
+	flex-basis: var(--header-size);
+	padding: 0.25em;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+
+	font-size: 32px;
+}
+
+/* Header buttons */
+
+.modal-dialog__header-button {
+	width: var(--header-size);
+	height: var(--header-size);
+	padding: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.modal-dialog__header-button:disabled {
+	opacity: 0.2;
+	cursor: not-allowed;
+}
+
+.modal-dialog__header-button--back {
+	background-image: url("../icons/back.svg");
+}
+
+.modal-dialog__header-button--close {
+	background-image: url("../icons/close.svg");
+}
+
+/* Central title */
+
+.modal-dialog__header-title {
+	flex-grow: 1;
+}
