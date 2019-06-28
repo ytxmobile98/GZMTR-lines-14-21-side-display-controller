@@ -137,12 +137,14 @@ class LED extends React.PureComponent {
 		const destination = props.destination;
 		TypeChecker.checkOptionalInstanceOf(destination, Station);
 
+		const showContent = props.showContent != undefined ? props.showContent : true;
+
 		super(props);
 
 		this.state = {
-			showContent: true,
-			serviceType: DEFAULT_SERVICE_TYPE,
-			destination: DEFAULT_DESTINATION
+			showContent: showContent,
+			serviceType: serviceType || DEFAULT_SERVICE_TYPE,
+			destination: destination || DEFAULT_DESTINATION
 		};
 		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
 		this.containerRef = React.createRef();
@@ -152,10 +154,9 @@ class LED extends React.PureComponent {
 	componentDidMount() {
 		const destComponent = this.destRef.current;
 		console.log(destComponent);
-		const that = this;
-		const serviceType = that.props.serviceType || DEFAULT_SERVICE_TYPE;
-		const destination = that.props.destination || DEFAULT_DESTINATION;
-		that.updateDisplay(serviceType, destination);
+		const serviceType = this.state.serviceType;
+		const destination = this.state.destination;
+		this.updateDisplay(serviceType, destination);
 	}
 
 	/* Usage:
@@ -171,7 +172,8 @@ class LED extends React.PureComponent {
 		const that = this;
 
 		const showUsageInfo = () => {
-			throw new TypeError(`
+			throw new TypeError(`Usage:
+
 				Two parameters:
 					updateDisplay(newServiceType, newDestination) OR
 					updateDisplay(newDestination, newServiceType)

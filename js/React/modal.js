@@ -34,7 +34,8 @@ class Modal extends React.Component {
 
 	render() {
 
-		const closedModalText = this.state.modalMode === MODAL_MODES.standby ? "当前处于待机模式，点击以恢复" : "关闭遮罩";
+		const defaultTextTip = "关闭遮罩";
+		const closedModalText = this.state.modalMode === MODAL_MODES.standby ? "当前处于待机模式，点击以恢复" : defaultTextTip;
 
 		return React.createElement(
 			"div",
@@ -44,7 +45,7 @@ class Modal extends React.Component {
 				{ className: "modal__background" },
 				React.createElement(
 					"button",
-					{ className: "modal__close-button", onClick: this.closeModal.bind(this) },
+					{ className: "modal__close-button", title: defaultTextTip, onClick: this.closeModal.bind(this) },
 					closedModalText
 				)
 			)

@@ -79,7 +79,7 @@ class Controller extends React.Component {
 				<div className="controller__top">
 					<LED ref={this.outputLED}
 						serviceType={SERVICE_TYPES["快速"]}
-						destination={DESTINATIONS["镇龙"]}
+						destination={DESTINATIONS["东风"]}
 					/>
 				</div>
 

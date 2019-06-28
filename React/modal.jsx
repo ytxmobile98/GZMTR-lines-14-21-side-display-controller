@@ -34,12 +34,13 @@ class Modal extends React.Component {
 
 	render() {
 
-		const closedModalText = (this.state.modalMode === MODAL_MODES.standby) ? "当前处于待机模式，点击以恢复" : "关闭遮罩";
+		const defaultTextTip = "关闭遮罩";
+		const closedModalText = (this.state.modalMode === MODAL_MODES.standby) ? "当前处于待机模式，点击以恢复" : defaultTextTip;
 
 		return (
 			<div className="modal">
 				<div className="modal__background">
-					<button className="modal__close-button" onClick={this.closeModal.bind(this)}>
+					<button className="modal__close-button" title={defaultTextTip} onClick={this.closeModal.bind(this)}>
 						{closedModalText}
 					</button>
 				</div>
