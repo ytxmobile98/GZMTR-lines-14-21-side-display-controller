@@ -2,6 +2,8 @@
 
 import { TypeChecker } from "../type-checker.js";
 
+import { Dialog } from "./dialog.js";
+
 const MODAL_MODE_NAMES = ["standby"];
 
 const MODAL_MODES = Object.freeze(new (function() {
@@ -37,13 +39,16 @@ class Modal extends React.Component {
 		const defaultTextTip = "关闭遮罩";
 		const closedModalText = (this.state.modalMode === MODAL_MODES.standby) ? "当前处于待机模式，点击以恢复" : defaultTextTip;
 
+		const closeModal = this.closeModal.bind(this);
+
 		return (
 			<div className="modal">
 				<div className="modal__background">
-					<button className="modal__close-button" title={defaultTextTip} onClick={this.closeModal.bind(this)}>
+					<button className="modal__close-button" title={defaultTextTip} onClick={closeModal}>
 						{closedModalText}
 					</button>
 				</div>
+				<Dialog onClose={closeModal} title="选择线路和目的地" />
 			</div>
 		);
 	}

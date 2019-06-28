@@ -7,6 +7,7 @@ import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 
 import { MODAL_MODES, Modal } from "./modal.js";
+import { Dialog } from "./dialog.js";
 
 class Controller extends React.Component {
 
