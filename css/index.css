@@ -1,9 +1,10 @@
+@import url("reset.css");
 @import url("controller.css");
 
 body {
 	margin: auto;
 	min-height: 100vh;
-	
+
 	display: flex;
 	flex-direction: row;
 	align-items: center;

@@ -22,14 +22,12 @@
 	padding: 0;
 	background: none;
 	border: none;
-	cursor: pointer;
 
 	background-repeat: no-repeat;
 	background-size: contain;
 }
 .modal-dialog__header-button:disabled {
 	opacity: 0.2;
-	cursor: not-allowed;
 }
 
 .modal-dialog__header-button--back {
