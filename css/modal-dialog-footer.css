@@ -16,12 +16,19 @@
 
 .modal-dialog__footer-button {
 	margin: 0.25em;
-	padding: 0.25em 0.5em;
+	padding: 0.25em;
+	min-width: 5em;
 
-	background: none;
-	border: 1px solid black;
-
+	background-color: lightgray;
+	border: none;
 
 	font-family: inherit;
 	font-size: 0.8em;
+}
+.modal-dialog__footer-button:enabled:hover {
+	background-color: gray;
+}
+.modal-dialog__footer-button:disabled {
+	background-color: inherit;
+	color: silver;
 }
