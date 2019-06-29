@@ -82,7 +82,24 @@ class Controller extends React.Component {
 				{ className: "controller__top" },
 				React.createElement(LED, { ref: this.outputLED })
 			),
-			React.createElement("div", { className: "controller__center" }),
+			React.createElement(
+				"div",
+				{ className: "controller__center" },
+				React.createElement(
+					"div",
+					{ className: "master-buttons__container" },
+					React.createElement(
+						"button",
+						{ className: "master-buttons" },
+						"\u5F00\u542F/\u5173\u95ED\u663E\u793A\u5C4F"
+					),
+					React.createElement(
+						"button",
+						{ className: "master-buttons" },
+						"\u66F4\u6539\u76EE\u7684\u5730/\u8F66\u79CD"
+					)
+				)
+			),
 			React.createElement(
 				"div",
 				{ className: "controller__bottom" },

@@ -82,6 +82,10 @@ class Controller extends React.Component {
 				</div>
 
 				<div className="controller__center">
+					<div className="master-buttons__container">
+						<button className="master-buttons">开启/关闭显示屏</button>
+						<button className="master-buttons">更改目的地/车种</button>
+					</div>
 				</div>
 
 				<div className="controller__bottom">
