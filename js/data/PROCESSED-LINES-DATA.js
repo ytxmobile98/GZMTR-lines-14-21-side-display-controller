@@ -64,6 +64,8 @@ const LINES_INFO = Object.freeze((() => {
 
 })());
 
-console.log(SERVICE_TYPES, DESTINATIONS, LINES_INFO);
+console.log(`SERVICE_TYPES: `, SERVICE_TYPES);
+console.log(`DESTINATIONS: `, DESTINATIONS);
+console.log(`LINES_INFO: `, LINES_INFO);
 
 export { SERVICE_TYPES, DESTINATIONS, LINES_INFO };

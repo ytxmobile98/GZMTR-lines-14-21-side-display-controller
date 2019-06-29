@@ -155,7 +155,7 @@ const RAW_LINES_INFO = (() => {
 
 })();
 
-console.log(RAW_LINES_INFO);
+console.log(`RAW_LINES_INFO: `, RAW_LINES_INFO);
 
 export {
 	RAW_SERVICE_TYPES_TRANSLATIONS,
