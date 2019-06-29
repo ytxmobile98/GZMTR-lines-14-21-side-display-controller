@@ -2,6 +2,8 @@
 	--header-size: 48px;
 }
 
+/* Header */
+
 .modal-dialog__header {
 	flex-basis: var(--header-size);
 

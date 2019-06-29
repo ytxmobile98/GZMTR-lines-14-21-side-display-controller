@@ -2,6 +2,8 @@
 	--basic-text-size: 24px;
 }
 
+/* Center */
+
 .modal-dialog__center {
 	flex-grow: 1;
 	overflow-x: hidden;
