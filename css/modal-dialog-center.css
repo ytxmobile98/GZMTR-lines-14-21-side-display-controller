@@ -1,11 +1,15 @@
+:root {
+	--basic-text-size: 24px;
+}
+
 .modal-dialog__center {
 	flex-grow: 1;
 	overflow-x: hidden;
 	overflow-y: auto;
-	margin: 0.5em 0;
+	margin: 0.5em 0.25em;
 
 	display: flex;
 	flex-direction: column;
 
-	font-size: 24px;
+	font-size: var(--basic-text-size);
 }
