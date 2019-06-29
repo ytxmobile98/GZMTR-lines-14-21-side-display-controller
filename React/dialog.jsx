@@ -13,20 +13,24 @@ class DialogHeader extends React.Component {
 	render() {
 		return (
 			<div className="modal-dialog__header">
+
 				<button
 					className="modal-dialog__header-button modal-dialog__header-button--back"
 					disabled={!this.onGoBack ? "disabled" : null}
 					onClick={this.onGoBack}
 				>
 				</button>
+
 				<div className="modal-dialog__header-title">
 					{this.title}
 				</div>
+
 				<button
 					className="modal-dialog__header-button modal-dialog__header-button--close"
 					onClick={this.onClose}
 				>
 				</button>
+				
 			</div>
 		);
 	}
@@ -47,16 +51,19 @@ class DialogFooter extends React.Component {
 	render() {
 		return (
 			<div className="modal-dialog__footer">
+
 				<button
 					className="modal-dialog__footer-button modal-dialog__footer-button--done"
 					onClick={this.state.onDone}>
 					{this.state.doneText}
 				</button>
+
 				<button
 					className="modal-dialog__footer-button modal-dialog__footer-button--close"
 					onClick={this.state.onClose}>
 					{this.state.closeText}
 				</button>
+
 			</div>
 		);
 	}
