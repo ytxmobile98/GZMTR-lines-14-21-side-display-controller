@@ -60,7 +60,7 @@ class DialogFooter extends React.Component {
 				{
 					className: "modal-dialog__footer-button modal-dialog__footer-button--close",
 					onClick: this.state.onClose },
-				"\u53D6\u6D88"
+				this.state.closeText
 			)
 		);
 	}
@@ -98,7 +98,11 @@ class Dialog extends React.Component {
 				title: this.state.title,
 				onClose: this.close.bind(this)
 			}),
-			React.createElement("div", { className: "modal-dialog__center" }),
+			React.createElement(
+				"div",
+				{ className: "modal-dialog__center" },
+				this.props.children
+			),
 			React.createElement(DialogFooter, {
 				onDone: this.close.bind(this),
 				onClose: this.close.bind(this)

@@ -55,7 +55,7 @@ class DialogFooter extends React.Component {
 				<button
 					className="modal-dialog__footer-button modal-dialog__footer-button--close"
 					onClick={this.state.onClose}>
-					取消
+					{this.state.closeText}
 				</button>
 			</div>
 		);
@@ -94,6 +94,7 @@ class Dialog extends React.Component {
 					onClose={this.close.bind(this)}
 				/>
 				<div className="modal-dialog__center">
+					{this.props.children}
 				</div>
 				<DialogFooter
 					onDone={this.close.bind(this)}
