@@ -1,8 +1,1 @@
-button {
-	border: none;
-	background: none;
-	cursor: pointer;
-}
-button:disabled {
-	cursor: not-allowed;
-}
+@import url("buttons.css");

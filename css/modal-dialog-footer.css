@@ -24,6 +24,7 @@
 	font-family: inherit;
 	font-size: 0.8em;
 }
+/*
 .modal-dialog__footer-button:hover {
 	background-color: gray;
 }
@@ -31,7 +32,7 @@
 	background-color: lightgray;
 	color: silver;
 }
-
+*/
 .modal-dialog__footer-button--done {
 	background-color: royalblue;
 	color: white;

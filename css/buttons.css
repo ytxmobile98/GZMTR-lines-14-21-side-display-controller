@@ -1,0 +1,21 @@
+:root {
+	--base-background-color: lightgray;
+	--hover-background-color: gray;
+	--base-text-color: black;
+	--disabled-text-color: silver;
+}
+
+button {
+	border: none;
+	background-color: var(--base-background-color);
+	color: var(--base-text-color);
+	cursor: pointer;
+}
+button:hover {
+	background-color: var(--hover-background-color);
+}
+button:disabled {
+	background-color: var(--base-background-color);
+	color: var(--disabled-text-color);
+	cursor: not-allowed;
+}

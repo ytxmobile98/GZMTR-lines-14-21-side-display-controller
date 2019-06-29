@@ -19,13 +19,13 @@
 	width: var(--header-size);
 	height: var(--header-size);
 	padding: 0;
-	background: none;
-	border: none;
 
+	background-color: transparent;
 	background-repeat: no-repeat;
 	background-size: contain;
 }
 .modal-dialog__header-button:disabled {
+	background-color: transparent;
 	opacity: 0.2;
 }
 
