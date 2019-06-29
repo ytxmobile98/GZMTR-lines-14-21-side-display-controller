@@ -1,4 +1,5 @@
 @import url("modal-dialog-header.css");
+@import url("modal-dialog-center.css");
 @import url("modal-dialog-footer.css");
 
 .modal-dialog {
@@ -8,12 +9,11 @@
 	left: 5%;
 	right: 5%;
 
+	font-size: 20px;
+	padding: 0.5em;
+
 	display: flex;
 	flex-direction: column;
 
 	background-color: whitesmoke;
-}
-
-.modal-dialog__center {
-	flex-grow: 1;
 }

@@ -4,14 +4,13 @@
 
 .modal-dialog__header {
 	flex-basis: var(--header-size);
-	padding: 0.25em;
 
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	text-align: center;
 
-	font-size: 32px;
+	font-size: var(--header-size);
 }
 
 /* Header buttons */
@@ -42,4 +41,5 @@
 
 .modal-dialog__header-title {
 	flex-grow: 1;
+	font-size: 0.75em;
 }
