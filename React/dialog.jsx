@@ -30,7 +30,7 @@ class DialogHeader extends React.Component {
 					onClick={this.onClose}
 				>
 				</button>
-				
+
 			</div>
 		);
 	}
@@ -100,9 +100,11 @@ class Dialog extends React.Component {
 					title={this.state.title}
 					onClose={this.close.bind(this)}
 				/>
+				
 				<div className="modal-dialog__center">
 					{this.props.children}
 				</div>
+
 				<DialogFooter
 					onDone={this.close.bind(this)}
 					onClose={this.close.bind(this)}
