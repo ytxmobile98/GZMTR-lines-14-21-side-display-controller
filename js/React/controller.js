@@ -6,7 +6,8 @@ import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 
-import { MODAL_MODES, Modal } from "./modal.js";
+import { MODAL_MODES } from "./modal-modes.js";
+import { Modal } from "./modal.js";
 import { Dialog } from "./dialog.js";
 
 class Controller extends React.Component {
@@ -74,6 +75,14 @@ class Controller extends React.Component {
 	}
 
 	render() {
+
+		const setTimeout = this.setTimeout.bind(this);
+		const clearTimeout = this.clearTimeout.bind(this);
+		const resetTimeout = this.resetTimeout.bind(this);
+
+		const openModal = this.openModal.bind(this);
+		const closeModal = this.closeModal.bind(this);
+
 		return React.createElement(
 			"div",
 			{ className: "controller" },
@@ -90,12 +99,22 @@ class Controller extends React.Component {
 					{ className: "master-buttons__container" },
 					React.createElement(
 						"button",
-						{ className: "master-buttons" },
+						{
+							className: "master-buttons",
+							onClick: () => {
+								openModal("setDisplayMode");
+							}
+						},
 						"\u5F00\u542F/\u5173\u95ED\u663E\u793A\u5C4F"
 					),
 					React.createElement(
 						"button",
-						{ className: "master-buttons" },
+						{
+							className: "master-buttons",
+							onClick: () => {
+								openModal("setDestination");
+							}
+						},
 						"\u66F4\u6539\u76EE\u7684\u5730/\u8F66\u79CD"
 					)
 				)
@@ -110,11 +129,22 @@ class Controller extends React.Component {
 					"\u6CE8\u610F\uFF1A\u59821\u5206\u949F\u5185\u65E0\u64CD\u4F5C\uFF0C\u6B64\u8BBE\u5907\u5C06\u8FDB\u5165\u5F85\u673A\u6A21\u5F0F\u3002"
 				)
 			),
-			this.state.modalMode ? React.createElement(Modal, { modalMode: this.state.modalMode,
-				onMount: this.clearTimeout.bind(this),
-				onUnmount: this.resetTimeout.bind(this),
-				onCloseModal: this.closeModal.bind(this)
-			}) : null
+			this.state.modalMode ? React.createElement(
+				Modal,
+				{ modalMode: this.state.modalMode,
+					onMount: this.clearTimeout.bind(this),
+					onUnmount: this.resetTimeout.bind(this),
+					onCloseModal: this.closeModal.bind(this)
+				},
+				this.state.modalMode === MODAL_MODES.setDisplayMode ? React.createElement(Dialog, {
+					title: "\u5F00\u542F/\u5173\u95ED\u663E\u793A\u5C4F",
+					onClose: closeModal
+				}) : null,
+				this.state.modalMode === MODAL_MODES.setDestination ? React.createElement(Dialog, {
+					title: "\u9009\u62E9\u76EE\u7684\u5730",
+					onClose: closeModal
+				}) : null
+			) : null
 		);
 	}
 }

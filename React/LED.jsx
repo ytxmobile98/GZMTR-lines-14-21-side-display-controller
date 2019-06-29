@@ -47,7 +47,7 @@ class LEDDestination extends React.PureComponent {
 		that.containerRef = props.containerRef;
 	}
 
-	setTimer() {
+	setTimeout() {
 		const that = this;
 
 		const getNextIndex = () => {
@@ -67,14 +67,14 @@ class LEDDestination extends React.PureComponent {
 		that.timer = window.setTimeout(flipDisplay, that.flipInterval);
 	}
 
-	clearTimer() {
+	clearTimeout() {
 		const that = this;
 		window.clearTimeout(that.timer);
 	}
 
-	resetTimer() {
-		this.clearTimer();
-		this.setTimer();
+	resetTimeout() {
+		this.clearTimeout();
+		this.setTimeout();
 	}
 
 	setT2TextSize() {
@@ -91,12 +91,12 @@ class LEDDestination extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		this.resetTimer();
+		this.resetTimeout();
 		this.setT2TextSize();
 	}
 
 	componentWillUnmount() {
-		this.clearTimer();
+		this.clearTimeout();
 	}
 
 	componentDidUpdate() {

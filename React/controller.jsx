@@ -6,7 +6,8 @@ import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 
-import { MODAL_MODES, Modal } from "./modal.js";
+import { MODAL_MODES } from "./modal-modes.js";
+import { Modal } from "./modal.js";
 import { Dialog } from "./dialog.js";
 
 class Controller extends React.Component {
@@ -74,6 +75,14 @@ class Controller extends React.Component {
 	}
 
 	render() {
+
+		const setTimeout = this.setTimeout.bind(this);
+		const clearTimeout = this.clearTimeout.bind(this);
+		const resetTimeout = this.resetTimeout.bind(this);
+
+		const openModal = this.openModal.bind(this);
+		const closeModal = this.closeModal.bind(this);
+
 		return (
 			<div className="controller">
 
@@ -83,8 +92,18 @@ class Controller extends React.Component {
 
 				<div className="controller__center">
 					<div className="master-buttons__container">
-						<button className="master-buttons">开启/关闭显示屏</button>
-						<button className="master-buttons">更改目的地/车种</button>
+						<button
+							className="master-buttons"
+							onClick={()=>{openModal("setDisplayMode");}}
+						>
+							开启/关闭显示屏
+						</button>
+						<button
+							className="master-buttons"
+							onClick={()=>{openModal("setDestination");}}
+						>
+							更改目的地/车种
+						</button>
 					</div>
 				</div>
 
@@ -96,11 +115,35 @@ class Controller extends React.Component {
 				</div>
 
 				{this.state.modalMode ?
+
 					<Modal modalMode={this.state.modalMode}
 						onMount={this.clearTimeout.bind(this)}
 						onUnmount={this.resetTimeout.bind(this)}
 						onCloseModal={this.closeModal.bind(this)}
-					/>
+					>
+
+						{this.state.modalMode === MODAL_MODES.setDisplayMode ?
+							<Dialog
+								title="开启/关闭显示屏"
+								onClose={closeModal}
+							>
+							</Dialog>
+
+							: null
+						}
+
+						{this.state.modalMode === MODAL_MODES.setDestination ?
+							<Dialog
+								title="选择目的地"
+								onClose={closeModal}
+							>
+							</Dialog>
+
+							: null
+						}
+
+					</Modal>
+
 					: null
 				}
 
