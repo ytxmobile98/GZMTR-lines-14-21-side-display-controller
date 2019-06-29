@@ -48,12 +48,12 @@ class Modal extends React.Component {
 						{closedModalText}
 					</button>
 				</div>
-				{/*
-					<Dialog
+
+				{/*<Dialog
 						onClose={closeModal}
 					>
-					</Dialog>
-				*/}
+				</Dialog>*/}
+
 
 			</div>
 		);
