@@ -6,10 +6,13 @@
 	flex-grow: 1;
 	overflow-x: hidden;
 	overflow-y: auto;
-	margin: 0.5em 0.25em;
+	margin: 0.5em auto;
 
 	display: flex;
 	flex-direction: column;
+
+	width: 90%;
+	align-self: center;
 
 	font-size: var(--basic-text-size);
 }
