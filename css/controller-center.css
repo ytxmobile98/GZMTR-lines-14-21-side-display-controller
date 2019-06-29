@@ -1,0 +1,30 @@
+.controller__center {
+	flex-grow: 1;
+	align-self: center;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	width: 90%;
+	background-color: gainsboro;
+}
+
+/* Master buttons */
+
+.master-buttons__container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	width: 80%;
+	font-size: 24px;
+}
+
+.master-buttons {
+	padding: 0.5em;
+	margin: 0.25em;
+	flex: 1 1 0;
+}

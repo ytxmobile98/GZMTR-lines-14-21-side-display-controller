@@ -10,6 +10,9 @@ button {
 	background-color: var(--base-background-color);
 	color: var(--base-text-color);
 	cursor: pointer;
+
+	font-family: inherit;
+	font-size: inherit;
 }
 button:hover {
 	background-color: var(--hover-background-color);
