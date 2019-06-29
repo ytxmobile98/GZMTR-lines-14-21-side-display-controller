@@ -17,6 +17,6 @@
 	width: var(--controller-screen-width);
 	height: var(--controller-screen-height);
 
-	background-color: silver;
+	background-color: whitesmoke;
 	border: 8px solid black;
 }
