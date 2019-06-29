@@ -52,8 +52,7 @@ class Modal extends React.Component {
 					{ className: "modal__close-button", title: defaultTextTip, onClick: closeModal },
 					closedModalText
 				)
-			),
-			React.createElement(Dialog, { onClose: closeModal, title: "\u9009\u62E9\u7EBF\u8DEF\u548C\u76EE\u7684\u5730" })
+			)
 		);
 	}
 }

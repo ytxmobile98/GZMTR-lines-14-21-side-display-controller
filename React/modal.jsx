@@ -48,7 +48,13 @@ class Modal extends React.Component {
 						{closedModalText}
 					</button>
 				</div>
-				<Dialog onClose={closeModal} title="选择线路和目的地" />
+				{/*
+					<Dialog
+						onClose={closeModal}
+					>
+					</Dialog>
+				*/}
+
 			</div>
 		);
 	}
