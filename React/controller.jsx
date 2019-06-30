@@ -8,9 +8,22 @@ import { Station } from "../data/station-classes.js";
 
 import { showUsageInfo, checkUpdateInfo, LED } from "./LED.js";
 import { Clock } from "./clock.js";
+import { DisplayModeStatusCell, DisplayModeStatus } from "./controller-status-display-mode.js";
+
 import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
 import { Dialog } from "./dialog.js";
+
+class StatusDisplay extends React.PureComponent {
+	render() {
+		return (
+			<div className="status__container">
+				{this.props.children}
+			</div>
+		);
+	}
+}
+
 
 class Controller extends React.Component {
 
@@ -22,10 +35,15 @@ class Controller extends React.Component {
 		that.state = {
 			modalMode: MODAL_MODES.standby,
 
-			// current display information
+			// current display mode
+			leftDisplay: true,
+			rightDisplay: true,
+			autoDisplayMode: true,
+
+			// current destination information
 			line: "不载客",
-			serviceType: SERVICE_TYPES["快速"],
-			destination: DESTINATIONS["增城广场"],
+			serviceType: SERVICE_TYPES["不载客"],
+			destination: DESTINATIONS["不载客"],
 		};
 	}
 
@@ -133,20 +151,46 @@ class Controller extends React.Component {
 				</div>
 
 				<div className="controller__center">
+
+					<div className="status__container">
+
+						<DisplayModeStatus>
+							<DisplayModeStatusCell
+								header="左侧"
+								status={this.state.leftDisplay ? "开" : "关"}
+							/>
+							<DisplayModeStatusCell
+								header="当前显示模式"
+								status={this.state.autoDisplayMode ? "自动" : "手动"}
+							/>
+							<DisplayModeStatusCell
+								header="右侧"
+								status={this.state.rightDisplay ? "开" : "关"}
+							/>
+						</DisplayModeStatus>
+
+						<div className="status__destination">
+						</div>
+					</div>
+
 					<div className="master-buttons__container">
+
 						<button
 							className="master-buttons"
 							onClick={()=>{openModal("setDisplayMode");}}
 						>
 							开启/关闭显示屏
 						</button>
+
 						<button
 							className="master-buttons"
 							onClick={()=>{openModal("setDestination");}}
 						>
 							更改目的地/车种
 						</button>
+
 					</div>
+
 				</div>
 
 				<div className="controller__bottom">

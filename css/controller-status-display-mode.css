@@ -1,0 +1,22 @@
+.display-mode__container {
+	flex-grow: 1;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+	text-align: center;
+}
+
+.display-mode__cell {
+	flex-grow: 1;
+}
+
+.display-mode__header {
+	font-size: 20px;
+	line-height: 1.5em;
+}
+
+.display-mode__status {
+	font-size: 32px;
+}

@@ -1,0 +1,8 @@
+@import url("controller-status-display-mode.css");
+
+.status__container {
+	width: 90%;
+
+	display: flex;
+	flex-direction: row;
+}

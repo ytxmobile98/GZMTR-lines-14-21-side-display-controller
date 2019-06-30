@@ -8,9 +8,21 @@ import { Station } from "../data/station-classes.js";
 
 import { showUsageInfo, checkUpdateInfo, LED } from "./LED.js";
 import { Clock } from "./clock.js";
+import { DisplayModeStatusCell, DisplayModeStatus } from "./controller-status-display-mode.js";
+
 import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
 import { Dialog } from "./dialog.js";
+
+class StatusDisplay extends React.PureComponent {
+	render() {
+		return React.createElement(
+			"div",
+			{ className: "status__container" },
+			this.props.children
+		);
+	}
+}
 
 class Controller extends React.Component {
 
@@ -22,10 +34,15 @@ class Controller extends React.Component {
 		that.state = {
 			modalMode: MODAL_MODES.standby,
 
-			// current display information
+			// current display mode
+			leftDisplay: true,
+			rightDisplay: true,
+			autoDisplayMode: true,
+
+			// current destination information
 			line: "不载客",
-			serviceType: SERVICE_TYPES["快速"],
-			destination: DESTINATIONS["增城广场"]
+			serviceType: SERVICE_TYPES["不载客"],
+			destination: DESTINATIONS["不载客"]
 		};
 	}
 
@@ -133,6 +150,27 @@ class Controller extends React.Component {
 			React.createElement(
 				"div",
 				{ className: "controller__center" },
+				React.createElement(
+					"div",
+					{ className: "status__container" },
+					React.createElement(
+						DisplayModeStatus,
+						null,
+						React.createElement(DisplayModeStatusCell, {
+							header: "\u5DE6\u4FA7",
+							status: this.state.leftDisplay ? "开" : "关"
+						}),
+						React.createElement(DisplayModeStatusCell, {
+							header: "\u5F53\u524D\u663E\u793A\u6A21\u5F0F",
+							status: this.state.autoDisplayMode ? "自动" : "手动"
+						}),
+						React.createElement(DisplayModeStatusCell, {
+							header: "\u53F3\u4FA7",
+							status: this.state.rightDisplay ? "开" : "关"
+						})
+					),
+					React.createElement("div", { className: "status__destination" })
+				),
 				React.createElement(
 					"div",
 					{ className: "master-buttons__container" },
