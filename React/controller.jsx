@@ -73,14 +73,6 @@ class Controller extends React.Component {
 		const body = document.body;
 		this.bodyClickListener = body.addEventListener("click", action);
 		this.bodyKeyUpListener = body.addEventListener("keyup", action);
-
-		window.setTimeout(() => {
-			this.updateOutputDisplay(
-				SERVICE_TYPES["普通"],
-				DESTINATIONS["镇龙"],
-			);
-		}, 4000);
-
 	}
 
 	componentWillUnmount() {
@@ -137,10 +129,7 @@ class Controller extends React.Component {
 			<div className="controller">
 
 				<div className="controller__top">
-					<LED ref={this.outputLED}
-						serviceType={this.state.serviceType}
-						destination={this.state.destination}
-					/>
+					<LED ref={this.outputLED} />
 				</div>
 
 				<div className="controller__center">

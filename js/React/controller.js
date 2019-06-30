@@ -70,10 +70,6 @@ class Controller extends React.Component {
 		const body = document.body;
 		this.bodyClickListener = body.addEventListener("click", action);
 		this.bodyKeyUpListener = body.addEventListener("keyup", action);
-
-		window.setTimeout(() => {
-			this.updateOutputDisplay(SERVICE_TYPES["普通"], DESTINATIONS["镇龙"]);
-		}, 4000);
 	}
 
 	componentWillUnmount() {
@@ -132,10 +128,7 @@ class Controller extends React.Component {
 			React.createElement(
 				"div",
 				{ className: "controller__top" },
-				React.createElement(LED, { ref: this.outputLED,
-					serviceType: this.state.serviceType,
-					destination: this.state.destination
-				})
+				React.createElement(LED, { ref: this.outputLED })
 			),
 			React.createElement(
 				"div",
