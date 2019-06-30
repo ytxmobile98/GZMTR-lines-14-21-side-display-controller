@@ -179,6 +179,18 @@ class LED extends React.PureComponent {
 		this.destRef = React.createRef();
 	}
 
+	turnOnLED() {
+		this.setState({
+			showContent: true
+		});
+	}
+
+	turnOffLED() {
+		this.setState({
+			showContent: false
+		});
+	}
+
 	/* Usage:
  Two parameters:
  	updateDisplay(newServiceType, newDestination) OR
@@ -211,21 +223,13 @@ class LED extends React.PureComponent {
 
 			// refresh display
 
-			const showContent = this.state.showContent;
-
-			that.setState(prevState => {
-				return {
-					showContent: false
-				};
-			});
-
-			window.setTimeout(() => {
-				that.setState(prevState => {
-					return {
-						showContent: showContent
-					};
-				});
-			}, that.refreshTime);
+			const showingContent = this.state.showContent;
+			if (showingContent) {
+				that.turnOffLED();
+				window.setTimeout(() => {
+					that.turnOnLED();
+				}, that.refreshTime);
+			}
 		}
 	}
 
