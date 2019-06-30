@@ -8,7 +8,7 @@ import { Station } from "../data/station-classes.js";
 
 import { showUsageInfo, checkUpdateInfo, LED } from "./LED.js";
 import { Clock } from "./clock.js";
-import { DisplayModeStatusColumn, DisplayModeStatus } from "./controller-status-display-mode.js";
+import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
 import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
@@ -154,23 +154,38 @@ class Controller extends React.Component {
 
 					<div className="status__container">
 
-						<DisplayModeStatus>
-							<DisplayModeStatusColumn
+						{/* Display mode status */}
+						<StatusGridContainer>
+							<StatusCell
 								header="左侧"
 								status={this.state.leftDisplay ? "开" : "关"}
 							/>
-							<DisplayModeStatusColumn
-								header="当前显示模式"
+							<StatusCell
+								header="显示模式"
 								status={this.state.autoDisplayMode ? "自动" : "手动"}
 							/>
-							<DisplayModeStatusColumn
+							<StatusCell
 								header="右侧"
 								status={this.state.rightDisplay ? "开" : "关"}
 							/>
-						</DisplayModeStatus>
+						</StatusGridContainer>
 
-						<div className="status__destination">
-						</div>
+						{/* Destination status */}
+						<StatusGridContainer>
+							<StatusCell
+								header="线路"
+								status={this.state.line}
+							/>
+							<StatusCell
+								header="目的地"
+								status={this.state.destination.Chinese}
+							/>
+							<StatusCell
+								header="车种"
+								status={this.state.serviceType.Chinese}
+							/>
+						</StatusGridContainer>
+
 					</div>
 
 					<div className="master-buttons__container">

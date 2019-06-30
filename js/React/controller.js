@@ -8,7 +8,7 @@ import { Station } from "../data/station-classes.js";
 
 import { showUsageInfo, checkUpdateInfo, LED } from "./LED.js";
 import { Clock } from "./clock.js";
-import { DisplayModeStatusColumn, DisplayModeStatus } from "./controller-status-display-mode.js";
+import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
 import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
@@ -154,22 +154,37 @@ class Controller extends React.Component {
 					"div",
 					{ className: "status__container" },
 					React.createElement(
-						DisplayModeStatus,
+						StatusGridContainer,
 						null,
-						React.createElement(DisplayModeStatusColumn, {
+						React.createElement(StatusCell, {
 							header: "\u5DE6\u4FA7",
 							status: this.state.leftDisplay ? "开" : "关"
 						}),
-						React.createElement(DisplayModeStatusColumn, {
-							header: "\u5F53\u524D\u663E\u793A\u6A21\u5F0F",
+						React.createElement(StatusCell, {
+							header: "\u663E\u793A\u6A21\u5F0F",
 							status: this.state.autoDisplayMode ? "自动" : "手动"
 						}),
-						React.createElement(DisplayModeStatusColumn, {
+						React.createElement(StatusCell, {
 							header: "\u53F3\u4FA7",
 							status: this.state.rightDisplay ? "开" : "关"
 						})
 					),
-					React.createElement("div", { className: "status__destination" })
+					React.createElement(
+						StatusGridContainer,
+						null,
+						React.createElement(StatusCell, {
+							header: "\u7EBF\u8DEF",
+							status: this.state.line
+						}),
+						React.createElement(StatusCell, {
+							header: "\u76EE\u7684\u5730",
+							status: this.state.destination.Chinese
+						}),
+						React.createElement(StatusCell, {
+							header: "\u8F66\u79CD",
+							status: this.state.serviceType.Chinese
+						})
+					)
 				),
 				React.createElement(
 					"div",
