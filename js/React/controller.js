@@ -8,7 +8,7 @@ import { Station } from "../data/station-classes.js";
 
 import { showUsageInfo, checkUpdateInfo, LED } from "./LED.js";
 import { Clock } from "./clock.js";
-import { DisplayModeStatusCell, DisplayModeStatus } from "./controller-status-display-mode.js";
+import { DisplayModeStatusColumn, DisplayModeStatus } from "./controller-status-display-mode.js";
 
 import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
@@ -156,15 +156,15 @@ class Controller extends React.Component {
 					React.createElement(
 						DisplayModeStatus,
 						null,
-						React.createElement(DisplayModeStatusCell, {
+						React.createElement(DisplayModeStatusColumn, {
 							header: "\u5DE6\u4FA7",
 							status: this.state.leftDisplay ? "开" : "关"
 						}),
-						React.createElement(DisplayModeStatusCell, {
+						React.createElement(DisplayModeStatusColumn, {
 							header: "\u5F53\u524D\u663E\u793A\u6A21\u5F0F",
 							status: this.state.autoDisplayMode ? "自动" : "手动"
 						}),
-						React.createElement(DisplayModeStatusCell, {
+						React.createElement(DisplayModeStatusColumn, {
 							header: "\u53F3\u4FA7",
 							status: this.state.rightDisplay ? "开" : "关"
 						})

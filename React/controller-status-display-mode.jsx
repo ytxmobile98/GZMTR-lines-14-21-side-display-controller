@@ -1,12 +1,12 @@
 "use strict";
 
-class DisplayModeStatusCell extends React.PureComponent {
+class DisplayModeStatusColumn extends React.PureComponent {
 	render() {
 		return (
-			<div className="display-mode__cell">
+			<React.Fragment>
 				<div className="display-mode__header">{this.props.header}</div>
 				<div className="display-mode__status">{this.props.status}</div>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
@@ -21,4 +21,4 @@ class DisplayModeStatus extends React.PureComponent {
 	}
 }
 
-export { DisplayModeStatusCell, DisplayModeStatus };
+export { DisplayModeStatusColumn, DisplayModeStatus };
