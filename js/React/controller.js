@@ -1,11 +1,13 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
+
 import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
+import { ServiceType } from "../data/service-type-classes.js";
+import { Station } from "../data/station-classes.js";
 
-import { LED } from "./LED.js";
+import { showUsageInfo, checkUpdateInfo, LED } from "./LED.js";
 import { Clock } from "./clock.js";
-
 import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
 import { Dialog } from "./dialog.js";
@@ -18,8 +20,45 @@ class Controller extends React.Component {
 		const that = this;
 		that.outputLED = React.createRef();
 		that.state = {
-			modalMode: MODAL_MODES.standby
+			modalMode: MODAL_MODES.standby,
+
+			// current display information
+			line: "不载客",
+			serviceType: SERVICE_TYPES["快速"],
+			destination: DESTINATIONS["增城广场"]
 		};
+	}
+
+	/* Usage:
+ Two parameters:
+ 	updateDisplay(newServiceType, newDestination) OR
+ 	updateDisplay(newDestination, newServiceType)
+ 	One parameter:
+ 	updateDisplay(newServiceType) OR
+ 	updateDisplay(newDestination)
+ */
+	updateOutputDisplay(...args) {
+
+		const that = this;
+		const outputLED = that.outputLED.current;
+
+		if (checkUpdateInfo(...args)) {
+			outputLED.updateDisplay(...args);
+
+			args.forEach(arg => {
+				if (arg instanceof ServiceType) {
+					that.setState({
+						serviceType: arg
+					});
+				} else if (arg instanceof Station) {
+					that.setState({
+						destination: arg
+					});
+				} else {
+					showUsageInfo();
+				}
+			});
+		}
 	}
 
 	componentDidMount() {
@@ -31,6 +70,10 @@ class Controller extends React.Component {
 		const body = document.body;
 		this.bodyClickListener = body.addEventListener("click", action);
 		this.bodyKeyUpListener = body.addEventListener("keyup", action);
+
+		window.setTimeout(() => {
+			this.updateOutputDisplay(SERVICE_TYPES["普通"], DESTINATIONS["镇龙"]);
+		}, 4000);
 	}
 
 	componentWillUnmount() {
@@ -89,7 +132,10 @@ class Controller extends React.Component {
 			React.createElement(
 				"div",
 				{ className: "controller__top" },
-				React.createElement(LED, { ref: this.outputLED })
+				React.createElement(LED, { ref: this.outputLED,
+					serviceType: this.state.serviceType,
+					destination: this.state.destination
+				})
 			),
 			React.createElement(
 				"div",

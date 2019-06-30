@@ -127,6 +127,34 @@ class LEDDestination extends React.PureComponent {
 	}
 }
 
+const showUsageInfo = () => {
+	throw new TypeError(`Usage:
+
+		Two parameters:
+			updateDisplay(newServiceType, newDestination) OR
+			updateDisplay(newDestination, newServiceType)
+
+		One parameter:
+			updateDisplay(newServiceType) OR
+			updateDisplay(newDestination)
+	`);
+};
+
+const checkUpdateInfo = (...args) => {
+
+	if (args.length !== 1 && args.length !== 2) {
+		showUsageInfo();
+	} else {
+		args.forEach(arg => {
+			if (!(arg instanceof ServiceType || arg instanceof Station)) {
+				showUsageInfo();
+			}
+		});
+	}
+
+	return true;
+};
+
 class LED extends React.PureComponent {
 
 	constructor(props) {
@@ -163,22 +191,7 @@ class LED extends React.PureComponent {
 
 		const that = this;
 
-		const showUsageInfo = () => {
-			throw new TypeError(`Usage:
-
-				Two parameters:
-					updateDisplay(newServiceType, newDestination) OR
-					updateDisplay(newDestination, newServiceType)
-
-				One parameter:
-					updateDisplay(newServiceType) OR
-					updateDisplay(newDestination)
-			`);
-		};
-
-		if (args.length !== 1 && args.length !== 2) {
-			showUsageInfo();
-		} else {
+		if (checkUpdateInfo(...args)) {
 
 			// set current state
 
@@ -241,4 +254,4 @@ class LED extends React.PureComponent {
 	}
 }
 
-export { LEDServiceType, LEDDestination, LED };
+export { showUsageInfo, checkUpdateInfo, LED };
