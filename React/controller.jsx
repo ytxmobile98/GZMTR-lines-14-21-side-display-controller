@@ -147,7 +147,11 @@ class Controller extends React.Component {
 			<div className="controller">
 
 				<div className="controller__top">
-					<LED ref={this.outputLED} />
+					<LED
+						ref={this.outputLED}
+						serviceType={this.state.serviceType}
+						destination={this.state.destination}
+					/>
 				</div>
 
 				<div className="controller__center">
