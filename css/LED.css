@@ -4,7 +4,7 @@
 
 	flex-shrink: 0;
 
-	--LED-screen-width: 468px;
+	--LED-screen-width: 480px;
 	--LED-screen-height: 60px;
 	width: var(--LED-screen-width);
 	height: var(--LED-screen-height);
