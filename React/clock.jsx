@@ -38,8 +38,7 @@ class Clock extends React.PureComponent {
 		}
 
 		const year = dateObj.getFullYear();
-		const month = addLeadingZero(dateObj.getMonth() + 1);
-		);
+		const month = addLeadingZero(dateObj.getMonth() + 1);	
 		const date = addLeadingZero(dateObj.getDate());
 
 		const dateStr = `${year}-${month}-${date}`;
