@@ -34,30 +34,6 @@ class Controller extends React.Component {
 			serviceType: SERVICE_TYPES["不载客"],
 			destination: DESTINATIONS["不载客"]
 		};
-
-		/*
-  window.setTimeout(() => {
-  	that.setState({
-  		serviceType: SERVICE_TYPES["特别服务"],
-  		destination: DESTINATIONS["嘉禾望岗"],
-  			leftDisplay: false,
-  		rightDisplay: false,
-  		autoDisplayMode: false,
-  	});
-  	that.updateLine("14号线");
-  }, 4000);
-  	window.setTimeout(() => {
-  	that.setState({
-  		serviceType: SERVICE_TYPES["普通"],
-  		destination: DESTINATIONS["镇龙"],
-  	});
-  	that.updateLine("21号线");
-  }, 8000);
-  	window.setTimeout(() => {
-  	that.setState({
-  		autoDisplayMode: true,
-  	});
-  }, 12000);*/
 	}
 
 	updateLine(line) {
@@ -69,11 +45,11 @@ class Controller extends React.Component {
 
 	/* Usage:
  Two parameters:
- 	updateDisplay(newServiceType, newDestination) OR
- 	updateDisplay(newDestination, newServiceType)
+ 	updateOutputDisplay(newServiceType, newDestination) OR
+ 	updateOutputDisplay(newDestination, newServiceType)
  	One parameter:
- 	updateDisplay(newServiceType) OR
- 	updateDisplay(newDestination)
+ 	updateOutputDisplay(newServiceType) OR
+ 	updateOutputDisplay(newDestination)
  */
 	updateOutputDisplay(...args) {
 
