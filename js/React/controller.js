@@ -34,41 +34,6 @@ class Controller extends React.Component {
 			serviceType: SERVICE_TYPES["不载客"],
 			destination: DESTINATIONS["不载客"]
 		};
-
-		// For testing only
-		window.setTimeout(() => {
-			that.setState({
-				serviceType: SERVICE_TYPES["特别服务"],
-				destination: DESTINATIONS["嘉禾望岗"],
-				leftDisplay: false,
-				rightDisplay: false,
-				autoDisplayMode: false
-			});
-			that.updateLine("14号线");
-		}, 4000);
-		window.setTimeout(() => {
-			that.setState({
-				serviceType: SERVICE_TYPES["普通"],
-				destination: DESTINATIONS["镇龙"]
-			});
-			that.updateLine("21号线");
-		}, 8000);
-		window.setTimeout(() => {
-			that.setState({
-				autoDisplayMode: true
-			});
-		}, 12000);
-		window.setTimeout(() => {
-			that.setState({
-				serviceType: SERVICE_TYPES["不载客"],
-				destination: DESTINATIONS["不载客"],
-
-				leftDisplay: true,
-				rightDisplay: true,
-				autoDisplayMode: true
-			});
-			that.updateLine("不载客");
-		}, 16000);
 	}
 
 	updateLine(line) {
