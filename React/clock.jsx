@@ -33,7 +33,7 @@ class Clock extends React.PureComponent {
 	render() {
 		const dateObj = this.state.date;
 
-		const addLeadingZero = (num) {
+		const addLeadingZero = (num) => {
 			return String((Number(num) < 10 ? "0" : null) + num);
 		}
 
