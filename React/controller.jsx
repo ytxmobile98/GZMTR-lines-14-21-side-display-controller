@@ -6,24 +6,13 @@ import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
 import { ServiceType } from "../data/service-type-classes.js";
 import { Station } from "../data/station-classes.js";
 
-import { showUsageInfo, checkUpdateInfo, LED } from "./LED.js";
+import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
 import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
 import { Dialog } from "./dialog.js";
-
-class StatusDisplay extends React.PureComponent {
-	render() {
-		return (
-			<div className="status__container">
-				{this.props.children}
-			</div>
-		);
-	}
-}
-
 
 class Controller extends React.Component {
 
@@ -45,6 +34,32 @@ class Controller extends React.Component {
 			serviceType: SERVICE_TYPES["不载客"],
 			destination: DESTINATIONS["不载客"],
 		};
+
+		/*
+		window.setTimeout(() => {
+			that.setState({
+				serviceType: SERVICE_TYPES["特别服务"],
+				destination: DESTINATIONS["嘉禾望岗"],
+
+				leftDisplay: false,
+				rightDisplay: false,
+				autoDisplayMode: false,
+			});
+		}, 4000);
+
+		window.setTimeout(() => {
+			that.setState({
+				serviceType: SERVICE_TYPES["普通"],
+				destination: DESTINATIONS["镇龙"],
+			});
+		}, 8000);
+
+		window.setTimeout(() => {
+			that.setState({
+				autoDisplayMode: true,
+			});
+		}, 12000);
+		*/
 	}
 
 	/* Usage:
@@ -58,11 +73,38 @@ class Controller extends React.Component {
 	*/
 	updateOutputDisplay(...args) {
 
-		const that = this;
-		const outputLED = that.outputLED.current;
+		const showUsageInfo = () => {
+			throw new TypeError(`Usage:
 
-		if (checkUpdateInfo(...args)) {
-			outputLED.updateDisplay(...args);
+				Two parameters:
+					updateOutputDisplay(newServiceType, newDestination) OR
+					updateOutputDisplay(newDestination, newServiceType)
+
+				One parameter:
+					updateOutputDisplay(newServiceType) OR
+					updateOutputDisplay(newDestination)
+			`);
+		};
+
+		const checkUpdateArgs = (...args) => {
+
+			if ((args.length !== 1) && (args.length !== 2)) {
+				showUsageInfo();
+			}
+			else {
+				args.forEach((arg) => {
+					if (!((arg instanceof ServiceType) || (arg instanceof Station))) {
+						showUsageInfo();
+					}
+				});
+			}
+
+			return true;
+		};
+
+		const that = this;
+
+		if (checkUpdateArgs(...args)) {
 
 			args.forEach((arg) => {
 				if (arg instanceof ServiceType) {
@@ -143,6 +185,8 @@ class Controller extends React.Component {
 		const openModal = this.openModal.bind(this);
 		const closeModal = this.closeModal.bind(this);
 
+		const showContent = (this.state.autoDisplayMode) || ((this.state.leftDisplay) || (this.state.rightDisplay));
+
 		return (
 			<div className="controller">
 
@@ -151,6 +195,7 @@ class Controller extends React.Component {
 						ref={this.outputLED}
 						serviceType={this.state.serviceType}
 						destination={this.state.destination}
+						showContent={showContent}
 					/>
 				</div>
 

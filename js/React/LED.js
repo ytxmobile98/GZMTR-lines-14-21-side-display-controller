@@ -127,37 +127,48 @@ class LEDDestination extends React.PureComponent {
 	}
 }
 
-const showUsageInfo = () => {
-	throw new TypeError(`Usage:
-
-		Two parameters:
-			updateDisplay(newServiceType, newDestination) OR
-			updateDisplay(newDestination, newServiceType)
-
-		One parameter:
-			updateDisplay(newServiceType) OR
-			updateDisplay(newDestination)
-	`);
-};
-
-const checkUpdateInfo = (...args) => {
-
-	if (args.length !== 1 && args.length !== 2) {
-		showUsageInfo();
-	} else {
-		args.forEach(arg => {
-			if (!(arg instanceof ServiceType || arg instanceof Station)) {
-				showUsageInfo();
-			}
-		});
-	}
-
-	return true;
-};
-
 class LED extends React.PureComponent {
 
 	constructor(props) {
+
+		const serviceType = props.serviceType;
+		TypeChecker.checkInstanceOf(serviceType, ServiceType);
+
+		const destination = props.destination;
+		TypeChecker.checkInstanceOf(destination, Station);
+
+		const showContent = props.showContent != undefined ? !!props.showContent : true;
+
+		super(props);
+
+		this.state = {
+			showContent: showContent
+		};
+		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
+		this.containerRef = React.createRef();
+		this.destRef = React.createRef();
+	}
+
+	turnOnOffLED(newState) {
+		this.setState({
+			showContent: !!newState
+		});
+	}
+
+	refreshDisplay(showingContent) {
+		const that = this;
+		showingContent = !!showingContent;
+
+		if (showingContent) {
+			that.turnOnOffLED(false);
+			window.setTimeout(() => {
+				that.turnOnOffLED(showingContent);
+			}, that.refreshTime);
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		const props = this.props;
 
 		const serviceType = props.serviceType;
 		TypeChecker.checkOptionalInstanceOf(serviceType, ServiceType);
@@ -165,71 +176,12 @@ class LED extends React.PureComponent {
 		const destination = props.destination;
 		TypeChecker.checkOptionalInstanceOf(destination, Station);
 
-		const showContent = props.showContent != undefined ? props.showContent : true;
+		if (props.showContent !== prevProps.showContent) {
+			this.turnOnOffLED(!!props.showContent);
+		}
 
-		super(props);
-
-		this.state = {
-			showContent: showContent,
-			serviceType: serviceType || DEFAULT_SERVICE_TYPE,
-			destination: destination || DEFAULT_DESTINATION
-		};
-		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
-		this.containerRef = React.createRef();
-		this.destRef = React.createRef();
-	}
-
-	turnOnLED() {
-		this.setState({
-			showContent: true
-		});
-	}
-
-	turnOffLED() {
-		this.setState({
-			showContent: false
-		});
-	}
-
-	/* Usage:
- Two parameters:
- 	updateDisplay(newServiceType, newDestination) OR
- 	updateDisplay(newDestination, newServiceType)
- 	One parameter:
- 	updateDisplay(newServiceType) OR
- 	updateDisplay(newDestination)
- */
-	updateDisplay(...args) {
-
-		const that = this;
-
-		if (checkUpdateInfo(...args)) {
-
-			// set current state
-
-			args.forEach(arg => {
-				if (arg instanceof ServiceType) {
-					that.setState({
-						serviceType: arg
-					});
-				} else if (arg instanceof Station) {
-					that.setState({
-						destination: arg
-					});
-				} else {
-					showUsageInfo();
-				}
-			});
-
-			// refresh display
-
-			const showingContent = this.state.showContent;
-			if (showingContent) {
-				that.turnOffLED();
-				window.setTimeout(() => {
-					that.turnOnLED();
-				}, that.refreshTime);
-			}
+		if (props.serviceType !== prevProps.serviceType || props.destination !== prevProps.destination) {
+			this.refreshDisplay(props.showContent);
 		}
 	}
 
@@ -245,10 +197,10 @@ class LED extends React.PureComponent {
 				"div",
 				{ className: "LED__content" },
 				React.createElement(LEDServiceType, {
-					serviceType: this.state.serviceType
+					serviceType: this.props.serviceType
 				}),
 				React.createElement(LEDDestination, {
-					destination: this.state.destination,
+					destination: this.props.destination,
 					flipInterval: this.props.flipInterval,
 					containerRef: this.containerRef,
 					ref: this.destRef
@@ -258,4 +210,4 @@ class LED extends React.PureComponent {
 	}
 }
 
-export { showUsageInfo, checkUpdateInfo, LED };
+export { LED };
