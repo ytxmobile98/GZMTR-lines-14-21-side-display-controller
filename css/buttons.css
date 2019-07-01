@@ -1,9 +1,6 @@
-:root {
-	--base-background-color: lightgray;
-	--hover-background-color: gray;
-	--base-text-color: black;
-	--disabled-text-color: silver;
+@import url("COLOR-CODES.css");
 
+:root {
 	--normal-margin: 0.5em;
 	--normal-padding: 0.25em;
 }
@@ -33,16 +30,16 @@ button:disabled {
 	background-color: var(--base-background-color);
 }
 .primary-button:enabled:hover {
-	background-color: var(--hover-background-color);
+	background-color: var(--base-hover-background-color);
 }
 
 .action-button {
 	margin: var(--normal-margin);
 	padding: var(--normal-padding);
-	
-	background-color: royalblue;
+
+	background-color: var(--action-background-color);
 	color: white;
 }
 .action-button:enabled:hover {
-	background-color: dodgerblue;
+	background-color: var(--action-hover-background-color);
 }

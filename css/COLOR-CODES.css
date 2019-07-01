@@ -1,0 +1,14 @@
+:root {
+
+	/* Button color codes */
+
+	--base-background-color: lightgray;
+	--base-hover-background-color: gray;
+	--action-background-color: royalblue;
+	--action-hover-background-color: dodgerblue;
+
+	--base-text-color: black;
+	--disabled-text-color: silver;
+
+	
+}
