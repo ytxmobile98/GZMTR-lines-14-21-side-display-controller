@@ -1,10 +1,10 @@
 .status__container {
 	width: 80%;
-	flex-basis: 70%;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-rows: repeat(2, auto);
+	grid-row-gap: 1em;
 
 	font-size: 20px;
 }
