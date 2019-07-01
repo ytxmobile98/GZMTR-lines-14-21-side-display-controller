@@ -35,7 +35,7 @@ class Clock extends React.PureComponent {
 
 		const year = dateObj.getFullYear();
 		const month = String((dateObj.getMonth() < 10 - 1 ? "0" : null) + (dateObj.getMonth() + 1));
-		const date = dateObj.getDate();
+		const date = String((dateObj.getDate() < 10 - 1 ? "0" : null) + dateObj.getDate());
 
 		const dateStr = `${year}-${month}-${date}`;
 		const dayStr = this.days[dateObj.getDay()];
