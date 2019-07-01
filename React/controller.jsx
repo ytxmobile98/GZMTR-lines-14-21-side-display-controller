@@ -186,34 +186,34 @@ class Controller extends React.Component {
 					<div className="status__container">
 
 						{/* Display mode status */}
-						<StatusGridContainer>
+						<StatusGridContainer sectionHeader="方向幕显示状态">
 							<StatusCell
-								header="左侧"
-								status={this.state.leftDisplay ? "开" : "关"}
+								itemHeader="左侧"
+								itemText={this.state.leftDisplay ? "开" : "关"}
 							/>
 							<StatusCell
-								header="显示模式"
-								status={this.state.autoDisplayMode ? "自动" : "手动"}
+								itemHeader="显示模式"
+								itemText={this.state.autoDisplayMode ? "自动" : "手动"}
 							/>
 							<StatusCell
-								header="右侧"
-								status={this.state.rightDisplay ? "开" : "关"}
+								itemHeader="右侧"
+								itemText={this.state.rightDisplay ? "开" : "关"}
 							/>
 						</StatusGridContainer>
 
 						{/* Destination status */}
-						<StatusGridContainer>
+						<StatusGridContainer sectionHeader="列车运营状态">
 							<StatusCell
-								header="线路"
-								status={this.state.line}
+								itemHeader="线路"
+								itemText={this.state.line}
 							/>
 							<StatusCell
-								header="目的地"
-								status={this.state.destination.Chinese}
+								itemHeader="目的地"
+								itemText={this.state.destination.Chinese}
 							/>
 							<StatusCell
-								header="车种"
-								status={this.state.serviceType.Chinese}
+								itemHeader="车种"
+								itemText={this.state.serviceType.Chinese}
 							/>
 						</StatusGridContainer>
 
@@ -222,14 +222,14 @@ class Controller extends React.Component {
 					<div className="master-buttons__container">
 
 						<button
-							className="master-buttons"
+							className="master-button action-button"
 							onClick={()=>{openModal("setDisplayMode");}}
 						>
 							开启/关闭显示屏
 						</button>
 
 						<button
-							className="master-buttons"
+							className="master-button action-button"
 							onClick={()=>{openModal("setDestination");}}
 						>
 							更改目的地/车种

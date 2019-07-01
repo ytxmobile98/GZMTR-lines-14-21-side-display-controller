@@ -185,34 +185,34 @@ class Controller extends React.Component {
 					{ className: "status__container" },
 					React.createElement(
 						StatusGridContainer,
-						null,
+						{ sectionHeader: "\u65B9\u5411\u5E55\u663E\u793A\u72B6\u6001" },
 						React.createElement(StatusCell, {
-							header: "\u5DE6\u4FA7",
-							status: this.state.leftDisplay ? "开" : "关"
+							itemHeader: "\u5DE6\u4FA7",
+							itemText: this.state.leftDisplay ? "开" : "关"
 						}),
 						React.createElement(StatusCell, {
-							header: "\u663E\u793A\u6A21\u5F0F",
-							status: this.state.autoDisplayMode ? "自动" : "手动"
+							itemHeader: "\u663E\u793A\u6A21\u5F0F",
+							itemText: this.state.autoDisplayMode ? "自动" : "手动"
 						}),
 						React.createElement(StatusCell, {
-							header: "\u53F3\u4FA7",
-							status: this.state.rightDisplay ? "开" : "关"
+							itemHeader: "\u53F3\u4FA7",
+							itemText: this.state.rightDisplay ? "开" : "关"
 						})
 					),
 					React.createElement(
 						StatusGridContainer,
-						null,
+						{ sectionHeader: "\u5217\u8F66\u8FD0\u8425\u72B6\u6001" },
 						React.createElement(StatusCell, {
-							header: "\u7EBF\u8DEF",
-							status: this.state.line
+							itemHeader: "\u7EBF\u8DEF",
+							itemText: this.state.line
 						}),
 						React.createElement(StatusCell, {
-							header: "\u76EE\u7684\u5730",
-							status: this.state.destination.Chinese
+							itemHeader: "\u76EE\u7684\u5730",
+							itemText: this.state.destination.Chinese
 						}),
 						React.createElement(StatusCell, {
-							header: "\u8F66\u79CD",
-							status: this.state.serviceType.Chinese
+							itemHeader: "\u8F66\u79CD",
+							itemText: this.state.serviceType.Chinese
 						})
 					)
 				),
@@ -222,7 +222,7 @@ class Controller extends React.Component {
 					React.createElement(
 						"button",
 						{
-							className: "master-buttons",
+							className: "master-button action-button",
 							onClick: () => {
 								openModal("setDisplayMode");
 							}
@@ -232,7 +232,7 @@ class Controller extends React.Component {
 					React.createElement(
 						"button",
 						{
-							className: "master-buttons",
+							className: "master-button action-button",
 							onClick: () => {
 								openModal("setDestination");
 							}

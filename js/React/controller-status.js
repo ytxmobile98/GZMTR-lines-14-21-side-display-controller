@@ -7,13 +7,13 @@ class StatusCell extends React.PureComponent {
 			null,
 			React.createElement(
 				"div",
-				{ className: "status__header" },
-				this.props.header
+				{ className: "status__item-header" },
+				this.props.itemHeader
 			),
 			React.createElement(
 				"div",
-				{ className: "status__text" },
-				this.props.status
+				{ className: "status__item-text" },
+				this.props.itemText
 			)
 		);
 	}
@@ -24,6 +24,11 @@ class StatusGridContainer extends React.PureComponent {
 		return React.createElement(
 			"div",
 			{ className: "status__grid-container" },
+			React.createElement(
+				"div",
+				{ className: "status__section-header" },
+				this.props.sectionHeader
+			),
 			this.props.children
 		);
 	}

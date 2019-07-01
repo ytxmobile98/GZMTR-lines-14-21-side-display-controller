@@ -22,17 +22,6 @@
 	padding: 0.5em;
 	min-width: 5em;
 
-	background-color: lightgray;
-	border: none;
-
 	font-family: inherit;
 	font-size: 0.8em;
-}
-
-.modal-dialog__footer-button--done {
-	background-color: royalblue;
-	color: white;
-}
-.modal-dialog__footer-button--done:hover {
-	background-color: dodgerblue;
 }

@@ -53,13 +53,13 @@ class DialogFooter extends React.Component {
 			<div className="modal-dialog__footer">
 
 				<button
-					className="modal-dialog__footer-button modal-dialog__footer-button--done"
+					className="modal-dialog__footer-button action-button"
 					onClick={this.state.onDone}>
 					{this.state.doneText}
 				</button>
 
 				<button
-					className="modal-dialog__footer-button modal-dialog__footer-button--close"
+					className="modal-dialog__footer-button primary-button"
 					onClick={this.state.onClose}>
 					{this.state.closeText}
 				</button>
@@ -100,7 +100,7 @@ class Dialog extends React.Component {
 					title={this.state.title}
 					onClose={this.close.bind(this)}
 				/>
-				
+
 				<div className="modal-dialog__center">
 					{this.props.children}
 				</div>

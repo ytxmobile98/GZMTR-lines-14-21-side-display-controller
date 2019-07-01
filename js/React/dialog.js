@@ -51,14 +51,14 @@ class DialogFooter extends React.Component {
 			React.createElement(
 				"button",
 				{
-					className: "modal-dialog__footer-button modal-dialog__footer-button--done",
+					className: "modal-dialog__footer-button action-button",
 					onClick: this.state.onDone },
 				this.state.doneText
 			),
 			React.createElement(
 				"button",
 				{
-					className: "modal-dialog__footer-button modal-dialog__footer-button--close",
+					className: "modal-dialog__footer-button primary-button",
 					onClick: this.state.onClose },
 				this.state.closeText
 			)

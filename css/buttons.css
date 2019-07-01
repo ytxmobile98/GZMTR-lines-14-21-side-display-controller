@@ -3,22 +3,46 @@
 	--hover-background-color: gray;
 	--base-text-color: black;
 	--disabled-text-color: silver;
+
+	--normal-margin: 0.5em;
+	--normal-padding: 0.25em;
 }
 
 button {
+
+	margin: 0;
+	padding: 0;
+
 	border: none;
-	background-color: var(--base-background-color);
+	background: none;
 	color: var(--base-text-color);
 	cursor: pointer;
 
 	font-family: inherit;
 	font-size: inherit;
 }
-button:hover {
-	background-color: var(--hover-background-color);
-}
 button:disabled {
-	background-color: var(--base-background-color);
 	color: var(--disabled-text-color);
 	cursor: not-allowed;
+}
+
+.primary-button {
+	margin: var(--normal-margin);
+	padding: var(--normal-padding);
+
+	background-color: var(--base-background-color);
+}
+.primary-button:enabled:hover {
+	background-color: var(--hover-background-color);
+}
+
+.action-button {
+	margin: var(--normal-margin);
+	padding: var(--normal-padding);
+	
+	background-color: royalblue;
+	color: white;
+}
+.action-button:enabled:hover {
+	background-color: dodgerblue;
 }
