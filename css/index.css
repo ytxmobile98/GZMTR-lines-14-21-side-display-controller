@@ -1,5 +1,5 @@
 @import url("reset.css");
-@import url("controller.css");
+@import url("controller/controller.css");
 
 body {
 	margin: auto;

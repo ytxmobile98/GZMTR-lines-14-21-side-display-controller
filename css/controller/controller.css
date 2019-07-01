@@ -1,6 +1,6 @@
-@import url("LED.css");
-@import url("clock.css");
-@import url("modal.css");
+@import url("../LED/LED.css");
+@import url("../clock.css");
+@import url("../modal/modal.css");
 
 @import url("controller-top.css");
 @import url("controller-center.css");
