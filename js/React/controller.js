@@ -44,19 +44,27 @@ class Controller extends React.Component {
   		rightDisplay: false,
   		autoDisplayMode: false,
   	});
+  	that.updateLine("14号线");
   }, 4000);
   	window.setTimeout(() => {
   	that.setState({
   		serviceType: SERVICE_TYPES["普通"],
   		destination: DESTINATIONS["镇龙"],
   	});
+  	that.updateLine("21号线");
   }, 8000);
   	window.setTimeout(() => {
   	that.setState({
   		autoDisplayMode: true,
   	});
-  }, 12000);
-  */
+  }, 12000);*/
+	}
+
+	updateLine(line) {
+		TypeChecker.checkTypeOf(line, "string");
+		this.setState({
+			line: line
+		});
 	}
 
 	/* Usage:
