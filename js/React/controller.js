@@ -34,6 +34,30 @@ class Controller extends React.Component {
 			serviceType: SERVICE_TYPES["不载客"],
 			destination: DESTINATIONS["不载客"]
 		};
+
+		// For testing only
+		window.setTimeout(() => {
+			that.setState({
+				serviceType: SERVICE_TYPES["特别服务"],
+				destination: DESTINATIONS["嘉禾望岗"],
+				leftDisplay: false,
+				rightDisplay: false,
+				autoDisplayMode: false
+			});
+			that.updateLine("14号线");
+		}, 4000);
+		window.setTimeout(() => {
+			that.setState({
+				serviceType: SERVICE_TYPES["普通"],
+				destination: DESTINATIONS["镇龙"]
+			});
+			that.updateLine("21号线");
+		}, 8000);
+		window.setTimeout(() => {
+			that.setState({
+				autoDisplayMode: true
+			});
+		}, 12000);
 	}
 
 	updateLine(line) {
@@ -188,15 +212,21 @@ class Controller extends React.Component {
 						{ sectionHeader: "\u65B9\u5411\u5E55\u663E\u793A\u72B6\u6001" },
 						React.createElement(StatusCell, {
 							itemHeader: "\u5DE6\u4FA7",
-							itemText: this.state.leftDisplay ? "开" : "关"
+							itemText: this.state.leftDisplay ? "开" : "关",
+							dataTag: "status-display-switch",
+							dataValue: this.state.rightDisplay ? "开" : "关"
 						}),
 						React.createElement(StatusCell, {
 							itemHeader: "\u663E\u793A\u6A21\u5F0F",
-							itemText: this.state.autoDisplayMode ? "自动" : "手动"
+							itemText: this.state.autoDisplayMode ? "自动" : "手动",
+							dataTag: "status-display-mode",
+							dataValue: this.state.autoDisplayMode ? "自动" : "手动"
 						}),
 						React.createElement(StatusCell, {
 							itemHeader: "\u53F3\u4FA7",
-							itemText: this.state.rightDisplay ? "开" : "关"
+							itemText: this.state.rightDisplay ? "开" : "关",
+							dataTag: "status-display-switch",
+							dataValue: this.state.rightDisplay ? "开" : "关"
 						})
 					),
 					React.createElement(
@@ -204,7 +234,9 @@ class Controller extends React.Component {
 						{ sectionHeader: "\u5217\u8F66\u8FD0\u8425\u72B6\u6001" },
 						React.createElement(StatusCell, {
 							itemHeader: "\u7EBF\u8DEF",
-							itemText: this.state.line
+							itemText: this.state.line,
+							dataTag: "status-line",
+							dataValue: this.state.line
 						}),
 						React.createElement(StatusCell, {
 							itemHeader: "\u76EE\u7684\u5730",
@@ -212,7 +244,9 @@ class Controller extends React.Component {
 						}),
 						React.createElement(StatusCell, {
 							itemHeader: "\u8F66\u79CD",
-							itemText: this.state.serviceType.Chinese
+							itemText: this.state.serviceType.Chinese,
+							dataTag: "status-service-type",
+							dataValue: this.state.serviceType.Chinese
 						})
 					)
 				),

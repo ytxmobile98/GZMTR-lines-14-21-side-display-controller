@@ -35,6 +35,30 @@ class Controller extends React.Component {
 			destination: DESTINATIONS["不载客"],
 		};
 
+		// For testing only
+		window.setTimeout(() => {
+			that.setState({
+				serviceType: SERVICE_TYPES["特别服务"],
+				destination: DESTINATIONS["嘉禾望岗"],
+				leftDisplay: false,
+				rightDisplay: false,
+				autoDisplayMode: false,
+			});
+			that.updateLine("14号线");
+		}, 4000);
+		window.setTimeout(() => {
+			that.setState({
+				serviceType: SERVICE_TYPES["普通"],
+				destination: DESTINATIONS["镇龙"],
+			});
+			that.updateLine("21号线");
+		}, 8000);
+		window.setTimeout(() => {
+			that.setState({
+				autoDisplayMode: true,
+			});
+		}, 12000);
+
 	}
 
 	updateLine(line) {
@@ -190,14 +214,20 @@ class Controller extends React.Component {
 							<StatusCell
 								itemHeader="左侧"
 								itemText={this.state.leftDisplay ? "开" : "关"}
+								dataTag="status-display-switch"
+								dataValue={this.state.rightDisplay ? "开" : "关"}
 							/>
 							<StatusCell
 								itemHeader="显示模式"
 								itemText={this.state.autoDisplayMode ? "自动" : "手动"}
+								dataTag="status-display-mode"
+								dataValue={this.state.autoDisplayMode ? "自动" : "手动"}
 							/>
 							<StatusCell
 								itemHeader="右侧"
 								itemText={this.state.rightDisplay ? "开" : "关"}
+								dataTag="status-display-switch"
+								dataValue={this.state.rightDisplay ? "开" : "关"}
 							/>
 						</StatusGridContainer>
 
@@ -206,6 +236,8 @@ class Controller extends React.Component {
 							<StatusCell
 								itemHeader="线路"
 								itemText={this.state.line}
+								dataTag="status-line"
+								dataValue={this.state.line}
 							/>
 							<StatusCell
 								itemHeader="目的地"
@@ -214,6 +246,8 @@ class Controller extends React.Component {
 							<StatusCell
 								itemHeader="车种"
 								itemText={this.state.serviceType.Chinese}
+								dataTag="status-service-type"
+								dataValue={this.state.serviceType.Chinese}
 							/>
 						</StatusGridContainer>
 
