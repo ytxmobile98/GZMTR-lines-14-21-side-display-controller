@@ -1,14 +1,45 @@
 :root {
 
-	/* Button color codes */
+	/* Generic */
 
-	--base-background-color: lightgray;
-	--base-hover-background-color: gray;
-	--action-background-color: royalblue;
-	--action-hover-background-color: dodgerblue;
+	--light: white;
+	--dark: black;
+
+	/* Thematic color codes */
+
+	--base-bg-color: lightgray;
+	--base-hover-bg-color: gray;
+	--action-bg-color: royalblue;
+	--action-hover-bg-color: dodgerblue;
 
 	--base-text-color: black;
 	--disabled-text-color: silver;
 
-	
+	/* Status color codes */
+
+	--display-switch-开: green;
+	--display-switch-关: lightgray;
+
+	--display-mode-自动: blue;
+	--display-mode-手动: red;
+
+	/* Metro line color codes */
+	/* Extracted from GZMTR app: http://www.gzmtr.com/APP/ */
+
+	--line-14-bg-color: #792720;
+	--line-14-color: var(--light);
+
+	--line-21-bg-color: #230b55;
+	--line-21-color: var(--light);
+
+	/* Service type color codes */
+
+	--service-普通-bg-color: red;
+	--service-普通-color: var(--light);
+
+	--service-快速-bg-color: green;
+	--service-快速-color: var(--light);
+
+	--service-特别服务-bg-color: gold;
+	--service-特别服务-color: var(--dark);
 }

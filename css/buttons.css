@@ -27,19 +27,19 @@ button:disabled {
 	margin: var(--normal-margin);
 	padding: var(--normal-padding);
 
-	background-color: var(--base-background-color);
+	background-color: var(--base-bg-color);
 }
 .primary-button:enabled:hover {
-	background-color: var(--base-hover-background-color);
+	background-color: var(--base-hover-bg-color);
 }
 
 .action-button {
 	margin: var(--normal-margin);
 	padding: var(--normal-padding);
 
-	background-color: var(--action-background-color);
+	background-color: var(--action-bg-color);
 	color: white;
 }
 .action-button:enabled:hover {
-	background-color: var(--action-hover-background-color);
+	background-color: var(--action-hover-bg-color);
 }

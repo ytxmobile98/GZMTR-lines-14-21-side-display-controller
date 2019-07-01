@@ -58,6 +58,17 @@ class Controller extends React.Component {
 				autoDisplayMode: true,
 			});
 		}, 12000);
+		window.setTimeout(() => {
+			that.setState({
+				serviceType: SERVICE_TYPES["不载客"],
+				destination: DESTINATIONS["不载客"],
+
+				leftDisplay: true,
+				rightDisplay: true,
+				autoDisplayMode: true,
+			});
+			that.updateLine("不载客");
+		}, 16000);
 
 	}
 
