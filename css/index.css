@@ -13,3 +13,8 @@ body {
 
 	font-family: Unifont, monospace;
 }
+
+.warning-notes {
+	font-size: 20px;
+	color: red;
+}
