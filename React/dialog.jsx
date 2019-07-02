@@ -91,7 +91,7 @@ class Dialog extends React.Component {
 				</div>
 
 				<DialogFooter
-					onDone={this.close.bind(this)}
+					onDone={this.done.bind(this)}
 					onClose={this.close.bind(this)}
 				/>
 			</div>

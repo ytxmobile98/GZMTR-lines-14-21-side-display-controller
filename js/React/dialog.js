@@ -89,7 +89,7 @@ class Dialog extends React.Component {
 				this.props.children
 			),
 			React.createElement(DialogFooter, {
-				onDone: this.close.bind(this),
+				onDone: this.done.bind(this),
 				onClose: this.close.bind(this)
 			})
 		);
