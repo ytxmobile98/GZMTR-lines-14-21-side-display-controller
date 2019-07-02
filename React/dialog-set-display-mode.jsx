@@ -30,9 +30,10 @@ class SetDisplayModeDialog extends React.Component {
 				onDone={this.done.bind(this)}
 				onClose={this.close.bind(this)}
 			>
+
 				<div>
 					<div>显示模式：</div>
-					<label>
+					{/*<label>
 						<input type="radio" name="autoDisplayMode" value={true}
 							checked={this.state.autoDisplayMode}
 							onChange={()=>{}}
@@ -60,7 +61,7 @@ class SetDisplayModeDialog extends React.Component {
 						>
 							手动
 						</button>
-					</label>
+					</label>*/}
 
 					<div>左侧：</div>
 					<div>右侧：</div>
