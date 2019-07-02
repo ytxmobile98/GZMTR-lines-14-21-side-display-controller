@@ -5,9 +5,6 @@ import { TypeChecker } from "../type-checker.js";
 class DialogHeader extends React.Component {
 	constructor(props) {
 		super(props);
-		this.title = props.title;
-		this.onGoBack = props.onGoBack;
-		this.onClose = props.onClose;
 	}
 
 	render() {
@@ -16,18 +13,18 @@ class DialogHeader extends React.Component {
 
 				<button
 					className="modal-dialog__header-button modal-dialog__header-button--back"
-					disabled={!this.onGoBack ? "disabled" : null}
-					onClick={this.onGoBack}
+					disabled={!this.props.onGoBack ? "disabled" : null}
+					onClick={this.props.onGoBack}
 				>
 				</button>
 
 				<div className="modal-dialog__header-title">
-					{this.title}
+					{this.props.title}
 				</div>
 
 				<button
 					className="modal-dialog__header-button modal-dialog__header-button--close"
-					onClick={this.onClose}
+					onClick={this.props.onClose}
 				>
 				</button>
 
@@ -39,13 +36,8 @@ class DialogHeader extends React.Component {
 class DialogFooter extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			doneText: props.doneText || "完成",
-			onDone: props.onDone,
-
-			closeText: props.closeText || "取消",
-			onClose: props.onClose,
-		}
+		this.defaultDoneText = "完成";
+		this.defaultCloseText = "取消";
 	}
 
 	render() {
@@ -54,14 +46,14 @@ class DialogFooter extends React.Component {
 
 				<button
 					className="modal-dialog__footer-button action-button"
-					onClick={this.state.onDone}>
-					{this.state.doneText}
+					onClick={this.props.onDone}>
+					{this.props.doneText || this.defaultDoneText}
 				</button>
 
 				<button
 					className="modal-dialog__footer-button primary-button"
-					onClick={this.state.onClose}>
-					{this.state.closeText}
+					onClick={this.props.onClose}>
+					{this.props.closeText || this.defaultCloseText}
 				</button>
 
 			</div>
@@ -72,32 +64,25 @@ class DialogFooter extends React.Component {
 class Dialog extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			title: props.title,
-
-			onGoBack: props.onGoBack,
-			onClose: props.onClose,
-			onDone: props.done,
-		}
 	}
 
 	goBack() {
-		this.state.onGoBack();
+		this.props.onGoBack();
 	}
 
 	close() {
-		this.state.onClose();
+		this.props.onClose();
 	}
 
 	done() {
-		this.state.onDone();
+		this.props.onDone();
 	}
 
 	render() {
 		return (
 			<div className="modal-dialog">
 				<DialogHeader
-					title={this.state.title}
+					title={this.props.title}
 					onClose={this.close.bind(this)}
 				/>
 
