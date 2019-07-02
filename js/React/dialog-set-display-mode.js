@@ -52,7 +52,8 @@ class SetDisplayModeDialog extends React.Component {
 								console.log(prevState);
 							});
 						},
-						tabIndex: "-1"
+						tabIndex: "-1",
+						style: { display: "none" }
 					}),
 					React.createElement(
 						"button",

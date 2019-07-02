@@ -45,6 +45,7 @@ class SetDisplayModeDialog extends React.Component {
 								})
 							}}
 							tabIndex="-1"
+							style={{display: "none"}}
 						/>
 						<button
 							onClick={() => {
