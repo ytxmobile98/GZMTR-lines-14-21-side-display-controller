@@ -13,7 +13,7 @@ class Modal extends React.Component {
 		TypeChecker.checkOptionalTypeOf(props.modalMode, "symbol");
 	}
 
-	closeModal() {
+	close() {
 		this.props.onCloseModal();
 	}
 
@@ -22,7 +22,7 @@ class Modal extends React.Component {
 		that.props.onMount();
 		that.escListener = document.body.addEventListener("keydown", (event) => {
 			if (event.key === "Escape" || event.key === "Esc") {
-				that.closeModal();
+				that.close();
 			}
 		});
 	}
@@ -38,7 +38,7 @@ class Modal extends React.Component {
 		const defaultToolTip = "关闭遮罩";
 		const closedModalText = (this.state.modalMode === MODAL_MODES.standby) ? "当前处于待机模式，点击或按Esc以恢复" : defaultToolTip;
 
-		const closeModal = this.closeModal.bind(this);
+		const closeModal = this.close.bind(this);
 
 		return (
 			<div className="modal">
