@@ -33,15 +33,22 @@ class SetDisplayModeDialog extends React.Component {
 
 				<div>
 					<div>显示模式：</div>
-					{/*<label>
-						<input type="radio" name="autoDisplayMode" value={true}
+					<label>
+						<input id="js-0" type="radio" name="autoDisplayMode" value={true}
 							checked={this.state.autoDisplayMode}
-							onChange={()=>{}}
+							onChange={(e)=>{
+								this.setState({
+									autoDisplayMode: e.target.checked,
+								});
+								this.setState((prevState) => {
+									console.log(prevState);
+								})
+							}}
 							tabIndex="-1"
 						/>
 						<button
 							onClick={() => {
-								this.setState({autoDisplayMode: true});
+								document.getElementById("js-0").click();
 							}}
 						>
 							自动
@@ -61,7 +68,7 @@ class SetDisplayModeDialog extends React.Component {
 						>
 							手动
 						</button>
-					</label>*/}
+					</label>
 
 					<div>左侧：</div>
 					<div>右侧：</div>

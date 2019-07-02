@@ -40,6 +40,50 @@ class SetDisplayModeDialog extends React.Component {
 					"\u663E\u793A\u6A21\u5F0F\uFF1A"
 				),
 				React.createElement(
+					"label",
+					null,
+					React.createElement("input", { id: "js-0", type: "radio", name: "autoDisplayMode", value: true,
+						checked: this.state.autoDisplayMode,
+						onChange: e => {
+							this.setState({
+								autoDisplayMode: e.target.checked
+							});
+							this.setState(prevState => {
+								console.log(prevState);
+							});
+						},
+						tabIndex: "-1"
+					}),
+					React.createElement(
+						"button",
+						{
+							onClick: () => {
+								document.getElementById("js-0").click();
+							}
+						},
+						"\u81EA\u52A8"
+					)
+				),
+				React.createElement(
+					"label",
+					null,
+					React.createElement("input", { type: "radio", name: "autoDisplayMode", value: false,
+						checked: !this.state.autoDisplayMode,
+						onChange: () => {},
+						tabIndex: "-1"
+					}),
+					React.createElement(
+						"button",
+						{
+							onClick: () => {
+								this.setState({ autoDisplayMode: false });
+							},
+							tabIndex: "0"
+						},
+						"\u624B\u52A8"
+					)
+				),
+				React.createElement(
 					"div",
 					null,
 					"\u5DE6\u4FA7\uFF1A"
