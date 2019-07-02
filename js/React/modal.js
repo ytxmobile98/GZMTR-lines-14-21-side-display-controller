@@ -18,17 +18,25 @@ class Modal extends React.Component {
 	}
 
 	componentDidMount() {
-		this.props.onMount();
+		const that = this;
+		that.props.onMount();
+		that.escListener = document.body.addEventListener("keydown", event => {
+			if (event.key === "Escape" || event.key === "Esc") {
+				that.closeModal();
+			}
+		});
 	}
 
 	componentWillUnmount() {
+		const that = this;
 		this.props.onUnmount();
+		document.body.removeEventListener("keydown", that.escListener);
 	}
 
 	render() {
 
 		const defaultToolTip = "关闭遮罩";
-		const closedModalText = this.state.modalMode === MODAL_MODES.standby ? "当前处于待机模式，点击以恢复" : defaultToolTip;
+		const closedModalText = this.state.modalMode === MODAL_MODES.standby ? "当前处于待机模式，点击或按Esc以恢复" : defaultToolTip;
 
 		const closeModal = this.closeModal.bind(this);
 
