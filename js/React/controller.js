@@ -270,10 +270,12 @@ class Controller extends React.Component {
 				},
 				this.state.modalMode === MODAL_MODES.setDisplayMode ? React.createElement(Dialog, {
 					title: "\u5F00\u542F/\u5173\u95ED\u663E\u793A\u5C4F",
+					onDone: closeModal,
 					onClose: closeModal
 				}) : null,
 				this.state.modalMode === MODAL_MODES.setDestination ? React.createElement(Dialog, {
 					title: "\u9009\u62E9\u76EE\u7684\u5730",
+					onDone: closeModal,
 					onClose: closeModal
 				}) : null
 			) : null

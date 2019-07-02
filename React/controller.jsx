@@ -267,6 +267,7 @@ class Controller extends React.Component {
 						{this.state.modalMode === MODAL_MODES.setDisplayMode ?
 							<Dialog
 								title="开启/关闭显示屏"
+								onDone={closeModal}
 								onClose={closeModal}
 							>
 							</Dialog>
@@ -276,6 +277,7 @@ class Controller extends React.Component {
 						{this.state.modalMode === MODAL_MODES.setDestination ?
 							<Dialog
 								title="选择目的地"
+								onDone={closeModal}
 								onClose={closeModal}
 							>
 							</Dialog>
