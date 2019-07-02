@@ -116,14 +116,14 @@ class Controller extends React.Component {
 		};
 		const body = document.body;
 		this.bodyClickListener = body.addEventListener("click", action);
-		this.bodyKeyUpListener = body.addEventListener("keyup", action);
+		this.bodyKeyDownListener = body.addEventListener("keydown", action);
 	}
 
 	componentWillUnmount() {
 		const that = this;
 		const body = document.body;
 		body.removeEventListener("click", that.bodyClickListener);
-		body.removeEventListener("keyup", that.bodyKeyUpListener);
+		body.removeEventListener("keydown", that.bodyKeyDownListener);
 	}
 
 	setTimeout() {
