@@ -1,4 +1,4 @@
-@import url("../COLOR-CODES.css");
+@import url("colors/COLOR-CODES.css");
 
 /* Display switch */
 [data-js-status-display-switch="开"] {
