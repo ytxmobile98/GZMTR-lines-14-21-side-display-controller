@@ -12,7 +12,8 @@ import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
 import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
-import { Dialog } from "./dialog.js";
+import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
+import { SetDestinationDialog } from "./dialog-set-destination.js";
 
 class Controller extends React.Component {
 
@@ -22,12 +23,13 @@ class Controller extends React.Component {
 		const that = this;
 		that.outputLED = React.createRef();
 		that.state = {
+			// modal mode
 			modalMode: MODAL_MODES.standby,
 
 			// current display mode
+			autoDisplayMode: true,
 			leftDisplay: true,
 			rightDisplay: true,
-			autoDisplayMode: true,
 
 			// current destination information
 			line: "不载客",
@@ -257,7 +259,7 @@ class Controller extends React.Component {
 				React.createElement(Clock, null),
 				React.createElement(
 					"div",
-					{ className: "controller__bottom-notes" },
+					{ className: "warning-notes" },
 					"\u6CE8\u610F\uFF1A\u59821\u5206\u949F\u5185\u65E0\u64CD\u4F5C\uFF0C\u6B64\u8BBE\u5907\u5C06\u8FDB\u5165\u5F85\u673A\u6A21\u5F0F\u3002"
 				)
 			),
@@ -268,12 +270,15 @@ class Controller extends React.Component {
 					onUnmount: this.resetTimeout.bind(this),
 					onCloseModal: this.closeModal.bind(this)
 				},
-				this.state.modalMode === MODAL_MODES.setDisplayMode ? React.createElement(Dialog, {
-					title: "\u5F00\u542F/\u5173\u95ED\u663E\u793A\u5C4F",
+				this.state.modalMode === MODAL_MODES.setDisplayMode ? React.createElement(SetDisplayModeDialog, {
 					onDone: closeModal,
-					onClose: closeModal
+					onClose: closeModal,
+
+					autoDisplayMode: this.state.autoDisplayMode,
+					leftDisplay: this.state.leftDisplay,
+					rightDisplay: this.state.rightDisplay
 				}) : null,
-				this.state.modalMode === MODAL_MODES.setDestination ? React.createElement(Dialog, {
+				this.state.modalMode === MODAL_MODES.setDestination ? React.createElement(SetDestinationDialog, {
 					title: "\u9009\u62E9\u76EE\u7684\u5730",
 					onDone: closeModal,
 					onClose: closeModal

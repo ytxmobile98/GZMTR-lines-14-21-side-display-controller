@@ -12,7 +12,8 @@ import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
 import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
-import { Dialog } from "./dialog.js";
+import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
+import { SetDestinationDialog } from "./dialog-set-destination.js";
 
 class Controller extends React.Component {
 
@@ -22,12 +23,13 @@ class Controller extends React.Component {
 		const that = this;
 		that.outputLED = React.createRef();
 		that.state = {
+			// modal mode
 			modalMode: MODAL_MODES.standby,
 
 			// current display mode
+			autoDisplayMode: true,
 			leftDisplay: true,
 			rightDisplay: true,
-			autoDisplayMode: true,
 
 			// current destination information
 			line: "不载客",
@@ -251,7 +253,7 @@ class Controller extends React.Component {
 
 				<div className="controller__bottom">
 					<Clock />
-					<div className="controller__bottom-notes">
+					<div className="warning-notes">
 						注意：如1分钟内无操作，此设备将进入待机模式。
 					</div>
 				</div>
@@ -265,22 +267,24 @@ class Controller extends React.Component {
 					>
 
 						{this.state.modalMode === MODAL_MODES.setDisplayMode ?
-							<Dialog
-								title="开启/关闭显示屏"
+							<SetDisplayModeDialog
 								onDone={closeModal}
 								onClose={closeModal}
-							>
-							</Dialog>
+
+								autoDisplayMode={this.state.autoDisplayMode}
+								leftDisplay={this.state.leftDisplay}
+								rightDisplay={this.state.rightDisplay}
+							/>
 							: null
 						}
 
 						{this.state.modalMode === MODAL_MODES.setDestination ?
-							<Dialog
+							<SetDestinationDialog
 								title="选择目的地"
 								onDone={closeModal}
 								onClose={closeModal}
 							>
-							</Dialog>
+							</SetDestinationDialog>
 							: null
 						}
 

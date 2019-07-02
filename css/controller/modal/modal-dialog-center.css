@@ -9,12 +9,13 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	margin: 0.5em auto;
+	width: 90%;
+	align-self: center;
 
 	display: flex;
 	flex-direction: column;
-
-	width: 90%;
-	align-self: center;
+	align-items: center;
+	justify-content: space-around;
 
 	font-size: var(--basic-text-size);
 }
