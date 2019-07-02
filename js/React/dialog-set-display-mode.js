@@ -7,7 +7,7 @@ class SetDisplayModeDialog extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.settings = {
+		this.state = {
 			autoDisplayMode: this.props.autoDisplayMode,
 			leftDisplay: this.props.leftDisplay,
 			rightDisplay: this.props.rightDisplay
