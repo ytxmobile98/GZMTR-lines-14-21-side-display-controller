@@ -2,12 +2,21 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-class RadioGroupContainer extends React.PureComponent {
+class RadioGroup extends React.PureComponent {
 	render() {
 		return React.createElement(
-			"div",
-			{ className: "radio-button-group__container" },
-			this.props.children
+			React.Fragment,
+			null,
+			React.createElement(
+				"div",
+				{ className: "radio-button-group__header" },
+				this.props.header
+			),
+			React.createElement(
+				"div",
+				{ className: "radio-button-group__container" },
+				this.props.children
+			)
 		);
 	}
 }
@@ -49,4 +58,4 @@ class RadioItem extends React.PureComponent {
 	}
 }
 
-export { RadioGroupContainer, RadioItem };
+export { RadioGroup, RadioItem };

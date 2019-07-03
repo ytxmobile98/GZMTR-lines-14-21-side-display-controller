@@ -2,7 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 import { Dialog } from "./dialog.js";
-import { RadioGroupContainer, RadioItem } from "./radio-group.js";
+import { RadioGroup, RadioItem } from "./radio-group.js";
 
 class SetDisplayModeDialog extends React.Component {
 	constructor(props) {
@@ -79,15 +79,10 @@ class SetDisplayModeDialog extends React.Component {
 			},
 			React.createElement(
 				"div",
-				null,
+				{ className: "set-display-mode__container" },
 				React.createElement(
-					"div",
-					null,
-					"\u663E\u793A\u6A21\u5F0F\uFF1A"
-				),
-				React.createElement(
-					RadioGroupContainer,
-					null,
+					RadioGroup,
+					{ header: "\u663E\u793A\u6A21\u5F0F" },
 					React.createElement(RadioItem, {
 						name: "autoDisplayMode",
 						checked: this.state.autoDisplayMode,
@@ -106,13 +101,8 @@ class SetDisplayModeDialog extends React.Component {
 					})
 				),
 				React.createElement(
-					"div",
-					null,
-					"\u5DE6\u4FA7\uFF1A"
-				),
-				React.createElement(
-					RadioGroupContainer,
-					null,
+					RadioGroup,
+					{ header: "\u5DE6\u4FA7" },
 					React.createElement(RadioItem, {
 						name: "leftDisplay",
 						checked: this.state.leftDisplay,
@@ -133,13 +123,8 @@ class SetDisplayModeDialog extends React.Component {
 					})
 				),
 				React.createElement(
-					"div",
-					null,
-					"\u53F3\u4FA7\uFF1A"
-				),
-				React.createElement(
-					RadioGroupContainer,
-					null,
+					RadioGroup,
+					{ header: "\u53F3\u4FA7" },
 					React.createElement(RadioItem, {
 						name: "rightDisplay",
 						checked: this.state.rightDisplay,
@@ -162,8 +147,31 @@ class SetDisplayModeDialog extends React.Component {
 			),
 			React.createElement(
 				"div",
-				{ className: "warning-notes" },
-				"\u6CE8\u610F\uFF1A\u8FD0\u8425\u65F6\u8BF7\u59CB\u7EC8\u9009\u62E9\u81EA\u52A8\u6A21\u5F0F\u3002"
+				{ className: "notes" },
+				React.createElement(
+					"p",
+					null,
+					"\u81EA\u52A8\u6A21\u5F0F\u4E0B\uFF0C\u65B9\u5411\u5E55\u5F00\u542F\u6761\u4EF6\uFF1A"
+				),
+				React.createElement(
+					"ol",
+					null,
+					React.createElement(
+						"li",
+						null,
+						"\u8F66\u901F\u4F4E\u4E8E30 km/h\uFF1B"
+					),
+					React.createElement(
+						"li",
+						null,
+						"\u8FDB\u7AD9\u65F6\uFF0C\u9762\u5411\u7AD9\u53F0\u4E00\u4FA7\u7684\u65B9\u5411\u5E55\u5C06\u4F1A\u5F00\u542F\u3002"
+					)
+				),
+				React.createElement(
+					"p",
+					{ className: "warning-notes" },
+					"\u6CE8\u610F\uFF1A\u8FD0\u8425\u65F6\u8BF7\u59CB\u7EC8\u9009\u62E9\u81EA\u52A8\u6A21\u5F0F\u3002"
+				)
 			)
 		);
 	}

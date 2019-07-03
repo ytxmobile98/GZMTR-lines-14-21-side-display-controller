@@ -2,7 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 import { Dialog } from "./dialog.js";
-import { RadioGroupContainer, RadioItem } from "./radio-group.js";
+import { RadioGroup, RadioItem } from "./radio-group.js";
 
 class SetDisplayModeDialog extends React.Component {
 	constructor(props) {
@@ -79,9 +79,8 @@ class SetDisplayModeDialog extends React.Component {
 				onClose={this.close.bind(this)}
 			>
 
-				<div>
-					<div>显示模式：</div>
-					<RadioGroupContainer>
+				<div className="set-display-mode__container">
+					<RadioGroup header="显示模式">
 						<RadioItem
 							name="autoDisplayMode"
 							checked={this.state.autoDisplayMode}
@@ -98,10 +97,9 @@ class SetDisplayModeDialog extends React.Component {
 							}}
 							text="手动"
 						/>
-					</RadioGroupContainer>
+					</RadioGroup>
 
-					<div>左侧：</div>
-					<RadioGroupContainer>
+					<RadioGroup header="左侧">
 						<RadioItem
 							name="leftDisplay"
 							checked={this.state.leftDisplay}
@@ -120,10 +118,9 @@ class SetDisplayModeDialog extends React.Component {
 							}}
 							text="关"
 						/>
-					</RadioGroupContainer>
+					</RadioGroup>
 
-					<div>右侧：</div>
-					<RadioGroupContainer>
+					<RadioGroup header="右侧">
 						<RadioItem
 							name="rightDisplay"
 							checked={this.state.rightDisplay}
@@ -142,11 +139,22 @@ class SetDisplayModeDialog extends React.Component {
 							}}
 							text="关"
 						/>
-					</RadioGroupContainer>
+					</RadioGroup>
 
 				</div>
 
-				<div className="warning-notes">注意：运营时请始终选择自动模式。</div>
+				<div className="notes">
+					<p>
+						自动模式下，方向幕开启条件：
+					</p>
+					<ol>
+						<li>车速低于30 km/h；</li>
+						<li>进站时，面向站台一侧的方向幕将会开启。</li>
+					</ol>
+					<p className="warning-notes">
+						注意：运营时请始终选择自动模式。
+					</p>
+				</div>
 
 			</Dialog>
 		);
