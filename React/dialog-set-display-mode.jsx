@@ -148,7 +148,7 @@ class SetDisplayModeDialog extends React.Component {
 						自动模式下，方向幕开启条件：
 					</p>
 					<ol>
-						<li>车速低于30 km/h；</li>
+						<li>车速不高于30 km/h；</li>
 						<li>进站时，面向站台一侧的方向幕将会开启。</li>
 					</ol>
 					<p className="warning-notes">

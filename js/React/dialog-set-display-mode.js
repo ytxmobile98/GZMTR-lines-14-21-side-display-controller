@@ -159,7 +159,7 @@ class SetDisplayModeDialog extends React.Component {
 					React.createElement(
 						"li",
 						null,
-						"\u8F66\u901F\u4F4E\u4E8E30 km/h\uFF1B"
+						"\u8F66\u901F\u4E0D\u9AD8\u4E8E30 km/h\uFF1B"
 					),
 					React.createElement(
 						"li",
