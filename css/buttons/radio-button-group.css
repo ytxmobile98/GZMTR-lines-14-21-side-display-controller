@@ -1,0 +1,39 @@
+@import url("colors/COLOR-CODES.css");
+
+.radio-button-group__container {
+	min-width: 200px;
+
+	display: flex;
+	flex-direction: row;
+}
+
+.radio-button-group__item {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: row;
+}
+
+.radio-button-group__radio {
+	display: none;
+}
+
+.radio-button-group__text {
+	flex-grow: 1;
+	line-height: 1.5em;
+
+	border: 2px solid;
+	border-color: var(--action-bg-color);
+	color: var(--action-bg-color);
+}
+.radio-button-group__text:disabled {
+	border-color: var(--disabled-bg-color);
+}
+
+.radio-button-group__radio:checked + .radio-button-group__text {
+	background-color: var(--action-bg-color);
+	color: white;
+}
+.radio-button-group__radio:checked:disabled + .radio-button-group__text {
+	background-color: var(--disabled-bg-color);
+	color: white;
+}

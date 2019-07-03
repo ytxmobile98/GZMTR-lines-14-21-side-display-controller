@@ -14,7 +14,16 @@ body {
 	font-family: Unifont, monospace;
 }
 
+:root {
+	--notes-font-size: 20px;
+}
+
+.notes {
+	font-size: var(--notes-font-size);
+	color: blue;
+}
+
 .warning-notes {
-	font-size: 20px;
+	font-size: var(--notes-font-size);
 	color: red;
 }

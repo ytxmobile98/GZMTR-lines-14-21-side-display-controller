@@ -1,0 +1,9 @@
+.set-display-mode__container {
+	display: grid;
+	grid-auto-flow: row;
+	grid-template-columns: repeat(2, auto);
+	grid-gap: 0.5em 1em;
+	align-items: baseline;
+
+	padding: 0.5em;
+}
