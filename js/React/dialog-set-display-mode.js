@@ -73,7 +73,7 @@ class SetDisplayModeDialog extends React.Component {
 		return React.createElement(
 			Dialog,
 			{
-				title: "\u5F00\u542F/\u5173\u95ED\u663E\u793A\u5C4F",
+				title: "\u5F00\u542F/\u5173\u95ED\u65B9\u5411\u5E55",
 				onDone: this.done.bind(this),
 				onClose: this.close.bind(this)
 			},

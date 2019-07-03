@@ -74,7 +74,7 @@ class SetDisplayModeDialog extends React.Component {
 
 		return (
 			<Dialog
-				title="开启/关闭显示屏"
+				title="开启/关闭方向幕"
 				onDone={this.done.bind(this)}
 				onClose={this.close.bind(this)}
 			>

@@ -247,7 +247,7 @@ class Controller extends React.Component {
 								openModal("setDisplayMode");
 							}
 						},
-						"\u5F00\u542F/\u5173\u95ED\u663E\u793A\u5C4F"
+						"\u5F00\u542F/\u5173\u95ED\u65B9\u5411\u5E55"
 					),
 					React.createElement(
 						"button",

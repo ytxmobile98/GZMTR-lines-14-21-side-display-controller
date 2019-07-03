@@ -245,7 +245,7 @@ class Controller extends React.Component {
 							className="master-button action-button"
 							onClick={()=>{openModal("setDisplayMode");}}
 						>
-							开启/关闭显示屏
+							开启/关闭方向幕
 						</button>
 
 						<button
