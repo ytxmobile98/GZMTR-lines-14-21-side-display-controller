@@ -143,7 +143,7 @@ class SetDisplayModeDialog extends React.Component {
 
 				</div>
 
-				<div className="notes">
+				<div className="notes set-display-mode__notes">
 					<p>
 						自动模式下，方向幕开启条件：
 					</p>
@@ -152,7 +152,7 @@ class SetDisplayModeDialog extends React.Component {
 						<li>进站时，面向站台一侧的方向幕将会开启。</li>
 					</ol>
 					<p className="warning-notes">
-						注意：运营时请始终选择自动模式。
+						注意：手动模式仅供在车厂测试设备时使用；运营时请始终使用自动模式。
 					</p>
 				</div>
 

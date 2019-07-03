@@ -147,7 +147,7 @@ class SetDisplayModeDialog extends React.Component {
 			),
 			React.createElement(
 				"div",
-				{ className: "notes" },
+				{ className: "notes set-display-mode__notes" },
 				React.createElement(
 					"p",
 					null,
@@ -170,7 +170,7 @@ class SetDisplayModeDialog extends React.Component {
 				React.createElement(
 					"p",
 					{ className: "warning-notes" },
-					"\u6CE8\u610F\uFF1A\u8FD0\u8425\u65F6\u8BF7\u59CB\u7EC8\u9009\u62E9\u81EA\u52A8\u6A21\u5F0F\u3002"
+					"\u6CE8\u610F\uFF1A\u624B\u52A8\u6A21\u5F0F\u4EC5\u4F9B\u5728\u8F66\u5382\u6D4B\u8BD5\u8BBE\u5907\u65F6\u4F7F\u7528\uFF1B\u8FD0\u8425\u65F6\u8BF7\u59CB\u7EC8\u4F7F\u7528\u81EA\u52A8\u6A21\u5F0F\u3002"
 				)
 			)
 		);
