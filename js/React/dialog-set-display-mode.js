@@ -19,6 +19,8 @@ class SetDisplayModeDialog extends React.Component {
 		const auto = this.state.autoDisplayMode;
 		const left = this.state.leftDisplay;
 		const right = this.state.rightDisplay;
+
+		// the onDone function should perform state update in the parent component
 		this.props.onDone(auto, left, right);
 	}
 
