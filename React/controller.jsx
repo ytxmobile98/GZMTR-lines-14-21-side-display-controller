@@ -39,6 +39,14 @@ class Controller extends React.Component {
 
 	}
 
+	updateDisplayMode(auto, left, right) {
+		this.setState({
+			autoDisplayMode: !!auto,
+			leftDisplay: !!left,
+			rightDisplay: !!right,
+		});
+	}
+
 	updateLine(line) {
 		TypeChecker.checkTypeOf(line, "string");
 		this.setState({
@@ -193,7 +201,7 @@ class Controller extends React.Component {
 								itemHeader="左侧"
 								itemText={this.state.leftDisplay ? "开" : "关"}
 								dataTag="status-display-switch"
-								dataValue={this.state.rightDisplay ? "开" : "关"}
+								dataValue={this.state.leftDisplay ? "开" : "关"}
 							/>
 							<StatusCell
 								itemHeader="显示模式"
@@ -268,8 +276,11 @@ class Controller extends React.Component {
 
 						{this.state.modalMode === MODAL_MODES.setDisplayMode ?
 							<SetDisplayModeDialog
-								onDone={closeModal}
-								onClose={closeModal}
+								onDone={(auto, left, right) => {
+									this.updateDisplayMode(auto, left, right);
+									closeModal();
+								}}
+								onClose={(closeModal)}
 
 								autoDisplayMode={this.state.autoDisplayMode}
 								leftDisplay={this.state.leftDisplay}

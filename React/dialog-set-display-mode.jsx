@@ -2,6 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 import { Dialog } from "./dialog.js";
+import { RadioGroupContainer, RadioItem } from "./radio-group.js";
 
 class SetDisplayModeDialog extends React.Component {
 	constructor(props) {
@@ -11,15 +12,60 @@ class SetDisplayModeDialog extends React.Component {
 			autoDisplayMode: this.props.autoDisplayMode,
 			leftDisplay: this.props.leftDisplay,
 			rightDisplay: this.props.rightDisplay,
-		}
+		};
 	}
 
 	done() {
-		this.props.onDone();
+		const auto = this.state.autoDisplayMode;
+		const left = this.state.leftDisplay;
+		const right = this.state.rightDisplay;
+		this.props.onDone(auto, left, right);
 	}
 
 	close() {
 		this.props.onClose();
+	}
+
+	setAutoDisplayMode(mode) {
+		mode = !!mode;
+		this.setState({
+			autoDisplayMode: mode,
+			leftDisplay: !!this.state.leftDisplay || mode,
+			rightDisplay: !!this.state.rightDisplay || mode,
+		});
+	}
+
+	setSideDisplay(side, display) {
+		const sides = {
+			"left": Symbol(),
+			"right": Symbol(),
+		};
+
+		if (!sides.hasOwnProperty(side)) {
+			throw new Error(`Invalid side: ${side}; valid sides are ${Array.from(Object.keys(sides))}.`);
+		}
+
+		else {
+			display = !!display;
+			this.setState({
+				autoDisplayMode: this.state.autoDisplayMode && display,
+			});
+
+			switch (side) {
+				case "left":
+					this.setState({
+						leftDisplay: display,
+					});
+					break;
+				case "right":
+					this.setState({
+						rightDisplay: display,
+					});
+					break;
+				default:
+					break;
+			}
+		}
 	}
 
 	render() {
@@ -33,47 +79,73 @@ class SetDisplayModeDialog extends React.Component {
 
 				<div>
 					<div>显示模式：</div>
-					<label>
-						<input id="js-0" type="radio" name="autoDisplayMode" value={true}
+					<RadioGroupContainer>
+						<RadioItem
+							name="autoDisplayMode"
 							checked={this.state.autoDisplayMode}
-							onChange={(e)=>{
-								this.setState({
-									autoDisplayMode: e.target.checked,
-								});
-								this.setState((prevState) => {
-									console.log(prevState);
-								})
+							onChange={()=>{
+								this.setAutoDisplayMode(true);
 							}}
-							style={{display: "none"}}
+							text="自动"
 						/>
-						<button
-							onClick={() => {
-								document.getElementById("js-0").click();
-							}}
-						>
-							自动
-						</button>
-					</label>
-					<label>
-						<input type="radio" name="autoDisplayMode" value={false}
+						<RadioItem
+							name="autoDisplayMode"
 							checked={!this.state.autoDisplayMode}
-							onChange={()=>{}}
-							tabIndex="-1"
-						/>
-						<button
-							onClick={() => {
-								this.setState({autoDisplayMode: false});
+							onChange={()=>{
+								this.setAutoDisplayMode(false);
 							}}
-							tabIndex="0"
-						>
-							手动
-						</button>
-					</label>
+							text="手动"
+						/>
+					</RadioGroupContainer>
 
 					<div>左侧：</div>
+					<RadioGroupContainer>
+						<RadioItem
+							name="leftDisplay"
+							checked={this.state.leftDisplay}
+							disabled={this.state.autoDisplayMode}
+							onChange={()=>{
+								this.setSideDisplay("left", true);
+							}}
+							text="开"
+						/>
+						<RadioItem
+							name="leftDisplay"
+							checked={!this.state.leftDisplay}
+							disabled={this.state.autoDisplayMode}
+							onChange={()=>{
+								this.setSideDisplay("left", false);
+							}}
+							text="关"
+						/>
+					</RadioGroupContainer>
+
 					<div>右侧：</div>
+					<RadioGroupContainer>
+						<RadioItem
+							name="rightDisplay"
+							checked={this.state.rightDisplay}
+							disabled={this.state.autoDisplayMode}
+							onChange={()=>{
+								this.setSideDisplay("right", true);
+							}}
+							text="开"
+						/>
+						<RadioItem
+							name="rightDisplay"
+							checked={!this.state.rightDisplay}
+							disabled={this.state.autoDisplayMode}
+							onChange={()=>{
+								this.setSideDisplay("right", false);
+							}}
+							text="关"
+						/>
+					</RadioGroupContainer>
+
 				</div>
+
 				<div className="warning-notes">注意：运营时请始终选择自动模式。</div>
+
 			</Dialog>
 		);
 	}

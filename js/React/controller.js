@@ -38,6 +38,14 @@ class Controller extends React.Component {
 		};
 	}
 
+	updateDisplayMode(auto, left, right) {
+		this.setState({
+			autoDisplayMode: !!auto,
+			leftDisplay: !!left,
+			rightDisplay: !!right
+		});
+	}
+
 	updateLine(line) {
 		TypeChecker.checkTypeOf(line, "string");
 		this.setState({
@@ -192,7 +200,7 @@ class Controller extends React.Component {
 							itemHeader: "\u5DE6\u4FA7",
 							itemText: this.state.leftDisplay ? "开" : "关",
 							dataTag: "status-display-switch",
-							dataValue: this.state.rightDisplay ? "开" : "关"
+							dataValue: this.state.leftDisplay ? "开" : "关"
 						}),
 						React.createElement(StatusCell, {
 							itemHeader: "\u663E\u793A\u6A21\u5F0F",
@@ -271,7 +279,10 @@ class Controller extends React.Component {
 					onCloseModal: this.closeModal.bind(this)
 				},
 				this.state.modalMode === MODAL_MODES.setDisplayMode ? React.createElement(SetDisplayModeDialog, {
-					onDone: closeModal,
+					onDone: (auto, left, right) => {
+						this.updateDisplayMode(auto, left, right);
+						closeModal();
+					},
 					onClose: closeModal,
 
 					autoDisplayMode: this.state.autoDisplayMode,
