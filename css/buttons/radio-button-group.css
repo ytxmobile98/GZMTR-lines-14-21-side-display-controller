@@ -35,5 +35,4 @@
 }
 .radio-button-group__radio:checked:disabled + .radio-button-group__text {
 	background-color: var(--disabled-bg-color);
-	color: white;
 }
