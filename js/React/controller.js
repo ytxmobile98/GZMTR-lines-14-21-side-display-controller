@@ -46,69 +46,18 @@ class Controller extends React.Component {
 		});
 	}
 
-	updateLine(line) {
+	updateOutputDisplay(line, serviceType, destination) {
+
 		TypeChecker.checkTypeOf(line, "string");
-		this.setState({
-			line: line
-		});
-	}
-
-	/* Usage:
- Two parameters:
- 	updateOutputDisplay(newServiceType, newDestination) OR
- 	updateOutputDisplay(newDestination, newServiceType)
- 	One parameter:
- 	updateOutputDisplay(newServiceType) OR
- 	updateOutputDisplay(newDestination)
- */
-	updateOutputDisplay(...args) {
-
-		const showUsageInfo = () => {
-			throw new TypeError(`Usage:
-
-				Two parameters:
-					updateOutputDisplay(newServiceType, newDestination) OR
-					updateOutputDisplay(newDestination, newServiceType)
-
-				One parameter:
-					updateOutputDisplay(newServiceType) OR
-					updateOutputDisplay(newDestination)
-			`);
-		};
-
-		const checkUpdateArgs = (...args) => {
-
-			if (args.length !== 1 && args.length !== 2) {
-				showUsageInfo();
-			} else {
-				args.forEach(arg => {
-					if (!(arg instanceof ServiceType || arg instanceof Station)) {
-						showUsageInfo();
-					}
-				});
-			}
-
-			return true;
-		};
+		TypeChecker.checkTypeOf(serviceType, ServiceType);
+		TypeChecker.checkTypeOf(destination, Station);
 
 		const that = this;
-
-		if (checkUpdateArgs(...args)) {
-
-			args.forEach(arg => {
-				if (arg instanceof ServiceType) {
-					that.setState({
-						serviceType: arg
-					});
-				} else if (arg instanceof Station) {
-					that.setState({
-						destination: arg
-					});
-				} else {
-					showUsageInfo();
-				}
-			});
-		}
+		that.setState({
+			line: line,
+			serviceType: serviceType,
+			destination: destination
+		});
 	}
 
 	componentDidMount() {
@@ -279,10 +228,10 @@ class Controller extends React.Component {
 					onCloseModal: this.closeModal.bind(this)
 				},
 				this.state.modalMode === MODAL_MODES.setDisplayMode ? React.createElement(SetDisplayModeDialog, {
-					onDone: (auto, left, right) => {
+					updateDisplayMode: ((auto, left, right) => {
 						this.updateDisplayMode(auto, left, right);
 						closeModal();
-					},
+					}).bind(this),
 					onClose: closeModal,
 
 					autoDisplayMode: this.state.autoDisplayMode,
@@ -291,8 +240,16 @@ class Controller extends React.Component {
 				}) : null,
 				this.state.modalMode === MODAL_MODES.setDestination ? React.createElement(SetDestinationDialog, {
 					title: "\u9009\u62E9\u76EE\u7684\u5730",
-					onDone: closeModal,
-					onClose: closeModal
+
+					updateOutputDisplay: ((line, serviceType, destination) => {
+						this.updateOutputDisplay(line, serviceType, destination);
+						closeModal();
+					}).bind(this),
+					onClose: closeModal,
+
+					line: this.state.line,
+					serviceType: this.state.serviceType,
+					destination: this.state.destination
 				}) : null
 			) : null
 		);

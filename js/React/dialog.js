@@ -80,6 +80,7 @@ class Dialog extends React.Component {
 			"div",
 			{ className: "modal-dialog" },
 			React.createElement(DialogHeader, {
+				onGoBack: this.props.onGoBack,
 				title: this.props.title,
 				onClose: this.close.bind(this)
 			}),
@@ -90,6 +91,7 @@ class Dialog extends React.Component {
 			),
 			React.createElement(DialogFooter, {
 				onDone: this.done.bind(this),
+				doneText: this.props.doneText,
 				onClose: this.close.bind(this)
 			})
 		);
