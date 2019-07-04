@@ -1,6 +1,5 @@
 "use strict";
 
-import { TypeChecker } from "../type-checker.js";
 import { Dialog } from "./dialog.js";
 import { RadioGroup, RadioItem } from "./radio-group.js";
 
