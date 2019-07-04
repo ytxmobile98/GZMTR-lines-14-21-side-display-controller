@@ -5,6 +5,7 @@
 @import url("dialog-footer.css");
 
 @import url("dialog-set-display-mode.css");
+@import url("dialog-set-destination.css");
 
 .modal-dialog {
 	position: absolute;
