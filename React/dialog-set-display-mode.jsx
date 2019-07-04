@@ -125,7 +125,6 @@ class SetDisplayModeDialog extends React.Component {
 					<RadioGroup header="右侧">
 						{rightDisplay}
 					</RadioGroup>
-
 				</div>
 
 				<div className="notes set-display-mode__notes">
