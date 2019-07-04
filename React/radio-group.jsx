@@ -41,7 +41,7 @@ class RadioItem extends React.PureComponent {
 					onChange={that.props.onChange}
 					tabIndex="-1"
 				/>
-				<button className="radio-button-group__text"
+				<button className="radio-button-group__text-button"
 					disabled={that.props.disabled}
 					onClick={onClickButton}
 				>

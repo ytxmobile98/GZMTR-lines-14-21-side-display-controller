@@ -48,7 +48,7 @@ class RadioItem extends React.PureComponent {
 			}),
 			React.createElement(
 				"button",
-				{ className: "radio-button-group__text",
+				{ className: "radio-button-group__text-button",
 					disabled: that.props.disabled,
 					onClick: onClickButton
 				},

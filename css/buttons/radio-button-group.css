@@ -20,23 +20,23 @@
 	display: none;
 }
 
-.radio-button-group__text {
+.radio-button-group__text-button {
 	line-height: 1.5em;
 	padding: 0 0.25em;
 	text-align: inherit;
-	
+
 	border: 2px solid;
 	border-color: var(--action-bg-color);
 	color: var(--action-bg-color);
 }
-.radio-button-group__text:disabled {
+.radio-button-group__text-button:disabled {
 	border-color: var(--disabled-bg-color);
 }
 
-.radio-button-group__radio:checked + .radio-button-group__text {
+.radio-button-group__radio:checked + .radio-button-group__text-button {
 	background-color: var(--action-bg-color);
 	color: white;
 }
-.radio-button-group__radio:checked:disabled + .radio-button-group__text {
+.radio-button-group__radio:checked:disabled + .radio-button-group__text-button {
 	background-color: var(--disabled-bg-color);
 }
