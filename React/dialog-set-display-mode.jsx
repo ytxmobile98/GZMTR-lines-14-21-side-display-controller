@@ -38,35 +38,20 @@ class SetDisplayModeDialog extends React.Component {
 	}
 
 	setSideDisplay(side, display) {
-		const sides = {
-			"left": Symbol(),
-			"right": Symbol(),
-		};
+		const that = this;
+		const sides = ["left", "right"];
 
-		if (!sides.hasOwnProperty(side)) {
-			throw new Error(`Invalid side: ${side}; valid sides are ${Array.from(Object.keys(sides))}.`);
+		if (!sides.includes(side)) {
+			throw new Error(`Invalid side: ${side}; valid sides are ${sides}.`);
 		}
 
 		else {
 			display = !!display;
-			this.setState({
-				autoDisplayMode: this.state.autoDisplayMode && display,
-			});
-
-			switch (side) {
-				case "left":
-					this.setState({
-						leftDisplay: display,
-					});
-					break;
-				case "right":
-					this.setState({
-						rightDisplay: display,
-					});
-					break;
-				default:
-					break;
-			}
+			const newState = {
+				autoDisplayMode: !!that.state.autoDisplayMode && display,
+			};
+			newState[`${side}Display`] = display;
+			that.setState(newState);
 		}
 	}
 
