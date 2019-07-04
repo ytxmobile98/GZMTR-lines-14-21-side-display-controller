@@ -72,6 +72,55 @@ class SetDisplayModeDialog extends React.Component {
 
 	render() {
 
+		const that = this;
+
+		const boolVals = [true, false];
+		const xor = (a, b) => {
+			return !!a !== !!b;
+		}
+		const xnor = (a, b) => {
+			return !(xor(a, b));
+		}
+
+		const displayModeItems = boolVals.map((i) => {
+			const text = i ? "自动" : "手动";
+			return (
+				<RadioItem
+					name="autoDisplayMode"
+					checked={xnor(i, that.state.autoDisplayMode)}
+					onChange={()=>{
+						that.setAutoDisplayMode(i);
+					}}
+					text={text}
+					key={text}
+				/>
+			);
+		});
+
+		const sides = ["left", "right"];
+		const [leftDisplay, rightDisplay] = sides.map((side) => {
+
+			const radioItems = boolVals.map((i) => {
+				const name = `${side}Display`;
+				const text = i ? "开" : "关";
+
+				return (
+					<RadioItem
+						name={name}
+						checked={xnor(i, that.state[name])}
+						disabled={that.state.autoDisplayMode}
+						onChange={()=>{
+							that.setSideDisplay(side, i);
+						}}
+						text={text}
+						key={text}
+					/>
+				);
+			});
+			return radioItems;
+
+		});
+
 		return (
 			<Dialog
 				title="开启/关闭方向幕"
@@ -81,64 +130,15 @@ class SetDisplayModeDialog extends React.Component {
 
 				<div className="set-display-mode__container">
 					<RadioGroup header="显示模式">
-						<RadioItem
-							name="autoDisplayMode"
-							checked={this.state.autoDisplayMode}
-							onChange={()=>{
-								this.setAutoDisplayMode(true);
-							}}
-							text="自动"
-						/>
-						<RadioItem
-							name="autoDisplayMode"
-							checked={!this.state.autoDisplayMode}
-							onChange={()=>{
-								this.setAutoDisplayMode(false);
-							}}
-							text="手动"
-						/>
+						{displayModeItems}
 					</RadioGroup>
 
 					<RadioGroup header="左侧">
-						<RadioItem
-							name="leftDisplay"
-							checked={this.state.leftDisplay}
-							disabled={this.state.autoDisplayMode}
-							onChange={()=>{
-								this.setSideDisplay("left", true);
-							}}
-							text="开"
-						/>
-						<RadioItem
-							name="leftDisplay"
-							checked={!this.state.leftDisplay}
-							disabled={this.state.autoDisplayMode}
-							onChange={()=>{
-								this.setSideDisplay("left", false);
-							}}
-							text="关"
-						/>
+						{leftDisplay}
 					</RadioGroup>
 
 					<RadioGroup header="右侧">
-						<RadioItem
-							name="rightDisplay"
-							checked={this.state.rightDisplay}
-							disabled={this.state.autoDisplayMode}
-							onChange={()=>{
-								this.setSideDisplay("right", true);
-							}}
-							text="开"
-						/>
-						<RadioItem
-							name="rightDisplay"
-							checked={!this.state.rightDisplay}
-							disabled={this.state.autoDisplayMode}
-							onChange={()=>{
-								this.setSideDisplay("right", false);
-							}}
-							text="关"
-						/>
+						{rightDisplay}
 					</RadioGroup>
 
 				</div>

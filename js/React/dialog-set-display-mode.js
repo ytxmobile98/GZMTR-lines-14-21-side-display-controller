@@ -70,6 +70,50 @@ class SetDisplayModeDialog extends React.Component {
 
 	render() {
 
+		const that = this;
+
+		const boolVals = [true, false];
+		const xor = (a, b) => {
+			return !!a !== !!b;
+		};
+		const xnor = (a, b) => {
+			return !xor(a, b);
+		};
+
+		const displayModeItems = boolVals.map(i => {
+			const text = i ? "自动" : "手动";
+			return React.createElement(RadioItem, {
+				name: "autoDisplayMode",
+				checked: xnor(i, that.state.autoDisplayMode),
+				onChange: () => {
+					that.setAutoDisplayMode(i);
+				},
+				text: text,
+				key: text
+			});
+		});
+
+		const sides = ["left", "right"];
+		const [leftDisplay, rightDisplay] = sides.map(side => {
+
+			const radioItems = boolVals.map(i => {
+				const name = `${side}Display`;
+				const text = i ? "开" : "关";
+
+				return React.createElement(RadioItem, {
+					name: name,
+					checked: xnor(i, that.state[name]),
+					disabled: that.state.autoDisplayMode,
+					onChange: () => {
+						that.setSideDisplay(side, i);
+					},
+					text: text,
+					key: text
+				});
+			});
+			return radioItems;
+		});
+
 		return React.createElement(
 			Dialog,
 			{
@@ -83,66 +127,17 @@ class SetDisplayModeDialog extends React.Component {
 				React.createElement(
 					RadioGroup,
 					{ header: "\u663E\u793A\u6A21\u5F0F" },
-					React.createElement(RadioItem, {
-						name: "autoDisplayMode",
-						checked: this.state.autoDisplayMode,
-						onChange: () => {
-							this.setAutoDisplayMode(true);
-						},
-						text: "\u81EA\u52A8"
-					}),
-					React.createElement(RadioItem, {
-						name: "autoDisplayMode",
-						checked: !this.state.autoDisplayMode,
-						onChange: () => {
-							this.setAutoDisplayMode(false);
-						},
-						text: "\u624B\u52A8"
-					})
+					displayModeItems
 				),
 				React.createElement(
 					RadioGroup,
 					{ header: "\u5DE6\u4FA7" },
-					React.createElement(RadioItem, {
-						name: "leftDisplay",
-						checked: this.state.leftDisplay,
-						disabled: this.state.autoDisplayMode,
-						onChange: () => {
-							this.setSideDisplay("left", true);
-						},
-						text: "\u5F00"
-					}),
-					React.createElement(RadioItem, {
-						name: "leftDisplay",
-						checked: !this.state.leftDisplay,
-						disabled: this.state.autoDisplayMode,
-						onChange: () => {
-							this.setSideDisplay("left", false);
-						},
-						text: "\u5173"
-					})
+					leftDisplay
 				),
 				React.createElement(
 					RadioGroup,
 					{ header: "\u53F3\u4FA7" },
-					React.createElement(RadioItem, {
-						name: "rightDisplay",
-						checked: this.state.rightDisplay,
-						disabled: this.state.autoDisplayMode,
-						onChange: () => {
-							this.setSideDisplay("right", true);
-						},
-						text: "\u5F00"
-					}),
-					React.createElement(RadioItem, {
-						name: "rightDisplay",
-						checked: !this.state.rightDisplay,
-						disabled: this.state.autoDisplayMode,
-						onChange: () => {
-							this.setSideDisplay("right", false);
-						},
-						text: "\u5173"
-					})
+					rightDisplay
 				)
 			),
 			React.createElement(
