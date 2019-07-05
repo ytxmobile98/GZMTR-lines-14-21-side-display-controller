@@ -45,6 +45,7 @@ class RadioItem extends React.PureComponent {
 				<button className="radio-button-group__text-button"
 					disabled={that.props.disabled}
 					onClick={onClickButton}
+					data-js-has-border={that.props.hasBorder ? true : null}
 				>
 					{that.props.text}
 				</button>

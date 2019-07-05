@@ -67,6 +67,8 @@ class SetDisplayModeDialog extends React.Component {
 			return !!bool ? "true" : "";
 		};
 
+		const hasBorder = true;
+
 		const displayModeItems = boolVals.map(bool => {
 			const text = bool ? "自动" : "手动";
 			const handleChange = e => {
@@ -76,6 +78,7 @@ class SetDisplayModeDialog extends React.Component {
 			return React.createElement(RadioItem, {
 				name: "autoDisplayMode",
 				value: getRadioValue(bool),
+				hasBorder: hasBorder,
 				checked: xnor(bool, that.state.autoDisplayMode),
 				onChange: handleChange,
 				text: text,
@@ -96,6 +99,7 @@ class SetDisplayModeDialog extends React.Component {
 				return React.createElement(RadioItem, {
 					name: name,
 					value: getRadioValue(bool),
+					hasBorder: hasBorder,
 					checked: xnor(bool, that.state[name]),
 					disabled: that.state.autoDisplayMode,
 					onChange: handleChange,
