@@ -1,10 +1,10 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
-import { ServiceType } from "../data/service-type-classes.js";
-import { Station } from "../data/station-classes.js";
+import { ServiceType, Station } from "../data/PROCESSED-LINES-DATA.js";
 
 import { Dialog } from "./dialog.js";
+import { SetDestinationGrid } from "./dialog-set-destination-grid.js";
 
 class SetDestinationDialog extends React.Component {
 	constructor(props) {

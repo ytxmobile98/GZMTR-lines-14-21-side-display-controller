@@ -1,10 +1,7 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
-import { ServiceType } from "../data/service-type-classes.js";
-import { Station } from "../data/station-classes.js";
-
-import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
+import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
 const DEFAULT_SERVICE_TYPE = SERVICE_TYPES["不载客"];
 const DEFAULT_DESTINATION = DESTINATIONS["不载客"];
 

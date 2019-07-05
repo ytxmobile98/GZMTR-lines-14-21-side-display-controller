@@ -68,4 +68,4 @@ console.log(`SERVICE_TYPES: `, SERVICE_TYPES);
 console.log(`DESTINATIONS: `, DESTINATIONS);
 console.log(`LINES_INFO: `, LINES_INFO);
 
-export { SERVICE_TYPES, DESTINATIONS, LINES_INFO };
+export { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LINES_INFO };

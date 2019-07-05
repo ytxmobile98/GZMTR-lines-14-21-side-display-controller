@@ -2,9 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { SERVICE_TYPES, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
-import { ServiceType } from "../data/service-type-classes.js";
-import { Station } from "../data/station-classes.js";
+import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
 
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
