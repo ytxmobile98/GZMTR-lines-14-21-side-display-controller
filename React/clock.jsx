@@ -11,22 +11,19 @@ class Clock extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		const that = this;
-		that.tick();
+		this.tick();
 	}
 
 	componentWillUnmount() {
-		const that = this;
-		window.clearTimeout(that.timer);
+		window.clearTimeout(this.timer);
 	}
 
 	tick() {
-		const that = this;
-		that.setState({
+		this.setState({
 			date: new Date(),
 		});
-		that.timer = window.setTimeout(() => {
-			that.tick();
+		this.timer = window.setTimeout(() => {
+			this.tick();
 		}, 10);
 	}
 
@@ -38,7 +35,7 @@ class Clock extends React.PureComponent {
 		}
 
 		const year = dateObj.getFullYear();
-		const month = addLeadingZero(dateObj.getMonth() + 1);	
+		const month = addLeadingZero(dateObj.getMonth() + 1);
 		const date = addLeadingZero(dateObj.getDate());
 
 		const dateStr = `${year}-${month}-${date}`;
