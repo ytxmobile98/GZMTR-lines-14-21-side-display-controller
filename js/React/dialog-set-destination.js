@@ -34,7 +34,7 @@ class SetDestinationDialog extends React.Component {
 			doneText: that.doneTexts.nextStepText,
 
 			// Initialize using current operation information
-			line: props.line,
+			line: String(props.line || ""),
 			filterName: "",
 			serviceType: props.serviceType,
 			destination: props.destination
@@ -44,13 +44,8 @@ class SetDestinationDialog extends React.Component {
 		that.scrollTops = {
 			lineSelector: 0,
 			filterSelector: 0,
-			destinationSelector: 0
+			destSelector: 0
 		};
-	}
-
-	saveScrollTops(item, scrollTop) {
-		// use 0 if converted to NaN
-		this.scrollTops[item] = Number(scrollTop) || 0;
 	}
 
 	goToSetDestination() {
@@ -107,77 +102,7 @@ class SetDestinationDialog extends React.Component {
 				doneText: that.state.doneText,
 				onClose: that.close.bind(that)
 			},
-			that.state.currentDialog === that.dialogs.setDestination ? React.createElement(
-				"div",
-				{ className: "set-destination-grid__container" },
-				React.createElement(
-					"div",
-					{ className: "set-destination-grid__item set-destination-grid__item--header" },
-					"\u7EBF\u8DEF"
-				),
-				React.createElement(
-					"div",
-					{ className: "set-destination-grid__item set-destination-grid__item--options-container" },
-					React.createElement(
-						"div",
-						null,
-						"\u4E0D\u8F7D\u5BA2"
-					),
-					React.createElement(
-						"div",
-						null,
-						"14\u53F7\u7EBF"
-					),
-					React.createElement(
-						"div",
-						null,
-						"21\u53F7\u7EBF"
-					)
-				),
-				React.createElement(
-					"div",
-					{ className: "set-destination-grid__item set-destination-grid__item--header" },
-					"\u7B5B\u9009\u5217\u8868"
-				),
-				React.createElement(
-					"div",
-					{ className: "set-destination-grid__item set-destination-grid__item--options-container" },
-					React.createElement(
-						"div",
-						null,
-						"\u7279\u522B\u670D\u52A1"
-					),
-					React.createElement(
-						"div",
-						null,
-						"\u7279\u522B\u670D\u52A1"
-					)
-				),
-				React.createElement(
-					"div",
-					{ className: "set-destination-grid__item set-destination-grid__item--header" },
-					"\u76EE\u7684\u5730"
-				),
-				React.createElement(
-					"div",
-					{ className: "set-destination-grid__item set-destination-grid__item--options-container set-destination-grid__item--destinations" },
-					React.createElement(
-						"div",
-						null,
-						"\u4EAC\u6EAA\u5357\u65B9\u533B\u9662"
-					),
-					React.createElement(
-						"div",
-						null,
-						"\u4EAC\u6EAA\u5357\u65B9\u533B\u9662"
-					),
-					React.createElement(
-						"div",
-						null,
-						"\u4EAC\u6EAA\u5357\u65B9\u533B\u9662"
-					)
-				)
-			) : null
+			that.state.currentDialog === that.dialogs.setDestination ? React.createElement(SetDestinationGrid, null) : null
 		);
 	}
 }

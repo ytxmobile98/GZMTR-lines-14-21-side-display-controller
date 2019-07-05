@@ -34,7 +34,7 @@ class SetDestinationDialog extends React.Component {
 			doneText: that.doneTexts.nextStepText,
 
 			// Initialize using current operation information
-			line: props.line,
+			line: String(props.line || ""),
 			filterName: "",
 			serviceType: props.serviceType,
 			destination: props.destination,
@@ -45,14 +45,8 @@ class SetDestinationDialog extends React.Component {
 		that.scrollTops = {
 			lineSelector: 0,
 			filterSelector: 0,
-			destinationSelector: 0,
+			destSelector: 0,
 		};
-
-	}
-
-	saveScrollTops(item, scrollTop) {
-		// use 0 if converted to NaN
-		this.scrollTops[item] = Number(scrollTop) || 0;
 	}
 
 	goToSetDestination() {
@@ -116,45 +110,8 @@ class SetDestinationDialog extends React.Component {
 			>
 				{that.state.currentDialog ===
 					that.dialogs.setDestination ?
-					<div className="set-destination-grid__container">
 
-						<div className="set-destination-grid__item set-destination-grid__item--header">线路</div>
-						<div className="set-destination-grid__item set-destination-grid__item--options-container">
-							<div>
-								不载客
-							</div>
-							<div>
-								14号线
-							</div>
-							<div>
-								21号线
-							</div>
-						</div>
-
-						<div className="set-destination-grid__item set-destination-grid__item--header">筛选列表</div>
-						<div className="set-destination-grid__item set-destination-grid__item--options-container">
-							<div>
-								特别服务
-							</div>
-							<div>
-								特别服务
-							</div>
-						</div>
-
-						<div className="set-destination-grid__item set-destination-grid__item--header">目的地</div>
-						<div className="set-destination-grid__item set-destination-grid__item--options-container set-destination-grid__item--destinations">
-							<div>
-								京溪南方医院
-							</div>
-							<div>
-								京溪南方医院
-							</div>
-							<div>
-								京溪南方医院
-							</div>
-						</div>
-
-					</div>
+					<SetDestinationGrid />
 				: null}
 
 			</Dialog>
