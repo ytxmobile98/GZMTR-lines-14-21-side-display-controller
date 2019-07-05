@@ -135,8 +135,6 @@ class LED extends React.PureComponent {
 		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
 		this.containerRef = React.createRef();
 		this.destRef = React.createRef();
-
-console.log(this);
 	}
 
 	turnOnOffLED(newState) {
