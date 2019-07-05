@@ -37,40 +37,36 @@ class LEDDestination extends React.PureComponent {
 
 		super(props);
 
-		const that = this;
-		that.destArray = [destination.Chinese, destination.English];
-		that.state = {
+		this.destArray = [destination.Chinese, destination.English];
+		this.state = {
 			currentIndex: 0,
 			useT2TextSize: false
 		};
-		that.flipInterval = Math.max(1000, props.flipInterval) || 2500; // in ms
-		that.destTextRef = React.createRef();
-		that.containerRef = props.containerRef;
+		this.flipInterval = Math.max(1000, props.flipInterval) || 2500; // in ms
+		this.destTextRef = React.createRef();
+		this.containerRef = props.containerRef;
 	}
 
 	setTimeout() {
-		const that = this;
-
 		const getNextIndex = () => {
-			if (that.destArray.length === 0) {
-				throw new Error(`${that.destArray} is of length 0`);
+			if (this.destArray.length === 0) {
+				throw new Error(`${this.destArray} is of length 0`);
 			}
-			return (that.state.currentIndex + 1) % that.destArray.length;
+			return (this.state.currentIndex + 1) % this.destArray.length;
 		};
 
 		const flipDisplay = () => {
-			that.setState({
+			this.setState({
 				currentIndex: getNextIndex(),
 				useT2TextSize: false
 			});
-			that.timer = window.setTimeout(flipDisplay, that.flipInterval);
+			this.timer = window.setTimeout(flipDisplay, this.flipInterval);
 		};
-		that.timer = window.setTimeout(flipDisplay, that.flipInterval);
+		this.timer = window.setTimeout(flipDisplay, this.flipInterval);
 	}
 
 	clearTimeout() {
-		const that = this;
-		window.clearTimeout(that.timer);
+		window.clearTimeout(this.timer);
 	}
 
 	resetTimeout() {
@@ -144,6 +140,8 @@ class LED extends React.PureComponent {
 		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
 		this.containerRef = React.createRef();
 		this.destRef = React.createRef();
+
+		console.log(this);
 	}
 
 	turnOnOffLED(newState) {
@@ -153,14 +151,12 @@ class LED extends React.PureComponent {
 	}
 
 	refreshDisplay(showingContent) {
-		const that = this;
 		showingContent = !!showingContent;
-
 		if (showingContent) {
-			that.turnOnOffLED(false);
+			this.turnOnOffLED(false);
 			window.setTimeout(() => {
-				that.turnOnOffLED(showingContent);
-			}, that.refreshTime);
+				this.turnOnOffLED(showingContent);
+			}, this.refreshTime);
 		}
 	}
 
