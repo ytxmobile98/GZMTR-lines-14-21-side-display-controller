@@ -35,6 +35,7 @@ class RadioItem extends React.PureComponent {
 			<label className="radio-button-group__item">
 				<input ref={that.radioRef} type="radio"
 					name={that.props.name}
+					value={String(that.props.value)}
 					className="radio-button-group__radio"
 					checked={that.props.checked}
 					disabled={that.props.disabled}
