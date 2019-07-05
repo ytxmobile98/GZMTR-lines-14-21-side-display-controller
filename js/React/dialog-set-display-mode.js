@@ -37,7 +37,6 @@ class SetDisplayModeDialog extends React.Component {
 	}
 
 	setSideDisplay(side, display) {
-		const that = this;
 		const sides = ["left", "right"];
 
 		if (!sides.includes(side)) {
@@ -45,16 +44,14 @@ class SetDisplayModeDialog extends React.Component {
 		} else {
 			display = !!display;
 			const newState = {
-				autoDisplayMode: !!that.state.autoDisplayMode && display
+				autoDisplayMode: !!this.state.autoDisplayMode && display
 			};
 			newState[`${side}Display`] = display;
-			that.setState(newState);
+			this.setState(newState);
 		}
 	}
 
 	render() {
-
-		const that = this;
 
 		const boolVals = [true, false];
 		const xor = (a, b) => {
@@ -72,14 +69,14 @@ class SetDisplayModeDialog extends React.Component {
 		const displayModeItems = boolVals.map(bool => {
 			const text = bool ? "自动" : "手动";
 			const handleChange = e => {
-				that.setAutoDisplayMode(!!e.target.value);
+				this.setAutoDisplayMode(!!e.target.value);
 			};
 
 			return React.createElement(RadioItem, {
 				name: "autoDisplayMode",
 				value: getRadioValue(bool),
 				hasBorder: hasBorder,
-				checked: xnor(bool, that.state.autoDisplayMode),
+				checked: xnor(bool, this.state.autoDisplayMode),
 				onChange: handleChange,
 				text: text,
 				key: text
@@ -93,15 +90,15 @@ class SetDisplayModeDialog extends React.Component {
 				const name = `${side}Display`;
 				const text = bool ? "开" : "关";
 				const handleChange = e => {
-					that.setSideDisplay(side, !!e.target.value);
+					this.setSideDisplay(side, !!e.target.value);
 				};
 
 				return React.createElement(RadioItem, {
 					name: name,
 					value: getRadioValue(bool),
 					hasBorder: hasBorder,
-					checked: xnor(bool, that.state[name]),
-					disabled: that.state.autoDisplayMode,
+					checked: xnor(bool, this.state[name]),
+					disabled: this.state.autoDisplayMode,
 					onChange: handleChange,
 					text: text,
 					key: text
