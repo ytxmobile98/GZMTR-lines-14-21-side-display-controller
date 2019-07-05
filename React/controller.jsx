@@ -219,10 +219,10 @@ class Controller extends React.Component {
 
 						{this.state.modalMode === MODAL_MODES.setDisplayMode ?
 							<SetDisplayModeDialog
-								updateDisplayMode={((auto, left, right) => {
+								updateDisplayMode={(auto, left, right) => {
 									this.updateDisplayMode(auto, left, right);
 									closeModal();
-								}).bind(this)}
+								}}
 								onClose={closeModal}
 
 								autoDisplayMode={this.state.autoDisplayMode}
@@ -236,10 +236,10 @@ class Controller extends React.Component {
 							<SetDestinationDialog
 								title="选择目的地"
 
-								updateOutputDisplay={((line, serviceType, destination) => {
+								updateOutputDisplay={(line, serviceType, destination) => {
 									this.updateOutputDisplay(line, serviceType, destination);
 									closeModal();
-								}).bind(this)}
+								}}
 								onClose={closeModal}
 
 								line={this.state.line}

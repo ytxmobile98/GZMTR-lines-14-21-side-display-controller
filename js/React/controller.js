@@ -226,10 +226,10 @@ class Controller extends React.Component {
 					onCloseModal: this.closeModal.bind(this)
 				},
 				this.state.modalMode === MODAL_MODES.setDisplayMode ? React.createElement(SetDisplayModeDialog, {
-					updateDisplayMode: ((auto, left, right) => {
+					updateDisplayMode: (auto, left, right) => {
 						this.updateDisplayMode(auto, left, right);
 						closeModal();
-					}).bind(this),
+					},
 					onClose: closeModal,
 
 					autoDisplayMode: this.state.autoDisplayMode,
@@ -239,10 +239,10 @@ class Controller extends React.Component {
 				this.state.modalMode === MODAL_MODES.setDestination ? React.createElement(SetDestinationDialog, {
 					title: "\u9009\u62E9\u76EE\u7684\u5730",
 
-					updateOutputDisplay: ((line, serviceType, destination) => {
+					updateOutputDisplay: (line, serviceType, destination) => {
 						this.updateOutputDisplay(line, serviceType, destination);
 						closeModal();
-					}).bind(this),
+					},
 					onClose: closeModal,
 
 					line: this.state.line,
