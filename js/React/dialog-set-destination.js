@@ -35,6 +35,7 @@ class SetDestinationDialog extends React.Component {
 
 			// Initialize using current operation information
 			line: props.line,
+			filterName: "",
 			serviceType: props.serviceType,
 			destination: props.destination
 		};

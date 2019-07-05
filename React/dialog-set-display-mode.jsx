@@ -66,14 +66,14 @@ class SetDisplayModeDialog extends React.Component {
 			return !(xor(a, b));
 		}
 
-		const displayModeItems = boolVals.map((i) => {
-			const text = i ? "自动" : "手动";
+		const displayModeItems = boolVals.map((bool) => {
+			const text = bool ? "自动" : "手动";
 			return (
 				<RadioItem
 					name="autoDisplayMode"
-					checked={xnor(i, that.state.autoDisplayMode)}
+					checked={xnor(bool, that.state.autoDisplayMode)}
 					onChange={()=>{
-						that.setAutoDisplayMode(i);
+						that.setAutoDisplayMode(bool);
 					}}
 					text={text}
 					key={text}
@@ -84,17 +84,17 @@ class SetDisplayModeDialog extends React.Component {
 		const sides = ["left", "right"];
 		const [leftDisplay, rightDisplay] = sides.map((side) => {
 
-			const radioItems = boolVals.map((i) => {
+			const radioItems = boolVals.map((bool) => {
 				const name = `${side}Display`;
-				const text = i ? "开" : "关";
+				const text = bool ? "开" : "关";
 
 				return (
 					<RadioItem
 						name={name}
-						checked={xnor(i, that.state[name])}
+						checked={xnor(bool, that.state[name])}
 						disabled={that.state.autoDisplayMode}
 						onChange={()=>{
-							that.setSideDisplay(side, i);
+							that.setSideDisplay(side, bool);
 						}}
 						text={text}
 						key={text}
