@@ -18,9 +18,8 @@ class Controller extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const that = this;
-		that.outputLED = React.createRef();
-		that.state = {
+		this.outputLED = React.createRef();
+		this.state = {
 			// modal mode
 			modalMode: MODAL_MODES.standby,
 
@@ -48,11 +47,10 @@ class Controller extends React.Component {
 	updateOutputDisplay(line, serviceType, destination) {
 
 		TypeChecker.checkTypeOf(line, "string");
-		TypeChecker.checkTypeOf(serviceType, ServiceType);
-		TypeChecker.checkTypeOf(destination, Station);
+		TypeChecker.checkInstanceOf(serviceType, ServiceType);
+		TypeChecker.checkInstanceOf(destination, Station);
 
-		const that = this;
-		that.setState({
+		this.setState({
 			line: line,
 			serviceType: serviceType,
 			destination: destination,
@@ -71,23 +69,20 @@ class Controller extends React.Component {
 	}
 
 	componentWillUnmount() {
-		const that = this;
 		const body = document.body;
-		body.removeEventListener("click", that.bodyClickListener);
-		body.removeEventListener("keydown", that.bodyKeyDownListener);
+		body.removeEventListener("click", this.bodyClickListener);
+		body.removeEventListener("keydown", this.bodyKeyDownListener);
 	}
 
 	setTimeout() {
-		const that = this;
 		const timeout = 60 * 1000;
-		that.timeout = window.setTimeout(() => {
-			that.openModal();
+		this.timeout = window.setTimeout(() => {
+			this.openModal();
 		}, timeout);
 	}
 
 	clearTimeout() {
-		const that = this;
-		window.clearTimeout(that.timeout);
+		window.clearTimeout(this.timeout);
 	}
 
 	resetTimeout() {
@@ -96,19 +91,17 @@ class Controller extends React.Component {
 	}
 
 	openModal(modalName) {
-		const that = this;
 		TypeChecker.checkOptionalTypeOf(modalName, "string");
-		that.setState({
+		this.setState({
 			modalMode: MODAL_MODES[modalName] || MODAL_MODES.standby,
 		});
 	}
 
 	closeModal() {
-		const that = this;
-		that.setState({
+		this.setState({
 			modalMode: null,
 		});
-		that.resetTimeout();
+		this.resetTimeout();
 	}
 
 	render() {
