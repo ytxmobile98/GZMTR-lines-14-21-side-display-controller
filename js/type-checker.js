@@ -33,19 +33,16 @@ class TypeChecker {
 		return true;
 	}
 
-	static checkArrayType(array, type) {
-		const that = this;
-
-		that.checkInstanceOf(array, Array);
-		array.forEach((element) => {
+	static checkArrayType(arr, type) {
+		this.checkInstanceOf(arr, Array);
+		arr.forEach((element) => {
 			if (typeof type === "string") {
-				that.checkTypeOf(element, type);
+				this.checkTypeOf(element, type);
 			}
 			else {
-				that.checkInstanceOf(element, type);
+				this.checkInstanceOf(element, type);
 			}
 		});
-
 		return true;
 	}
 
