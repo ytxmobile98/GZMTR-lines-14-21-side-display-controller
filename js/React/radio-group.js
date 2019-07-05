@@ -42,9 +42,13 @@ class RadioItem extends React.PureComponent {
 				name: that.props.name,
 				value: String(that.props.value),
 				className: "radio-button-group__radio",
-				checked: that.props.checked,
+
 				disabled: that.props.disabled,
+
+				defaultChecked: that.props.defaultChecked,
+				checked: that.props.checked,
 				onChange: that.props.onChange,
+
 				tabIndex: "-1"
 			}),
 			React.createElement(
