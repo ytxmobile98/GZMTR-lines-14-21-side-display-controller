@@ -25,11 +25,16 @@
 	padding: 0 0.25em;
 	text-align: inherit;
 }
+.radio-button-group__text-button:disabled {
+	color: var(--disabled-text-color);
+}
 .radio-button-group__text-button[data-js-has-border] {
 	border: 2px solid var(--action-bg-color);
+}
+.radio-button-group__text-button[data-js-has-border]:enabled {
 	color: var(--action-bg-color);
 }
-.radio-button-group__text-button:disabled[data-js-has-border] {
+.radio-button-group__text-button[data-js-has-border]:disabled {
 	border-color: var(--disabled-bg-color);
 }
 .radio-button-group__text-button[data-js-extra-line-height] {
