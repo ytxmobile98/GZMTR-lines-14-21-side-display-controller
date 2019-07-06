@@ -24,35 +24,33 @@ class RadioItem extends React.PureComponent {
 	}
 
 	render() {
-		const that = this;
-
 		const onClickButton = () => {
-			const radio = that.radioRef.current;
+			const radio = this.radioRef.current;
 			radio.click();
 		};
 
 		return (
 			<label className="radio-button-group__item">
-				<input ref={that.radioRef} type="radio"
-					name={that.props.name}
-					value={String(that.props.value)}
+				<input ref={this.radioRef} type="radio"
+					name={this.props.name}
+					value={String(this.props.value)}
 					className="radio-button-group__radio"
 
-					disabled={that.props.disabled}
+					disabled={this.props.disabled}
 
-					defaultChecked={that.props.defaultChecked}
-					checked={that.props.checked}
-					onChange={that.props.onChange}
+					defaultChecked={this.props.defaultChecked}
+					checked={this.props.checked}
+					onChange={this.props.onChange}
 
 					tabIndex="-1"
 				/>
 				<button className="radio-button-group__text-button"
-					disabled={that.props.disabled}
+					disabled={this.props.disabled}
 					onClick={onClickButton}
-					data-js-has-border={!!that.props.hasBorder ? true : null}
-					data-js-extra-line-height={!!that.props.extraLineHeight ? true : null}
+					data-js-has-border={!!this.props.hasBorder ? true : null}
+					data-js-extra-line-height={!!this.props.extraLineHeight ? true : null}
 				>
-					{that.props.text}
+					{this.props.text}
 				</button>
 			</label>
 		);
