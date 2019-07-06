@@ -27,6 +27,8 @@ class SetDestinationDialog extends React.Component {
 		this.state = {
 			// Current dialog state
 			currentDialog: this.dialogs.setDestination,
+
+			// Handling navigation
 			handleGoBack: undefined,
 			handleDone: this.goToSetServiceType,
 			doneText: this.doneTexts.nextStepText,
@@ -34,8 +36,8 @@ class SetDestinationDialog extends React.Component {
 			// Initialize using current operation information
 			line: String(props.line || ""),
 			filterName: "",
-			serviceType: props.serviceType,
-			destination: props.destination
+			destination: props.destination,
+			serviceType: props.serviceType
 		};
 
 		// Saving scrollTops for each scrolling field
@@ -99,7 +101,7 @@ class SetDestinationDialog extends React.Component {
 				doneText: this.state.doneText,
 				onClose: this.close.bind(this)
 			},
-			this.state.currentDialog === this.dialogs.setDestination ? React.createElement(SetDestinationGrid, null) : null
+			this.state.currentDialog === this.dialogs.setDestination ? React.createElement(SetDestinationGrid, { line: this.state.line }) : null
 		);
 	}
 }

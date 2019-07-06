@@ -6,6 +6,8 @@ import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LINES_INFO } from ".
 import { Filter } from "../data/filter-classes.js";
 
 import { RadioGroup, RadioItem } from "./radio-group.js";
+import { LineSelector } from "./dialog-selector-line.js";
+import { FilterSelector } from "./dialog-selector-filter.js";
 
 class SetDestinationGrid extends React.Component {
 	constructor(props) {
@@ -26,7 +28,23 @@ class SetDestinationGrid extends React.Component {
 				filterSelector: 0,
 				destSelector: 0,
 			},
-		}
+		};
+
+		this.lineSelectorRef = React.createRef();
+		this.filterSelectorRef = React.createRef();
+		this.destSelectorRef = React.createRef();
+	}
+
+	updateLine(line) {
+		this.setState({
+			line: String(line || ""),
+		});
+	}
+
+	updateFilterName(filterName) {
+		this.setState({
+			filterName: String(filterName || ""),
+		});
 	}
 
 	saveScrollTop(item, value) {
@@ -42,45 +60,29 @@ class SetDestinationGrid extends React.Component {
 			<div className="set-destination-grid__container">
 
 				<div className="set-destination-grid__item set-destination-grid__item--header">线路</div>
-				<div className="set-destination-grid__item set-destination-grid__item--options-container">
-					<RadioItem
-						name="line"
-						value="不载客"
-						defaultChecked={true}
-						extraLineHeight={extraLineHeight}
-						text="不载客"
-						key="不载客"
-					/>
-					<RadioItem
-						name="line"
-						value="14号线"
-						extraLineHeight={extraLineHeight}
-						text="14号线"
-						key="14号线"
-					/>
-					<RadioItem
-						name="line"
-						value="21号线"
-						extraLineHeight={extraLineHeight}
-						text="21号线"
-						key="21号线"
+				<div className="set-destination-grid__item set-destination-grid__item--options-container"
+					ref={this.lineSelectorRef}
+				>
+					<LineSelector
+						line={this.state.line}
+						updateLine={this.updateLine.bind(this)}
 					/>
 				</div>
 
 				<div className="set-destination-grid__item set-destination-grid__item--header">筛选列表</div>
-				<div className="set-destination-grid__item set-destination-grid__item--options-container">
-					<RadioItem
-						name="filter"
-						value="全部"
-						defaultChecked={true}
-						extraLineHeight={extraLineHeight}
-						text="全部"
-						key="全部"
+				<div className="set-destination-grid__item set-destination-grid__item--options-container"
+					ref={this.filterSelectorRef}
+				>
+					<FilterSelector
+						line={this.state.line}
+						updateFilterName={this.updateFilterName.bind(this)}
 					/>
 				</div>
 
 				<div className="set-destination-grid__item set-destination-grid__item--header">目的地</div>
-				<div className="set-destination-grid__item set-destination-grid__item--options-container set-destination-grid__item--destinations">
+				<div className="set-destination-grid__item set-destination-grid__item--options-container set-destination-grid__item--destinations"
+					ref={this.destSelectorRef}
+				>
 					<RadioItem
 						name="destination"
 						value="京溪南方医院"

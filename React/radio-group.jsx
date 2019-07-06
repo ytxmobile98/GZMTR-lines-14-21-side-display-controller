@@ -21,6 +21,7 @@ class RadioItem extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.radioRef = React.createRef();
+		this.buttonRef = React.createRef();
 	}
 
 	render() {
@@ -44,9 +45,12 @@ class RadioItem extends React.PureComponent {
 
 					tabIndex="-1"
 				/>
-				<button className="radio-button-group__text-button"
+				<button ref={this.buttonRef}
+					className="radio-button-group__text-button"
+
 					disabled={this.props.disabled}
 					onClick={onClickButton}
+
 					data-js-has-border={!!this.props.hasBorder ? true : null}
 					data-js-extra-line-height={!!this.props.extraLineHeight ? true : null}
 				>
