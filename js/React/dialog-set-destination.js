@@ -14,24 +14,22 @@ class SetDestinationDialog extends React.Component {
 		TypeChecker.checkInstanceOf(props.serviceType, ServiceType);
 		TypeChecker.checkInstanceOf(props.destination, Station);
 
-		const that = this;
-
-		that.dialogs = {
+		this.dialogs = {
 			setServiceType: Symbol(),
 			setDestination: Symbol()
 		};
 
-		that.doneTexts = {
+		this.doneTexts = {
 			nextStepText: "下一步",
 			finishText: "完成"
 		};
 
-		that.state = {
+		this.state = {
 			// Current dialog state
-			currentDialog: that.dialogs.setDestination,
+			currentDialog: this.dialogs.setDestination,
 			handleGoBack: undefined,
-			handleDone: that.goToSetServiceType,
-			doneText: that.doneTexts.nextStepText,
+			handleDone: this.goToSetServiceType,
+			doneText: this.doneTexts.nextStepText,
 
 			// Initialize using current operation information
 			line: String(props.line || ""),
@@ -41,7 +39,7 @@ class SetDestinationDialog extends React.Component {
 		};
 
 		// Saving scrollTops for each scrolling field
-		that.scrollTops = {
+		this.scrollTops = {
 			lineSelector: 0,
 			filterSelector: 0,
 			destSelector: 0
@@ -75,11 +73,10 @@ class SetDestinationDialog extends React.Component {
 	}
 
 	render() {
-		const that = this;
-		const dialogs = that.dialogs;
+		const dialogs = this.dialogs;
 
 		const title = (() => {
-			switch (that.state.currentDialog) {
+			switch (this.state.currentDialog) {
 				case dialogs.setDestination:
 					return "选择目的地";
 					break;
@@ -95,14 +92,14 @@ class SetDestinationDialog extends React.Component {
 		return React.createElement(
 			Dialog,
 			{
-				onGoBack: that.state.handleGoBack && that.state.handleGoBack.bind(that),
+				onGoBack: this.state.handleGoBack && this.state.handleGoBack.bind(this),
 				title: title,
 
-				onDone: that.state.handleDone && that.state.handleDone.bind(that),
-				doneText: that.state.doneText,
-				onClose: that.close.bind(that)
+				onDone: this.state.handleDone && this.state.handleDone.bind(this),
+				doneText: this.state.doneText,
+				onClose: this.close.bind(this)
 			},
-			that.state.currentDialog === that.dialogs.setDestination ? React.createElement(SetDestinationGrid, null) : null
+			this.state.currentDialog === this.dialogs.setDestination ? React.createElement(SetDestinationGrid, null) : null
 		);
 	}
 }
