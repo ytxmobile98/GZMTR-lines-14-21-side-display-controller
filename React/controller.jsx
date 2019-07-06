@@ -8,7 +8,6 @@ import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
-import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
 import { SetDestinationDialog } from "./dialog-set-destination.js";
@@ -21,7 +20,7 @@ class Controller extends React.Component {
 		this.outputLED = React.createRef();
 		this.state = {
 			// modal mode
-			modalMode: MODAL_MODES.standby,
+			modalMode: "standby",
 
 			// current display mode
 			autoDisplayMode: true,
@@ -93,7 +92,7 @@ class Controller extends React.Component {
 	openModal(modalName) {
 		TypeChecker.checkOptionalTypeOf(modalName, "string");
 		this.setState({
-			modalMode: MODAL_MODES[modalName] || MODAL_MODES.standby,
+			modalMode: modalName || "standby",
 		});
 	}
 
@@ -186,7 +185,7 @@ class Controller extends React.Component {
 
 						<button
 							className="master-button action-button"
-							onClick={()=>{openModal("setDestination");}}
+							onClick={()=>{openModal("setService");}}
 						>
 							更改目的地/车种
 						</button>
@@ -210,7 +209,7 @@ class Controller extends React.Component {
 						onCloseModal={this.closeModal.bind(this)}
 					>
 
-						{this.state.modalMode === MODAL_MODES.setDisplayMode ?
+						{this.state.modalMode === "setDisplayMode" ?
 							<SetDisplayModeDialog
 								updateDisplayMode={(auto, left, right) => {
 									this.updateDisplayMode(auto, left, right);
@@ -225,7 +224,7 @@ class Controller extends React.Component {
 							: null
 						}
 
-						{this.state.modalMode === MODAL_MODES.setDestination ?
+						{this.state.modalMode === "setService" ?
 							<SetDestinationDialog
 								title="选择目的地"
 

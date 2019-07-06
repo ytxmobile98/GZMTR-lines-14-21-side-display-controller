@@ -8,7 +8,6 @@ import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
-import { MODAL_MODES } from "./modal-modes.js";
 import { Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
 import { SetDestinationDialog } from "./dialog-set-destination.js";
@@ -21,7 +20,7 @@ class Controller extends React.Component {
 		this.outputLED = React.createRef();
 		this.state = {
 			// modal mode
-			modalMode: MODAL_MODES.standby,
+			modalMode: "standby",
 
 			// current display mode
 			autoDisplayMode: true,
@@ -92,7 +91,7 @@ class Controller extends React.Component {
 	openModal(modalName) {
 		TypeChecker.checkOptionalTypeOf(modalName, "string");
 		this.setState({
-			modalMode: MODAL_MODES[modalName] || MODAL_MODES.standby
+			modalMode: modalName || "standby"
 		});
 	}
 
@@ -194,7 +193,7 @@ class Controller extends React.Component {
 						{
 							className: "master-button action-button",
 							onClick: () => {
-								openModal("setDestination");
+								openModal("setService");
 							}
 						},
 						"\u66F4\u6539\u76EE\u7684\u5730/\u8F66\u79CD"
@@ -218,7 +217,7 @@ class Controller extends React.Component {
 					onUnmount: this.resetTimeout.bind(this),
 					onCloseModal: this.closeModal.bind(this)
 				},
-				this.state.modalMode === MODAL_MODES.setDisplayMode ? React.createElement(SetDisplayModeDialog, {
+				this.state.modalMode === "setDisplayMode" ? React.createElement(SetDisplayModeDialog, {
 					updateDisplayMode: (auto, left, right) => {
 						this.updateDisplayMode(auto, left, right);
 						closeModal();
@@ -229,7 +228,7 @@ class Controller extends React.Component {
 					leftDisplay: this.state.leftDisplay,
 					rightDisplay: this.state.rightDisplay
 				}) : null,
-				this.state.modalMode === MODAL_MODES.setDestination ? React.createElement(SetDestinationDialog, {
+				this.state.modalMode === "setService" ? React.createElement(SetDestinationDialog, {
 					title: "\u9009\u62E9\u76EE\u7684\u5730",
 
 					updateOutputDisplay: (line, serviceType, destination) => {

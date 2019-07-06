@@ -2,15 +2,12 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { MODAL_MODES } from "./modal-modes.js";
-
 class Modal extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			modalMode: props.modalMode,
+			modalMode: String(props.modalMode || "standby"),
 		};
-		TypeChecker.checkOptionalTypeOf(props.modalMode, "symbol");
 	}
 
 	close() {
@@ -34,7 +31,7 @@ class Modal extends React.Component {
 	render() {
 
 		const defaultToolTip = "关闭遮罩";
-		const closedModalText = (this.state.modalMode === MODAL_MODES.standby) ? "当前处于待机模式，点击或按Esc以恢复" : defaultToolTip;
+		const closedModalText = (this.state.modalMode === "standby") ? "当前处于待机模式，点击或按Esc以恢复" : defaultToolTip;
 
 		const closeModal = this.close.bind(this);
 
@@ -53,4 +50,4 @@ class Modal extends React.Component {
 	}
 }
 
-export { MODAL_MODES, Modal };
+export { Modal };
