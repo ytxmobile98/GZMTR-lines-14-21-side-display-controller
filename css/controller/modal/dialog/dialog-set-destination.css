@@ -1,7 +1,7 @@
 @import url(colors/COLOR-CODES.css);
 
 .set-destination-grid__container {
-	flex-grow: 0.9;
+	flex-grow: 1;
 	width: 100%;
 
 	display: grid;
