@@ -19,18 +19,16 @@ class LineInfo {
 
 		TypeChecker.checkArrayType(rawFilters, RawFilter);
 
-		const that = this;
+		this.line = line;
+		this.destinations = destinations;
 
-		that.line = line;
-		that.destinations = destinations;
+		this.serviceTypes = serviceTypes;
+		this.defaultServiceType = defaultServiceType;
+		this.crossLineServiceType = crossLineServiceType;
 
-		that.serviceTypes = serviceTypes;
-		that.defaultServiceType = defaultServiceType;
-		that.crossLineServiceType = crossLineServiceType;
-
-		that.filters = new Map();
+		this.filters = new Map();
 		rawFilters.forEach((rawFilter) => {
-			that.addFilter(rawFilter.name, rawFilter.destinations, rawFilter.serviceType);
+			this.addFilter(rawFilter.name, rawFilter.destinations, rawFilter.serviceType);
 		});
 	}
 
@@ -40,7 +38,13 @@ class LineInfo {
 		TypeChecker.checkArrayType(destinations, "string");
 		TypeChecker.checkOptionalTypeOf(serviceType, "string");
 
-		const that = this;
+		const line = this.line;;
+		destinations = destinations.map((ChineseName) => {
+			return DESTINATIONS[ChineseName];
+		});
+
+		serviceType = SERVICE_TYPES[serviceType] || this.defaultServiceType;
+		const crossLineServiceType = this.crossLineServiceType;
 
 		/* Filter constructor:
 			new Filter(line, name, destinations, serviceType, crossLineServiceType);
@@ -50,17 +54,8 @@ class LineInfo {
 				destinations: array of type Station
 				serviceType, crossLineServiceType: ServiceType
 		*/
-
-		const line = that.line;;
-		destinations = destinations.map((ChineseName) => {
-			return DESTINATIONS[ChineseName];
-		});
-
-		serviceType = SERVICE_TYPES[serviceType] || that.defaultServiceType;
-		const crossLineServiceType = that.crossLineServiceType;
-
 		const newFilter = new Filter(line, name, destinations, serviceType, crossLineServiceType);
-		that.filters.set(newFilter.name, newFilter);
+		this.filters.set(newFilter.name, newFilter);
 	}
 }
 
