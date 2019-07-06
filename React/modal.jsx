@@ -2,11 +2,13 @@
 
 import { TypeChecker } from "../type-checker.js";
 
+const defaultModalMode = "standby";
+
 class Modal extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			modalMode: String(props.modalMode || "standby"),
+			modalMode: String(props.modalMode || defaultModalMode),
 		};
 	}
 
@@ -31,14 +33,19 @@ class Modal extends React.Component {
 	render() {
 
 		const defaultToolTip = "关闭遮罩";
-		const closedModalText = (this.state.modalMode === "standby") ? "当前处于待机模式，点击或按Esc以恢复" : defaultToolTip;
+		const resumeToolTip = "当前处于待机模式，点击或按Esc以恢复";
+		const closedModalText = (this.state.modalMode === defaultModalMode)
+			? resumeToolTip	: defaultToolTip;
 
 		const closeModal = this.close.bind(this);
 
 		return (
 			<div className="modal">
 				<div className="modal__background">
-					<button className="modal__close-button" title={defaultToolTip} onClick={closeModal}>
+					<button className="modal__close-button"
+						title={defaultToolTip}
+						onClick={closeModal}
+					>
 						{closedModalText}
 					</button>
 				</div>
@@ -50,4 +57,4 @@ class Modal extends React.Component {
 	}
 }
 
-export { Modal };
+export { defaultModalMode, Modal };

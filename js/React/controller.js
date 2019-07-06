@@ -8,7 +8,7 @@ import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
-import { Modal } from "./modal.js";
+import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
 import { SetDestinationDialog } from "./dialog-set-destination.js";
 
@@ -20,7 +20,7 @@ class Controller extends React.Component {
 		this.outputLED = React.createRef();
 		this.state = {
 			// modal mode
-			modalMode: "standby",
+			modalMode: defaultModalMode,
 
 			// current display mode
 			autoDisplayMode: true,
@@ -44,12 +44,11 @@ class Controller extends React.Component {
 
 	updateOutputDisplay(line, serviceType, destination) {
 
-		TypeChecker.checkTypeOf(line, "string");
 		TypeChecker.checkInstanceOf(serviceType, ServiceType);
 		TypeChecker.checkInstanceOf(destination, Station);
 
 		this.setState({
-			line: line,
+			line: String(line || ""),
 			serviceType: serviceType,
 			destination: destination
 		});
@@ -88,10 +87,10 @@ class Controller extends React.Component {
 		this.setTimeout();
 	}
 
-	openModal(modalName) {
-		TypeChecker.checkOptionalTypeOf(modalName, "string");
+	openModal(modalMode) {
+		TypeChecker.checkOptionalTypeOf(modalMode, "string");
 		this.setState({
-			modalMode: modalName || "standby"
+			modalMode: modalMode || defaultModalMode
 		});
 	}
 
