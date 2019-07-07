@@ -52,7 +52,7 @@ class LineInfo {
 
 			Argument types:
 				line, name: strings
-				destinations: array of type Station
+				destinations: array of Station
 				serviceType, crossLineServiceType: ServiceType
 		*/
 		const newFilter = new Filter(line, name, destinations, serviceType, crossLineServiceType);
