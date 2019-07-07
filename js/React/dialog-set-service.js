@@ -1,7 +1,8 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
-import { ServiceType, Station } from "../data/PROCESSED-LINES-DATA.js";
+
+import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
 
 import { Dialog } from "./dialog.js";
 import { SetDestinationGrid } from "./dialog-set-destination-grid.js";
@@ -18,37 +19,42 @@ class SetServiceDialog extends React.Component {
 	constructor(props) {
 		super(props);
 
-		TypeChecker.checkTypeOf(props.line, "string");
 		TypeChecker.checkInstanceOf(props.serviceType, ServiceType);
 		TypeChecker.checkInstanceOf(props.destination, Station);
 
+		this.initialLine = String(props.line || ""); // this property is kept to determine whether or not it is a cross-line service
+
 		this.state = {
-			// Current dialog state
 			currentDialog: setDestination,
 
-			// Handling navigation
+			// Handle navigation
 			handleGoBack: undefined,
 			handleDone: this.goToSetServiceType,
 			doneText: nextStepText,
 
-			// Initialize using current operation information
-			line: String(props.line || ""),
-			filterName: "",
-			destination: props.destination,
-			serviceType: props.serviceType
-		};
+			// Initialize service data using current operation information
+			savedLine: this.initialLine,
+			savedFilterName: "",
+			savedDestination: props.destination || DESTINATIONS["不载客"],
+			savedServiceType: props.serviceType || SERVICE_TYPES["不载客"],
 
-		// Saving scrollTops for each scrolling field
-		this.scrollTops = {
-			lineSelector: 0,
-			filterSelector: 0,
-			destSelector: 0
+			// Save scroll tops
+			savedLineSelectorScrollTop: 0,
+			savedfilterSelectorScrollTop: 0,
+			savedDestSelectorScrollTop: 0
 		};
+	}
+
+	saveServiceData(line) {
+		this.setState({
+			savedLine: line
+		});
 	}
 
 	goToSetDestination() {
 		this.setState({
 			currentDialog: setDestination,
+
 			handleGoBack: undefined,
 			handleDone: this.goToSetServiceType,
 			doneText: nextStepText
@@ -58,6 +64,7 @@ class SetServiceDialog extends React.Component {
 	goToSetServiceType() {
 		this.setState({
 			currentDialog: setServiceType,
+
 			handleGoBack: this.goToSetDestination,
 			handleDone: this.updateOutputDisplay,
 			doneText: finishText
@@ -84,7 +91,7 @@ class SetServiceDialog extends React.Component {
 				default:
 					return null;
 					break;
-			}
+			};
 		})();
 
 		return React.createElement(
@@ -97,7 +104,14 @@ class SetServiceDialog extends React.Component {
 				doneText: this.state.doneText,
 				onClose: this.close.bind(this)
 			},
-			this.state.currentDialog === setDestination ? React.createElement(SetDestinationGrid, { line: this.state.line }) : null
+			this.state.currentDialog === setDestination ? React.createElement(SetDestinationGrid, { line: this.state.savedLine,
+				saveServiceData: this.saveServiceData.bind(this)
+			}) : null,
+			this.state.currentDialog === setServiceType ? React.createElement(
+				"div",
+				null,
+				this.state.savedLine
+			) : null
 		);
 	}
 }

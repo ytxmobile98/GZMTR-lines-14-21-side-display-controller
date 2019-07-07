@@ -20,7 +20,6 @@ class SetDestinationGrid extends React.Component {
 
 		TypeChecker.checkOptionalInstanceOf(props.destination, Station);
 		TypeChecker.checkOptionalInstanceOf(props.serviceType, ServiceType);
-
 		this.savedDestination = props.destination || DESTINATIONS["不载客"];
 		this.savedServiceType = props.serviceType || SERVICE_TYPES["不载客"],
 
@@ -48,9 +47,18 @@ class SetDestinationGrid extends React.Component {
 		}
 	}
 
-	componentDidUpdate() {
-		
+	saveSelections() {
+
 	}
+
+	saveScrollTops() {
+
+	}
+
+	componentWillUnmount() {
+		this.props.saveServiceData(this.state.line);
+	}
+
 
 	render() {
 
