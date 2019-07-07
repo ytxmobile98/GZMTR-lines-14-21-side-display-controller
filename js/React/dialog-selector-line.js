@@ -8,7 +8,7 @@ class LineSelector extends React.Component {
 	render() {
 		const lines = Array.from(LINES_INFO.keys());
 		const updateLine = this.props.updateLine;
-		const handleSelect = e => {
+		const handleUpdateLine = e => {
 			updateLine(e.target.value);
 		};
 
@@ -17,7 +17,7 @@ class LineSelector extends React.Component {
 				name: "line",
 				value: line,
 				checked: this.props.line === line,
-				onChange: handleSelect,
+				onClick: handleUpdateLine,
 				extraLineHeight: true,
 				text: line,
 				key: line

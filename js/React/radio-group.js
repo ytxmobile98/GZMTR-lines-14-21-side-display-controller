@@ -46,8 +46,8 @@ class RadioItem extends React.PureComponent {
 
 				defaultChecked: this.props.defaultChecked,
 				checked: this.props.checked,
-				onChange: this.props.onChange,
-				onClick: this.props.onChange,
+				onClick: this.props.onClick || this.props.onChange,
+				onChange: this.props.onChange || this.props.onClick,
 
 				tabIndex: "-1"
 			}),

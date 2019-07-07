@@ -68,7 +68,7 @@ class SetDisplayModeDialog extends React.Component {
 
 		const displayModeItems = boolVals.map(bool => {
 			const text = bool ? "自动" : "手动";
-			const handleChange = e => {
+			const setAutoDisplayMode = e => {
 				this.setAutoDisplayMode(!!e.target.value);
 			};
 
@@ -77,7 +77,7 @@ class SetDisplayModeDialog extends React.Component {
 				value: getRadioValue(bool),
 				hasBorder: hasBorder,
 				checked: xnor(bool, this.state.autoDisplayMode),
-				onChange: handleChange,
+				onClick: setAutoDisplayMode,
 				text: text,
 				key: text
 			});
@@ -89,7 +89,7 @@ class SetDisplayModeDialog extends React.Component {
 			const radioItems = boolVals.map(bool => {
 				const name = `${side}Display`;
 				const text = bool ? "开" : "关";
-				const handleChange = e => {
+				const setSideDisplay = e => {
 					this.setSideDisplay(side, !!e.target.value);
 				};
 
@@ -99,7 +99,7 @@ class SetDisplayModeDialog extends React.Component {
 					hasBorder: hasBorder,
 					checked: xnor(bool, this.state[name]),
 					disabled: this.state.autoDisplayMode,
-					onChange: handleChange,
+					onClick: setSideDisplay,
 					text: text,
 					key: text
 				});

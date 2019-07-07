@@ -36,7 +36,7 @@ class FilterSelector extends React.Component {
 		const filterNames = Array.from(filters.keys());
 
 		const updateFilterName = this.props.updateFilterName;
-		const handleSelect = e => {
+		const handleUpdateFilterName = e => {
 			updateFilterName(e.target.value);
 		};
 
@@ -45,7 +45,7 @@ class FilterSelector extends React.Component {
 				name: "filter",
 				value: filterName,
 				checked: this.props.filterName === filterName,
-				onChange: handleSelect,
+				onClick: handleUpdateFilterName,
 				extraLineHeight: true,
 				text: filterName,
 				key: `${line}-${filterName}`,
