@@ -15,7 +15,7 @@ class SetDestinationGrid extends React.Component {
 
 		this.state = {
 			line: String(props.line || ""),
-			filterName: "",
+			filterName: String(props.filterName || ""),
 		};
 
 		TypeChecker.checkOptionalInstanceOf(props.destination, Station);
@@ -41,22 +41,23 @@ class SetDestinationGrid extends React.Component {
 
 		const line = this.state.line;
 		const filter = LINES_INFO.get(line).filters.get(filterName);
-
 		if (filter) {
 			this.savedServiceType = filter.serviceType;
 		}
 	}
 
 	saveSelections() {
-		this.props.saveSelections(this.state.line);
+		this.props.saveSelections(
+			this.state.line,
+			this.state.filterName,
+		);
 	}
 
 	saveScrollTops() {
-
 	}
 
 	componentWillUnmount() {
-		this.saveSelections()
+		this.saveSelections();
 	}
 
 
@@ -83,6 +84,7 @@ class SetDestinationGrid extends React.Component {
 				>
 					<FilterSelector
 						line={this.state.line}
+						filterName={this.state.filterName}
 						updateFilterName={this.updateFilterName.bind(this)}
 					/>
 				</div>

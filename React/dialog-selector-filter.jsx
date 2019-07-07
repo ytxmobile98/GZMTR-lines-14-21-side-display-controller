@@ -19,7 +19,9 @@ class FilterSelector extends React.Component {
 	}
 
 	componentDidMount() {
-		this.checkFirstItem();
+		if (!this.props.filterName) {
+			this.checkFirstItem();
+		}
 	}
 
 	componentDidUpdate(prevProps) {
@@ -43,6 +45,7 @@ class FilterSelector extends React.Component {
 				<RadioItem
 					name="filter"
 					value={filterName}
+					checked={this.props.filterName === filterName}
 					onChange={handleSelect}
 					extraLineHeight={true}
 					text={filterName}

@@ -45,9 +45,10 @@ class SetServiceDialog extends React.Component {
 		};
 	}
 
-	saveSelections(line) {
+	saveSelections(line, filterName) {
 		this.setState({
 			savedLine: line,
+			savedFilterName: filterName,
 		});
 	}
 
@@ -110,13 +111,21 @@ class SetServiceDialog extends React.Component {
 				onClose={this.close.bind(this)}
 			>
 				{this.state.currentDialog === setDestination ?
-					<SetDestinationGrid line={this.state.savedLine}
+					<SetDestinationGrid
+						initialLine={this.initialLine}
+
+						line={this.state.savedLine}
+						filterName={this.state.savedFilterName}
+
 						saveSelections={this.saveSelections.bind(this)}
 					/>
 				: null}
 
 				{this.state.currentDialog === setServiceType ?
-					<div>{this.state.savedLine}</div>
+					<React.Fragment>
+						<div>{this.state.savedLine}</div>
+						<div>{this.state.savedFilterName}</div>
+					</React.Fragment>
 				: null}
 
 			</Dialog>

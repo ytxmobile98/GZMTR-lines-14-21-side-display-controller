@@ -45,9 +45,10 @@ class SetServiceDialog extends React.Component {
 		};
 	}
 
-	saveSelections(line) {
+	saveSelections(line, filterName) {
 		this.setState({
-			savedLine: line
+			savedLine: line,
+			savedFilterName: filterName
 		});
 	}
 
@@ -104,13 +105,27 @@ class SetServiceDialog extends React.Component {
 				doneText: this.state.doneText,
 				onClose: this.close.bind(this)
 			},
-			this.state.currentDialog === setDestination ? React.createElement(SetDestinationGrid, { line: this.state.savedLine,
+			this.state.currentDialog === setDestination ? React.createElement(SetDestinationGrid, {
+				initialLine: this.initialLine,
+
+				line: this.state.savedLine,
+				filterName: this.state.savedFilterName,
+
 				saveSelections: this.saveSelections.bind(this)
 			}) : null,
 			this.state.currentDialog === setServiceType ? React.createElement(
-				"div",
+				React.Fragment,
 				null,
-				this.state.savedLine
+				React.createElement(
+					"div",
+					null,
+					this.state.savedLine
+				),
+				React.createElement(
+					"div",
+					null,
+					this.state.savedFilterName
+				)
 			) : null
 		);
 	}
