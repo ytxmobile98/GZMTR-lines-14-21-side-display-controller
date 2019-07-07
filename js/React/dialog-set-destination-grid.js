@@ -44,13 +44,19 @@ class SetDestinationGrid extends React.Component {
 		TypeChecker.checkInstanceOf(currentLineInfo, LineInfo);
 
 		const filter = LINES_INFO.get(currentLine).filters.get(filterName);
+		TypeChecker.checkInstanceOf(filter, Filter);
+
 		if (filter) {
 			this.setState({
 				filterName: String(filterName || "")
 			});
-			console.log(initialLine, currentLine);
-			console.log(initialLineInfo, currentLineInfo);
-			this.savedServiceType = filter.serviceType;
+
+			if (!initialLineInfo.isPassengerService || initialLineInfo === currentLineInfo) {
+				this.savedServiceType = filter.serviceType;
+			} else {
+				this.savedServiceType = filter.crossLineServiceType;
+			}
+			console.log(this.savedServiceType);
 		}
 	}
 
