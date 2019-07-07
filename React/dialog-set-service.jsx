@@ -45,7 +45,7 @@ class SetServiceDialog extends React.Component {
 		};
 	}
 
-	saveServiceData(line) {
+	saveSelections(line) {
 		this.setState({
 			savedLine: line,
 		});
@@ -111,7 +111,7 @@ class SetServiceDialog extends React.Component {
 			>
 				{this.state.currentDialog === setDestination ?
 					<SetDestinationGrid line={this.state.savedLine}
-						saveServiceData={this.saveServiceData.bind(this)}
+						saveSelections={this.saveSelections.bind(this)}
 					/>
 				: null}
 

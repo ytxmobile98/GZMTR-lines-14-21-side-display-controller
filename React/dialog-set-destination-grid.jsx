@@ -48,7 +48,7 @@ class SetDestinationGrid extends React.Component {
 	}
 
 	saveSelections() {
-
+		this.props.saveSelections(this.state.line);
 	}
 
 	saveScrollTops() {
@@ -56,7 +56,7 @@ class SetDestinationGrid extends React.Component {
 	}
 
 	componentWillUnmount() {
-		this.props.saveServiceData(this.state.line);
+		this.saveSelections()
 	}
 
 

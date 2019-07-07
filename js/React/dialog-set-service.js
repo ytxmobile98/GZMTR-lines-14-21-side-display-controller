@@ -45,7 +45,7 @@ class SetServiceDialog extends React.Component {
 		};
 	}
 
-	saveServiceData(line) {
+	saveSelections(line) {
 		this.setState({
 			savedLine: line
 		});
@@ -105,7 +105,7 @@ class SetServiceDialog extends React.Component {
 				onClose: this.close.bind(this)
 			},
 			this.state.currentDialog === setDestination ? React.createElement(SetDestinationGrid, { line: this.state.savedLine,
-				saveServiceData: this.saveServiceData.bind(this)
+				saveSelections: this.saveSelections.bind(this)
 			}) : null,
 			this.state.currentDialog === setServiceType ? React.createElement(
 				"div",
