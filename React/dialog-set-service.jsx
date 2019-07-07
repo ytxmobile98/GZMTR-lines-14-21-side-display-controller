@@ -39,16 +39,29 @@ class SetServiceDialog extends React.Component {
 			savedServiceType: props.serviceType || SERVICE_TYPES["不载客"],
 
 			// Save scroll tops
-			savedLineSelectorScrollTop: 0,
-			savedfilterSelectorScrollTop: 0,
-			savedDestSelectorScrollTop: 0,
+			savedLineSelScrTop: 0,
+			savedfilterSelScrTop: 0,
+			savedDestSelScrTop: 0,
 		};
 	}
 
-	saveSelections(line, filterName) {
+	saveSelections(line, filterName, destination, serviceType) {
+		TypeChecker.checkInstanceOf(destination, Station);
+		TypeChecker.checkInstanceOf(serviceType, ServiceType);
+
 		this.setState({
-			savedLine: line,
-			savedFilterName: filterName,
+			savedLine: String(line || ""),
+			savedFilterName: String(filterName || ""),
+			savedDestination: destination,
+			savedServiceType: serviceType,
+		});
+	}
+
+	saveScrollTops(lineSelScrTop, filterSelScrTop, destSelScrTop) {
+		this.setState({
+			savedLineSelScrTop: Number(lineSelScrTop || 0),
+			savedfilterSelScrTop: Number(filterSelScrTop || 0),
+			savedDestSelScrTop: Number(destSelScrTop || 0),
 		});
 	}
 
@@ -118,6 +131,7 @@ class SetServiceDialog extends React.Component {
 						filterName={this.state.savedFilterName}
 
 						saveSelections={this.saveSelections.bind(this)}
+						saveScrollTops={this.saveScrollTops.bind(this)}
 					/>
 				: null}
 
@@ -125,6 +139,8 @@ class SetServiceDialog extends React.Component {
 					<React.Fragment>
 						<div>{this.state.savedLine}</div>
 						<div>{this.state.savedFilterName}</div>
+						<div>{this.state.savedDestination.Chinese}</div>
+						<div>{this.state.savedServiceType.Chinese}</div>
 					</React.Fragment>
 				: null}
 

@@ -23,9 +23,9 @@ class SetDestinationGrid extends React.Component {
 		TypeChecker.checkOptionalInstanceOf(props.destination, Station);
 		TypeChecker.checkOptionalInstanceOf(props.serviceType, ServiceType);
 		this.savedDestination = props.destination || DESTINATIONS["不载客"];
-		this.savedServiceType = props.serviceType || SERVICE_TYPES["不载客"], this.lineSelectorRef = React.createRef();
-		this.filterSelectorRef = React.createRef();
-		this.destSelectorRef = React.createRef();
+		this.savedServiceType = props.serviceType || SERVICE_TYPES["不载客"], this.lineSelRef = React.createRef();
+		this.filterSelRef = React.createRef();
+		this.destSelRef = React.createRef();
 	}
 
 	updateLine(line) {
@@ -61,13 +61,17 @@ class SetDestinationGrid extends React.Component {
 	}
 
 	saveSelections() {
-		this.props.saveSelections(this.state.line, this.state.filterName);
+		this.props.saveSelections(this.state.line, this.state.filterName, this.savedDestination, this.savedServiceType);
 	}
 
-	saveScrollTops() {}
+	saveScrollTops() {
+		this.props.saveScrollTops(0, 0, 0);
+		console.log(this.lineSelRef.current);
+	}
 
 	componentWillUnmount() {
 		this.saveSelections();
+		this.saveScrollTops();
 	}
 
 	render() {
@@ -85,7 +89,7 @@ class SetDestinationGrid extends React.Component {
 			React.createElement(
 				"div",
 				{ className: "set-destination-grid__item set-destination-grid__item--options-container",
-					ref: this.lineSelectorRef
+					ref: this.lineSelRef
 				},
 				React.createElement(LineSelector, {
 					line: this.state.line,
@@ -100,7 +104,7 @@ class SetDestinationGrid extends React.Component {
 			React.createElement(
 				"div",
 				{ className: "set-destination-grid__item set-destination-grid__item--options-container",
-					ref: this.filterSelectorRef
+					ref: this.filterSelRef
 				},
 				React.createElement(FilterSelector, {
 					line: this.state.line,
@@ -116,7 +120,7 @@ class SetDestinationGrid extends React.Component {
 			React.createElement(
 				"div",
 				{ className: "set-destination-grid__item set-destination-grid__item--options-container set-destination-grid__item--destinations",
-					ref: this.destSelectorRef
+					ref: this.destSelRef
 				},
 				React.createElement(RadioItem, {
 					name: "destination",

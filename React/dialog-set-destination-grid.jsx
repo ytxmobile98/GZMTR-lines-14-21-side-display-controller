@@ -25,9 +25,9 @@ class SetDestinationGrid extends React.Component {
 		this.savedDestination = props.destination || DESTINATIONS["不载客"];
 		this.savedServiceType = props.serviceType || SERVICE_TYPES["不载客"],
 
-		this.lineSelectorRef = React.createRef();
-		this.filterSelectorRef = React.createRef();
-		this.destSelectorRef = React.createRef();
+		this.lineSelRef = React.createRef();
+		this.filterSelRef = React.createRef();
+		this.destSelRef = React.createRef();
 	}
 
 	updateLine(line) {
@@ -68,14 +68,22 @@ class SetDestinationGrid extends React.Component {
 		this.props.saveSelections(
 			this.state.line,
 			this.state.filterName,
+			this.savedDestination,
+			this.savedServiceType,
 		);
 	}
 
 	saveScrollTops() {
+		this.props.saveScrollTops(
+			this.lineSelRef.current.scrollTop,
+			this.filterSelRef.current.scrollTop,
+			this.destSelRef..current.scrollTop,
+		);
 	}
 
 	componentWillUnmount() {
 		this.saveSelections();
+		this.saveScrollTops();
 	}
 
 
@@ -88,7 +96,7 @@ class SetDestinationGrid extends React.Component {
 
 				<div className="set-destination-grid__item set-destination-grid__item--header">线路</div>
 				<div className="set-destination-grid__item set-destination-grid__item--options-container"
-					ref={this.lineSelectorRef}
+					ref={this.lineSelRef}
 				>
 					<LineSelector
 						line={this.state.line}
@@ -98,7 +106,7 @@ class SetDestinationGrid extends React.Component {
 
 				<div className="set-destination-grid__item set-destination-grid__item--header">筛选列表</div>
 				<div className="set-destination-grid__item set-destination-grid__item--options-container"
-					ref={this.filterSelectorRef}
+					ref={this.filterSelRef}
 				>
 					<FilterSelector
 						line={this.state.line}
@@ -109,7 +117,7 @@ class SetDestinationGrid extends React.Component {
 
 				<div className="set-destination-grid__item set-destination-grid__item--header">目的地</div>
 				<div className="set-destination-grid__item set-destination-grid__item--options-container set-destination-grid__item--destinations"
-					ref={this.destSelectorRef}
+					ref={this.destSelRef}
 				>
 					<RadioItem
 						name="destination"
