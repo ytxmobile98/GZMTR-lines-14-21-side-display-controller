@@ -77,7 +77,7 @@ class SetDestinationGrid extends React.Component {
 		this.props.saveScrollTops(
 			this.lineSelRef.current.scrollTop,
 			this.filterSelRef.current.scrollTop,
-			this.destSelRef..current.scrollTop,
+			this.destSelRef.current.scrollTop,
 		);
 	}
 
