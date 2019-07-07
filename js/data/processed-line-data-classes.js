@@ -10,7 +10,6 @@ import { SERVICE_TYPES, DESTINATIONS } from "./PROCESSED-LINES-DATA.js";
 class LineInfo {
 	constructor(line, isPassengerService, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters) {
 
-		TypeChecker.checkTypeOf(line, "string");
 		TypeChecker.checkArrayType(destinations, Station);
 
 		TypeChecker.checkArrayType(serviceTypes, ServiceType);
@@ -19,7 +18,7 @@ class LineInfo {
 
 		TypeChecker.checkArrayType(rawFilters, RawFilter);
 
-		this.line = line;
+		this.line = String(line || "");
 		this.isPassengerService = !!isPassengerService;
 		this.destinations = destinations;
 
@@ -35,16 +34,14 @@ class LineInfo {
 
 	addFilter(name, destinations, serviceType = undefined) {
 
-		TypeChecker.checkTypeOf(name, "string");
 		TypeChecker.checkArrayType(destinations, "string");
-		TypeChecker.checkOptionalTypeOf(serviceType, "string");
 
-		const line = this.line;;
+		const line = this.line;
+		name = String(name || "");
 		destinations = destinations.map((ChineseName) => {
 			return DESTINATIONS[ChineseName];
 		});
-
-		serviceType = SERVICE_TYPES[serviceType] || this.defaultServiceType;
+		serviceType = SERVICE_TYPES[serviceType || ""] || this.defaultServiceType;
 		const crossLineServiceType = this.crossLineServiceType;
 
 		/* Filter constructor:
