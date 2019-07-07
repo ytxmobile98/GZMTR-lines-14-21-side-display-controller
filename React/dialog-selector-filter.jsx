@@ -30,6 +30,7 @@ class FilterSelector extends React.Component {
 		const line = this.props.line;
 		const filters = LINES_INFO.get(line).filters;
 		const filterNames = Array.from(filters.keys());
+
 		const updateFilterName = this.props.updateFilterName;
 		const handleSelect = (e) => {
 			updateFilterName(e.target.value);
