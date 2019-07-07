@@ -6,6 +6,14 @@ import { ServiceType, Station } from "../data/PROCESSED-LINES-DATA.js";
 import { Dialog } from "./dialog.js";
 import { SetDestinationGrid } from "./dialog-set-destination-grid.js";
 
+// Dialogs
+const setDestination = Symbol();
+const setServiceType = Symbol();
+
+// Texts on done
+const nextStepText = "下一步";
+const finishText = "完成";
+
 class SetServiceDialog extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,24 +22,14 @@ class SetServiceDialog extends React.Component {
 		TypeChecker.checkInstanceOf(props.serviceType, ServiceType);
 		TypeChecker.checkInstanceOf(props.destination, Station);
 
-		this.dialogs = {
-			setServiceType: Symbol(),
-			setDestination: Symbol()
-		};
-
-		this.doneTexts = {
-			nextStepText: "下一步",
-			finishText: "完成"
-		};
-
 		this.state = {
 			// Current dialog state
-			currentDialog: this.dialogs.setDestination,
+			currentDialog: setDestination,
 
 			// Handling navigation
 			handleGoBack: undefined,
 			handleDone: this.goToSetServiceType,
-			doneText: this.doneTexts.nextStepText,
+			doneText: nextStepText,
 
 			// Initialize using current operation information
 			line: String(props.line || ""),
@@ -50,19 +48,19 @@ class SetServiceDialog extends React.Component {
 
 	goToSetDestination() {
 		this.setState({
-			currentDialog: this.dialogs.setDestination,
+			currentDialog: setDestination,
 			handleGoBack: undefined,
 			handleDone: this.goToSetServiceType,
-			doneText: this.doneTexts.nextStepText
+			doneText: nextStepText
 		});
 	}
 
 	goToSetServiceType() {
 		this.setState({
-			currentDialog: this.dialogs.setServiceType,
+			currentDialog: setServiceType,
 			handleGoBack: this.goToSetDestination,
-			handleDone: undefined,
-			doneText: this.doneTexts.finishText
+			handleDone: this.updateOutputDisplay,
+			doneText: finishText
 		});
 	}
 
@@ -75,14 +73,12 @@ class SetServiceDialog extends React.Component {
 	}
 
 	render() {
-		const dialogs = this.dialogs;
-
 		const title = (() => {
 			switch (this.state.currentDialog) {
-				case dialogs.setDestination:
+				case setDestination:
 					return "选择目的地";
 					break;
-				case dialogs.setServiceType:
+				case setServiceType:
 					return "选择车种";
 					break;
 				default:
@@ -101,7 +97,7 @@ class SetServiceDialog extends React.Component {
 				doneText: this.state.doneText,
 				onClose: this.close.bind(this)
 			},
-			this.state.currentDialog === this.dialogs.setDestination ? React.createElement(SetDestinationGrid, { line: this.state.line }) : null
+			this.state.currentDialog === setDestination ? React.createElement(SetDestinationGrid, { line: this.state.line }) : null
 		);
 	}
 }

@@ -49,7 +49,7 @@ class SetDestinationGrid extends React.Component {
 	}
 
 	componentDidUpdate() {
-		console.log(this.state.line, this.savedServiceType);
+		
 	}
 
 	render() {
