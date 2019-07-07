@@ -2,7 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
+import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LineInfo, LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
 import { Filter } from "../data/filter-classes.js";
 
 import { RadioGroup, RadioItem } from "./radio-group.js";
@@ -12,6 +12,8 @@ import { FilterSelector } from "./dialog-selector-filter.js";
 class SetDestinationGrid extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.initialLine = props.initialLine;
 
 		this.state = {
 			line: String(props.line || ""),
@@ -33,13 +35,21 @@ class SetDestinationGrid extends React.Component {
 	}
 
 	updateFilterName(filterName) {
-		this.setState({
-			filterName: String(filterName || "")
-		});
+		const initialLine = this.initialLine;
+		const initialLineInfo = LINES_INFO.get(initialLine);
+		TypeChecker.checkInstanceOf(initialLineInfo, LineInfo);
 
-		const line = this.state.line;
-		const filter = LINES_INFO.get(line).filters.get(filterName);
+		const currentLine = this.state.line;
+		const currentLineInfo = LINES_INFO.get(currentLine);
+		TypeChecker.checkInstanceOf(currentLineInfo, LineInfo);
+
+		const filter = LINES_INFO.get(currentLine).filters.get(filterName);
 		if (filter) {
+			this.setState({
+				filterName: String(filterName || "")
+			});
+			console.log(initialLine, currentLine);
+			console.log(initialLineInfo, currentLineInfo);
 			this.savedServiceType = filter.serviceType;
 		}
 	}
