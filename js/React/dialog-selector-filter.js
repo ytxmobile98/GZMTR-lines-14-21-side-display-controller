@@ -7,13 +7,15 @@ class FilterSelector extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.filterItems = undefined;
+		this.filterItems = [];
 	}
 
 	checkFirstItem() {
-		const firstItem = this.filterItems[0].ref.current;
-		const button = firstItem.buttonRef.current;
-		button.click();
+		if (this.filterItems.length > 0) {
+			const firstItem = this.filterItems[0].ref.current;
+			const button = firstItem.buttonRef.current;
+			button.click();
+		}
 	}
 
 	componentDidMount() {
@@ -36,7 +38,7 @@ class FilterSelector extends React.Component {
 			updateFilterName(e.target.value);
 		};
 
-		const filterItems = filterNames.map((filterName, index) => {
+		const filterItems = filterNames.map(filterName => {
 			return React.createElement(RadioItem, {
 				name: "filter",
 				value: filterName,
