@@ -33,6 +33,12 @@
 }
 
 .status__item-text {
+	--side-padding: 0.5em;
+	width: auto;
+	max-width: calc(100% - 2 * var(--side-padding));
+	padding: 0 var(--side-padding);
+	margin: auto;
+
 	font-size: 28px;
 	line-height: 1.25em;
 }

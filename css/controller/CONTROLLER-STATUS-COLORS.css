@@ -17,16 +17,24 @@
 }
 
 /* Line */
+[data-js-status-line="不载客"] {
+	background-color: var(--不载客-bg-color);
+	color: var(--不载客-color);
+}
 [data-js-status-line="14号线"] {
-	background-color: var(--line-14-bg-color);
-	color: var(--line-14-color);
+	background-color: var(--14号线-bg-color);
+	color: var(--14号线-color);
 }
 [data-js-status-line="21号线"] {
-	background-color: var(--line-21-bg-color);
-	color: var(--line-21-color);
+	background-color: var(--21号线-bg-color);
+	color: var(--21号线-color);
 }
 
 /* Service type */
+[data-js-status-service-type="不载客"] {
+	background-color: var(--service-不载客-bg-color);
+	color: var(--service-不载客-color);
+}
 [data-js-status-service-type="普通"] {
 	background-color: var(--service-普通-bg-color);
 	color: var(--service-普通-color);
