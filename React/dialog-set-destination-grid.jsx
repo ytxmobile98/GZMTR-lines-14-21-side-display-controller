@@ -16,12 +16,13 @@ class SetDestinationGrid extends React.Component {
 		this.state = {
 			line: String(props.line || ""),
 			filterName: "",
-		}
-
-		this.savedData = {
-			destination: DESTINATIONS["不载客"],
-			serviceType: SERVICE_TYPES["不载客"],
 		};
+
+		TypeChecker.checkOptionalInstanceOf(props.destination, Station);
+		TypeChecker.checkOptionalInstanceOf(props.serviceType, ServiceType);
+
+		this.savedDestination = props.destination || DESTINATIONS["不载客"];
+		this.savedServiceType = props.serviceType || SERVICE_TYPES["不载客"],
 
 		this.lineSelectorRef = React.createRef();
 		this.filterSelectorRef = React.createRef();
@@ -38,10 +39,17 @@ class SetDestinationGrid extends React.Component {
 		this.setState({
 			filterName: String(filterName || ""),
 		});
+
+		const line = this.state.line;
+		const filter = LINES_INFO.get(line).filters.get(filterName);
+
+		if (filter) {
+			this.savedServiceType = filter.serviceType;
+		}
 	}
 
-	componentDidMount() {
-		console.log(this.lineSelectorRef, this.filterSelectorRef, this.destSelectorRef);
+	componentDidUpdate() {
+		console.log(this.state.line, this.savedServiceType);
 	}
 
 	render() {

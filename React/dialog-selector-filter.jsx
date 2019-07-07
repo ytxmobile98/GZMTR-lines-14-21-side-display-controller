@@ -44,7 +44,7 @@ class FilterSelector extends React.Component {
 					onChange={handleSelect}
 					extraLineHeight={true}
 					text={filterName}
-					key={filterName}
+					key={`${line}-${filterName}`}
 					ref={React.createRef()}
 				/>
 			);
