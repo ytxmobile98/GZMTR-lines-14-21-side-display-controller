@@ -10,7 +10,7 @@ import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
-import { SetDestinationDialog } from "./dialog-set-destination.js";
+import { SetServiceDialog } from "./dialog-set-service.js";
 
 class Controller extends React.Component {
 
@@ -224,7 +224,7 @@ class Controller extends React.Component {
 						}
 
 						{this.state.modalMode === "setService" ?
-							<SetDestinationDialog
+							<SetServiceDialog
 								title="选择目的地"
 
 								updateOutputDisplay={(line, serviceType, destination) => {

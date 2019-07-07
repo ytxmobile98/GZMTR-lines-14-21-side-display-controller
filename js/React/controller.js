@@ -10,7 +10,7 @@ import { StatusCell, StatusGridContainer } from "./controller-status.js";
 
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
-import { SetDestinationDialog } from "./dialog-set-destination.js";
+import { SetServiceDialog } from "./dialog-set-service.js";
 
 class Controller extends React.Component {
 
@@ -227,7 +227,7 @@ class Controller extends React.Component {
 					leftDisplay: this.state.leftDisplay,
 					rightDisplay: this.state.rightDisplay
 				}) : null,
-				this.state.modalMode === "setService" ? React.createElement(SetDestinationDialog, {
+				this.state.modalMode === "setService" ? React.createElement(SetServiceDialog, {
 					title: "\u9009\u62E9\u76EE\u7684\u5730",
 
 					updateOutputDisplay: (line, serviceType, destination) => {

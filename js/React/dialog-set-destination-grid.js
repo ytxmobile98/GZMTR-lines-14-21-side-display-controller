@@ -20,14 +20,7 @@ class SetDestinationGrid extends React.Component {
 
 		this.savedData = {
 			destination: DESTINATIONS["不载客"],
-			defaultServiceType: SERVICE_TYPES["不载客"],
-			crossLineServiceType: SERVICE_TYPES["不载客"],
-
-			scrollTops: {
-				lineSelector: 0,
-				filterSelector: 0,
-				destSelector: 0
-			}
+			serviceType: SERVICE_TYPES["不载客"]
 		};
 
 		this.lineSelectorRef = React.createRef();
@@ -47,9 +40,8 @@ class SetDestinationGrid extends React.Component {
 		});
 	}
 
-	saveScrollTop(item, value) {
-		// use 0 if converted to NaN
-		this.savedData.scrollTops[item] = Number(value) || 0;
+	componentDidMount() {
+		console.log(this.lineSelectorRef, this.filterSelectorRef, this.destSelectorRef);
 	}
 
 	render() {

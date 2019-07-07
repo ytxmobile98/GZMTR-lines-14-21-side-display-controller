@@ -6,7 +6,7 @@ import { ServiceType, Station } from "../data/PROCESSED-LINES-DATA.js";
 import { Dialog } from "./dialog.js";
 import { SetDestinationGrid } from "./dialog-set-destination-grid.js";
 
-class SetDestinationDialog extends React.Component {
+class SetServiceDialog extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -118,4 +118,4 @@ class SetDestinationDialog extends React.Component {
 	}
 }
 
-export { SetDestinationDialog };
+export { SetServiceDialog };
