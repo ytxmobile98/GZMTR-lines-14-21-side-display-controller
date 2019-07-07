@@ -31,17 +31,8 @@ const LINES_INFO = Object.freeze((() => {
 
 	RAW_LINES_INFO.forEach((rawLineInfo) => {
 
-		/* LineInfo constructor:
-			new LineInfo(line, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters)
-
-			Argument types:
-				line, destinations: string
-				serviceTypes: array of ServiceType
-				defaultServiceType, crossLineServiceType: ServiceType
-				rawFilters: array of RawFilter
-		*/
-
 		const line = rawLineInfo.line;
+		const isPassengerService = !!rawLineInfo.isPassengerService;
 		const destinations = rawLineInfo.destinations.map((ChineseName) => {
 			return DESTINATIONS[ChineseName];
 		});
@@ -54,7 +45,18 @@ const LINES_INFO = Object.freeze((() => {
 
 		const rawFilters = rawLineInfo.rawFiters;
 
-		const newLineInfo = new LineInfo(line, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters);
+		/* LineInfo constructor:
+			new LineInfo(line, isPassengerService, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters)
+
+			Argument types:
+				line: string
+				isPassengerService: boolean
+				destinations: array of Statiion
+				serviceTypes: array of ServiceType
+				defaultServiceType, crossLineServiceType: ServiceType
+				rawFilters: array of RawFilter
+		*/
+		const newLineInfo = new LineInfo(line, isPassengerService, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters);
 
 		LINES_INFO.set(line, newLineInfo);
 

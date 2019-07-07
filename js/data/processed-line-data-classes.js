@@ -8,7 +8,7 @@ import { RawFilter, Filter } from "./filter-classes.js";
 import { SERVICE_TYPES, DESTINATIONS } from "./PROCESSED-LINES-DATA.js";
 
 class LineInfo {
-	constructor(line, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters) {
+	constructor(line, isPassengerService, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters) {
 
 		TypeChecker.checkTypeOf(line, "string");
 		TypeChecker.checkArrayType(destinations, Station);
@@ -20,6 +20,7 @@ class LineInfo {
 		TypeChecker.checkArrayType(rawFilters, RawFilter);
 
 		this.line = line;
+		this.isPassengerService = !!isPassengerService;
 		this.destinations = destinations;
 
 		this.serviceTypes = serviceTypes;

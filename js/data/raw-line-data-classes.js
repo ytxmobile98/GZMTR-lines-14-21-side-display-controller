@@ -4,7 +4,7 @@ import { TypeChecker } from "../type-checker.js";
 import { RawFilter } from "./filter-classes.js"
 
 class RawLineInfo {
-	constructor(line, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters) {
+	constructor(line, isPassengerService, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters) {
 
 		TypeChecker.checkTypeOf(line, "string");
 		TypeChecker.checkArrayType(destinations, "string");
@@ -16,6 +16,7 @@ class RawLineInfo {
 		TypeChecker.checkArrayType(rawFilters, RawFilter);
 
 		this.line = line;
+		this.isPassengerService = !!isPassengerService;
 		this.destinations = destinations;
 
 		this.serviceTypes = serviceTypes;
