@@ -1,8 +1,9 @@
+@import url("dialog-set-display-mode.css");
+@import url("dialog-set-service.css");
+
 :root {
 	--basic-text-size: 24px;
 }
-
-/* Center */
 
 .modal-dialog__center {
 	flex-grow: 1;
