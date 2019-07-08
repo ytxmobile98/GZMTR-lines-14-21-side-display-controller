@@ -80,6 +80,8 @@ class SetDestinationGrid extends React.Component {
 	}
 
 	componentDidMount() {
+		this.lineSelRef.current.scrollTop = this.props.lineSelScrTop;
+		this.filterSelRef.current.scrollTop = this.props.filterSelScrTop;
 		this.destSelRef.current.scrollTop = this.props.destSelScrTop;
 	}
 
