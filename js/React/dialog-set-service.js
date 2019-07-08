@@ -129,6 +129,7 @@ class SetServiceDialog extends React.Component {
 				line: this.state.savedLine,
 				filterName: this.state.savedFilterName,
 				destination: this.state.savedDestination,
+				serviceType: this.state.savedServiceType,
 
 				saveSelections: this.saveSelections.bind(this),
 				saveScrollTops: this.saveScrollTops.bind(this),
