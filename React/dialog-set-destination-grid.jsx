@@ -91,15 +91,7 @@ class SetDestinationGrid extends React.Component {
 	}
 
 	componentDidMount() {
-		const line = String(this.props.line || "");
-		if (line) {
-			this.updateLine(line);
-		}
-
-		const filterName = String(this.props.filterName || "");
-		if (filterName) {
-			this.updateFilterName(filterName);
-		}
+		this.destSelRef.current.scrollTop = this.props.destSelScrTop;
 	}
 
 	componentWillUnmount() {

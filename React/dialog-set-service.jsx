@@ -40,7 +40,7 @@ class SetServiceDialog extends React.Component {
 
 			// Save scroll tops
 			savedLineSelScrTop: 0,
-			savedfilterSelScrTop: 0,
+			savedFilterSelScrTop: 0,
 			savedDestSelScrTop: 0,
 		};
 	}
@@ -60,7 +60,7 @@ class SetServiceDialog extends React.Component {
 	saveScrollTops(lineSelScrTop, filterSelScrTop, destSelScrTop) {
 		this.setState({
 			savedLineSelScrTop: Number(lineSelScrTop || 0),
-			savedfilterSelScrTop: Number(filterSelScrTop || 0),
+			savedFilterSelScrTop: Number(filterSelScrTop || 0),
 			savedDestSelScrTop: Number(destSelScrTop || 0),
 		});
 	}
@@ -130,9 +130,14 @@ class SetServiceDialog extends React.Component {
 
 						line={this.state.savedLine}
 						filterName={this.state.savedFilterName}
+						destination={this.state.savedDestination}
 
 						saveSelections={this.saveSelections.bind(this)}
 						saveScrollTops={this.saveScrollTops.bind(this)}
+
+						lineSelScrTop={this.state.savedLineSelScrTop}
+						filterSelScrTop={this.state.savedFilterSelScrTop}
+						destSelScrTop={this.state.savedDestSelScrTop}
 					/>
 				: null}
 
