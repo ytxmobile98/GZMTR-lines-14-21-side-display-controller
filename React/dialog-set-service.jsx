@@ -86,11 +86,12 @@ class SetServiceDialog extends React.Component {
 	}
 
 	updateOutputDisplay() {
-		this.props.updateOutputDisplay(
-			this.state.savedLine,
-			this.state.savedServiceType,
-			this.state.savedDestination,
-		);
+		const line = this.state.savedLine;
+		const serviceType = this.state.savedServiceType;
+		const destination = this.state.savedDestination;
+
+		// update output display in the parent component
+		this.props.updateOutputDisplay(line, serviceType, destination);
 	}
 
 	close() {
