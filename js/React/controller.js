@@ -195,7 +195,7 @@ class Controller extends React.Component {
 								openModal("setService");
 							}
 						},
-						"\u66F4\u6539\u76EE\u7684\u5730/\u8F66\u79CD"
+						"\u66F4\u65B0\u8FD0\u8425\u4FE1\u606F"
 					)
 				)
 			),
