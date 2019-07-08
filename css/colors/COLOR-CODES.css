@@ -18,10 +18,10 @@
 
 	/* Status color codes */
 
-	--display-switch-开: green;
+	--display-switch-开: blue;
 	--display-switch-关: lightgray;
 
-	--display-mode-自动: blue;
+	--display-mode-自动: green;
 	--display-mode-手动: red;
 
 	/* Metro line color codes */
