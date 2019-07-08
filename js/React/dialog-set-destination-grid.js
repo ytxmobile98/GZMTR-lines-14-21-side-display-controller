@@ -8,6 +8,7 @@ import { Filter } from "../data/filter-classes.js";
 import { RadioGroup, RadioItem } from "./radio-group.js";
 import { LineSelector } from "./dialog-selector-line.js";
 import { FilterSelector } from "./dialog-selector-filter.js";
+import { DestSelector } from "./dialog-selector-destination.js";
 
 class SetDestinationGrid extends React.Component {
 	constructor(props) {
@@ -58,6 +59,8 @@ class SetDestinationGrid extends React.Component {
 			}
 		}
 	}
+
+	updateDestination() {}
 
 	saveSelections() {
 		this.props.saveSelections(this.state.line, this.state.filterName, this.savedDestination, this.savedServiceType);
@@ -132,34 +135,10 @@ class SetDestinationGrid extends React.Component {
 				{ className: "set-destination-grid__item set-destination-grid__item--options-container set-destination-grid__item--destinations",
 					ref: this.destSelRef
 				},
-				React.createElement(RadioItem, {
-					name: "destination",
-					value: "\u4EAC\u6EAA\u5357\u65B9\u533B\u9662",
-					defaultChecked: true,
-					extraLineHeight: extraLineHeight,
-					text: "\u4EAC\u6EAA\u5357\u65B9\u533B\u9662",
-					key: "\u4EAC\u6EAA\u5357\u65B9\u533B\u96621"
-				}),
-				React.createElement(RadioItem, {
-					name: "destination",
-					value: "\u4EAC\u6EAA\u5357\u65B9\u533B\u9662",
-					extraLineHeight: extraLineHeight,
-					text: "\u4EAC\u6EAA\u5357\u65B9\u533B\u9662",
-					key: "\u4EAC\u6EAA\u5357\u65B9\u533B\u96622"
-				}),
-				React.createElement(RadioItem, {
-					name: "destination",
-					value: "\u4EAC\u6EAA\u5357\u65B9\u533B\u9662",
-					extraLineHeight: extraLineHeight,
-					text: "\u4EAC\u6EAA\u5357\u65B9\u533B\u9662",
-					key: "\u4EAC\u6EAA\u5357\u65B9\u533B\u96623"
-				}),
-				React.createElement(RadioItem, {
-					name: "destination",
-					value: "\u4EAC\u6EAA\u5357\u65B9\u533B\u9662",
-					extraLineHeight: extraLineHeight,
-					text: "\u4EAC\u6EAA\u5357\u65B9\u533B\u9662",
-					key: "\u4EAC\u6EAA\u5357\u65B9\u533B\u96624"
+				React.createElement(DestSelector, {
+					line: this.state.line,
+					filterName: this.state.filterName,
+					updateDestination: this.updateDestination.bind(this)
 				})
 			)
 		);

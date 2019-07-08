@@ -8,6 +8,7 @@ import { Filter } from "../data/filter-classes.js";
 import { RadioGroup, RadioItem } from "./radio-group.js";
 import { LineSelector } from "./dialog-selector-line.js";
 import { FilterSelector } from "./dialog-selector-filter.js";
+import { DestSelector } from "./dialog-selector-destination.js";
 
 class SetDestinationGrid extends React.Component {
 	constructor(props) {
@@ -61,6 +62,10 @@ class SetDestinationGrid extends React.Component {
 				this.savedServiceType = filter.crossLineServiceType;
 			}
 		}
+	}
+
+	updateDestination() {
+
 	}
 
 	saveSelections() {
@@ -130,34 +135,10 @@ class SetDestinationGrid extends React.Component {
 				<div className="set-destination-grid__item set-destination-grid__item--options-container set-destination-grid__item--destinations"
 					ref={this.destSelRef}
 				>
-					<RadioItem
-						name="destination"
-						value="京溪南方医院"
-						defaultChecked={true}
-						extraLineHeight={extraLineHeight}
-						text="京溪南方医院"
-						key="京溪南方医院1"
-					/>
-					<RadioItem
-						name="destination"
-						value="京溪南方医院"
-						extraLineHeight={extraLineHeight}
-						text="京溪南方医院"
-						key="京溪南方医院2"
-					/>
-					<RadioItem
-						name="destination"
-						value="京溪南方医院"
-						extraLineHeight={extraLineHeight}
-						text="京溪南方医院"
-						key="京溪南方医院3"
-					/>
-					<RadioItem
-						name="destination"
-						value="京溪南方医院"
-						extraLineHeight={extraLineHeight}
-						text="京溪南方医院"
-						key="京溪南方医院4"
+					<DestSelector
+						line={this.state.line}
+						filterName={this.state.filterName}
+						updateDestination={this.updateDestination.bind(this)}
 					/>
 				</div>
 
