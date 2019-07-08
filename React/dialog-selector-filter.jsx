@@ -1,7 +1,7 @@
 "use strict";
 
 import { LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
-import { RadioItem } from "./radio-group.js";
+import { RadioItem, checkFirstItem } from "./radio-group.js";
 
 class FilterSelector extends React.PureComponent {
 
@@ -11,11 +11,7 @@ class FilterSelector extends React.PureComponent {
 	}
 
 	checkFirstItem() {
-		if (this.filterItems.length > 0) {
-			const firstItem = this.filterItems[0].ref.current;
-			const button = firstItem.buttonRef.current;
-			button.click();
-		}
+		checkFirstItem(this.filterItems);
 	}
 
 	componentDidMount() {

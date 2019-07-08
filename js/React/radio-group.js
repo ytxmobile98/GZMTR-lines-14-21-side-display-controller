@@ -68,4 +68,15 @@ class RadioItem extends React.PureComponent {
 	}
 }
 
-export { RadioGroup, RadioItem };
+const checkFirstItem = list => {
+	TypeChecker.checkInstanceOf(list, Array);
+	if (list.length > 0) {
+		const firstItem = list[0].ref.current;
+		if (firstItem) {
+			const button = firstItem.buttonRef.current;
+			button.click();
+		}
+	}
+};
+
+export { RadioGroup, RadioItem, checkFirstItem };

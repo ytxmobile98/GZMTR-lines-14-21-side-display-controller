@@ -2,15 +2,26 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { Station, LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
+import { Station, DESTINATIONS, LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
 import { Filter } from "../data/filter-classes.js";
 
-import { RadioItem } from "./radio-group.js";
+import { RadioItem, checkFirstItem } from "./radio-group.js";
 
 class DestSelector extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.destItems = [];
+	}
+
+	checkFirstItem() {
+		checkFirstItem(this.destItems);
+	}
+
+	componentDidUpdate(prevProps) {
+		if ((prevProps.line !== this.props.line)
+			|| (prevProps.filterName !== this.props.filterName)) {
+			this.checkFirstItem();
+		}
 	}
 
 	render() {
@@ -26,7 +37,13 @@ class DestSelector extends React.PureComponent {
 		const destinations = filter.destinations;
 		TypeChecker.checkArrayType(destinations, Station);
 
-		const updateDestination = this.props.updateDestination;
+		const handleUpdateDestination = (e) => {
+			const stationName = e.target.value
+			const destination = DESTINATIONS[stationName];
+			TypeChecker.checkInstanceOf(destination, Station);
+			this.props.updateDestination(destination);
+		}
+
 		const extraLineHeight = true;
 
 		const destItems = destinations.map((destination) => {
@@ -34,9 +51,12 @@ class DestSelector extends React.PureComponent {
 				<RadioItem
 					name="destination"
 					value={destination.Chinese}
+					checked={this.props.destination === destination}
+					onClick={handleUpdateDestination}
 					extraLineHeight={extraLineHeight}
 					text={destination.Chinese}
 					key={destination.Chinese}
+					ref={React.createRef()}
 				/>
 			);
 		});

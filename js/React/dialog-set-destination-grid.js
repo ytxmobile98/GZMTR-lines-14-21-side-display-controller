@@ -16,15 +16,17 @@ class SetDestinationGrid extends React.Component {
 
 		this.initialLine = props.initialLine;
 
-		this.state = {
-			line: String(props.line || ""),
-			filterName: String(props.filterName || "")
-		};
-
 		TypeChecker.checkOptionalInstanceOf(props.destination, Station);
 		TypeChecker.checkOptionalInstanceOf(props.serviceType, ServiceType);
-		this.savedDestination = props.destination || DESTINATIONS["不载客"];
-		this.savedServiceType = props.serviceType || SERVICE_TYPES["不载客"], this.lineSelRef = React.createRef();
+
+		this.state = {
+			line: String(props.line || ""),
+			filterName: String(props.filterName || ""),
+			destination: props.destination || DESTINATIONS["不载客"],
+			serviceType: props.serviceType || SERVICE_TYPES["不载客"]
+		};
+
+		this.lineSelRef = React.createRef();
 		this.filterSelRef = React.createRef();
 		this.destSelRef = React.createRef();
 	}
@@ -47,23 +49,30 @@ class SetDestinationGrid extends React.Component {
 		const filter = LINES_INFO.get(currentLine).filters.get(filterName);
 		TypeChecker.checkInstanceOf(filter, Filter);
 
-		if (filter) {
-			this.setState({
-				filterName: String(filterName || "")
-			});
+		this.setState({
+			filterName: String(filterName || "")
+		});
 
-			if (!initialLineInfo.isPassengerService || initialLineInfo === currentLineInfo) {
-				this.savedServiceType = filter.serviceType;
-			} else {
-				this.savedServiceType = filter.crossLineServiceType;
-			}
+		if (!initialLineInfo.isPassengerService || initialLineInfo === currentLineInfo) {
+			this.setState({
+				serviceType: filter.serviceType
+			});
+		} else {
+			this.setState({
+				serviceType: filter.crossLineServiceType
+			});
 		}
 	}
 
-	updateDestination() {}
+	updateDestination(destination) {
+		TypeChecker.checkInstanceOf(destination, Station);
+		this.setState({
+			destination: destination
+		});
+	}
 
 	saveSelections() {
-		this.props.saveSelections(this.state.line, this.state.filterName, this.savedDestination, this.savedServiceType);
+		this.props.saveSelections(this.state.line, this.state.filterName, this.state.destination, this.state.serviceType);
 	}
 
 	saveScrollTops() {
@@ -138,6 +147,7 @@ class SetDestinationGrid extends React.Component {
 				React.createElement(DestSelector, {
 					line: this.state.line,
 					filterName: this.state.filterName,
+					destination: this.state.destination,
 					updateDestination: this.updateDestination.bind(this)
 				})
 			)
