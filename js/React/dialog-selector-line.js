@@ -3,7 +3,7 @@
 import { LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
 import { RadioItem } from "./radio-group.js";
 
-class LineSelector extends React.Component {
+class LineSelector extends React.PureComponent {
 
 	render() {
 		const lines = Array.from(LINES_INFO.keys());

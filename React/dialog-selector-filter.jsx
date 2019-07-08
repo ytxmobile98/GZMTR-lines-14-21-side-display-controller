@@ -3,7 +3,7 @@
 import { LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
 import { RadioItem } from "./radio-group.js";
 
-class FilterSelector extends React.Component {
+class FilterSelector extends React.PureComponent {
 
 	constructor(props) {
 		super(props);
