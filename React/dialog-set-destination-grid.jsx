@@ -66,7 +66,8 @@ class SetDestinationGrid extends React.Component {
 		}
 	}
 
-	updateDestination(destination) {
+	updateDestination(destNameChinese) {
+		const destination = DESTINATIONS[destNameChinese];
 		TypeChecker.checkInstanceOf(destination, Station);
 		this.setState({
 			destination: destination,
@@ -106,6 +107,12 @@ class SetDestinationGrid extends React.Component {
 
 		const extraLineHeight = true;
 
+		const line = this.state.line;
+		const filterName = this.state.filterName;
+		const filters = LINES_INFO.get(line).filters;
+		const filter = filters.get(filterName);
+		const destination = this.state.destination;
+
 		return (
 			<div className="set-destination-grid__container">
 
@@ -114,7 +121,7 @@ class SetDestinationGrid extends React.Component {
 					ref={this.lineSelRef}
 				>
 					<LineSelector
-						line={this.state.line}
+						line={line}
 						updateLine={this.updateLine.bind(this)}
 					/>
 				</div>
@@ -124,8 +131,9 @@ class SetDestinationGrid extends React.Component {
 					ref={this.filterSelRef}
 				>
 					<FilterSelector
-						line={this.state.line}
-						filterName={this.state.filterName}
+						line={line}
+						filterName={filterName}
+						filters={filters}
 						updateFilterName={this.updateFilterName.bind(this)}
 					/>
 				</div>
@@ -135,9 +143,8 @@ class SetDestinationGrid extends React.Component {
 					ref={this.destSelRef}
 				>
 					<DestSelector
-						line={this.state.line}
-						filterName={this.state.filterName}
-						destination={this.state.destination}
+						filter={filter}
+						destination={destination}
 						updateDestination={this.updateDestination.bind(this)}
 					/>
 				</div>

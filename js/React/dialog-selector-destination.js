@@ -2,7 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { Station, DESTINATIONS, LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
+import { Station } from "../data/PROCESSED-LINES-DATA.js";
 import { Filter } from "../data/filter-classes.js";
 
 import { RadioItem, checkFirstItem } from "./radio-group.js";
@@ -18,16 +18,13 @@ class DestSelector extends React.PureComponent {
 	}
 
 	componentDidUpdate(prevProps) {
-		if (prevProps.line !== this.props.line || prevProps.filterName !== this.props.filterName) {
+		if (prevProps.filter !== this.props.filter) {
 			this.checkFirstItem();
 		}
 	}
 
 	render() {
-		const line = String(this.props.line || "");
-
-		const filterName = String(this.props.filterName || "");
-		const filter = LINES_INFO.get(line).filters.get(filterName);
+		const filter = this.props.filter;
 		if (!filter) {
 			return null;
 		}
@@ -37,10 +34,8 @@ class DestSelector extends React.PureComponent {
 		TypeChecker.checkArrayType(destinations, Station);
 
 		const handleUpdateDestination = e => {
-			const stationName = e.target.value;
-			const destination = DESTINATIONS[stationName];
-			TypeChecker.checkInstanceOf(destination, Station);
-			this.props.updateDestination(destination);
+			const stationNameChinese = e.target.value;
+			this.props.updateDestination(stationNameChinese);
 		};
 
 		const extraLineHeight = true;

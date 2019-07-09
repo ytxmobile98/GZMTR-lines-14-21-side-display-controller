@@ -1,6 +1,7 @@
 "use strict";
 
-import { LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
+import { TypeChecker } from "../type-checker.js";
+
 import { RadioItem, checkFirstItem } from "./radio-group.js";
 
 class FilterSelector extends React.PureComponent {
@@ -21,14 +22,14 @@ class FilterSelector extends React.PureComponent {
 	}
 
 	componentDidUpdate(prevProps) {
-		if (prevProps.line !== this.props.line) {
+		if (prevProps.filters !== this.props.filters) {
 			this.checkFirstItem();
 		}
 	}
 
 	render() {
-		const line = this.props.line;
-		const filters = LINES_INFO.get(line).filters;
+		const filters = this.props.filters;
+		TypeChecker.checkInstanceOf(filters, Map);
 		const filterNames = Array.from(filters.keys());
 
 		const updateFilterName = this.props.updateFilterName;
@@ -45,7 +46,7 @@ class FilterSelector extends React.PureComponent {
 					onClick={handleUpdateFilterName}
 					extraLineHeight={true}
 					text={filterName}
-					key={`${line}-${filterName}`}
+					key={`${this.props.line}-${filterName}`}
 					ref={React.createRef()}
 				/>
 			);
@@ -56,7 +57,7 @@ class FilterSelector extends React.PureComponent {
 			<React.Fragment>
 				{filterItems}
 			</React.Fragment>
-		)
+		);
 	}
 }
 
