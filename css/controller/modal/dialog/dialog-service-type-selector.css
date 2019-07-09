@@ -1,0 +1,16 @@
+.service-type-selector {
+	display: grid;
+	grid-auto-flow: column;
+	grid-column-gap: 1em;
+	align-items: baseline;
+	text-align: center;
+}
+
+.LED-preview {
+	display: grid;
+	grid-auto-flow: row;
+	grid-row-gap: 0.25em;
+	text-align: center;
+
+	transform: scale(0.8);
+}

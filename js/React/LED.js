@@ -124,13 +124,13 @@ class LED extends React.PureComponent {
 
 	constructor(props) {
 
-		const serviceType = props.serviceType;
+		const serviceType = props.serviceType || DEFAULT_SERVICE_TYPE;
 		TypeChecker.checkInstanceOf(serviceType, ServiceType);
 
-		const destination = props.destination;
+		const destination = props.destination || DEFAULT_DESTINATION;
 		TypeChecker.checkInstanceOf(destination, Station);
 
-		const showContent = props.showContent != undefined ? !!props.showContent : true;
+		const showContent = !!props.showContent;
 
 		super(props);
 
@@ -161,10 +161,10 @@ class LED extends React.PureComponent {
 	componentDidUpdate(prevProps, prevState) {
 		const props = this.props;
 
-		const serviceType = props.serviceType;
+		const serviceType = props.serviceType || DEFAULT_SERVICE_TYPE;
 		TypeChecker.checkOptionalInstanceOf(serviceType, ServiceType);
 
-		const destination = props.destination;
+		const destination = props.destination || DEFAULT_DESTINATION;
 		TypeChecker.checkOptionalInstanceOf(destination, Station);
 
 		if (props.showContent !== prevProps.showContent) {

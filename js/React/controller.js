@@ -6,7 +6,7 @@ import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS } from "../data/PROCE
 
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
-import { StatusCell, StatusGridContainer } from "./status-grid.js";
+import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
 
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
@@ -17,7 +17,6 @@ class Controller extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.outputLED = React.createRef();
 		this.state = {
 			// modal mode
 			modalMode: defaultModalMode,
@@ -119,7 +118,6 @@ class Controller extends React.Component {
 				"div",
 				{ className: "controller__top" },
 				React.createElement(LED, {
-					ref: this.outputLED,
 					serviceType: this.state.serviceType,
 					destination: this.state.destination,
 					showContent: showContent
@@ -129,8 +127,8 @@ class Controller extends React.Component {
 				"div",
 				{ className: "controller__center" },
 				React.createElement(
-					"div",
-					{ className: "status__container" },
+					StatusContainer,
+					null,
 					React.createElement(
 						StatusGridContainer,
 						{ sectionHeader: "\u65B9\u5411\u5E55\u663E\u793A\u72B6\u6001" },

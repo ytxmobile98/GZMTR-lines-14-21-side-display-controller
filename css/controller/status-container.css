@@ -1,7 +1,7 @@
 @import url("CONTROLLER-STATUS-COLORS.css");
 
 .status__container {
-	width: 80%;
+	width: 90%;
 
 	display: grid;
 	grid-auto-flow: column;

@@ -6,6 +6,7 @@ import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LINES_INFO } from ".
 
 import { Dialog } from "./dialog.js";
 import { SetDestinationGrid } from "./dialog-set-destination-grid.js";
+import { ServiceTypeSelector } from "./dialog-selector-service-type.js";
 
 // Dialogs
 const setDestination = Symbol();
@@ -85,6 +86,14 @@ class SetServiceDialog extends React.Component {
 		});
 	}
 
+	updateServiceType(serviceTypeChinese) {
+		const serviceType = SERVICE_TYPES[serviceTypeChinese];
+		TypeChecker.checkInstanceOf(serviceType, ServiceType);
+		this.setState({
+			savedServiceType: serviceType
+		});
+	}
+
 	updateOutputDisplay() {
 		const line = this.state.savedLine;
 		const serviceType = this.state.savedServiceType;
@@ -113,6 +122,13 @@ class SetServiceDialog extends React.Component {
 			};
 		})();
 
+		const line = this.state.savedLine;
+		const filterName = this.state.savedFilterName;
+		const destination = this.state.savedDestination;
+		const serviceType = this.state.savedServiceType;
+
+		const serviceTypes = LINES_INFO.get(line).serviceTypes;
+
 		return React.createElement(
 			Dialog,
 			{
@@ -126,10 +142,10 @@ class SetServiceDialog extends React.Component {
 			this.state.currentDialog === setDestination ? React.createElement(SetDestinationGrid, {
 				initialLine: this.initialLine,
 
-				line: this.state.savedLine,
-				filterName: this.state.savedFilterName,
-				destination: this.state.savedDestination,
-				serviceType: this.state.savedServiceType,
+				line: line,
+				filterName: filterName,
+				destination: destination,
+				serviceType: serviceType,
 
 				saveSelections: this.saveSelections.bind(this),
 				saveScrollTops: this.saveScrollTops.bind(this),
@@ -138,30 +154,13 @@ class SetServiceDialog extends React.Component {
 				filterSelScrTop: this.state.savedFilterSelScrTop,
 				destSelScrTop: this.state.savedDestSelScrTop
 			}) : null,
-			this.state.currentDialog === setServiceType ? React.createElement(
-				React.Fragment,
-				null,
-				React.createElement(
-					"div",
-					null,
-					this.state.savedLine
-				),
-				React.createElement(
-					"div",
-					null,
-					this.state.savedFilterName
-				),
-				React.createElement(
-					"div",
-					null,
-					this.state.savedDestination.Chinese
-				),
-				React.createElement(
-					"div",
-					null,
-					this.state.savedServiceType.Chinese
-				)
-			) : null
+			this.state.currentDialog === setServiceType ? React.createElement(ServiceTypeSelector, {
+				line: line,
+				destination: destination,
+				serviceType: serviceType,
+				serviceTypes: serviceTypes,
+				updateServiceType: this.updateServiceType.bind(this)
+			}) : null
 		);
 	}
 }

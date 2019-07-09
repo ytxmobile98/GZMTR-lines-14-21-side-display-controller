@@ -54,4 +54,14 @@ class StatusGridContainer extends React.PureComponent {
 	}
 }
 
-export { StatusCell, StatusGridContainer };
+class StatusContainer extends React.PureComponent {
+	render() {
+		return (
+			<div className="status__container">
+				{this.props.children}
+			</div>
+		);
+	}
+}
+
+export { StatusCell, StatusGridContainer, StatusContainer };

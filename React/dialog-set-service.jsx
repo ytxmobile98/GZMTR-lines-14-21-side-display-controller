@@ -6,6 +6,7 @@ import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LINES_INFO } from ".
 
 import { Dialog } from "./dialog.js";
 import { SetDestinationGrid } from "./dialog-set-destination-grid.js";
+import { ServiceTypeSelector } from "./dialog-selector-service-type.js";
 
 // Dialogs
 const setDestination = Symbol();
@@ -85,6 +86,14 @@ class SetServiceDialog extends React.Component {
 		});
 	}
 
+	updateServiceType(serviceTypeChinese) {
+		const serviceType = SERVICE_TYPES[serviceTypeChinese];
+		TypeChecker.checkInstanceOf(serviceType, ServiceType);
+		this.setState({
+			savedServiceType: serviceType,
+		});
+	}
+
 	updateOutputDisplay() {
 		const line = this.state.savedLine;
 		const serviceType = this.state.savedServiceType;
@@ -113,6 +122,13 @@ class SetServiceDialog extends React.Component {
 			};
 		})();
 
+		const line = this.state.savedLine;
+		const filterName = this.state.savedFilterName;
+		const destination = this.state.savedDestination;
+		const serviceType = this.state.savedServiceType;
+
+		const serviceTypes = LINES_INFO.get(line).serviceTypes;
+
 		return (
 			<Dialog
 				onGoBack={this.state.handleGoBack &&
@@ -128,10 +144,10 @@ class SetServiceDialog extends React.Component {
 					<SetDestinationGrid
 						initialLine={this.initialLine}
 
-						line={this.state.savedLine}
-						filterName={this.state.savedFilterName}
-						destination={this.state.savedDestination}
-						serviceType={this.state.savedServiceType}
+						line={line}
+						filterName={filterName}
+						destination={destination}
+						serviceType={serviceType}
 
 						saveSelections={this.saveSelections.bind(this)}
 						saveScrollTops={this.saveScrollTops.bind(this)}
@@ -143,12 +159,13 @@ class SetServiceDialog extends React.Component {
 				: null}
 
 				{this.state.currentDialog === setServiceType ?
-					<React.Fragment>
-						<div>{this.state.savedLine}</div>
-						<div>{this.state.savedFilterName}</div>
-						<div>{this.state.savedDestination.Chinese}</div>
-						<div>{this.state.savedServiceType.Chinese}</div>
-					</React.Fragment>
+					<ServiceTypeSelector
+						line={line}
+						destination={destination}
+						serviceType={serviceType}
+						serviceTypes={serviceTypes}
+						updateServiceType={this.updateServiceType.bind(this)}
+					/>
 				: null}
 
 			</Dialog>
