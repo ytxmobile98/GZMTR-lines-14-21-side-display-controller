@@ -6,7 +6,7 @@ import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS } from "../data/PROCE
 
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
-import { StatusCell, StatusGridContainer } from "./controller-status.js";
+import { StatusCell, StatusGridContainer } from "./status-grid.js";
 
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
