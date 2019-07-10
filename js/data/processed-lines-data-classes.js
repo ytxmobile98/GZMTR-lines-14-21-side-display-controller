@@ -57,4 +57,4 @@ class LineInfo {
 	}
 }
 
-export { LineInfo };
+export { ServiceType, Station, LineInfo };

@@ -1,6 +1,6 @@
 "use strict";
 
-import { RawLineInfo } from "./raw-line-data-classes.js";
+import { RawLineInfo } from "./raw-lines-data-classes.js";
 import { RawFilter } from "./filter-classes.js";
 
 const RAW_SERVICE_TYPES_TRANSLATIONS = [
