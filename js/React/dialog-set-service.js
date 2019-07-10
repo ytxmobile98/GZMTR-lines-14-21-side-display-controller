@@ -127,7 +127,7 @@ class SetServiceDialog extends React.Component {
 		const destination = this.state.savedDestination;
 		const serviceType = this.state.savedServiceType;
 
-		const serviceTypes = LINES_INFO.get(line).serviceTypes;
+		const serviceTypes = LineInfoWrapper.getLineServiceTypes(line);
 
 		return React.createElement(
 			Dialog,

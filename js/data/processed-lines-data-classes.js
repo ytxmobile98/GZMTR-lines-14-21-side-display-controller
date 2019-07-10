@@ -107,6 +107,14 @@ class LineInfoWrapper {
 		return filters;
 	}
 
+	static getLineServiceTypes(line) {
+		const lineInfo = this.getLineInfo(line);
+		const serviceTypes = (lineInfo == undefined) ?
+			undefined : lineInfo.serviceTypes;
+		TypeChecker.checkOptionalInstanceOf(serviceTypes, Array);
+		return serviceTypes;
+	}
+
 	// Get filter information
 
 	static getFilter(line, filterName) {
