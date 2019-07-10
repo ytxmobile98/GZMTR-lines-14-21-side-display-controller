@@ -139,7 +139,6 @@ class LED extends React.PureComponent {
 			showingContent: showContent
 		};
 
-		this.showContent = showContent;
 		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
 		this.containerRef = React.createRef();
 		this.destRef = React.createRef();
@@ -165,20 +164,19 @@ class LED extends React.PureComponent {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		const props = this.props;
-
-		const serviceType = props.serviceType || defaultServiceType;
+		const serviceType = this.props.serviceType || defaultServiceType;
 		TypeChecker.checkOptionalInstanceOf(serviceType, ServiceType);
 
-		const destination = props.destination || defaultDestination;
+		const destination = this.props.destination || defaultDestination;
 		TypeChecker.checkOptionalInstanceOf(destination, Station);
 
-		if (props.showContent !== prevProps.showContent) {
-			this.turnOnOffLED(!!props.showContent);
+		if (this.props.showContent !== prevProps.showContent) {
+			this.turnOnOffLED(!!this.props.showContent);
 		}
 
-		if (props.serviceType !== prevProps.serviceType || props.destination !== prevProps.destination) {
-			this.refreshDisplay(this.showContent);
+		if (this.props.serviceType !== prevProps.serviceType || this.props.destination !== prevProps.destination) {
+			const showContent = this.props.showContent == undefined || !!this.props.showContent;
+			this.refreshDisplay(showContent);
 		}
 	}
 

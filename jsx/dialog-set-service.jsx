@@ -2,7 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
+import { ServiceType, Station, LineInfoWrapper } from "../data/processed-lines-data-classes.js";
 
 import { Dialog } from "./dialog.js";
 import { SetDestinationGrid } from "./dialog-set-destination-grid.js";
@@ -36,8 +36,10 @@ class SetServiceDialog extends React.Component {
 			// Initialize service data using current operation information
 			savedLine: this.initialLine,
 			savedFilterName: "",
-			savedDestination: props.destination || DESTINATIONS["不载客"],
-			savedServiceType: props.serviceType || SERVICE_TYPES["不载客"],
+			savedDestination: props.destination
+				|| LineInfoWrapper.getDefaultDest(),
+			savedServiceType: props.serviceType
+				|| LineInfoWrapper.getDefaultServiceType(),
 
 			// Save scroll tops
 			savedLineSelScrTop: 0,
