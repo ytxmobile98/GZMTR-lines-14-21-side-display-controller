@@ -61,7 +61,6 @@ class ServiceTypeSelector extends React.Component {
 					<LED
 						serviceType={serviceType}
 						destination={destination}
-						showContent={true}
 					/>
 				</div>
 

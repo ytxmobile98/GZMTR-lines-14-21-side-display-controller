@@ -61,8 +61,7 @@ class ServiceTypeSelector extends React.Component {
 				),
 				React.createElement(LED, {
 					serviceType: serviceType,
-					destination: destination,
-					showContent: true
+					destination: destination
 				})
 			),
 			React.createElement(

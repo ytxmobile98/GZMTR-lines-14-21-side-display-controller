@@ -96,7 +96,7 @@ class LineInfoWrapper {
 
 	static checkPassengerService(line) {
 		const lineInfo = this.getLineInfo(line);
-		return !!(lineInfo || lineInfo.isPassengerService);
+		return !!(lineInfo && lineInfo.isPassengerService);
 	}
 
 	static getLineFilters(line) {

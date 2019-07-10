@@ -1,9 +1,10 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
-import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
-const DEFAULT_SERVICE_TYPE = SERVICE_TYPES["不载客"];
-const DEFAULT_DESTINATION = DESTINATIONS["不载客"];
+import { ServiceType, Station, LineInfoWrapper } from "../data/processed-lines-data-classes.js";
+
+const defaultDestination = LineInfoWrapper.getDefaultDest();
+const defaultServiceType = LineInfoWrapper.getDefaultServiceType();
 
 class LEDServiceType extends React.PureComponent {
 
@@ -124,27 +125,31 @@ class LED extends React.PureComponent {
 
 	constructor(props) {
 
-		const serviceType = props.serviceType || DEFAULT_SERVICE_TYPE;
-		TypeChecker.checkInstanceOf(serviceType, ServiceType);
-
-		const destination = props.destination || DEFAULT_DESTINATION;
-		TypeChecker.checkInstanceOf(destination, Station);
-
-		const showContent = !!props.showContent;
-
 		super(props);
 
+		const serviceType = props.serviceType || defaultServiceType;
+		TypeChecker.checkInstanceOf(serviceType, ServiceType);
+
+		const destination = props.destination || defaultDestination;
+		TypeChecker.checkInstanceOf(destination, Station);
+
+		const showContent = props.showContent == undefined || !!props.showContent;
+
 		this.state = {
-			showContent: showContent
+			showingContent: showContent
 		};
+
+		this.showContent = showContent;
 		this.refreshTime = Math.max(props.refreshTime, 1000) || 1000;
 		this.containerRef = React.createRef();
 		this.destRef = React.createRef();
+
+		this.timeout = null;
 	}
 
 	turnOnOffLED(newState) {
 		this.setState({
-			showContent: !!newState
+			showingContent: !!newState
 		});
 	}
 
@@ -152,7 +157,8 @@ class LED extends React.PureComponent {
 		showingContent = !!showingContent;
 		if (showingContent) {
 			this.turnOnOffLED(false);
-			window.setTimeout(() => {
+			window.clearTimeout(this.timeout);
+			this.timeout = window.setTimeout(() => {
 				this.turnOnOffLED(showingContent);
 			}, this.refreshTime);
 		}
@@ -161,10 +167,10 @@ class LED extends React.PureComponent {
 	componentDidUpdate(prevProps, prevState) {
 		const props = this.props;
 
-		const serviceType = props.serviceType || DEFAULT_SERVICE_TYPE;
+		const serviceType = props.serviceType || defaultServiceType;
 		TypeChecker.checkOptionalInstanceOf(serviceType, ServiceType);
 
-		const destination = props.destination || DEFAULT_DESTINATION;
+		const destination = props.destination || defaultDestination;
 		TypeChecker.checkOptionalInstanceOf(destination, Station);
 
 		if (props.showContent !== prevProps.showContent) {
@@ -172,8 +178,12 @@ class LED extends React.PureComponent {
 		}
 
 		if (props.serviceType !== prevProps.serviceType || props.destination !== prevProps.destination) {
-			this.refreshDisplay(props.showContent);
+			this.refreshDisplay(this.showContent);
 		}
+	}
+
+	componentWillUnmount() {
+		window.clearTimeout(this.timeout);
 	}
 
 	render() {
@@ -184,7 +194,7 @@ class LED extends React.PureComponent {
 				className: "LED__container",
 				ref: this.containerRef
 			},
-			this.state.showContent ? React.createElement(
+			this.state.showingContent ? React.createElement(
 				"div",
 				{ className: "LED__content" },
 				React.createElement(LEDServiceType, {
