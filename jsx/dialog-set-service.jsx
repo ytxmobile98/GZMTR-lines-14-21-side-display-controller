@@ -89,7 +89,7 @@ class SetServiceDialog extends React.Component {
 	}
 
 	updateServiceType(serviceTypeChinese) {
-		const serviceType = SERVICE_TYPES[serviceTypeChinese];
+		const serviceType = LineInfoWrapper.getServiceType(serviceTypeChinese);
 		TypeChecker.checkInstanceOf(serviceType, ServiceType);
 		this.setState({
 			savedServiceType: serviceType,
