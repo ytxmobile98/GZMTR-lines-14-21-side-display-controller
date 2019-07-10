@@ -5,8 +5,7 @@ import { TypeChecker } from "../type-checker.js";
 import { processTranslations } from "./process-translations.js";
 
 import { RAW_SERVICE_TYPES_TRANSLATIONS, RAW_DESTINATIONS_TRANSLATIONS, RAW_LINES_INFO } from "./RAW-LINES-DATA.js";
-import { RawLineInfo } from "./raw-lines-data-classes.js";
-import { RawFilter } from "./filter-classes.js";
+import { RawLineInfo, RawFilter } from "./raw-lines-data-classes.js";
 
 import { ServiceType } from "./service-type-classes.js";
 import { Station } from "./station-classes.js";

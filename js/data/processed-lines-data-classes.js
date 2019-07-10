@@ -1,8 +1,10 @@
 "use strict";
 
 import { TypeChecker } from "../type-checker.js";
+
 import { ServiceType } from "./service-type-classes.js";
 import { Station } from "./station-classes.js";
+
 import { RawFilter, Filter } from "./filter-classes.js";
 
 import { SERVICE_TYPES, DESTINATIONS } from "./PROCESSED-LINES-DATA.js";
@@ -57,4 +59,4 @@ class LineInfo {
 	}
 }
 
-export { ServiceType, Station, LineInfo };
+export { ServiceType, Station, LineInfo, Filter };

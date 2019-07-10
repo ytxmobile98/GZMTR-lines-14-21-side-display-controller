@@ -22,4 +22,4 @@ class RawLineInfo {
 	}
 }
 
-export { RawLineInfo };
+export { RawLineInfo, RawFilter };
