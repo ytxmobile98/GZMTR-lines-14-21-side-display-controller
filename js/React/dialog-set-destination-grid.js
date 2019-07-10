@@ -2,8 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LineInfo, LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
-import { Filter } from "../data/filter-classes.js";
+import { ServiceType, Station, LineInfoWrapper } from "../data/processed-lines-data-classes.js";
 
 import { RadioGroup, RadioItem } from "./radio-group.js";
 import { LineSelector } from "./dialog-selector-line.js";
@@ -16,15 +15,15 @@ class SetDestinationGrid extends React.Component {
 
 		this.initialLine = props.initialLine;
 
-		TypeChecker.checkOptionalInstanceOf(props.destination, Station);
-		TypeChecker.checkOptionalInstanceOf(props.serviceType, ServiceType);
-
 		this.state = {
 			line: String(props.line || ""),
 			filterName: String(props.filterName || ""),
-			destination: props.destination || DESTINATIONS["不载客"],
-			serviceType: props.serviceType || SERVICE_TYPES["不载客"]
+			destination: props.destination || LineInfoWrapper.getDefaultDest(),
+			serviceType: props.serviceType || LineInfoWrapper.getDefaultServiceType()
 		};
+
+		TypeChecker.checkInstanceOf(this.state.destination, Station);
+		TypeChecker.checkInstanceOf(this.state.serviceType, ServiceType);
 
 		this.lineSelRef = React.createRef();
 		this.filterSelRef = React.createRef();
@@ -39,33 +38,29 @@ class SetDestinationGrid extends React.Component {
 
 	updateFilterName(filterName) {
 		const initialLine = this.initialLine;
-		const initialLineInfo = LINES_INFO.get(initialLine);
-		TypeChecker.checkInstanceOf(initialLineInfo, LineInfo);
-
 		const currentLine = this.state.line;
-		const currentLineInfo = LINES_INFO.get(currentLine);
-		TypeChecker.checkInstanceOf(currentLineInfo, LineInfo);
-
-		const filter = LINES_INFO.get(currentLine).filters.get(filterName);
-		TypeChecker.checkInstanceOf(filter, Filter);
 
 		this.setState({
 			filterName: String(filterName || "")
 		});
 
-		if (!initialLineInfo.isPassengerService || initialLineInfo === currentLineInfo) {
+		if (!LineInfoWrapper.checkPassengerService(initialLine) || initialLine === currentLine) {
+			const serviceType = LineInfoWrapper.getFilterServiceType(currentLine, filterName);
+			TypeChecker.checkInstanceOf(serviceType, ServiceType);
 			this.setState({
-				serviceType: filter.serviceType
+				serviceType: serviceType
 			});
 		} else {
+			const crossLineServiceType = LineInfoWrapper.getFilterCrossLineServiceType(currentLine, filterName);
+			TypeChecker.checkInstanceOf(crossLineServiceType, ServiceType);
 			this.setState({
-				serviceType: filter.crossLineServiceType
+				serviceType: crossLineServiceType
 			});
 		}
 	}
 
 	updateDestination(destNameChinese) {
-		const destination = DESTINATIONS[destNameChinese];
+		const destination = LineInfoWrapper.getDestination(destNameChinese);
 		TypeChecker.checkInstanceOf(destination, Station);
 		this.setState({
 			destination: destination
@@ -97,8 +92,8 @@ class SetDestinationGrid extends React.Component {
 
 		const line = this.state.line;
 		const filterName = this.state.filterName;
-		const filters = LINES_INFO.get(line).filters;
-		const filter = filters.get(filterName);
+		const filters = LineInfoWrapper.getLineFilters(line);
+		const filter = LineInfoWrapper.getFilter(line, filterName);
 		const destination = this.state.destination;
 
 		return React.createElement(
