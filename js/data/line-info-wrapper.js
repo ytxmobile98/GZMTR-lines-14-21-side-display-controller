@@ -2,7 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { RawFilter, Filter } from "./filter-classes.js";
+import { Filter } from "./filter-classes.js";
 
 import { getServiceType, getDestination } from "./processed-translations-getter.js";
 import { ServiceType, Station, LineInfo } from "./processed-lines-data-classes.js";
