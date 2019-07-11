@@ -54,14 +54,10 @@ class ServiceTypeSelector extends React.Component {
 		return (
 			<React.Fragment>
 
-				<div className="LED-preview">
-					<div className="warning-notes">
-						预览（请点击“完成”以保存）
-					</div>
-					<LED
-						serviceType={serviceType}
-						destination={destination}
-					/>
+				<div className="service-type-selector">
+					<RadioGroup header="选择车种">
+						{serviceTypeItems}
+					</RadioGroup>
 				</div>
 
 				<StatusContainer>
@@ -83,13 +79,20 @@ class ServiceTypeSelector extends React.Component {
 							dataValue={serviceType.Chinese}
 						/>
 					</StatusGridContainer>
+
 				</StatusContainer>
 
-				<div className="service-type-selector">
-					<RadioGroup header="选择车种">
-						{serviceTypeItems}
-					</RadioGroup>
+				<div className="LED-preview">
+					<div className="warning-notes">
+						预览（请点击“完成”以保存）
+					</div>
+					<LED
+						serviceType={serviceType}
+						destination={destination}
+					/>
 				</div>
+
+
 
 			</React.Fragment>
 		);

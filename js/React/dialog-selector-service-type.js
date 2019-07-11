@@ -53,16 +53,12 @@ class ServiceTypeSelector extends React.Component {
 			null,
 			React.createElement(
 				"div",
-				{ className: "LED-preview" },
+				{ className: "service-type-selector" },
 				React.createElement(
-					"div",
-					{ className: "warning-notes" },
-					"\u9884\u89C8\uFF08\u8BF7\u70B9\u51FB\u201C\u5B8C\u6210\u201D\u4EE5\u4FDD\u5B58\uFF09"
-				),
-				React.createElement(LED, {
-					serviceType: serviceType,
-					destination: destination
-				})
+					RadioGroup,
+					{ header: "\u9009\u62E9\u8F66\u79CD" },
+					serviceTypeItems
+				)
 			),
 			React.createElement(
 				StatusContainer,
@@ -90,12 +86,16 @@ class ServiceTypeSelector extends React.Component {
 			),
 			React.createElement(
 				"div",
-				{ className: "service-type-selector" },
+				{ className: "LED-preview" },
 				React.createElement(
-					RadioGroup,
-					{ header: "\u9009\u62E9\u8F66\u79CD" },
-					serviceTypeItems
-				)
+					"div",
+					{ className: "warning-notes" },
+					"\u9884\u89C8\uFF08\u8BF7\u70B9\u51FB\u201C\u5B8C\u6210\u201D\u4EE5\u4FDD\u5B58\uFF09"
+				),
+				React.createElement(LED, {
+					serviceType: serviceType,
+					destination: destination
+				})
 			)
 		);
 	}
