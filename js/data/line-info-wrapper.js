@@ -38,6 +38,11 @@ class LineInfoWrapper {
 
 	// Get line information
 
+	static getLines() {
+		const lines = Array.from(LINES_INFO.keys());
+		return lines;
+	}
+
 	static getLineInfo(line) {
 		const lineInfo = LINES_INFO.get(line);
 		TypeChecker.checkOptionalInstanceOf(lineInfo, LineInfo);

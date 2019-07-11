@@ -1,12 +1,13 @@
 "use strict";
 
-import { LINES_INFO } from "../data/PROCESSED-LINES-DATA.js";
+import { LineInfoWrapper } from "../data/line-info-wrapper.js";
+
 import { RadioItem } from "./radio-group.js";
 
 class LineSelector extends React.PureComponent {
 
 	render() {
-		const lines = Array.from(LINES_INFO.keys());
+		const lines = LineInfoWrapper.getLines();
 		const updateLine = this.props.updateLine;
 		const handleUpdateLine = e => {
 			updateLine(e.target.value);
