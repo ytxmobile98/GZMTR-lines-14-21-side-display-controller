@@ -2,7 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { ServiceType, Station } from "../data/PROCESSED-LINES-DATA.js";
+import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
 
 import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
 import { LED } from "./LED.js";

@@ -7,7 +7,7 @@ import { Station } from "./station-classes.js";
 
 import { RawFilter, Filter } from "./filter-classes.js";
 
-import { SERVICE_TYPES, DESTINATIONS } from "./PROCESSED-TRANSLATIONS-DATA.js";
+import { getServiceType, getDestination } from "./processed-translations-getter.js";
 
 class LineInfo {
 	constructor(line, isPassengerService, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters) {
@@ -34,16 +34,16 @@ class LineInfo {
 		});
 	}
 
-	addFilter(name, destinations, serviceType = undefined) {
+	addFilter(name, destinations, serviceTypeChinese = undefined) {
 
 		TypeChecker.checkArrayType(destinations, "string");
 
 		const line = this.line;
 		name = String(name || "");
-		destinations = destinations.map((ChineseName) => {
-			return DESTINATIONS[ChineseName];
+		destinations = destinations.map((destNameChinese) => {
+			return getDestination(destNameChinese);
 		});
-		serviceType = SERVICE_TYPES[serviceType || ""] || this.defaultServiceType;
+		const serviceType = getServiceType(serviceTypeChinese) || this.defaultServiceType;
 		const crossLineServiceType = this.crossLineServiceType;
 
 		/* Filter constructor:

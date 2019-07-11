@@ -2,12 +2,11 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { ServiceType } from "./service-type-classes.js";
-import { Station } from "./station-classes.js";
-
 import { RawFilter, Filter } from "./filter-classes.js";
 
-import { SERVICE_TYPES, DESTINATIONS, LINES_INFO, LineInfo } from "./PROCESSED-LINES-DATA.js";
+import { getServiceType, getDestination } from "./processed-translations-getter.js";
+import { ServiceType, Station, LineInfo } from "./processed-lines-data-classes.js";
+import { LINES_INFO } from "./PROCESSED-LINES-DATA.js";
 
 class LineInfoWrapper {
 	constructor() {
@@ -17,7 +16,7 @@ class LineInfoWrapper {
 	// Fundamental service info: destination and service type
 
 	static getDestination(destNameChinese) {
-		const destination = DESTINATIONS[destNameChinese];
+		const destination = getDestination(destNameChinese);
 		TypeChecker.checkOptionalInstanceOf(destination, Station);
 		return destination;
 	}
@@ -27,7 +26,7 @@ class LineInfoWrapper {
 	}
 
 	static getServiceType(serviceTypeChinese) {
-		const serviceType = SERVICE_TYPES[serviceTypeChinese];
+		const serviceType = getServiceType(serviceTypeChinese);
 		TypeChecker.checkOptionalInstanceOf(serviceType, ServiceType);
 		return serviceType;
 	}

@@ -6,7 +6,7 @@ import { RAW_LINES_INFO } from "./RAW-LINES-DATA.js";
 import { RawLineInfo, RawFilter } from "./raw-lines-data-classes.js";
 
 import { ServiceType, Station, LineInfo } from "./processed-lines-data-classes.js";
-import { SERVICE_TYPES, DESTINATIONS } from "./PROCESSED-TRANSLATIONS-DATA.js";
+import { getServiceType, getDestination } from "./processed-translations-getter.js";
 
 // Processed data
 
@@ -21,14 +21,14 @@ const LINES_INFO = Object.freeze((() => {
 		const line = rawLineInfo.line;
 		const isPassengerService = !!rawLineInfo.isPassengerService;
 		const destinations = rawLineInfo.destinations.map((ChineseName) => {
-			return DESTINATIONS[ChineseName];
+			return getDestination(ChineseName);
 		});
 
 		const serviceTypes = rawLineInfo.serviceTypes.map((ChineseName) => {
-			return SERVICE_TYPES[ChineseName];
+			return getServiceType(ChineseName);
 		});
-		const defaultServiceType = SERVICE_TYPES[rawLineInfo.defaultServiceType];
-		const crossLineServiceType = SERVICE_TYPES[rawLineInfo.crossLineServiceType];
+		const defaultServiceType = getServiceType(rawLineInfo.defaultServiceType);
+		const crossLineServiceType = getServiceType(rawLineInfo.crossLineServiceType);
 
 		const rawFilters = rawLineInfo.rawFiters;
 
@@ -46,7 +46,6 @@ const LINES_INFO = Object.freeze((() => {
 		const newLineInfo = new LineInfo(line, isPassengerService, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters);
 
 		LINES_INFO.set(line, newLineInfo);
-
 	});
 
 	console.log(`LINES_INFO: `, LINES_INFO);
@@ -55,4 +54,4 @@ const LINES_INFO = Object.freeze((() => {
 
 })());
 
-export { ServiceType, SERVICE_TYPES, Station, DESTINATIONS, LineInfo, LINES_INFO };
+export { ServiceType, Station, LineInfo, LINES_INFO };
