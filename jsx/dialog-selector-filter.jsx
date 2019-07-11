@@ -61,4 +61,4 @@ class FilterSelector extends React.PureComponent {
 	}
 }
 
-export { FilterSelector }；
+export { FilterSelector };
