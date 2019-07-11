@@ -2,7 +2,8 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { ServiceType, SERVICE_TYPES, Station, DESTINATIONS } from "../data/PROCESSED-LINES-DATA.js";
+import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
+import { LineInfoWrapper } from "../data/line-info-wrapper.js";
 
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
@@ -28,8 +29,8 @@ class Controller extends React.Component {
 
 			// current destination information
 			line: "不载客",
-			serviceType: SERVICE_TYPES["不载客"],
-			destination: DESTINATIONS["不载客"],
+			serviceType: LineInfoWrapper.getDefaultServiceType(),
+			destination: LineInfoWrapper.getDefaultDest(),
 		};
 
 	}

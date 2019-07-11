@@ -2,7 +2,8 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { ServiceType, Station, LineInfoWrapper } from "../data/processed-lines-data-classes.js";
+import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
+import { LineInfoWrapper } from "../data/line-info-wrapper.js";
 
 import { RadioGroup, RadioItem } from "./radio-group.js";
 import { LineSelector } from "./dialog-selector-line.js";

@@ -2,7 +2,8 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { ServiceType, Station, LineInfoWrapper } from "../data/processed-lines-data-classes.js";
+import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
+import { LineInfoWrapper } from "../data/line-info-wrapper.js";
 
 import { Dialog } from "./dialog.js";
 import { SetDestinationGrid } from "./dialog-set-destination-grid.js";
