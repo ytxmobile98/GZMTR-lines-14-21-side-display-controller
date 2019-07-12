@@ -26,7 +26,7 @@
 	text-align: inherit;
 }
 .radio-button-group__text-button:enabled:hover {
-	background-color: var(--base-hover-bg-color);
+	background-color: var(--radio-hover-bg-color);
 }
 .radio-button-group__text-button:disabled {
 	color: var(--disabled-text-color);
