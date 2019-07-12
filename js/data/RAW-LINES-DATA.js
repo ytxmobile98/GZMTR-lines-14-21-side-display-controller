@@ -4,7 +4,7 @@ import { RawLineInfo } from "./raw-lines-data-classes.js";
 import { RawFilter } from "./filter-classes.js";
 
 const RAW_SERVICE_TYPES_TRANSLATIONS = [
-	["不载客", "Not in Service"],
+	["不载客", "Not in service"],
 	["普通", "Local"],
 	["快速", "Express"],
 	["特别服务", "Special"],
