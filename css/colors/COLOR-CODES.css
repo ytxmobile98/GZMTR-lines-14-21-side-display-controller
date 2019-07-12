@@ -8,7 +8,7 @@
 	/* Thematic color codes */
 
 	--base-bg-color: lightgray;
-	--base-hover-bg-color: gray;
+	--base-hover-bg-color: lightgray;
 	--action-bg-color: royalblue;
 	--action-hover-bg-color: dodgerblue;
 
