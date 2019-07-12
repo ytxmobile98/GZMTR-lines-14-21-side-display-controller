@@ -1,4 +1,6 @@
 @import url("reset.css");
+@import url("fonts.css");
+
 @import url("controller/controller.css");
 
 body {
@@ -11,7 +13,7 @@ body {
 	align-content: center;
 	justify-content: center;
 
-	font-family: Unifont, monospace;
+	font-family: "Unifont", monospace;
 }
 
 :root {

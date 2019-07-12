@@ -1,0 +1,6 @@
+@font-face {
+	font-family: "Unifont";
+	src: local("Unifont"),
+		url("fonts/unifont.woff2") format("woff2"),
+		url("fonts/unifont.woff2") format("woff");
+}
