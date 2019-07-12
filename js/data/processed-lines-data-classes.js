@@ -15,8 +15,8 @@ class LineInfo {
 		TypeChecker.checkArrayType(destinations, Station);
 
 		TypeChecker.checkArrayType(serviceTypes, ServiceType);
-    TypeChecker.checkInstanceOf(defaultServiceType, ServiceType);
-    TypeChecker.checkInstanceOf(crossLineServiceType, ServiceType);
+		TypeChecker.checkInstanceOf(defaultServiceType, ServiceType);
+		TypeChecker.checkInstanceOf(crossLineServiceType, ServiceType);
 
 		TypeChecker.checkArrayType(rawFilters, RawFilter);
 
