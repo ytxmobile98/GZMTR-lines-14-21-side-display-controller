@@ -20,7 +20,7 @@ const makeRequest = (url, mimeType = "text/plain") => {
 };
 
 const parallelProcess = async () => {
-	let destinations, serviceTypes;
+	let destinations, serviceTypes, filters;
 	const mimeType = "text/csv";
 
 	await Promise.all([
