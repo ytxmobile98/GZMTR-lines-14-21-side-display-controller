@@ -1,5 +1,11 @@
-"!Chinese"	"!English"
-"不载客"	"Not in Service"
-"普通"	"Local"
-"快速"	"Express"
-"特别服务"	"Special"
+"!Line"	"!Chinese"	"!English"
+
+"不载客"	"不载客"	"Not in Service"
+
+"14号线"	"普通"	"Local"
+"14号线"	"快速"	"Express"
+"14号线"	"特别服务"	"Special"
+
+"21号线"	"普通"	"Local"
+"21号线"	"快速"	"Express"
+"21号线"	"特别服务"	"Special"
