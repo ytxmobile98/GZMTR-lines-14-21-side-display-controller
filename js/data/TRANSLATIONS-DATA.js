@@ -27,7 +27,8 @@ const readTranslationsData = async () => {
 		})(),
 	]);
 
-	console.log(SERVICE_TYPES, DESTINATIONS);
+	console.log(`SERVICE_TYPES: `, SERVICE_TYPES);
+	console.log(`DESTINATIONS: `, DESTINATIONS);
 };
 
 const getServiceType = (serviceTypeChinese) => {
