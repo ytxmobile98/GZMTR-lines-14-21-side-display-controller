@@ -34,6 +34,9 @@ const parallelProcess = async () => {
 				if (row.length >= 3) {
 					destinations[index] = row.slice(1, 3);
 				}
+				else {
+					destinations[index] = row.slice(0, 2);
+				}
 			});
 
 			const destStrsSet = new Set(destinations.map((row) => {
@@ -54,7 +57,7 @@ const parallelProcess = async () => {
 			filters = parseDataFields(filters);
 		})(),
 	]);
-	
+
 	console.log(destinations)
 	console.log(serviceTypes);
 	console.log(filters);
