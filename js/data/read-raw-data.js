@@ -57,7 +57,7 @@ const processTranslations = (text, SubClass, fieldSeparator = "\t", newLine = "\
 		translations[row[0]] = new SubClass(...row);
 	});
 	return translations;
-}
+};
 
 const parallelProcess = async () => {
 	let destinations, serviceTypes, filters;
@@ -86,3 +86,5 @@ const parallelProcess = async () => {
 }
 
 parallelProcess();
+
+export { parallelProcess, processTranslations };
