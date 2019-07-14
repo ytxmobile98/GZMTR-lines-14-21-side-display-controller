@@ -1,5 +1,11 @@
 "use strict";
 
+import { TypeChecker } from "../type-checker.js";
+
+import { TranslationPair } from "./translation-pairs.js";
+import { ServiceType } from "./service-type-classes.js";
+import { Station } from "./station-classes.js";
+
 import { parseDataFields, isEmptyRow, isHeaderRow } from "./parse-data-fields.js";
 
 const makeRequest = (url, mimeType = "text/plain") => {
@@ -19,37 +25,53 @@ const makeRequest = (url, mimeType = "text/plain") => {
 	});
 };
 
+const processTranslations = (text, SubClass, fieldSeparator = "\t", newLine = "\n") => {
+	TypeChecker.checkIsPrototypeOf(TranslationPair, SubClass);
+
+	let dataArray = parseDataFields(text, fieldSeparator, newLine);
+
+	// filter out only valid rows
+	dataArray = dataArray.filter((row, index) => {
+		return !(isEmptyRow(row) || isHeaderRow(row));
+	});
+	dataArray.forEach((row, index) => {
+		if (row.length >= 3) {
+			dataArray[index] = row.slice(1, 3);
+		}
+		else {
+			dataArray[index] = row.slice(0, 2);
+		}
+	});
+
+	// remove duplicates
+	const dataStrsSet = new Set(dataArray.map((row) => {
+		return row.join(fieldSeparator);
+	}));
+	dataArray = Array.from(dataStrsSet).map((str) => {
+		return String(str).split(fieldSeparator);
+	});
+
+	// use Chinese fields as key
+	const translations = {};
+	dataArray.forEach((row) => {
+		translations[row[0]] = new SubClass(...row);
+	});
+	return translations;
+}
+
 const parallelProcess = async () => {
 	let destinations, serviceTypes, filters;
 	const mimeType = "text/csv";
 
 	await Promise.all([
 		(async () => {
-			destinations = await makeRequest("./RAW-DATA/DESTINATIONS.csv", mimeType);
-			destinations = parseDataFields(destinations);
-			destinations = destinations.filter((row) => {
-				return !(isEmptyRow(row) || isHeaderRow(row));
-			});
-			destinations.forEach((row, index) => {
-				if (row.length >= 3) {
-					destinations[index] = row.slice(1, 3);
-				}
-				else {
-					destinations[index] = row.slice(0, 2);
-				}
-			});
-
-			const destStrsSet = new Set(destinations.map((row) => {
-				return row.join("\t");
-			}));
-			destinations = Array.from(destStrsSet).map((str) => {
-				return str.split("\t");
-			});
+			const destText = await makeRequest("./RAW-DATA/DESTINATIONS.csv", mimeType);
+			destinations = processTranslations(destText, Station);
 		})(),
 
 		(async () => {
-			serviceTypes = await makeRequest("./RAW-DATA/SERVICE-TYPES.csv", mimeType);
-			serviceTypes = parseDataFields(serviceTypes);
+			const serviceTypesText = await makeRequest("./RAW-DATA/SERVICE-TYPES.csv", mimeType);
+			serviceTypes = processTranslations(serviceTypesText, ServiceType);
 		})(),
 
 		(async () => {
@@ -61,10 +83,6 @@ const parallelProcess = async () => {
 	console.log(destinations)
 	console.log(serviceTypes);
 	console.log(filters);
-
-	serviceTypes.forEach((row) => {
-		console.log(isHeaderRow(row));
-	});
 }
 
 parallelProcess();

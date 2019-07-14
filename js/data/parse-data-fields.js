@@ -34,8 +34,8 @@ const isEmptyRow = (arr) => {
 
 const isHeaderRow = (arr, regexp = /^!/g) => {
 	TypeChecker.checkInstanceOf(arr, Array);
-	for (let i of arr) {
-		if (!(String(i).match(regexp))) {
+	for (let item of arr) {
+		if (!(String(item).match(regexp))) {
 			return false;
 			break;
 		}
