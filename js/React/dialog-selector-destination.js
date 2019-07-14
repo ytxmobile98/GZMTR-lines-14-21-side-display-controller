@@ -2,7 +2,7 @@
 
 import { TypeChecker } from "../type-checker.js";
 
-import { Station } from "../data/PROCESSED-LINES-DATA.js";
+import { Station } from "../data/station-classes.js";
 import { Filter } from "../data/filter-classes.js";
 
 import { RadioItem, checkFirstItem } from "./radio-group.js";
