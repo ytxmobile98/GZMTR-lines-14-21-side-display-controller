@@ -32,7 +32,7 @@ const isEmptyRow = (arr) => {
 	return true;
 }
 
-const isHeaderRow = (arr, regexp) => {
+const isHeaderRow = (arr, regexp = /^!/g) => {
 	TypeChecker.checkInstanceOf(arr, Array);
 	for (let i of arr) {
 		if (!(String(i).match(regexp))) {
