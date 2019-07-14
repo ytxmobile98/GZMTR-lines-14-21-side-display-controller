@@ -3,57 +3,6 @@
 import { RawLineInfo } from "./raw-lines-data-classes.js";
 import { RawFilter } from "./filter-classes.js";
 
-const RAW_SERVICE_TYPES_TRANSLATIONS = [
-	["不载客", "Not in service"],
-	["普通", "Local"],
-	["快速", "Express"],
-	["特别服务", "Special"],
-];
-
-const RAW_DESTINATIONS_TRANSLATIONS = [
-
-	// 不载客
-  ["不载客", "Not in service"],
-  ["回厂", "To yard"],
-  ["试车", "Test run"],
-
-  // 14号线
-  ["嘉禾望岗", "Jiahewanggang"],
-  ["白云东平", "Baiyun Dongping"],
-  ["夏良", "Xialiang"],
-  ["太和", "Taihe"],
-  ["竹料", "Zhuliao"],
-  ["钟落潭", "Zhongluotan"],
-  ["马沥", "Mali"],
-  ["新和", "Xinhe"],
-  ["太平", "Taiping"],
-  ["神岗", "Shengang"],
-  ["赤草", "Chicao"],
-  ["从化客运站", "Conghua Coach Terminal"],
-  ["东风", "Dongfeng"],
-  ["红卫", "Hongwei"],
-  ["新南", "Xinnan"],
-  ["枫下", "Fengxia"],
-  ["知识城", "Sino-Singapore Guangzhou Knowledge City"],
-  ["何棠下", "Hetangxia"],
-  ["旺村", "Wangcun"],
-  ["汤村", "Tangcun"],
-  ["镇龙北", "Zhenlongbei"],
-  ["镇龙", "Zhenlong"],
-
-  // 21号线
-  ["镇龙西", "Zhenlongxi"],
-  ["镇龙", "Zhenlong"],
-  ["中新", "Zhongxin"],
-  ["坑贝", "Kengbei"],
-  ["凤岗", "Fenggang"],
-  ["朱村", "Zhucun"],
-  ["山田", "Shantian"],
-  ["钟岗", "Zhonggang"],
-  ["增城广场", "Zengcheng Square"],
-
-];
-
 const RAW_LINES_INFO = (() => {
 
 	const line = String;
