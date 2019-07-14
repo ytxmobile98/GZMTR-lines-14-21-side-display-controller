@@ -3,13 +3,13 @@
 import { TypeChecker } from "../type-checker.js";
 import { TranslationPair } from "./translation-pairs.js";
 
-const processTranslations = (translations, subClass) => {
+const processTranslations = (translations, SubClass) => {
 	TypeChecker.checkInstanceOf(translations, Array);
-	TypeChecker.checkIsPrototypeOf(TranslationPair, subClass);
+	TypeChecker.checkIsPrototypeOf(TranslationPair, SubClass);
 
 	const mappedTranslations = translations.map((translation) => {
 		const Chinese = translation[0];
-		return [Chinese, new subClass(...translation)];
+		return [Chinese, new SubClass(...translation)];
 	});
 
 	const translationsObj = Object.fromEntries(mappedTranslations);
