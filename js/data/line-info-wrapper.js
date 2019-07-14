@@ -4,9 +4,9 @@ import { TypeChecker } from "../type-checker.js";
 
 import { Filter } from "./filter-classes.js";
 
-import { getServiceType, getDestination } from "./processed-translations-getter.js";
+import { getServiceType, getDestination } from "./TRANSLATIONS-DATA.js";
 import { ServiceType, Station, LineInfo } from "./processed-lines-data-classes.js";
-import { LINES_INFO } from "./PROCESSED-LINES-DATA.js";
+// import { LINES_INFO } from "./PROCESSED-LINES-DATA.js";
 
 class LineInfoWrapper {
 	constructor() {

@@ -29,8 +29,10 @@ class Controller extends React.Component {
 
 			// current destination information
 			line: "不载客",
-			serviceType: LineInfoWrapper.getDefaultServiceType(),
-			destination: LineInfoWrapper.getDefaultDest(),
+			// serviceType: LineInfoWrapper.getDefaultServiceType(),
+			// destination: LineInfoWrapper.getDefaultDest(),
+			serviceType: LineInfoWrapper.getServiceType("快速"),
+			destination: LineInfoWrapper.getDestination("镇龙"),
 		};
 
 	}
@@ -184,6 +186,7 @@ class Controller extends React.Component {
 						<button
 							className="master-button action-button"
 							onClick={()=>{openModal("setService");}}
+							disabled={true}
 						>
 							更新运营信息
 						</button>

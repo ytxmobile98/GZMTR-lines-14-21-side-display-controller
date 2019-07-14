@@ -3,17 +3,41 @@
 import { TypeChecker } from "../type-checker.js";
 import { TranslationPair } from "./translation-pairs.js";
 
-const processTranslations = (translations, SubClass) => {
-	TypeChecker.checkInstanceOf(translations, Array);
+import { parseDataFields, isEmptyRow, isHeaderRow } from "./parse-data-fields.js";
+
+const processTranslations = (text, SubClass, fieldSeparator = "\t", newLine = "\n") => {
 	TypeChecker.checkIsPrototypeOf(TranslationPair, SubClass);
 
-	const mappedTranslations = translations.map((translation) => {
-		const Chinese = translation[0];
-		return [Chinese, new SubClass(...translation)];
+	let dataArray = parseDataFields(text, fieldSeparator, newLine);
+
+	// filter out only valid rows
+	dataArray = dataArray.filter((row, index) => {
+		return !(isEmptyRow(row) || isHeaderRow(row));
+	});
+	dataArray.forEach((row, index) => {
+		if (row.length >= 3) {
+			dataArray[index] = row.slice(1, 3);
+		}
+		else {
+			dataArray[index] = row.slice(0, 2);
+		}
 	});
 
-	const translationsObj = Object.fromEntries(mappedTranslations);
-	return translationsObj;
-}
+	// remove duplicates
+	const dataStrsSet = new Set(dataArray.map((row) => {
+		return row.join(fieldSeparator);
+	}));
+	dataArray = Array.from(dataStrsSet).map((str) => {
+		return String(str).split(fieldSeparator);
+	});
+
+	// use Chinese fields as key
+	const translations = {};
+	dataArray.forEach((row) => {
+		translations[row[0]] = new SubClass(...row);
+	});
+	Object.freeze(translations);
+	return translations;
+};
 
 export { processTranslations };

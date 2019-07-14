@@ -6,7 +6,7 @@ import { RawLineInfo, RawFilter } from "./raw-lines-data-classes.js";
 import { RAW_LINES_INFO } from "./RAW-LINES-DATA.js";
 
 import { ServiceType, Station, LineInfo } from "./processed-lines-data-classes.js";
-import { getServiceType, getDestination } from "./processed-translations-getter.js";
+import { getServiceType, getDestination } from "./TRANSLATIONS-DATA.js";
 
 // Processed data
 

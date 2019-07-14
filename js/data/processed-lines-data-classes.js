@@ -7,7 +7,7 @@ import { Station } from "./station-classes.js";
 
 import { RawFilter, Filter } from "./filter-classes.js";
 
-import { getServiceType, getDestination } from "./processed-translations-getter.js";
+import { readTranslationsData } from "./TRANSLATIONS-DATA.js";
 
 class LineInfo {
 	constructor(line, isPassengerService, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters) {

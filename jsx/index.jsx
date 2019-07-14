@@ -1,5 +1,5 @@
 "use strict";
 
-import { Controller } from "./controller.js";
+import { initialLoad } from "./initial-load.js";
 
-ReactDOM.render(<Controller />, document.getElementById("js-root"));
+initialLoad();
