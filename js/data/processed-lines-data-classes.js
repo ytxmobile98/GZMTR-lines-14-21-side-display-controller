@@ -25,11 +25,9 @@ class LineInfo {
 		}
 	}
 
-	addFilters(filters) {
-		TypeChecker.checkArrayType(filters, Filter);
-		filters.forEach((filter) => {
-			this.filters.set(filter.getName(), filter);
-		});
+	addFilter(filter) {
+		TypeChecker.checkInstanceOf(filter, Filter);
+		this.filters.set(filter.getName(), filter);
 	}
 }
 

@@ -25,7 +25,7 @@ class Filter {
     this.name = String(name);
     this.destinations = mapTextListToDests(String(destList));
     this.serviceType = getServiceType(String(serviceTypeChinese));
-    this.crossLineServiceType = getServiceType(String(crosscrossLineServiceTypeChinese));
+    this.crossLineServiceType = getServiceType(String(crossLineServiceTypeChinese));
 
     Object.freeze(this);
   }
