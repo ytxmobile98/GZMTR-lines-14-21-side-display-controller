@@ -19,11 +19,13 @@ const readTranslationsData = async () => {
 		(async () => {
 			const serviceTypesText = await makeRequest("./RAW-DATA/SERVICE-TYPES.csv");
 			Object.assign(SERVICE_TYPES, processTranslations(serviceTypesText, ServiceType));
+			Object.freeze(SERVICE_TYPES);
 		})(),
 
 		(async () => {
 			const destText = await makeRequest("./RAW-DATA/DESTINATIONS.csv");
 			Object.assign(DESTINATIONS, processTranslations(destText, Station));
+			Object.freeze(DESTINATIONS);
 		})(),
 	]);
 
@@ -39,4 +41,22 @@ const getDestination = (destNameChinese) => {
 	return DESTINATIONS[destNameChinese];
 };
 
-export { readTranslationsData, getServiceType, getDestination };
+const mapTextListToServiceTypes = (text, separator = ",") => {
+	const listText = String(text).split(separator);
+	return listText.map((text) => {
+		const serviceType = getServiceType(text);
+		TypeChecker.checkInstanceOf(serviceType, ServiceType);
+		return serviceType;
+	});
+}
+
+const mapTextListToDestinations = (text, separator = ",") => {
+	const listText = String(text).split(separator);
+	return listText.map((text) => {
+		const destination = getDestination(text);
+		TypeChecker.checkInstanceOf(destination, Station);
+		return destination;
+	});
+}
+
+export { readTranslationsData, getServiceType, getDestination, mapTextListToServiceTypes, mapTextListToDestinations };
