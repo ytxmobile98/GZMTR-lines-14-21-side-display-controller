@@ -5,7 +5,7 @@ import { TypeChecker } from "../type-checker.js";
 import { ServiceType, Station, LineInfo } from "./processed-lines-data-classes.js";
 import { Filter } from "./filter-classes.js";
 
-import { makeRequest } from "./read-raw-data.js";
+import { makeRequest } from "./request-raw-data.js";
 import { parseDataFields } from "./parse-data-fields.js";
 import { readTranslationsData, getServiceType, getDestination } from "./TRANSLATIONS-DATA.js";
 
