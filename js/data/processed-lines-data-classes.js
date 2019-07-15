@@ -7,55 +7,29 @@ import { Station } from "./station-classes.js";
 
 import { RawFilter, Filter } from "./filter-classes.js";
 
-import { readTranslationsData } from "./TRANSLATIONS-DATA.js";
+import { mapTextListToServiceTypes, mapTextListToDests } from "./TRANSLATIONS-DATA.js";
 
 class LineInfo {
-	constructor(line, isPassengerService, destinations, serviceTypes, defaultServiceType, crossLineServiceType, rawFilters) {
-
-		TypeChecker.checkArrayType(destinations, Station);
-
-		TypeChecker.checkArrayType(serviceTypes, ServiceType);
-		TypeChecker.checkInstanceOf(defaultServiceType, ServiceType);
-		TypeChecker.checkInstanceOf(crossLineServiceType, ServiceType);
-
-		TypeChecker.checkArrayType(rawFilters, RawFilter);
+	constructor(line, isPassengerService, destList, serviceTypesList, filters = undefined) {
 
 		this.line = String(line || "");
-		this.isPassengerService = !!isPassengerService;
-		this.destinations = destinations;
-
-		this.serviceTypes = serviceTypes;
-		this.defaultServiceType = defaultServiceType;
-		this.crossLineServiceType = crossLineServiceType;
-
+		this.isPassengerService = !!(String(isPassengerService).match(/true/gi));
+		this.destList = mapTextListToDests(String(destList));
+		this.serviceTypes = mapTextListToServiceTypes(String(serviceTypesList));
 		this.filters = new Map();
-		rawFilters.forEach((rawFilter) => {
-			this.addFilter(rawFilter.name, rawFilter.destinations, rawFilter.serviceType);
-		});
+
+		Object.freeze(this);
+
+		if (filters instanceof Array) {
+			this.addFilters(filters);
+		}
 	}
 
-	addFilter(name, destinations, serviceTypeChinese = undefined) {
-
-		TypeChecker.checkArrayType(destinations, "string");
-
-		const line = this.line;
-		name = String(name || "");
-		destinations = destinations.map((destNameChinese) => {
-			return getDestination(destNameChinese);
+	addFilters(filters) {
+		TypeChecker.checkArrayType(filters, Filter);
+		filters.forEach((filter) => {
+			this.filters.set(filter.getName(), filter);
 		});
-		const serviceType = getServiceType(serviceTypeChinese) || this.defaultServiceType;
-		const crossLineServiceType = this.crossLineServiceType;
-
-		/* Filter constructor:
-			new Filter(line, name, destinations, serviceType, crossLineServiceType);
-
-			Argument types:
-				line, name: strings
-				destinations: array of Station
-				serviceType, crossLineServiceType: ServiceType
-		*/
-		const newFilter = new Filter(line, name, destinations, serviceType, crossLineServiceType);
-		this.filters.set(newFilter.name, newFilter);
 	}
 }
 
