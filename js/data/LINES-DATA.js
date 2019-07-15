@@ -30,6 +30,7 @@ const loadLinesInfo = async () => {
 		})
 	})();
 
+	Object.freeze(LINES_INFO);
 	console.log(`LINES_INFO: `, LINES_INFO);
 };
 
