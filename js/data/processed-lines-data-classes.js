@@ -4,8 +4,7 @@ import { TypeChecker } from "../type-checker.js";
 
 import { ServiceType } from "./service-type-classes.js";
 import { Station } from "./station-classes.js";
-
-import { RawFilter, Filter } from "./filter-classes.js";
+import { Filter } from "./filter-classes.js";
 
 import { mapTextListToServiceTypes, mapTextListToDests } from "./TRANSLATIONS-DATA.js";
 
@@ -31,4 +30,4 @@ class LineInfo {
 	}
 }
 
-export { ServiceType, Station, LineInfo, Filter };
+export { ServiceType, Station, Filter, LineInfo };

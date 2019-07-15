@@ -7,18 +7,6 @@ import { Station } from "./station-classes.js";
 
 import { getServiceType, mapTextListToDests } from "./TRANSLATIONS-DATA.js";
 
-class RawFilter {
-  constructor(name, destinations, serviceType = undefined) {
-    TypeChecker.checkTypeOf(name, "string");
-    TypeChecker.checkArrayType(destinations, "string");
-    TypeChecker.checkOptionalTypeOf(serviceType, "string");
-
-    this.name = name;
-    this.destinations = destinations;
-    this.serviceType = serviceType;
-  }
-}
-
 class Filter {
   constructor(line, name, destList, serviceTypeChinese, crossLineServiceTypeChinese) {
     this.line = String(line);
@@ -39,4 +27,4 @@ class Filter {
   }
 }
 
-export { RawFilter, Filter };
+export { Filter };
