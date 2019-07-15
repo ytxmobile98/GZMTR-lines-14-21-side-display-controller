@@ -3,17 +3,14 @@
 import { TypeChecker } from "../type-checker.js";
 import { TranslationPair } from "./translation-pairs.js";
 
-import { parseDataFields, isEmptyRow, isHeaderRow } from "./parse-data-fields.js";
+import { parseDataFields } from "./parse-data-fields.js";
 
 const processTranslations = (text, SubClass, fieldSeparator = "\t", newLine = "\n") => {
 	TypeChecker.checkIsPrototypeOf(TranslationPair, SubClass);
 
 	let dataArray = parseDataFields(text, fieldSeparator, newLine);
 
-	// filter out only valid rows
-	dataArray = dataArray.filter((row, index) => {
-		return !(isEmptyRow(row) || isHeaderRow(row));
-	});
+	// keep Chinese and English columns only
 	dataArray.forEach((row, index) => {
 		if (row.length >= 3) {
 			dataArray[index] = row.slice(1, 3);

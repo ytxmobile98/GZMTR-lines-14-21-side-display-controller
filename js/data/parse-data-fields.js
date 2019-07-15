@@ -12,15 +12,6 @@ const getQuotedFieldData = (field) => {
 	return field;
 }
 
-const parseDataFields = (text, fieldSeparator = "\t", newLine = "\n") => {
-	text = String(text);
-	const rows = text.split(newLine);
-	const result = rows.map((row) => {
-		return row.split(fieldSeparator).map(item => getQuotedFieldData(item));
-	});
-	return result;
-}
-
 const isEmptyRow = (arr) => {
 	TypeChecker.checkInstanceOf(arr, Array);
 	for (let i of arr) {
@@ -43,4 +34,15 @@ const isHeaderRow = (arr, regexp = /^!/g) => {
 	return true;
 }
 
-export { parseDataFields, isEmptyRow, isHeaderRow };
+const parseDataFields = (text, fieldSeparator = "\t", newLine = "\n") => {
+	text = String(text);
+	const rows = text.split(newLine);
+	const result = rows.map((row) => {
+		return row.split(fieldSeparator).map(item => getQuotedFieldData(item));
+	}).filter((row) => {
+		return !(isEmptyRow(row) || isHeaderRow(row));
+	});
+	return result;
+}
+
+export { parseDataFields };

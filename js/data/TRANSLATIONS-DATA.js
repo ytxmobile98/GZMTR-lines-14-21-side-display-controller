@@ -50,7 +50,7 @@ const mapTextListToServiceTypes = (text, separator = ",") => {
 	});
 }
 
-const mapTextListToDestinations = (text, separator = ",") => {
+const mapTextListToDests = (text, separator = ",") => {
 	const listText = String(text).split(separator);
 	return listText.map((text) => {
 		const destination = getDestination(text);
@@ -59,4 +59,4 @@ const mapTextListToDestinations = (text, separator = ",") => {
 	});
 }
 
-export { readTranslationsData, getServiceType, getDestination, mapTextListToServiceTypes, mapTextListToDestinations };
+export { readTranslationsData, getServiceType, getDestination, mapTextListToServiceTypes, mapTextListToDests };
