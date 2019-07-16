@@ -1,8 +1,6 @@
 @import url("colors/COLOR-CODES.css");
 
 .radio-button-group__container {
-	min-width: 200px;
-
 	display: grid;
 	grid-auto-flow: column;
 	grid-auto-columns: 1fr;
@@ -14,6 +12,8 @@
 	display: grid;
 	grid-auto-flow: column;
 	grid-auto-columns: 1fr;
+
+	min-width: 5em;
 }
 
 .radio-button-group__radio {

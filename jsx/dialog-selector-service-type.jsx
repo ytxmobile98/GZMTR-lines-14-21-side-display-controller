@@ -80,19 +80,15 @@ class ServiceTypeSelector extends React.Component {
 						/>
 					</StatusGridContainer>
 
+					<StatusGridContainer sectionHeader="预览（请点击“完成”以保存）">
+						<div className="status__LED-preview">
+							<LED
+								serviceType={serviceType}
+								destination={destination}
+							/>
+						</div>
+					</StatusGridContainer>
 				</StatusContainer>
-
-				<div className="LED-preview">
-					<div className="warning-notes">
-						预览（请点击“完成”以保存）
-					</div>
-					<LED
-						serviceType={serviceType}
-						destination={destination}
-					/>
-				</div>
-
-
 
 			</React.Fragment>
 		);

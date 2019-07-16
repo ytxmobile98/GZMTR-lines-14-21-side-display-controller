@@ -82,20 +82,19 @@ class ServiceTypeSelector extends React.Component {
 						dataTag: "status-service-type",
 						dataValue: serviceType.Chinese
 					})
-				)
-			),
-			React.createElement(
-				"div",
-				{ className: "LED-preview" },
-				React.createElement(
-					"div",
-					{ className: "warning-notes" },
-					"\u9884\u89C8\uFF08\u8BF7\u70B9\u51FB\u201C\u5B8C\u6210\u201D\u4EE5\u4FDD\u5B58\uFF09"
 				),
-				React.createElement(LED, {
-					serviceType: serviceType,
-					destination: destination
-				})
+				React.createElement(
+					StatusGridContainer,
+					{ sectionHeader: "\u9884\u89C8\uFF08\u8BF7\u70B9\u51FB\u201C\u5B8C\u6210\u201D\u4EE5\u4FDD\u5B58\uFF09" },
+					React.createElement(
+						"div",
+						{ className: "status__LED-preview" },
+						React.createElement(LED, {
+							serviceType: serviceType,
+							destination: destination
+						})
+					)
+				)
 			)
 		);
 	}
