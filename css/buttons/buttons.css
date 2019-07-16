@@ -31,7 +31,8 @@ button:disabled {
 
 	background-color: var(--base-bg-color);
 }
-.primary-button:enabled:hover {
+.primary-button:enabled:hover,
+.primary-button:enabled:focus {
 	background-color: var(--base-hover-bg-color);
 }
 
@@ -42,6 +43,7 @@ button:disabled {
 	background-color: var(--action-bg-color);
 	color: white;
 }
-.action-button:enabled:hover {
+.action-button:enabled:hover,
+.action-button:enabled:focus {
 	background-color: var(--action-hover-bg-color);
 }
