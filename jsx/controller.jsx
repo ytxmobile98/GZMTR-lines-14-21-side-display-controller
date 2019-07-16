@@ -185,7 +185,7 @@ class Controller extends React.Component {
 							className="master-button action-button"
 							onClick={()=>{openModal("setService");}}
 						>
-							更新运营信息
+							更改目的地/车种
 						</button>
 
 					</div>
