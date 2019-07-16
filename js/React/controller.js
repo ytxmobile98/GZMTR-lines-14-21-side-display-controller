@@ -206,6 +206,30 @@ class Controller extends React.Component {
 					"div",
 					{ className: "warning-notes" },
 					"\u6CE8\u610F\uFF1A\u59821\u5206\u949F\u5185\u65E0\u64CD\u4F5C\uFF0C\u6B64\u8BBE\u5907\u5C06\u8FDB\u5165\u5F85\u673A\u6A21\u5F0F\u3002"
+				),
+				React.createElement(
+					"div",
+					{ className: "useful-links" },
+					React.createElement("button", { className: "controller-bottom__link-icons", "data-js-site": "GitHub", onClick: () => {
+							window.open("https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller");
+						},
+						title: "View on GitHub"
+					}),
+					React.createElement("button", { className: "controller-bottom__link-icons", "data-js-site": "React", onClick: () => {
+							window.open("https://reactjs.org/");
+						},
+						title: "React"
+					}),
+					React.createElement("button", { className: "controller-bottom__link-icons", "data-js-site": "MDN", onClick: () => {
+							window.open("https://developer.mozilla.org");
+						},
+						title: "MDN"
+					}),
+					React.createElement("button", { className: "controller-bottom__link-icons", "data-js-site": "GZMTR", onClick: () => {
+							window.open("http://www.gzmtr.com");
+						},
+						title: "MDN"
+					})
 				)
 			),
 			this.state.modalMode ? React.createElement(

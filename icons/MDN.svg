@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="MDN_Web_Docs"
+   data-name="MDN Web Docs"
+   viewBox="0 0 48 48"
+   preserveAspectRatio="xMaxYMid"
+   width="48"
+   height="48"
+   version="1.1"
+   sodipodi:docname="MDN.svg"
+   inkscape:version="0.92.4 (unknown)">
+  <metadata
+     id="metadata519">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>MDN Web Docs</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1536"
+     inkscape:window-height="813"
+     id="namedview517"
+     showgrid="false"
+     inkscape:snap-page="true"
+     inkscape:zoom="2.8800879"
+     inkscape:cx="196.66661"
+     inkscape:cy="42.093933"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="MDN_Web_Docs" />
+  <defs
+     id="defs508">
+    <style
+       id="style506">.cls-1{fill:#fff;}</style>
+  </defs>
+  <title
+     id="title510">MDN Web Docs</title>
+  <path
+     d="M 6,6 H 42 V 42 H 6 Z m 31.449329,16.530153 c -0.02702,-0.542748 -0.09008,-1.086997 -0.127617,-1.625991 -0.02027,-0.270248 -0.123864,-0.526983 -0.296522,-0.735674 -0.204187,-0.249229 -0.469931,-0.440654 -0.770206,-0.55551 -0.606556,-0.235716 -1.217616,-0.498456 -1.827926,-0.731921 -0.864792,-0.296521 -1.704062,-0.665109 -2.508799,-1.105012 -0.540496,-0.311536 -0.900826,-0.86104 -0.972892,-1.480357 -0.07957,-0.700392 -0.49095,-1.322713 -1.103512,-1.672534 -0.680123,-0.365585 -1.473601,-0.459421 -2.220535,-0.26274 -0.551005,0.132121 -1.126033,0.123863 -1.674035,-0.02477 L 25.11252,14.08041 24.885812,14.01285 24.230461,13.817671 c -1.17858,-0.351322 -1.672533,-0.535241 -3.583034,-0.208691 -2.013346,0.456418 -3.856285,1.471348 -5.322379,2.925431 l -4.781883,5.074652 h 4.293936 l -2.630411,2.785053 h 4.523646 l -2.62966,2.785053 h 3.636333 l -1.162065,3.047794 c 4.45158,4.556677 9.195929,5.47627 9.195929,5.47627 0,-1.255901 0.285262,-6.18567 0.620069,-7.011427 0.125365,-0.41438 0.319042,-0.803237 0.572024,-1.15606 0.620819,-0.761198 1.562933,-1.192093 2.547085,-1.161315 0.978147,0 1.949537,0.178664 2.863875,0.526984 0.555509,0.232713 1.183835,0.198181 1.709317,-0.09158 0.380599,-0.225207 0.755943,-0.463926 1.124531,-0.705647 0.117858,-0.09384 0.266494,-0.14113 0.417383,-0.135124 0.405371,0.04504 0.791225,-0.177913 0.953374,-0.551005 0.12011,-0.247727 0.26274,-0.480441 0.39336,-0.728168 0.354325,-0.663608 0.517975,-1.411293 0.475186,-2.161982 z"
+     id="path512"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccccc"
+     style="stroke-width:0.75068814" />
+</svg>

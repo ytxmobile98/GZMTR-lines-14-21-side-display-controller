@@ -1,3 +1,5 @@
+@import url(colors/COLOR-CODES.css);
+
 .controller__bottom {
 	flex-basis: 60px;
 
@@ -7,4 +9,26 @@
 	justify-content: center;
 
 	text-align: center;
+}
+
+.controller-bottom__link-icons {
+	width: 48px;
+	height: 48px;
+	background-size: contain;
+}
+.controller-bottom__link-icons:hover {
+	background-color: var(--link-hover-bg-color);
+}
+
+[data-js-site="GitHub"] {
+	background-image: url("../icons/GitHub.svg");
+}
+[data-js-site="React"] {
+	background-image: url("../icons/React.svg");
+}
+[data-js-site="MDN"] {
+	background-image: url("../icons/MDN.svg");
+}
+[data-js-site="GZMTR"] {
+	background-image: url("../icons/GZMTR.svg");
 }
