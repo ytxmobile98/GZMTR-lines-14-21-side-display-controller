@@ -1,3 +1,8 @@
+.link-icons__container {
+	display: grid;
+	grid-auto-flow: column;
+}
+
 .link-icon {
 	width: 48px;
 	height: 48px;

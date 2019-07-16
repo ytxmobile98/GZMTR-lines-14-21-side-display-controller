@@ -11,8 +11,3 @@
 
 	text-align: center;
 }
-
-.controller-bottom__link-icons-container {
-	display: grid;
-	grid-auto-flow: column;
-}
