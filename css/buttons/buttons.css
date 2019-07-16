@@ -10,8 +10,11 @@ button {
 	padding: 0;
 
 	border: none;
-	background: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: contain;
 	color: var(--base-text-color);
+
 	cursor: pointer;
 
 	font-family: inherit;
