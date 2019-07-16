@@ -4,8 +4,6 @@
 	width: 90%;
 
 	display: grid;
-	grid-auto-flow: column;
-	grid-template-rows: repeat(2, auto);
 	grid-row-gap: 1em;
 
 	font-size: 20px;
