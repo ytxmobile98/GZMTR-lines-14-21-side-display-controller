@@ -25,7 +25,8 @@
 	padding: 0 0.25em;
 	text-align: inherit;
 }
-.radio-button-group__text-button:enabled:hover {
+.radio-button-group__text-button:enabled:hover,
+.radio-button-group__text-button:enabled:focus {
 	background-color: var(--radio-hover-bg-color);
 }
 .radio-button-group__text-button:disabled {
@@ -44,10 +45,12 @@
 	line-height: 2em;
 }
 
-.radio-button-group__radio:checked + .radio-button-group__text-button {
+.radio-button-group__radio:checked
+	+ .radio-button-group__text-button {
 	background-color: var(--action-bg-color);
 	color: white;
 }
-.radio-button-group__radio:checked:disabled + .radio-button-group__text-button {
+.radio-button-group__radio:checked:disabled
+	+ .radio-button-group__text-button {
 	background-color: var(--disabled-bg-color);
 }
