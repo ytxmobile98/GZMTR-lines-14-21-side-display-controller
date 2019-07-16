@@ -10,3 +10,15 @@ Downloads:
 Download:
 
 * [GitHub Logo](https://github.com/logos)
+
+# React Logo
+
+Download:
+
+* [React](https://reactjs.org)
+
+# Guangzhou Metro Logo
+
+Download:
+
+* [GZMTR annual reports](http://www.gzmtr.com/ygwm/gsgk/qynb/) (Extract )
