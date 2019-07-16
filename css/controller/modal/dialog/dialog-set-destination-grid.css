@@ -28,8 +28,8 @@
 
 .set-destination-grid__item--options-container {
 	display: grid;
-	overflow: hidden scroll;
-
+	overflow-x: hidden;
+	overflow-y: scroll;
 	line-height: 2em;
 }
 
