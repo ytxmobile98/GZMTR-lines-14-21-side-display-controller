@@ -209,26 +209,26 @@ class Controller extends React.Component {
 				),
 				React.createElement(
 					"div",
-					{ className: "useful-links" },
-					React.createElement("button", { className: "controller-bottom__link-icons", "data-js-site": "GitHub", onClick: () => {
+					{ className: "controller-bottom__link-icons-container" },
+					React.createElement("button", { className: "link-icon", "data-js-site": "GitHub", onClick: () => {
 							window.open("https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller");
 						},
 						title: "View on GitHub"
 					}),
-					React.createElement("button", { className: "controller-bottom__link-icons", "data-js-site": "React", onClick: () => {
+					React.createElement("button", { className: "link-icon", "data-js-site": "React", onClick: () => {
 							window.open("https://reactjs.org/");
 						},
 						title: "React"
 					}),
-					React.createElement("button", { className: "controller-bottom__link-icons", "data-js-site": "MDN", onClick: () => {
+					React.createElement("button", { className: "link-icon", "data-js-site": "MDN", onClick: () => {
 							window.open("https://developer.mozilla.org");
 						},
-						title: "MDN"
+						title: "MDN Web\u6587\u6863"
 					}),
-					React.createElement("button", { className: "controller-bottom__link-icons", "data-js-site": "GZMTR", onClick: () => {
+					React.createElement("button", { className: "link-icon", "data-js-site": "GZMTR", onClick: () => {
 							window.open("http://www.gzmtr.com");
 						},
-						title: "MDN"
+						title: "\u5E7F\u5DDE\u5730\u94C1"
 					})
 				)
 			),

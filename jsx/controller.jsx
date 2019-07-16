@@ -199,26 +199,26 @@ class Controller extends React.Component {
 						注意：如1分钟内无操作，此设备将进入待机模式。
 					</div>
 
-					<div className="useful-links">
-						<button className="controller-bottom__link-icons" data-js-site="GitHub" onClick={() => {
+					<div className="controller-bottom__link-icons-container">
+						<button className="link-icon" data-js-site="GitHub" onClick={() => {
 							window.open("https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller");
 						}}
 							title="View on GitHub"
 						/>
-						<button className="controller-bottom__link-icons" data-js-site="React" onClick={() => {
+						<button className="link-icon" data-js-site="React" onClick={() => {
 							window.open("https://reactjs.org/");
 						}}
 							title="React"
 						/>
-						<button className="controller-bottom__link-icons" data-js-site="MDN" onClick={() => {
+						<button className="link-icon" data-js-site="MDN" onClick={() => {
 							window.open("https://developer.mozilla.org");
 						}}
-							title="MDN"
+							title="MDN Web文档"
 						/>
-						<button className="controller-bottom__link-icons" data-js-site="GZMTR" onClick={() => {
+						<button className="link-icon" data-js-site="GZMTR" onClick={() => {
 							window.open("http://www.gzmtr.com");
 						}}
-							title="MDN"
+							title="广州地铁"
 						/>
 					</div>
 				</div>
