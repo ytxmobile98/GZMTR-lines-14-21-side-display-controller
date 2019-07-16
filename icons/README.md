@@ -21,4 +21,4 @@ Download:
 
 Download:
 
-* [GZMTR annual reports](http://www.gzmtr.com/ygwm/gsgk/qynb/) (Extract )
+* [GZMTR annual reports](http://www.gzmtr.com/ygwm/gsgk/qynb/) (extract the svg icon from the last page of the 2018 annual report PDF)
