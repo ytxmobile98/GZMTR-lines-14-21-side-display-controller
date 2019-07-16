@@ -22,6 +22,10 @@
 	height: var(--header-size);
 	padding: 0;
 }
+.modal-dialog__header-button:enabled:hover,
+.modal-dialog__header-button:focus {
+	background-color: var(--link-hover-bg-color);
+}
 .modal-dialog__header-button:disabled {
 	background-color: transparent;
 	opacity: 0.2;
