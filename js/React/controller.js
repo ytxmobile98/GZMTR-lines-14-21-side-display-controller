@@ -8,6 +8,7 @@ import { LineInfoWrapper } from "../data/line-info-wrapper.js";
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
+import { LinkButton, LinkButtonsContainer } from "./link-buttons.js";
 
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
@@ -208,26 +209,21 @@ class Controller extends React.Component {
 					"\u6CE8\u610F\uFF1A\u59821\u5206\u949F\u5185\u65E0\u64CD\u4F5C\uFF0C\u6B64\u8BBE\u5907\u5C06\u8FDB\u5165\u5F85\u673A\u6A21\u5F0F\u3002"
 				),
 				React.createElement(
-					"div",
-					{ className: "controller-bottom__link-icons-container" },
-					React.createElement("button", { className: "link-icon", "data-js-site": "GitHub", onClick: () => {
-							window.open("https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller");
-						},
-						title: "View on GitHub"
+					LinkButtonsContainer,
+					null,
+					React.createElement(LinkButton, { site: "GitHub",
+						url: "https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller",
+						title: "\u5728GitHub\u4E0A\u67E5\u770B\u6E90\u4EE3\u7801"
 					}),
-					React.createElement("button", { className: "link-icon", "data-js-site": "React", onClick: () => {
-							window.open("https://reactjs.org/");
-						},
-						title: "React"
+					React.createElement(LinkButton, { site: "React",
+						url: "https://reactjs.org/"
 					}),
-					React.createElement("button", { className: "link-icon", "data-js-site": "MDN", onClick: () => {
-							window.open("https://developer.mozilla.org");
-						},
+					React.createElement(LinkButton, { site: "MDN",
+						url: "https://developer.mozilla.org",
 						title: "MDN Web\u6587\u6863"
 					}),
-					React.createElement("button", { className: "link-icon", "data-js-site": "GZMTR", onClick: () => {
-							window.open("http://www.gzmtr.com");
-						},
+					React.createElement(LinkButton, { site: "GZMTR",
+						url: "http://www.gzmtr.com",
 						title: "\u5E7F\u5DDE\u5730\u94C1"
 					})
 				)

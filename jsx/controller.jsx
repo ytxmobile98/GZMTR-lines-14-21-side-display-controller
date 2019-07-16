@@ -8,6 +8,7 @@ import { LineInfoWrapper } from "../data/line-info-wrapper.js";
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
+import { LinkButton, LinkButtonsContainer } from "./link-buttons.js";
 
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
@@ -193,34 +194,31 @@ class Controller extends React.Component {
 				</div>
 
 				<div className="controller__bottom">
+
 					<Clock />
 
 					<div className="warning-notes">
 						注意：如1分钟内无操作，此设备将进入待机模式。
 					</div>
 
-					<div className="controller-bottom__link-icons-container">
-						<button className="link-icon" data-js-site="GitHub" onClick={() => {
-							window.open("https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller");
-						}}
-							title="View on GitHub"
+					<LinkButtonsContainer>
+						<LinkButton site="GitHub"
+							url="https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller"
+							title="在GitHub上查看源代码"
 						/>
-						<button className="link-icon" data-js-site="React" onClick={() => {
-							window.open("https://reactjs.org/");
-						}}
-							title="React"
+						<LinkButton site="React"
+							url="https://reactjs.org/"
 						/>
-						<button className="link-icon" data-js-site="MDN" onClick={() => {
-							window.open("https://developer.mozilla.org");
-						}}
+						<LinkButton site="MDN"
+							url="https://developer.mozilla.org"
 							title="MDN Web文档"
 						/>
-						<button className="link-icon" data-js-site="GZMTR" onClick={() => {
-							window.open("http://www.gzmtr.com");
-						}}
+						<LinkButton site="GZMTR"
+							url="http://www.gzmtr.com"
 							title="广州地铁"
 						/>
-					</div>
+					</LinkButtonsContainer>
+
 				</div>
 
 				{this.state.modalMode ?
