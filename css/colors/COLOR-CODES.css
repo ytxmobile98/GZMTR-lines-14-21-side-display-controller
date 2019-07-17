@@ -22,6 +22,8 @@
 
 	/* Status color codes */
 
+	--status-header-bg-color: #424242;
+
 	--display-switch-开: blue;
 	--display-switch-关: lightgray;
 
