@@ -7,6 +7,8 @@
 
 	/* Thematic color codes */
 
+	--controller-base-color: whitesmoke;
+
 	--base-bg-color: lightgray;
 	--base-hover-bg-color: gray;
 	--link-hover-bg-color: lightgray;
