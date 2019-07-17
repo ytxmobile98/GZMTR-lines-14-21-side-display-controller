@@ -10,6 +10,11 @@ const root = document.getElementById("js-root");
 const initialLoad = async () => {
 	await readTranslationsData();
 	await loadLinesInfo();
+
+	if (document.location.protocol === "file:") {
+		document.title = `[LOCAL] ${document.title}`;
+	}
+
 	ReactDOM.render(<Controller />, root);
 };
 
