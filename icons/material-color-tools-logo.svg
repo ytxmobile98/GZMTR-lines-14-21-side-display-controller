@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="content"
+   x="0px"
+   y="0px"
+   viewBox="56 -56 48 48"
+   xml:space="preserve"
+   sodipodi:docname="material-color-tools-logo.svg"
+   width="48"
+   height="48"
+   inkscape:version="0.92.4 (unknown)"><metadata
+   id="metadata17"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs15" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1536"
+   inkscape:window-height="813"
+   id="namedview13"
+   showgrid="false"
+   inkscape:pagecheckerboard="true"
+   inkscape:zoom="6.5555555"
+   inkscape:cx="28.931279"
+   inkscape:cy="-5.1257538"
+   inkscape:window-x="0"
+   inkscape:window-y="27"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g10" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:#212121;}
+	.st1{fill:#FF80AB;}
+	.st2{fill:#FF1744;}
+</style>
+<g
+   id="g10"
+   transform="matrix(0.25,0,0,0.25,48,-36)">
+	<polygon
+   class="st0"
+   points="56,-56 200,-56 176,-8 80,-8 "
+   id="polygon4"
+   style="fill:#9e9e9e" />
+	<rect
+   x="56"
+   y="-8"
+   class="st1"
+   width="144"
+   height="96"
+   id="rect6"
+   style="fill:#ff80ab" />
+	<polygon
+   class="st2"
+   points="128,88 176,-8 80,-8 "
+   id="polygon8"
+   style="fill:#ff1744" />
+</g>
+</svg>

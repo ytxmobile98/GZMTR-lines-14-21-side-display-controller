@@ -208,14 +208,19 @@ class Controller extends React.Component {
 							title="在GitHub上查看源代码"
 						/>
 						<LinkButton
+							url="https://developer.mozilla.org"
+							image="icons/MDN.svg"
+							title="MDN Web文档"
+						/>
+						<LinkButton
 							url="https://reactjs.org/"
 							image="icons/React.svg"
 							title="React"
 						/>
 						<LinkButton
-							url="https://developer.mozilla.org"
-							image="icons/MDN.svg"
-							title="MDN Web文档"
+							url="https://material.io/tools/color/"
+							image="icons/material-color-tools-logo.svg"
+							title="Google Material Color Tools"
 						/>
 						<LinkButton
 							url="http://www.gzmtr.com"
