@@ -29,11 +29,11 @@ button:disabled {
 	margin: var(--normal-margin);
 	padding: var(--normal-padding);
 
-	background-color: var(--base-bg-color);
+	background-color: var(--base-button-bg-color);
 }
 .primary-button:enabled:hover,
 .primary-button:enabled:focus {
-	background-color: var(--base-hover-bg-color);
+	background-color: var(--base-button-hover-bg-color);
 }
 
 .action-button {
@@ -41,7 +41,6 @@ button:disabled {
 	padding: var(--normal-padding);
 
 	background-color: var(--action-bg-color);
-	color: white;
 }
 .action-button:enabled:hover,
 .action-button:enabled:focus {

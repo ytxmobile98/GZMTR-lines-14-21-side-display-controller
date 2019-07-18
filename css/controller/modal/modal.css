@@ -1,3 +1,5 @@
+@import url("colors/COLOR-CODES.css");
+
 @import url("dialog/dialog.css");
 
 .modal {
@@ -23,9 +25,7 @@
 .modal__close-button {
 	flex-grow: 1;
 
-	background: none;
-	border: none;
-	color: white;
+	color: var(--light);
 
 	font-family: inherit;
 	font-size: 36px;

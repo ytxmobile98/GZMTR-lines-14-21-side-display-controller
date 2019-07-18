@@ -23,5 +23,5 @@
 	height: var(--controller-screen-height);
 
 	background-color: var(--controller-base-color);
-	border: 8px solid black;
+	border: 8px solid var(--material-color-Grey-600);
 }

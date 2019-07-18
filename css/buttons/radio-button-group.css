@@ -35,9 +35,6 @@
 .radio-button-group__text-button[data-js-has-border] {
 	border: 2px solid var(--action-bg-color);
 }
-.radio-button-group__text-button[data-js-has-border]:enabled {
-	color: var(--action-bg-color);
-}
 .radio-button-group__text-button[data-js-has-border]:disabled {
 	border-color: var(--disabled-bg-color);
 }
@@ -47,8 +44,8 @@
 
 .radio-button-group__radio:checked
 	+ .radio-button-group__text-button {
-	background-color: var(--action-bg-color);
-	color: white;
+	background-color: var(--radio-bg-color);
+	color: var(--light);
 }
 .radio-button-group__radio:checked:disabled
 	+ .radio-button-group__text-button {

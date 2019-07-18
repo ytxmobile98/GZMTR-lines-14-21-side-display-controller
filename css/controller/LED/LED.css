@@ -1,3 +1,5 @@
+@import url("colors/COLOR-CODES.css");
+
 @import url("LED-SERVICE-TYPES-DATA.css");
 
 .LED__container {
@@ -11,7 +13,7 @@
 
 	background-color: black;
 	color: white;
-	border: 4px solid gray;
+	border: 4px solid var(--material-color-Grey-600);
 }
 
 .LED__content {

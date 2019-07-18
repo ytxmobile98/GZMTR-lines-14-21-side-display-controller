@@ -4,30 +4,16 @@
 
 @import url("controller/controller.css");
 
-body {
-	margin: auto;
-	min-height: 100vh;
-
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	align-content: center;
-	justify-content: center;
-
-	color: var(--dark);
-	font-family: "Unifont", monospace;
-}
-
 :root {
 	--notes-font-size: 20px;
 }
 
 .notes {
 	font-size: var(--notes-font-size);
-	color: blue;
+	color: var(--notes-text-color);
 }
 
 .warning-notes {
 	font-size: var(--notes-font-size);
-	color: red;
+	color: var(--warning-notes-text-color);
 }

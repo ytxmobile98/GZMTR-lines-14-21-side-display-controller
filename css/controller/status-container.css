@@ -24,7 +24,7 @@
 	grid-column: 1 / -1;
 
 	line-height: 1.5em;
-	background-color: var(--status-header-bg-color);
+	background-color: var(--header-bg-color);
 }
 
 .status__item-header {
