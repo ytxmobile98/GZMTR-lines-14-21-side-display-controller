@@ -32,11 +32,11 @@
 }
 
 .modal-dialog__header-button--back {
-	background-image: url("icons/back.svg");
+	background-image: url("icons/material-icon-back.svg");
 }
 
 .modal-dialog__header-button--close {
-	background-image: url("icons/close.svg");
+	background-image: url("icons/material-icon-close.svg");
 }
 
 /* Central title */
