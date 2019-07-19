@@ -2,7 +2,7 @@
 @import url("controller-master-buttons.css");
 
 .controller__center {
-	flex-grow: 1;
+	flex-grow: 0.5;
 	align-self: center;
 
 	display: flex;
