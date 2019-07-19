@@ -37,7 +37,7 @@
 
 	/* Status color codes */
 
-	--display-switch-开: var(--material-color-Light-Blue-A400);
+	--display-switch-开: var(--material-color-Light-Blue-A200);
 	--display-switch-关: var(--material-color-Grey-600);
 
 	--display-mode-自动: var(--material-color-Green-A400);
