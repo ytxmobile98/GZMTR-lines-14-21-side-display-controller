@@ -3,20 +3,20 @@
 class StatusCell extends React.PureComponent {
 	constructor(props) {
 		super(props);
-		this.itemTextRef = React.createRef();
+		this.itemDataRef = React.createRef();
 	}
 
 	updateDataTag() {
 		const dataTag = this.props.dataTag ? `data-js-${this.props.dataTag}` : undefined;
 		const dataValue = this.props.dataValue;
 
-		const itemTextElement = this.itemTextRef.current;
-		itemTextElement.removeAttribute(this.dataTag);
+		const itemDataElement = this.itemDataRef.current;
+		itemDataElement.removeAttribute(this.dataTag);
 
 		if (!!dataTag) {
 			this.dataTag = dataTag;
 			this.dataValue = dataValue;
-			itemTextElement.setAttribute(dataTag, dataValue);
+			itemDataElement.setAttribute(dataTag, dataValue);
 		}
 	}
 
@@ -34,13 +34,20 @@ class StatusCell extends React.PureComponent {
 			null,
 			React.createElement(
 				"div",
-				{ className: "status__item-header" },
-				this.props.itemHeader
+				{ className: "status__item-name" },
+				this.props.itemName
 			),
 			React.createElement(
 				"div",
-				{ className: "status__item-text", ref: this.itemTextRef },
-				this.props.itemText
+				{ className: "status__item-data-container" },
+				React.createElement(
+					"span",
+					{ className: "status__item-data",
+						ref: this.itemDataRef,
+						"data-js-side-padding": this.props.sidePadding ? true : null
+					},
+					this.props.itemData || this.props.children
+				)
 			)
 		);
 	}
@@ -65,7 +72,9 @@ class StatusContainer extends React.PureComponent {
 	render() {
 		return React.createElement(
 			"div",
-			{ className: "status__container" },
+			{ className: "status__container",
+				"data-js-multi-cols": this.props.multiCols ? true : null
+			},
 			this.props.children
 		);
 	}

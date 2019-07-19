@@ -52,36 +52,26 @@ class ServiceTypeSelector extends React.Component {
 			React.Fragment,
 			null,
 			React.createElement(
-				"div",
-				{ className: "service-type-selector" },
-				React.createElement(
-					RadioGroup,
-					{ header: "\u9009\u62E9\u8F66\u79CD" },
-					serviceTypeItems
-				)
-			),
-			React.createElement(
 				StatusContainer,
 				null,
 				React.createElement(
 					StatusGridContainer,
-					{ sectionHeader: "\u5DF2\u9009\u5185\u5BB9" },
-					React.createElement(StatusCell, {
-						itemHeader: "\u7EBF\u8DEF",
-						itemText: line,
-						dataTag: "status-line",
-						dataValue: line
-					}),
-					React.createElement(StatusCell, {
-						itemHeader: "\u76EE\u7684\u5730",
-						itemText: destination.Chinese
-					}),
-					React.createElement(StatusCell, {
-						itemHeader: "\u8F66\u79CD",
-						itemText: serviceType.Chinese,
-						dataTag: "status-service-type",
-						dataValue: serviceType.Chinese
-					})
+					{ sectionHeader: "\u9009\u62E9\u8F66\u79CD" },
+					React.createElement(
+						StatusCell,
+						{
+							itemName: "\u8F66\u79CD"
+						},
+						React.createElement(
+							"div",
+							{ className: "service-type-selector" },
+							React.createElement(
+								RadioGroup,
+								null,
+								serviceTypeItems
+							)
+						)
+					)
 				),
 				React.createElement(
 					StatusGridContainer,
@@ -93,7 +83,18 @@ class ServiceTypeSelector extends React.Component {
 							serviceType: serviceType,
 							destination: destination
 						})
-					)
+					),
+					React.createElement(StatusCell, {
+						itemName: "\u7EBF\u8DEF",
+						itemData: line,
+						dataTag: "status-line",
+						dataValue: line,
+						sidePadding: true
+					}),
+					React.createElement(StatusCell, {
+						itemName: "\u76EE\u7684\u5730",
+						itemData: destination.Chinese
+					})
 				)
 			)
 		);

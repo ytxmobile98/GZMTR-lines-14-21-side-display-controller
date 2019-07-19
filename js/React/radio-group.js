@@ -7,11 +7,11 @@ class RadioGroup extends React.PureComponent {
 		return React.createElement(
 			React.Fragment,
 			null,
-			React.createElement(
+			this.props.header ? React.createElement(
 				"div",
 				{ className: "radio-button-group__header" },
 				this.props.header
-			),
+			) : null,
 			React.createElement(
 				"div",
 				{ className: "radio-button-group__container" },

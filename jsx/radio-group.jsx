@@ -6,9 +6,12 @@ class RadioGroup extends React.PureComponent {
 	render() {
 		return (
 			<React.Fragment>
-				<div className="radio-button-group__header">
-					{this.props.header}
-				</div>
+				{this.props.header ?
+					<div className="radio-button-group__header">
+						{this.props.header}
+					</div>
+					: null
+				}
 				<div className="radio-button-group__container">
 					{this.props.children}
 				</div>

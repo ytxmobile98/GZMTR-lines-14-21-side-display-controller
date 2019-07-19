@@ -130,25 +130,25 @@ class Controller extends React.Component {
 				{ className: "controller__center" },
 				React.createElement(
 					StatusContainer,
-					null,
+					{ multiCols: true },
 					React.createElement(
 						StatusGridContainer,
 						{ sectionHeader: "\u65B9\u5411\u5E55\u663E\u793A\u72B6\u6001" },
 						React.createElement(StatusCell, {
-							itemHeader: "\u5DE6\u4FA7",
-							itemText: this.state.leftDisplay ? "开" : "关",
+							itemName: "\u5DE6\u4FA7",
+							itemData: this.state.leftDisplay ? "开" : "关",
 							dataTag: "status-display-switch",
 							dataValue: this.state.leftDisplay ? "开" : "关"
 						}),
 						React.createElement(StatusCell, {
-							itemHeader: "\u663E\u793A\u6A21\u5F0F",
-							itemText: this.state.autoDisplayMode ? "自动" : "手动",
+							itemName: "\u663E\u793A\u6A21\u5F0F",
+							itemData: this.state.autoDisplayMode ? "自动" : "手动",
 							dataTag: "status-display-mode",
 							dataValue: this.state.autoDisplayMode ? "自动" : "手动"
 						}),
 						React.createElement(StatusCell, {
-							itemHeader: "\u53F3\u4FA7",
-							itemText: this.state.rightDisplay ? "开" : "关",
+							itemName: "\u53F3\u4FA7",
+							itemData: this.state.rightDisplay ? "开" : "关",
 							dataTag: "status-display-switch",
 							dataValue: this.state.rightDisplay ? "开" : "关"
 						})
@@ -157,20 +157,22 @@ class Controller extends React.Component {
 						StatusGridContainer,
 						{ sectionHeader: "\u5217\u8F66\u8FD0\u8425\u72B6\u6001" },
 						React.createElement(StatusCell, {
-							itemHeader: "\u7EBF\u8DEF",
-							itemText: this.state.line,
+							itemName: "\u7EBF\u8DEF",
+							itemData: this.state.line,
 							dataTag: "status-line",
-							dataValue: this.state.line
+							dataValue: this.state.line,
+							sidePadding: true
 						}),
 						React.createElement(StatusCell, {
-							itemHeader: "\u76EE\u7684\u5730",
-							itemText: this.state.destination.Chinese
+							itemName: "\u76EE\u7684\u5730",
+							itemData: this.state.destination.Chinese
 						}),
 						React.createElement(StatusCell, {
-							itemHeader: "\u8F66\u79CD",
-							itemText: this.state.serviceType.Chinese,
+							itemName: "\u8F66\u79CD",
+							itemData: this.state.serviceType.Chinese,
 							dataTag: "status-service-type",
-							dataValue: this.state.serviceType.Chinese
+							dataValue: this.state.serviceType.Chinese,
+							sidePadding: true
 						})
 					)
 				),

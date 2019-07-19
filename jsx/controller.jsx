@@ -127,25 +127,25 @@ class Controller extends React.Component {
 
 				<div className="controller__center">
 
-					<StatusContainer>
+					<StatusContainer multiCols={true}>
 
 						{/* Display mode status */}
 						<StatusGridContainer sectionHeader="方向幕显示状态">
 							<StatusCell
-								itemHeader="左侧"
-								itemText={this.state.leftDisplay ? "开" : "关"}
+								itemName="左侧"
+								itemData={this.state.leftDisplay ? "开" : "关"}
 								dataTag="status-display-switch"
 								dataValue={this.state.leftDisplay ? "开" : "关"}
 							/>
 							<StatusCell
-								itemHeader="显示模式"
-								itemText={this.state.autoDisplayMode ? "自动" : "手动"}
+								itemName="显示模式"
+								itemData={this.state.autoDisplayMode ? "自动" : "手动"}
 								dataTag="status-display-mode"
 								dataValue={this.state.autoDisplayMode ? "自动" : "手动"}
 							/>
 							<StatusCell
-								itemHeader="右侧"
-								itemText={this.state.rightDisplay ? "开" : "关"}
+								itemName="右侧"
+								itemData={this.state.rightDisplay ? "开" : "关"}
 								dataTag="status-display-switch"
 								dataValue={this.state.rightDisplay ? "开" : "关"}
 							/>
@@ -154,20 +154,22 @@ class Controller extends React.Component {
 						{/* Destination status */}
 						<StatusGridContainer sectionHeader="列车运营状态">
 							<StatusCell
-								itemHeader="线路"
-								itemText={this.state.line}
+								itemName="线路"
+								itemData={this.state.line}
 								dataTag="status-line"
 								dataValue={this.state.line}
+								sidePadding={true}
 							/>
 							<StatusCell
-								itemHeader="目的地"
-								itemText={this.state.destination.Chinese}
+								itemName="目的地"
+								itemData={this.state.destination.Chinese}
 							/>
 							<StatusCell
-								itemHeader="车种"
-								itemText={this.state.serviceType.Chinese}
+								itemName="车种"
+								itemData={this.state.serviceType.Chinese}
 								dataTag="status-service-type"
 								dataValue={this.state.serviceType.Chinese}
+								sidePadding={true}
 							/>
 						</StatusGridContainer>
 

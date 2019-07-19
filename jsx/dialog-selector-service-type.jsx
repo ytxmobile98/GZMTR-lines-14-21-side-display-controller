@@ -54,30 +54,17 @@ class ServiceTypeSelector extends React.Component {
 		return (
 			<React.Fragment>
 
-				<div className="service-type-selector">
-					<RadioGroup header="选择车种">
-						{serviceTypeItems}
-					</RadioGroup>
-				</div>
-
 				<StatusContainer>
-					<StatusGridContainer sectionHeader="已选内容">
+					<StatusGridContainer sectionHeader="选择车种">
 						<StatusCell
-							itemHeader="线路"
-							itemText={line}
-							dataTag="status-line"
-							dataValue={line}
-						/>
-						<StatusCell
-							itemHeader="目的地"
-							itemText={destination.Chinese}
-						/>
-						<StatusCell
-							itemHeader="车种"
-							itemText={serviceType.Chinese}
-							dataTag="status-service-type"
-							dataValue={serviceType.Chinese}
-						/>
+							itemName="车种"
+						>
+							<div className="service-type-selector">
+								<RadioGroup>
+									{serviceTypeItems}
+								</RadioGroup>
+							</div>
+						</StatusCell>
 					</StatusGridContainer>
 
 					<StatusGridContainer sectionHeader="预览（请点击“完成”以保存）">
@@ -87,6 +74,17 @@ class ServiceTypeSelector extends React.Component {
 								destination={destination}
 							/>
 						</div>
+						<StatusCell
+							itemName="线路"
+							itemData={line}
+							dataTag="status-line"
+							dataValue={line}
+							sidePadding={true}
+						/>
+						<StatusCell
+							itemName="目的地"
+							itemData={destination.Chinese}
+						/>
 					</StatusGridContainer>
 				</StatusContainer>
 

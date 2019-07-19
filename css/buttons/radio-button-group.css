@@ -21,7 +21,7 @@
 }
 
 .radio-button-group__text-button {
-	line-height: 1.5em;
+	line-height: inherit;
 	padding: 0 0.25em;
 	text-align: inherit;
 }

@@ -3,7 +3,7 @@
 class StatusCell extends React.PureComponent {
 	constructor(props) {
 		super(props);
-		this.itemTextRef = React.createRef();
+		this.itemDataRef = React.createRef();
 	}
 
 	updateDataTag() {
@@ -11,13 +11,13 @@ class StatusCell extends React.PureComponent {
 			`data-js-${this.props.dataTag}` : undefined;
 		const dataValue = this.props.dataValue;
 
-		const itemTextElement = this.itemTextRef.current;
-		itemTextElement.removeAttribute(this.dataTag);
+		const itemDataElement = this.itemDataRef.current;
+		itemDataElement.removeAttribute(this.dataTag);
 
 		if (!!dataTag) {
 			this.dataTag = dataTag;
 			this.dataValue = dataValue;
-			itemTextElement.setAttribute(dataTag, dataValue);
+			itemDataElement.setAttribute(dataTag, dataValue);
 		}
 	}
 
@@ -32,11 +32,16 @@ class StatusCell extends React.PureComponent {
 	render() {
 		return (
 			<React.Fragment>
-				<div className="status__item-header">
-					{this.props.itemHeader}
+				<div className="status__item-name">
+					{this.props.itemName}
 				</div>
-				<div className="status__item-text" ref={this.itemTextRef}>
-					{this.props.itemText}
+				<div className="status__item-data-container">
+					<span className="status__item-data"
+						ref={this.itemDataRef}
+						data-js-side-padding={this.props.sidePadding ? true : null}
+					>
+						{this.props.itemData || this.props.children}
+					</span>
 				</div>
 			</React.Fragment>
 		);
@@ -47,7 +52,9 @@ class StatusGridContainer extends React.PureComponent {
 	render() {
 		return (
 			<div className="status__grid-container">
-				<div className="status__section-header">{this.props.sectionHeader}</div>
+				<div className="status__section-header">
+					{this.props.sectionHeader}
+				</div>
 				{this.props.children}
 			</div>
 		);
@@ -57,7 +64,9 @@ class StatusGridContainer extends React.PureComponent {
 class StatusContainer extends React.PureComponent {
 	render() {
 		return (
-			<div className="status__container">
+			<div className="status__container"
+				data-js-multi-cols={this.props.multiCols ? true : null}
+			>
 				{this.props.children}
 			</div>
 		);
