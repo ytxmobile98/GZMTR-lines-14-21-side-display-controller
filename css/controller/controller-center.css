@@ -4,6 +4,7 @@
 .controller__center {
 	align-self: center;
 	flex-basis: 280px;
+	flex-grow: 0.5;
 	overflow: auto;
 
 	display: flex;
