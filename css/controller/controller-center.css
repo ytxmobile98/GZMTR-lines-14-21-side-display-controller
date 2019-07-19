@@ -3,7 +3,7 @@
 
 .controller__center {
 	align-self: center;
-	flex-basis: 300px;
+	flex-basis: 280px;
 	overflow: auto;
 
 	display: flex;
