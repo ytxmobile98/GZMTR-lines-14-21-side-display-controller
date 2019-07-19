@@ -2,8 +2,9 @@
 @import url("controller-master-buttons.css");
 
 .controller__center {
-	flex-grow: 0.5;
 	align-self: center;
+	flex-grow: 0.5;
+	overflow: auto;
 
 	display: flex;
 	flex-direction: column;
