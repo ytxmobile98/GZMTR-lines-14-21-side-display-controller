@@ -3,99 +3,81 @@
 import { TypeChecker } from "../type-checker.js";
 
 class DialogHeader extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props);
+  }
 
-	render() {
-		return React.createElement(
-			"div",
-			{ className: "modal-dialog__header" },
-			React.createElement("button", {
-				className: "modal-dialog__header-button modal-dialog__header-button--back",
-				disabled: !this.props.onGoBack ? "disabled" : null,
-				onClick: this.props.onGoBack
-			}),
-			React.createElement(
-				"div",
-				{ className: "modal-dialog__header-title" },
-				this.props.title
-			),
-			React.createElement("button", {
-				className: "modal-dialog__header-button modal-dialog__header-button--close",
-				onClick: this.props.onClose
-			})
-		);
-	}
+  render() {
+    return React.createElement("div", {
+      className: "modal-dialog__header"
+    }, React.createElement("button", {
+      className: "modal-dialog__header-button modal-dialog__header-button--back",
+      disabled: !this.props.onGoBack ? "disabled" : null,
+      onClick: this.props.onGoBack
+    }), React.createElement("div", {
+      className: "modal-dialog__header-title"
+    }, this.props.title), React.createElement("button", {
+      className: "modal-dialog__header-button modal-dialog__header-button--close",
+      onClick: this.props.onClose
+    }));
+  }
+
 }
 
 class DialogFooter extends React.Component {
-	constructor(props) {
-		super(props);
-		this.defaultDoneText = "完成";
-		this.defaultCloseText = "取消";
-	}
+  constructor(props) {
+    super(props);
+    this.defaultDoneText = "完成";
+    this.defaultCloseText = "取消";
+  }
 
-	render() {
-		return React.createElement(
-			"div",
-			{ className: "modal-dialog__footer" },
-			React.createElement(
-				"button",
-				{
-					className: "modal-dialog__footer-button action-button",
-					onClick: this.props.onDone },
-				this.props.doneText || this.defaultDoneText
-			),
-			React.createElement(
-				"button",
-				{
-					className: "modal-dialog__footer-button primary-button",
-					onClick: this.props.onClose },
-				this.props.closeText || this.defaultCloseText
-			)
-		);
-	}
+  render() {
+    return React.createElement("div", {
+      className: "modal-dialog__footer"
+    }, React.createElement("button", {
+      className: "modal-dialog__footer-button action-button",
+      onClick: this.props.onDone
+    }, this.props.doneText || this.defaultDoneText), React.createElement("button", {
+      className: "modal-dialog__footer-button primary-button",
+      onClick: this.props.onClose
+    }, this.props.closeText || this.defaultCloseText));
+  }
+
 }
 
 class Dialog extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props);
+  }
 
-	goBack() {
-		this.props.onGoBack();
-	}
+  goBack() {
+    this.props.onGoBack();
+  }
 
-	close() {
-		this.props.onClose();
-	}
+  close() {
+    this.props.onClose();
+  }
 
-	done() {
-		this.props.onDone();
-	}
+  done() {
+    this.props.onDone();
+  }
 
-	render() {
-		return React.createElement(
-			"div",
-			{ className: "modal-dialog" },
-			React.createElement(DialogHeader, {
-				onGoBack: this.props.onGoBack,
-				title: this.props.title,
-				onClose: this.close.bind(this)
-			}),
-			React.createElement(
-				"div",
-				{ className: "modal-dialog__center" },
-				this.props.children
-			),
-			React.createElement(DialogFooter, {
-				onDone: this.done.bind(this),
-				doneText: this.props.doneText,
-				onClose: this.close.bind(this)
-			})
-		);
-	}
+  render() {
+    return React.createElement("div", {
+      className: "modal-dialog"
+    }, React.createElement(DialogHeader, {
+      onGoBack: this.props.onGoBack,
+      title: this.props.title,
+      onClose: this.close.bind(this)
+    }), React.createElement("div", {
+      className: "modal-dialog__center"
+    }, this.props.children), React.createElement(DialogFooter, {
+      onDone: this.done.bind(this),
+      doneText: this.props.doneText,
+      onClose: this.close.bind(this)
+    }));
+  }
+
 }
 
 export { Dialog };

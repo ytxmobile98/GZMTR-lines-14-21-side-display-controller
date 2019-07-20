@@ -1,35 +1,29 @@
 "use strict";
 
 import { LineInfoWrapper } from "../data/LINES-DATA.js";
-
 import { RadioItem } from "./radio-group.js";
 
 class LineSelector extends React.PureComponent {
+  render() {
+    const lines = LineInfoWrapper.getLines();
+    const updateLine = this.props.updateLine;
 
-	render() {
-		const lines = LineInfoWrapper.getLines();
-		const updateLine = this.props.updateLine;
-		const handleUpdateLine = e => {
-			updateLine(e.target.value);
-		};
+    const handleUpdateLine = e => {
+      updateLine(e.target.value);
+    };
 
-		const lineItems = lines.map(line => {
-			return React.createElement(RadioItem, {
-				name: "line",
-				value: line,
-				checked: this.props.line === line,
-				onClick: handleUpdateLine,
-				text: line,
-				key: line
-			});
-		});
-
-		return React.createElement(
-			React.Fragment,
-			null,
-			lineItems
-		);
-	}
+    const lineItems = lines.map(line => {
+      return React.createElement(RadioItem, {
+        name: "line",
+        value: line,
+        checked: this.props.line === line,
+        onClick: handleUpdateLine,
+        text: line,
+        key: line
+      });
+    });
+    return React.createElement(React.Fragment, null, lineItems);
+  }
 
 }
 
