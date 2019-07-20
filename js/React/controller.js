@@ -135,16 +135,16 @@ class Controller extends React.Component {
 						StatusGridContainer,
 						{ sectionHeader: "\u65B9\u5411\u5E55\u663E\u793A\u72B6\u6001" },
 						React.createElement(StatusCell, {
-							itemName: "\u5DE6\u4FA7",
-							itemData: this.state.leftDisplay ? "开" : "关",
-							dataTag: "status-display-switch",
-							dataValue: this.state.leftDisplay ? "开" : "关"
-						}),
-						React.createElement(StatusCell, {
 							itemName: "\u663E\u793A\u6A21\u5F0F",
 							itemData: this.state.autoDisplayMode ? "自动" : "手动",
 							dataTag: "status-display-mode",
 							dataValue: this.state.autoDisplayMode ? "自动" : "手动"
+						}),
+						React.createElement(StatusCell, {
+							itemName: "\u5DE6\u4FA7",
+							itemData: this.state.leftDisplay ? "开" : "关",
+							dataTag: "status-display-switch",
+							dataValue: this.state.leftDisplay ? "开" : "关"
 						}),
 						React.createElement(StatusCell, {
 							itemName: "\u53F3\u4FA7",

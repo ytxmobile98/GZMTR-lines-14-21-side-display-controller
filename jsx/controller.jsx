@@ -129,19 +129,18 @@ class Controller extends React.Component {
 
 					<StatusContainer multiCols={true}>
 
-						{/* Display mode status */}
 						<StatusGridContainer sectionHeader="方向幕显示状态">
-							<StatusCell
-								itemName="左侧"
-								itemData={this.state.leftDisplay ? "开" : "关"}
-								dataTag="status-display-switch"
-								dataValue={this.state.leftDisplay ? "开" : "关"}
-							/>
 							<StatusCell
 								itemName="显示模式"
 								itemData={this.state.autoDisplayMode ? "自动" : "手动"}
 								dataTag="status-display-mode"
 								dataValue={this.state.autoDisplayMode ? "自动" : "手动"}
+							/>
+							<StatusCell
+								itemName="左侧"
+								itemData={this.state.leftDisplay ? "开" : "关"}
+								dataTag="status-display-switch"
+								dataValue={this.state.leftDisplay ? "开" : "关"}
 							/>
 							<StatusCell
 								itemName="右侧"
@@ -151,7 +150,6 @@ class Controller extends React.Component {
 							/>
 						</StatusGridContainer>
 
-						{/* Destination status */}
 						<StatusGridContainer sectionHeader="列车运营状态">
 							<StatusCell
 								itemName="线路"
