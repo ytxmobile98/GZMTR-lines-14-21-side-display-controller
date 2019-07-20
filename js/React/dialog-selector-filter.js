@@ -43,7 +43,6 @@ class FilterSelector extends React.PureComponent {
 				value: filterName,
 				checked: this.props.filterName === filterName,
 				onClick: handleUpdateFilterName,
-				extraLineHeight: true,
 				text: filterName,
 				key: `${this.props.line}-${filterName}`,
 				ref: React.createRef()

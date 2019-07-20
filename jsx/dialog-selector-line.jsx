@@ -20,7 +20,6 @@ class LineSelector extends React.PureComponent {
 					value={line}
 					checked={this.props.line === line}
 					onClick={handleUpdateLine}
-					extraLineHeight={true}
 					text={line}
 					key={line}
 				/>

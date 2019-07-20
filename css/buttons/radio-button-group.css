@@ -38,9 +38,6 @@
 .radio-button-group__text-button[data-js-has-border]:disabled {
 	border-color: var(--disabled-bg-color);
 }
-.radio-button-group__text-button[data-js-extra-line-height] {
-	line-height: 2em;
-}
 
 .radio-button-group__radio:checked
 	+ .radio-button-group__text-button {

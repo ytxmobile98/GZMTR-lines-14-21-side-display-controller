@@ -89,8 +89,6 @@ class SetDestinationGrid extends React.Component {
 
 	render() {
 
-		const extraLineHeight = true;
-
 		const line = this.state.line;
 		const filterName = this.state.filterName;
 		const filters = LineInfoWrapper.getLineFilters(line);

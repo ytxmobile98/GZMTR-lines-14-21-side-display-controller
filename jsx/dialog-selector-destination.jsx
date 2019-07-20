@@ -38,8 +38,6 @@ class DestSelector extends React.PureComponent {
 			this.props.updateDestination(stationNameChinese);
 		}
 
-		const extraLineHeight = true;
-
 		const destItems = destinations.map((destination) => {
 			return (
 				<RadioItem
@@ -47,7 +45,6 @@ class DestSelector extends React.PureComponent {
 					value={destination.Chinese}
 					checked={this.props.destination === destination}
 					onClick={handleUpdateDestination}
-					extraLineHeight={extraLineHeight}
 					text={destination.Chinese}
 					key={destination.Chinese}
 					ref={React.createRef()}

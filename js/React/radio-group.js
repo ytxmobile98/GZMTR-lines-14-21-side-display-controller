@@ -59,8 +59,7 @@ class RadioItem extends React.PureComponent {
 					disabled: this.props.disabled,
 					onClick: onClickButton,
 
-					"data-js-has-border": !!this.props.hasBorder ? true : null,
-					"data-js-extra-line-height": !!this.props.extraLineHeight ? true : null
+					"data-js-has-border": !!this.props.hasBorder ? true : null
 				},
 				this.props.text
 			)
