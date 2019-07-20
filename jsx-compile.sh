@@ -2,7 +2,7 @@ echo "Usage: sh jsx-compile.sh [<extension> [<outputDir> [<watchDir>]]]\n"
 
 echo "NOTE: If you have not yet initialized the jsx compile environment, please run the following commands first:"
 echo "npm init -y"
-echo "npm install --save-dev babel-cli@6 babel-preset-react-app@3"
+echo "npm install --save-dev @babel/cli @babel/preset-react"
 echo "See: https://reactjs.org/docs/add-react-to-a-website.html"
 
 ext=".jsx"
@@ -39,4 +39,4 @@ echo "\nPress ^C to exit\n"
 # For the anatomy of the line below, see:
 # https://reactjs.org/docs/add-react-to-a-website.html
 # https://babeljs.io/docs/en/babel-node
-npx babel --watch "$watchDir" --out-dir "$outputDir" --extensions "$ext" --presets react
+npx babel --presets @babel/preset-react --watch "$watchDir" --out-dir "$outputDir" --extensions "$ext"

@@ -18,8 +18,10 @@
   },
   "homepage": "https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
     "braces": "^2.3.2"
   },
   "dependencies": {}
