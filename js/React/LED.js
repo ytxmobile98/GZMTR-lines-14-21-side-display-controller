@@ -3,7 +3,7 @@
 import { TypeChecker } from "../type-checker.js";
 import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
 
-import { LineInfoWrapper } from "../data/line-info-wrapper.js";
+import { LineInfoWrapper } from "../data/LINES-DATA.js";
 
 const defaultDestination = LineInfoWrapper.getDefaultDest();
 const defaultServiceType = LineInfoWrapper.getDefaultServiceType();

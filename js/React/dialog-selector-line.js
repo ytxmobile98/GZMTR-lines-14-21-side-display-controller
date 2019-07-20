@@ -1,6 +1,6 @@
 "use strict";
 
-import { LineInfoWrapper } from "../data/line-info-wrapper.js";
+import { LineInfoWrapper } from "../data/LINES-DATA.js";
 
 import { RadioItem } from "./radio-group.js";
 

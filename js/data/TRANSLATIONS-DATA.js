@@ -12,6 +12,7 @@ import { processTranslations } from "./process-translations.js";
 const SERVICE_TYPES = {};
 const DESTINATIONS = {};
 
+// Initial loading, read data from external data file
 const readTranslationsData = async () => {
 	const mimeType = "text/csv";
 
