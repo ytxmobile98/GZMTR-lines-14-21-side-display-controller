@@ -30,7 +30,8 @@ echo "Output directory: $outputDir"
 echo "Watch directory: $watchDir"
 
 read -p "Continue? (y/n): " -r reply
-if [ $reply != "Y" ] && [ $reply != "y" ]
+# See: https://thoughtbot.com/blog/the-unix-shells-humble-if
+if test $reply != "Y" && test $reply != "y"
 then
 	exit
 fi
