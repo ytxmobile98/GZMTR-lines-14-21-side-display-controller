@@ -35,12 +35,12 @@ class DialogFooter extends React.Component {
     return React.createElement("div", {
       className: "modal-dialog__footer"
     }, React.createElement("button", {
-      className: "modal-dialog__footer-button action-button",
-      onClick: this.props.onDone
-    }, this.props.doneText || this.defaultDoneText), React.createElement("button", {
       className: "modal-dialog__footer-button primary-button",
       onClick: this.props.onClose
-    }, this.props.closeText || this.defaultCloseText));
+    }, this.props.closeText || this.defaultCloseText), React.createElement("button", {
+      className: "modal-dialog__footer-button action-button",
+      onClick: this.props.onDone
+    }, this.props.doneText || this.defaultDoneText));
   }
 
 }

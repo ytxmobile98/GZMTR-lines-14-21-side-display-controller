@@ -45,15 +45,15 @@ class DialogFooter extends React.Component {
 			<div className="modal-dialog__footer">
 
 				<button
-					className="modal-dialog__footer-button action-button"
-					onClick={this.props.onDone}>
-					{this.props.doneText || this.defaultDoneText}
-				</button>
-
-				<button
 					className="modal-dialog__footer-button primary-button"
 					onClick={this.props.onClose}>
 					{this.props.closeText || this.defaultCloseText}
+				</button>
+
+				<button
+					className="modal-dialog__footer-button action-button"
+					onClick={this.props.onDone}>
+					{this.props.doneText || this.defaultDoneText}
 				</button>
 
 			</div>
