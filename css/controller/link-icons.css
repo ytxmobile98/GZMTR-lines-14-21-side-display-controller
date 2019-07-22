@@ -3,7 +3,8 @@
 	grid-auto-flow: column;
 }
 
-.link-icon__button:hover {
+.link-icon__button:hover,
+.link-icon__button:focus {
 	background-color: var(--link-hover-bg-color);
 }
 
