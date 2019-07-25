@@ -58,6 +58,8 @@
 
 .LED__destination-text {
 	font-size: 40px;
+	flex-basis: 90%;
+	flex-grow: 0.5;
 }
 
 .LED__destination-text[data-js-t2-size] {
