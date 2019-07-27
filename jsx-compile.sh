@@ -33,6 +33,7 @@ read -p "Continue? (y/n): " -r reply
 # See: https://thoughtbot.com/blog/the-unix-shells-humble-if
 if test $reply != "Y" && test $reply != "y"
 then
+	echo "Abort."
 	exit
 fi
 
