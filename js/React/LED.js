@@ -97,9 +97,9 @@ class LEDDestination extends React.PureComponent {
     const destination = this.props.destination;
     TypeChecker.checkInstanceOf(destination, Station);
     return React.createElement("div", {
-      className: "LED__destination-container"
+      className: "LED__destination__container"
     }, React.createElement("div", {
-      className: "LED__destination-text",
+      className: "LED__destination__text",
       "data-js-t2-size": this.state.useT2TextSize ? true : null,
       ref: this.destTextRef
     }, this.destArray[this.state.currentIndex]));

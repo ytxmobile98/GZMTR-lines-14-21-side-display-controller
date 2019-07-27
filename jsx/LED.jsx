@@ -104,9 +104,9 @@ class LEDDestination extends React.PureComponent {
 		TypeChecker.checkInstanceOf(destination, Station);
 
 		return (
-			<div className="LED__destination-container">
+			<div className="LED__destination__container">
 				<div
-					className="LED__destination-text"
+					className="LED__destination__text"
 					data-js-t2-size={this.state.useT2TextSize ? true : null}
 					ref={this.destTextRef}
 				>
