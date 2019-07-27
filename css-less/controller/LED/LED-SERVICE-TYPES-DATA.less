@@ -1,0 +1,29 @@
+@import "colors/COLOR-CODES.less";
+
+@service-type-width: 25%; // flex-basis must use this value to display the service type block
+
+[data-js-service-type] {
+	flex-basis: 0;
+	flex-shrink: 0;
+	overflow: hidden;
+}
+
+// Color codes for service types
+
+[data-js-service-type="普通"] {
+	flex-basis: @service-type-width;
+	background-color: @service-LOCAL-bg-color;
+	color: @service-LOCAL-color;
+}
+
+[data-js-service-type="快速"] {
+	flex-basis: @service-type-width;
+	background-color: @service-EXPRESS-bg-color;
+	color: @service-EXPRESS-color;
+}
+
+[data-js-service-type="特别服务"] {
+	flex-basis: @service-type-width;
+	background-color: @service-SPECIAL-bg-color;
+	color: @service-SPECIAL-color;
+}

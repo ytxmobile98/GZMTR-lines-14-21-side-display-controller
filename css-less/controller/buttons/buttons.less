@@ -1,0 +1,33 @@
+@import "colors/COLOR-CODES.less";
+
+.button {
+
+	@normal-margin: 0.5em;
+	@normal-padding: 0.5em;
+
+	&--primary {
+		margin: @normal-margin;
+		padding: @normal-padding;
+
+		background-color: @base-button-bg-color;
+
+		&:enabled {
+			&:hover, &:focus {
+				background-color: @base-button-hover-bg-color;
+			}
+		}
+	}
+
+	&--action {
+		margin: @normal-margin;
+		padding: @normal-padding;
+
+		background-color: @action-bg-color;
+
+		&:enabled {
+			&:hover, &:focus {
+				background-color: @action-hover-bg-color;
+			}
+		}
+	}
+}

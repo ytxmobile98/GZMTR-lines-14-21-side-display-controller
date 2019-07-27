@@ -1,0 +1,107 @@
+@import "colors/COLOR-CODES.less";
+
+@import "buttons/radio-button-group.less";
+
+@import "dialog-set-display-mode.less";
+@import "dialog-set-service.less";
+
+.modal-dialog {
+
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 5%;
+	right: 5%;
+
+	font-size: 20px;
+	padding: 0.5em;
+
+	display: flex;
+	flex-direction: column;
+
+	background-color: @controller-base-color;
+
+	&__header {
+
+		@header-size: 48px;
+
+		flex-basis: @header-size;
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		text-align: center;
+
+		font-size: @header-size;
+
+		&__title {
+			flex-grow: 1;
+			font-size: 0.75em;
+		}
+
+		&__button {
+			width: @header-size;
+			height: @header-size;
+			padding: 0;
+
+			&:enabled:hover, &:focus {
+				background-color: @link-hover-bg-color;
+			}
+
+			&:disabled {
+				background-color: transparent;
+				opacity: 0.2;
+			}
+
+			@icons-dir: "../../../../icons";
+
+			&--back {
+				background-image: url("@{icons-dir}/material-icon-back.svg");
+			}
+
+			&--close {
+				background-image: url("@{icons-dir}/material-icon-close.svg");
+			}
+		}
+	}
+
+	&__center {
+		@basic-text-size: 24px;
+
+		flex-grow: 1;
+		overflow-x: hidden;
+		overflow-y: auto;
+		margin: 0.5em auto;
+		width: 90%;
+		align-self: center;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+
+		font-size: @basic-text-size;
+	}
+
+	&__footer {
+		@footer-size: 60px;
+
+		flex-basis: @footer-size;
+
+		display: flex;
+		flex-direction: row;
+		align-items: baseline;
+		justify-content: flex-end;
+
+		font-size: 0.5 * @footer-size;
+
+		&__button {
+			margin: 0.25em;
+			padding: 0.5em;
+			min-width: 5em;
+
+			font-family: inherit;
+			font-size: 0.8em;
+		}
+	}
+}

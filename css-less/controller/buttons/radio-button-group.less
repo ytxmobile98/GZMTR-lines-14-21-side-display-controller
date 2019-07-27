@@ -1,0 +1,62 @@
+@import "colors/COLOR-CODES.less";
+
+@group: radio-button-group;
+
+.@{group} {
+
+	&__container {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: 1fr;
+
+		text-align: center;
+	}
+
+	&__item {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: 1fr;
+
+		min-width: 5em;
+	}
+
+	&__radio {
+		display: none;
+
+		&:checked {
+			& + .@{group}__text-button {
+				background-color: @action-bg-color;
+				color: @light;
+			}
+			&:disabled + .@{group}__text-button {
+				background-color: @disabled-bg-color;
+				color: @light;
+			}
+		}
+
+		&:not(:checked) + .@{group}__text-button {
+			&:hover, &:focus {
+				background-color: @radio-hover-bg-color;
+			}
+		}
+	}
+
+	&__text-button {
+		line-height: inherit;
+		padding: 0 0.25em;
+		text-align: inherit;
+
+		&:disabled {
+			color: @disabled-text-color;
+		}
+
+		&[data-js-has-border] {
+			border: 2px solid @action-bg-color;
+
+			&:disabled {
+				border-color: @disabled-bg-color;
+			}
+		}
+	}
+
+}

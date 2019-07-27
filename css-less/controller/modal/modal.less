@@ -1,0 +1,37 @@
+@import "colors/COLOR-CODES.less";
+
+@import "dialog/dialog.less";
+
+.modal {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.modal__background {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	display: flex;
+
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal__close-button {
+	flex-grow: 1;
+
+	color: @light;
+
+	font-family: inherit;
+	font-size: 36px;
+
+	&:focus, &:hover {
+		color: gold;
+		background-color: rgba(0, 0, 255, 0.2);
+	}
+}

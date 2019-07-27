@@ -1,0 +1,42 @@
+@import "colors/COLOR-CODES.less";
+
+body {
+	margin: auto;
+	min-height: 100vh;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+
+	background-color: @dark;
+	color: @light;
+	font-family: "Unifont", monospace;
+}
+
+button {
+	margin: 0;
+	padding: 0;
+
+	border: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: @base-text-color;
+
+	cursor: pointer;
+
+	font-family: inherit;
+	font-size: inherit;
+
+	&:disabled {
+		color: @disabled-text-color;
+		cursor: not-allowed;
+	}
+}
+
+p, ol {
+	margin: 0;
+	line-height: 1.5em;
+}

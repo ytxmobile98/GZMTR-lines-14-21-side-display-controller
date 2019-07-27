@@ -1,0 +1,17 @@
+@import "reset.less";
+@import "fonts.less";
+@import "colors/COLOR-CODES.less";
+
+@import "controller/controller.less";
+
+.notes {
+	@notes-font-size: 20px;
+
+	font-size: @notes-font-size;
+	color: @notes-text-color;
+
+	&--warning {
+		font-size: @notes-font-size;
+		color: @warning-notes-text-color;
+	}
+}

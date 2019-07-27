@@ -1,0 +1,58 @@
+@import "colors/COLOR-CODES.less";
+
+// Display switch
+
+[data-js-status-display-switch="开"] {
+	color: @display-switch-ON;
+}
+
+[data-js-status-display-switch="关"] {
+	color: @display-switch-OFF;
+}
+
+// Display mode
+
+[data-js-status-display-mode="自动"] {
+	color: @display-mode-AUTO;
+}
+
+[data-js-status-display-mode="手动"] {
+	color: @display-mode-MANUAL;
+}
+
+// Line
+
+[data-js-status-line="不载客"] {
+	background-color: @line-NOT-IN-SERVICE-bg-color;
+	color: @line-NOT-IN-SERVICE-color;
+}
+[data-js-status-line="14号线"] {
+	background-color: @line-14-bg-color;
+	color: @line-14-color;
+}
+[data-js-status-line="21号线"] {
+	background-color: @line-21-bg-color;
+	color: @line-21-color;
+}
+
+// Service type
+
+[data-js-status-service-type="不载客"] {
+	background-color: @service-NOT-IN-SERVICE-bg-color;
+	color: @service-NOT-IN-SERVICE-color;
+}
+
+[data-js-status-service-type="普通"] {
+	background-color: @service-LOCAL-bg-color;
+	color: @service-LOCAL-color;
+}
+
+[data-js-status-service-type="快速"] {
+	background-color: @service-EXPRESS-bg-color;
+	color: @service-EXPRESS-color;
+}
+
+[data-js-status-service-type="特别服务"] {
+	background-color: @service-SPECIAL-bg-color;
+	color: @service-SPECIAL-color;
+}
