@@ -150,19 +150,19 @@ class Controller extends React.Component {
     }))), React.createElement("div", {
       className: "master-buttons__container"
     }, React.createElement("button", {
-      className: "master-button action-button",
+      className: "master-button button--action",
       onClick: () => {
         openModal("setDisplayMode");
       }
     }, "\u5F00\u542F/\u5173\u95ED\u65B9\u5411\u5E55"), React.createElement("button", {
-      className: "master-button action-button",
+      className: "master-button button--action",
       onClick: () => {
         openModal("setService");
       }
     }, "\u66F4\u6539\u76EE\u7684\u5730/\u8F66\u79CD"))), React.createElement("div", {
       className: "controller__bottom"
     }, React.createElement(Clock, null), React.createElement("div", {
-      className: "warning-notes"
+      className: "notes--warning"
     }, "\u6CE8\u610F\uFF1A\u59821\u5206\u949F\u5185\u65E0\u64CD\u4F5C\uFF0C\u6B64\u8BBE\u5907\u5C06\u8FDB\u5165\u5F85\u673A\u6A21\u5F0F\u3002"), React.createElement(LinkButtonsContainer, null, React.createElement(LinkButton, {
       url: "https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller",
       image: "icons/GitHub.svg",

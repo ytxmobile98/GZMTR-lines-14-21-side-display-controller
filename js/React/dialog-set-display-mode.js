@@ -120,7 +120,7 @@ class SetDisplayModeDialog extends React.Component {
     }, rightDisplay)), React.createElement("div", {
       className: "notes set-display-mode__notes"
     }, React.createElement("p", null, "\u81EA\u52A8\u6A21\u5F0F\u4E0B\uFF0C\u65B9\u5411\u5E55\u5F00\u542F\u6761\u4EF6\uFF1A"), React.createElement("ol", null, React.createElement("li", null, "\u8F66\u901F\u4E0D\u9AD8\u4E8E30 km/h\uFF1B"), React.createElement("li", null, "\u8FDB\u7AD9\u65F6\uFF0C\u9762\u5411\u7AD9\u53F0\u4E00\u4FA7\u7684\u65B9\u5411\u5E55\u5C06\u4F1A\u5F00\u542F\u3002")), React.createElement("p", {
-      className: "warning-notes"
+      className: "notes--warning"
     }, "\u6CE8\u610F\uFF1A\u624B\u52A8\u6A21\u5F0F\u4EC5\u4F9B\u5728\u8F66\u5382\u6D4B\u8BD5\u8BBE\u5907\u65F6\u4F7F\u7528\uFF1B\u8FD0\u8425\u65F6\u8BF7\u59CB\u7EC8\u4F7F\u7528\u81EA\u52A8\u6A21\u5F0F\u3002")));
   }
 

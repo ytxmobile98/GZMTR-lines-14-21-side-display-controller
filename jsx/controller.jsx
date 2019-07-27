@@ -176,14 +176,14 @@ class Controller extends React.Component {
 					<div className="master-buttons__container">
 
 						<button
-							className="master-button action-button"
+							className="master-button button--action"
 							onClick={()=>{openModal("setDisplayMode");}}
 						>
 							开启/关闭方向幕
 						</button>
 
 						<button
-							className="master-button action-button"
+							className="master-button button--action"
 							onClick={()=>{openModal("setService");}}
 						>
 							更改目的地/车种
@@ -197,7 +197,7 @@ class Controller extends React.Component {
 
 					<Clock />
 
-					<div className="warning-notes">
+					<div className="notes--warning">
 						注意：如1分钟内无操作，此设备将进入待机模式。
 					</div>
 

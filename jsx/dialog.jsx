@@ -12,18 +12,18 @@ class DialogHeader extends React.Component {
 			<div className="modal-dialog__header">
 
 				<button
-					className="modal-dialog__header-button modal-dialog__header-button--back"
+					className="modal-dialog__header__button modal-dialog__header__button--back"
 					disabled={!this.props.onGoBack ? "disabled" : null}
 					onClick={this.props.onGoBack}
 				>
 				</button>
 
-				<div className="modal-dialog__header-title">
+				<div className="modal-dialog__header__title">
 					{this.props.title}
 				</div>
 
 				<button
-					className="modal-dialog__header-button modal-dialog__header-button--close"
+					className="modal-dialog__header__button modal-dialog__header__button--close"
 					onClick={this.props.onClose}
 				>
 				</button>
@@ -45,13 +45,13 @@ class DialogFooter extends React.Component {
 			<div className="modal-dialog__footer">
 
 				<button
-					className="modal-dialog__footer-button primary-button"
+					className="modal-dialog__footer__button button--primary"
 					onClick={this.props.onClose}>
 					{this.props.closeText || this.defaultCloseText}
 				</button>
 
 				<button
-					className="modal-dialog__footer-button action-button"
+					className="modal-dialog__footer__button button--action"
 					onClick={this.props.onDone}>
 					{this.props.doneText || this.defaultDoneText}
 				</button>
