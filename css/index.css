@@ -308,7 +308,7 @@ ol {
 }
 .modal__close-button:focus,
 .modal__close-button:hover {
-  color: gold;
+  color: #FFCA28;
   background-color: rgba(0, 0, 255, 0.2);
 }
 [data-js-status-display-switch="开"] {
@@ -481,5 +481,5 @@ ol {
 }
 .notes--warning {
   font-size: 20px;
-  color: #FF1744;
+  color: #FFCA28;
 }
