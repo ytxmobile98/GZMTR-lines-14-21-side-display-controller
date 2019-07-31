@@ -3,14 +3,13 @@
 class LinkButton extends React.PureComponent {
 	render() {
 		return (
-			<button className="link-icon__button"
-				onClick={() => {
-					window.open(this.props.url);
-				}}
+			<a className="link-icon__button"
+				href={this.props.url}
+				target="_blank"
 				title={this.props.title}
 			>
 				<img className="link-icon" src={this.props.image} />
-			</button>
+			</a>
 		);
 	}
 }
