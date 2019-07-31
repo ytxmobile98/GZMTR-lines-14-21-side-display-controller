@@ -44,6 +44,10 @@ class LineInfoWrapper {
 
 	// Fundamental service info: destination and service type
 
+	static getDefaultLine() {
+		return "不载客";
+	}
+
 	static getDestination(destNameChinese) {
 		const destination = getDestination(destNameChinese);
 		TypeChecker.checkOptionalInstanceOf(destination, Station);

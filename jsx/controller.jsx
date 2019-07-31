@@ -29,7 +29,7 @@ class Controller extends React.Component {
 			rightDisplay: true,
 
 			// current destination information
-			line: "不载客",
+			line: LineInfoWrapper.getDefaultLine(),
 			serviceType: LineInfoWrapper.getDefaultServiceType(),
 			destination: LineInfoWrapper.getDefaultDest(),
 		};
