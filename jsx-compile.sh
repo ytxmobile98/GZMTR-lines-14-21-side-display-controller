@@ -1,4 +1,4 @@
-echo "Usage: sh jsx-compile.sh [<extension> [<outputDir> [<watchDir>]]]\n"
+echo "Usage: sh jsx-compile.sh [extension [outputDir [watchDir]]]\n"
 
 echo "NOTE: If you have not yet initialized the jsx compile environment, please run the following commands first:"
 echo "npm init -y"
