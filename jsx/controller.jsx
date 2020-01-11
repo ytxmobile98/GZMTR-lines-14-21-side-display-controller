@@ -133,6 +133,7 @@ class Controller extends React.Component {
 
 					<StatusContainer multiCols={true}>
 
+						{/* Destination sign display status: on / off, automatic / manual */}
 						<StatusGridContainer sectionHeader="方向幕显示状态">
 							<StatusCell
 								itemName="显示模式"
@@ -154,6 +155,7 @@ class Controller extends React.Component {
 							/>
 						</StatusGridContainer>
 
+						{/* Train status: line, destination, service type */}
 						<StatusGridContainer sectionHeader="列车运营状态">
 							<StatusCell
 								itemName="线路"
