@@ -6,7 +6,7 @@ echo -e "npm install --save-dev @babel/cli @babel/preset-react"
 echo -e "See: https://reactjs.org/docs/add-react-to-a-website.html"
 
 ext=".jsx"
-outputDir="./js/React 1"
+outputDir="./js/React"
 watchDir="./jsx"
 
 if [ -n "$1" ]
