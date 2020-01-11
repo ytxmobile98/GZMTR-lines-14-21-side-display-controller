@@ -201,13 +201,14 @@ class Controller extends React.Component {
 
 				</div>
 
-				{/* Bottom area: clock, wrning note, and useful links */}
+				{/* Bottom area: clock, warning note, and useful links */}
 				<div className="controller__bottom">
 					<Clock />
 					<WarningNote content="注意：如1分钟内无操作，此设备将进入待机模式。" />
 					<UsefulLinks />
 				</div>
 
+				{/* Modal dialogs */}
 				{this.state.modalMode ?
 
 					<Modal modalMode={this.state.modalMode}
