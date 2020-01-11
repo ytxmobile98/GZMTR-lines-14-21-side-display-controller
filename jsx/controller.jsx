@@ -7,6 +7,7 @@ import { LineInfoWrapper } from "../data/LINES-DATA.js";
 
 import { LED } from "./LED.js";
 import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
+import { MasterButton, MasterButtonsContainer } from "./master-buttons.js";
 import { Clock } from "./clock.js";
 import { WarningNote } from './warning-note.js';
 import { UsefulLinks } from "./useful-links.js";
@@ -182,27 +183,25 @@ class Controller extends React.Component {
 
 					</StatusContainer>
 
-					<div className="master-buttons__container">
-
-						<button
-							className="master-button button--action"
-							onClick={()=>{openModal("setDisplayMode");}}
-						>
-							开启/关闭方向幕
-						</button>
-
-						<button
-							className="master-button button--action"
-							onClick={()=>{openModal("setService");}}
-						>
-							更改目的地/车种
-						</button>
-
-					</div>
+					{/* Master buttons */}
+					<MasterButtonsContainer>
+						<MasterButton
+							onClick={() => {
+								openModal("setDisplayMode");
+							}}
+							text="开启/关闭方向幕"
+						/>
+						<MasterButton
+							onClick={() => {
+								openModal("setService");
+							}}
+							text="更改目的地/车种"
+						/>
+					</MasterButtonsContainer>
 
 				</div>
 
-				{/* Bottom area: clock, note, and useful links */}
+				{/* Bottom area: clock, wrning note, and useful links */}
 				<div className="controller__bottom">
 					<Clock />
 					<WarningNote content="注意：如1分钟内无操作，此设备将进入待机模式。" />

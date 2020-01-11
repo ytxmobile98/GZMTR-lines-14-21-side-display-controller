@@ -5,6 +5,7 @@ import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
 import { LineInfoWrapper } from "../data/LINES-DATA.js";
 import { LED } from "./LED.js";
 import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
+import { MasterButton, MasterButtonsContainer } from "./master-buttons.js";
 import { Clock } from "./clock.js";
 import { WarningNote } from './warning-note.js';
 import { UsefulLinks } from "./useful-links.js";
@@ -150,19 +151,17 @@ class Controller extends React.Component {
       dataTag: "status-service-type",
       dataValue: this.state.serviceType.Chinese,
       sidePadding: true
-    }))), React.createElement("div", {
-      className: "master-buttons__container"
-    }, React.createElement("button", {
-      className: "master-button button--action",
+    }))), React.createElement(MasterButtonsContainer, null, React.createElement(MasterButton, {
       onClick: () => {
         openModal("setDisplayMode");
-      }
-    }, "\u5F00\u542F/\u5173\u95ED\u65B9\u5411\u5E55"), React.createElement("button", {
-      className: "master-button button--action",
+      },
+      text: "\u5F00\u542F/\u5173\u95ED\u65B9\u5411\u5E55"
+    }), React.createElement(MasterButton, {
       onClick: () => {
         openModal("setService");
-      }
-    }, "\u66F4\u6539\u76EE\u7684\u5730/\u8F66\u79CD"))), React.createElement("div", {
+      },
+      text: "\u66F4\u6539\u76EE\u7684\u5730/\u8F66\u79CD"
+    }))), React.createElement("div", {
       className: "controller__bottom"
     }, React.createElement(Clock, null), React.createElement(WarningNote, {
       content: "\u6CE8\u610F\uFF1A\u59821\u5206\u949F\u5185\u65E0\u64CD\u4F5C\uFF0C\u6B64\u8BBE\u5907\u5C06\u8FDB\u5165\u5F85\u673A\u6A21\u5F0F\u3002"
