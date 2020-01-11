@@ -6,8 +6,9 @@ import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
 import { LineInfoWrapper } from "../data/LINES-DATA.js";
 
 import { LED } from "./LED.js";
-import { Clock } from "./clock.js";
 import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
+import { Clock } from "./clock.js";
+import { WarningNote } from './warning-note.js';
 import { UsefulLinks } from "./useful-links.js";
 
 import { defaultModalMode, Modal } from "./modal.js";
@@ -203,15 +204,9 @@ class Controller extends React.Component {
 
 				{/* Bottom area: clock, note, and useful links */}
 				<div className="controller__bottom">
-
 					<Clock />
-
-					<div className="notes--warning">
-						注意：如1分钟内无操作，此设备将进入待机模式。
-					</div>
-
+					<WarningNote content="注意：如1分钟内无操作，此设备将进入待机模式。" />
 					<UsefulLinks />
-
 				</div>
 
 				{this.state.modalMode ?
