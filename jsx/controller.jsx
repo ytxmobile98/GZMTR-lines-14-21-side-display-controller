@@ -1,17 +1,23 @@
 "use strict";
 
+// Type checker
 import { TypeChecker } from "../type-checker.js";
 
+// Train service data
 import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
 import { LineInfoWrapper } from "../data/LINES-DATA.js";
 
+// Controller top area
 import { LED } from "./LED.js";
+// Controller center area
 import { MonitorArea, DisplayModeGrid, TrainInfoGrid } from "./monitor-grids.js";
 import { MasterButton, MasterButtonsContainer } from "./master-buttons.js";
+// Controller bottom area
 import { Clock } from "./clock.js";
 import { WarningNote } from './warning-note.js';
 import { UsefulLinks } from "./useful-links.js";
 
+// Controller modal dialogs
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
 import { SetServiceDialog } from "./dialog-set-service.js";
