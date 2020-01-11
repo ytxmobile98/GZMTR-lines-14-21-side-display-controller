@@ -6,7 +6,7 @@ import { LineInfoWrapper } from "../data/LINES-DATA.js";
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
-import { LinkButton, LinkButtonsContainer } from "./link-buttons.js";
+import { UsefulLinks } from "./useful-links.js";
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
 import { SetServiceDialog } from "./dialog-set-service.js"; // The main component class for the controller
@@ -140,7 +140,9 @@ class Controller extends React.Component {
       sidePadding: true
     }), React.createElement(StatusCell, {
       itemName: "\u76EE\u7684\u5730",
-      itemData: this.state.destination.Chinese
+      itemData: this.state.destination.Chinese,
+      dataTag: "status-destination",
+      dataValue: this.state.destination.Chinese
     }), React.createElement(StatusCell, {
       itemName: "\u8F66\u79CD",
       itemData: this.state.serviceType.Chinese,
@@ -163,27 +165,7 @@ class Controller extends React.Component {
       className: "controller__bottom"
     }, React.createElement(Clock, null), React.createElement("div", {
       className: "notes--warning"
-    }, "\u6CE8\u610F\uFF1A\u59821\u5206\u949F\u5185\u65E0\u64CD\u4F5C\uFF0C\u6B64\u8BBE\u5907\u5C06\u8FDB\u5165\u5F85\u673A\u6A21\u5F0F\u3002"), React.createElement(LinkButtonsContainer, null, React.createElement(LinkButton, {
-      url: "https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller",
-      image: "icons/GitHub.svg",
-      title: "\u5728GitHub\u4E0A\u67E5\u770B\u6E90\u4EE3\u7801"
-    }), React.createElement(LinkButton, {
-      url: "https://developer.mozilla.org",
-      image: "icons/MDN.svg",
-      title: "MDN Web\u6587\u6863"
-    }), React.createElement(LinkButton, {
-      url: "https://reactjs.org/",
-      image: "icons/React.svg",
-      title: "React"
-    }), React.createElement(LinkButton, {
-      url: "https://material.io/tools/color/",
-      image: "icons/material-color-tools-logo.svg",
-      title: "Google Material Color Tools"
-    }), React.createElement(LinkButton, {
-      url: "http://www.gzmtr.com",
-      image: "icons/GZMTR.svg",
-      title: "\u5E7F\u5DDE\u5730\u94C1"
-    }))), this.state.modalMode ? React.createElement(Modal, {
+    }, "\u6CE8\u610F\uFF1A\u59821\u5206\u949F\u5185\u65E0\u64CD\u4F5C\uFF0C\u6B64\u8BBE\u5907\u5C06\u8FDB\u5165\u5F85\u673A\u6A21\u5F0F\u3002"), React.createElement(UsefulLinks, null)), this.state.modalMode ? React.createElement(Modal, {
       modalMode: this.state.modalMode,
       onMount: this.clearTimeout.bind(this),
       onUnmount: this.resetTimeout.bind(this),

@@ -8,7 +8,7 @@ import { LineInfoWrapper } from "../data/LINES-DATA.js";
 import { LED } from "./LED.js";
 import { Clock } from "./clock.js";
 import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
-import { LinkButton, LinkButtonsContainer } from "./link-buttons.js";
+import { UsefulLinks } from "./useful-links.js";
 
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
@@ -167,6 +167,8 @@ class Controller extends React.Component {
 							<StatusCell
 								itemName="目的地"
 								itemData={this.state.destination.Chinese}
+								dataTag="status-destination"
+								dataValue={this.state.destination.Chinese}
 							/>
 							<StatusCell
 								itemName="车种"
@@ -208,33 +210,7 @@ class Controller extends React.Component {
 						注意：如1分钟内无操作，此设备将进入待机模式。
 					</div>
 
-					<LinkButtonsContainer>
-						<LinkButton
-							url="https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller"
-							image="icons/GitHub.svg"
-							title="在GitHub上查看源代码"
-						/>
-						<LinkButton
-							url="https://developer.mozilla.org"
-							image="icons/MDN.svg"
-							title="MDN Web文档"
-						/>
-						<LinkButton
-							url="https://reactjs.org/"
-							image="icons/React.svg"
-							title="React"
-						/>
-						<LinkButton
-							url="https://material.io/tools/color/"
-							image="icons/material-color-tools-logo.svg"
-							title="Google Material Color Tools"
-						/>
-						<LinkButton
-							url="http://www.gzmtr.com"
-							image="icons/GZMTR.svg"
-							title="广州地铁"
-						/>
-					</LinkButtonsContainer>
+					<UsefulLinks />
 
 				</div>
 
