@@ -6,7 +6,7 @@ import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
 import { LineInfoWrapper } from "../data/LINES-DATA.js";
 
 import { LED } from "./LED.js";
-import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
+import { MonitorArea, DisplayModeGrid, TrainInfoGrid } from "./monitor-grids.js";
 import { MasterButton, MasterButtonsContainer } from "./master-buttons.js";
 import { Clock } from "./clock.js";
 import { WarningNote } from './warning-note.js';
@@ -130,58 +130,22 @@ class Controller extends React.Component {
 					/>
 				</div>
 
-				{/* Center area: the monitoring area */}
+				{/* Center area: the monitoring area and master buttons */}
 				<div className="controller__center">
 
-					<StatusContainer multiCols={true}>
-
-						{/* Destination sign display status: on / off, automatic / manual */}
-						<StatusGridContainer sectionHeader="方向幕显示状态">
-							<StatusCell
-								itemName="显示模式"
-								itemData={this.state.autoDisplayMode ? "自动" : "手动"}
-								dataTag="status-display-mode"
-								dataValue={this.state.autoDisplayMode ? "自动" : "手动"}
-							/>
-							<StatusCell
-								itemName="左侧"
-								itemData={this.state.leftDisplay ? "开" : "关"}
-								dataTag="status-display-switch"
-								dataValue={this.state.leftDisplay ? "开" : "关"}
-							/>
-							<StatusCell
-								itemName="右侧"
-								itemData={this.state.rightDisplay ? "开" : "关"}
-								dataTag="status-display-switch"
-								dataValue={this.state.rightDisplay ? "开" : "关"}
-							/>
-						</StatusGridContainer>
-
-						{/* Train status: line, destination, service type */}
-						<StatusGridContainer sectionHeader="列车运营状态">
-							<StatusCell
-								itemName="线路"
-								itemData={this.state.line}
-								dataTag="status-line"
-								dataValue={this.state.line}
-								sidePadding={true}
-							/>
-							<StatusCell
-								itemName="目的地"
-								itemData={this.state.destination.Chinese}
-								dataTag="status-destination"
-								dataValue={this.state.destination.Chinese}
-							/>
-							<StatusCell
-								itemName="车种"
-								itemData={this.state.serviceType.Chinese}
-								dataTag="status-service-type"
-								dataValue={this.state.serviceType.Chinese}
-								sidePadding={true}
-							/>
-						</StatusGridContainer>
-
-					</StatusContainer>
+					{/* Monitoring area */}
+					<MonitorArea>
+						<DisplayModeGrid
+							autoDisplayMode={this.state.autoDisplayMode}
+							leftDisplay={this.state.leftDisplay}
+							rightDisplay={this.state.rightDisplay}
+						/>
+						<TrainInfoGrid
+							line={this.state.line}
+							destination={this.state.destination}
+							serviceType={this.state.serviceType}
+						/>
+					</MonitorArea>
 
 					{/* Master buttons */}
 					<MasterButtonsContainer>
@@ -217,6 +181,7 @@ class Controller extends React.Component {
 						onCloseModal={this.closeModal.bind(this)}
 					>
 
+						{/* Set display mode */}
 						{this.state.modalMode === "setDisplayMode" ?
 							<SetDisplayModeDialog
 								updateDisplayMode={(auto, left, right) => {
@@ -232,6 +197,7 @@ class Controller extends React.Component {
 							: null
 						}
 
+						{/* Set train service information */}
 						{this.state.modalMode === "setService" ?
 							<SetServiceDialog
 								title="选择目的地"

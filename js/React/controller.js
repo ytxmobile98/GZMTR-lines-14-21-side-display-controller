@@ -4,7 +4,7 @@ import { TypeChecker } from "../type-checker.js";
 import { ServiceType, Station } from "../data/processed-lines-data-classes.js";
 import { LineInfoWrapper } from "../data/LINES-DATA.js";
 import { LED } from "./LED.js";
-import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.js";
+import { MonitorArea, DisplayModeGrid, TrainInfoGrid } from "./monitor-grids.js";
 import { MasterButton, MasterButtonsContainer } from "./master-buttons.js";
 import { Clock } from "./clock.js";
 import { WarningNote } from './warning-note.js';
@@ -113,45 +113,15 @@ class Controller extends React.Component {
       showContent: showContent
     })), React.createElement("div", {
       className: "controller__center"
-    }, React.createElement(StatusContainer, {
-      multiCols: true
-    }, React.createElement(StatusGridContainer, {
-      sectionHeader: "\u65B9\u5411\u5E55\u663E\u793A\u72B6\u6001"
-    }, React.createElement(StatusCell, {
-      itemName: "\u663E\u793A\u6A21\u5F0F",
-      itemData: this.state.autoDisplayMode ? "自动" : "手动",
-      dataTag: "status-display-mode",
-      dataValue: this.state.autoDisplayMode ? "自动" : "手动"
-    }), React.createElement(StatusCell, {
-      itemName: "\u5DE6\u4FA7",
-      itemData: this.state.leftDisplay ? "开" : "关",
-      dataTag: "status-display-switch",
-      dataValue: this.state.leftDisplay ? "开" : "关"
-    }), React.createElement(StatusCell, {
-      itemName: "\u53F3\u4FA7",
-      itemData: this.state.rightDisplay ? "开" : "关",
-      dataTag: "status-display-switch",
-      dataValue: this.state.rightDisplay ? "开" : "关"
-    })), React.createElement(StatusGridContainer, {
-      sectionHeader: "\u5217\u8F66\u8FD0\u8425\u72B6\u6001"
-    }, React.createElement(StatusCell, {
-      itemName: "\u7EBF\u8DEF",
-      itemData: this.state.line,
-      dataTag: "status-line",
-      dataValue: this.state.line,
-      sidePadding: true
-    }), React.createElement(StatusCell, {
-      itemName: "\u76EE\u7684\u5730",
-      itemData: this.state.destination.Chinese,
-      dataTag: "status-destination",
-      dataValue: this.state.destination.Chinese
-    }), React.createElement(StatusCell, {
-      itemName: "\u8F66\u79CD",
-      itemData: this.state.serviceType.Chinese,
-      dataTag: "status-service-type",
-      dataValue: this.state.serviceType.Chinese,
-      sidePadding: true
-    }))), React.createElement(MasterButtonsContainer, null, React.createElement(MasterButton, {
+    }, React.createElement(MonitorArea, null, React.createElement(DisplayModeGrid, {
+      autoDisplayMode: this.state.autoDisplayMode,
+      leftDisplay: this.state.leftDisplay,
+      rightDisplay: this.state.rightDisplay
+    }), React.createElement(TrainInfoGrid, {
+      line: this.state.line,
+      destination: this.state.destination,
+      serviceType: this.state.serviceType
+    })), React.createElement(MasterButtonsContainer, null, React.createElement(MasterButton, {
       onClick: () => {
         openModal("setDisplayMode");
       },
