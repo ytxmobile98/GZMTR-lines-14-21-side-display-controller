@@ -14,6 +14,8 @@ import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
 import { SetServiceDialog } from "./dialog-set-service.js";
 
+// The main component class for the controller
+
 class Controller extends React.Component {
 
 	constructor(props) {
@@ -117,6 +119,7 @@ class Controller extends React.Component {
 		return (
 			<div className="controller">
 
+				{/* Top area: the LED display */}
 				<div className="controller__top">
 					<LED
 						serviceType={this.state.serviceType}
@@ -125,6 +128,7 @@ class Controller extends React.Component {
 					/>
 				</div>
 
+				{/* Center area: the monitoring area */}
 				<div className="controller__center">
 
 					<StatusContainer multiCols={true}>
@@ -193,6 +197,7 @@ class Controller extends React.Component {
 
 				</div>
 
+				{/* Bottom area: clock, note, and useful links */}
 				<div className="controller__bottom">
 
 					<Clock />

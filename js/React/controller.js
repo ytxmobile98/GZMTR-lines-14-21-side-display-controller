@@ -9,7 +9,7 @@ import { StatusCell, StatusGridContainer, StatusContainer } from "./status-grid.
 import { LinkButton, LinkButtonsContainer } from "./link-buttons.js";
 import { defaultModalMode, Modal } from "./modal.js";
 import { SetDisplayModeDialog } from "./dialog-set-display-mode.js";
-import { SetServiceDialog } from "./dialog-set-service.js";
+import { SetServiceDialog } from "./dialog-set-service.js"; // The main component class for the controller
 
 class Controller extends React.Component {
   constructor(props) {

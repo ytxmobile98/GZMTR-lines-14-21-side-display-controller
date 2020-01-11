@@ -1,4 +1,5 @@
-"use strict";
+"use strict"; // The clock component
+// Display a clock at the bottom left of the destination sign controller
 
 class Clock extends React.PureComponent {
   constructor(props) {
