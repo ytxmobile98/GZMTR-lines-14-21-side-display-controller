@@ -1,13 +1,13 @@
-echo "Usage: sh jsx-compile.sh [extension [outputDir [watchDir]]]\n"
+echo -e "Usage: sh jsx-compile.sh [extension [outputDir [watchDir]]]\n"
 
-echo "NOTE: If you have not yet initialized the jsx compile environment, please run the following commands first:"
-echo "npm init -y"
-echo "npm install --save-dev @babel/cli @babel/preset-react"
-echo "See: https://reactjs.org/docs/add-react-to-a-website.html"
+echo -e "NOTE: If you have not yet initialized the jsx compile environment, please run the following commands first:"
+echo -e "npm init -y"
+echo -e "npm install --save-dev @babel/cli @babel/preset-react"
+echo -e "See: https://reactjs.org/docs/add-react-to-a-website.html"
 
 ext=".jsx"
-outputDir="."
-watchDir="."
+outputDir="./js/React 1"
+watchDir="./jsx"
 
 if [ -n "$1" ]
 then
@@ -25,19 +25,19 @@ then
 	watchDir="$3"
 fi
 
-echo "\nFile extension: $ext"
-echo "Output directory: $outputDir"
-echo "Watch directory: $watchDir"
+echo -e "\n[File extension]\n$(realpath "$ext")\n"
+echo -e "[Output directory] (where the compiled js files are located)\n $(realpath "$outputDir")\n"
+echo -e "[Watch directory] (where you should have $ext files)\n$(realpath "$watchDir")\n"
 
 read -p "Continue? (y/n): " -r reply
 # See: https://thoughtbot.com/blog/the-unix-shells-humble-if
 if test $reply != "Y" && test $reply != "y"
 then
-	echo "Abort."
+	echo -e "Abort."
 	exit
 fi
 
-echo "\nPress ^C to exit\n"
+echo -e "\nPress ^C to exit\n"
 # For the anatomy of the line below, see:
 # https://reactjs.org/docs/add-react-to-a-website.html
 # https://babeljs.io/docs/en/babel-node

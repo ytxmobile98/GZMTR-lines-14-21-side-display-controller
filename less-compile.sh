@@ -23,17 +23,17 @@ then
 	rootPath="$4"
 fi
 
-echo "Usage: sh less-compile.sh [lessDir [cssDir [mainFile [rootPath]]]]\n"
+echo -e "Usage: sh less-compile.sh [lessDir [cssDir [mainFile [rootPath]]]]\n"
 
-echo "LESS directiory: $lessDir"
-echo "CSS directory: $cssDir"
-echo "Main file: $mainFile"
+echo -e "LESS directiory: $(realpath "$lessDir")"
+echo -e "CSS directory: $(realpath "$cssDir")"
+echo -e "Main file: $(realpath "$mainFile")"
 
 read -p "Continue? (y/n): " -r reply
 # See: https://thoughtbot.com/blog/the-unix-shells-humble-if
 if test $reply != "Y" && test $reply != "y"
 then
-	echo "Abort."
+	echo -e "Abort."
 	exit
 fi
 
