@@ -15,10 +15,9 @@
 
 	position: relative;
 
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
+	display: grid;
+	grid-template-rows: 90px auto 80px;
+	justify-items: center;
 
 	width: @controller-screen-width;
 	height: @controller-screen-height;
@@ -27,27 +26,21 @@
 	border: 8px solid @material-color-Grey-600;
 
 	&__top {
-		display: flex;
-		flex-direction: row;
+		display: grid;
+		justify-items: center;
 		align-items: center;
-		justify-content: center;
 
-		padding: 15px 0;
 		text-align: center;
 		font-size: 20px;
 	}
 
 	&__center {
-		align-self: center;
-		flex-basis: 280px;
-		flex-grow: 0.5;
-		overflow: auto;
-
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-rows: 2fr 1fr;
+		justify-items: center;
 		align-items: center;
-		justify-content: space-around;
 
+		overflow: auto;
 		width: 90%;
 	}
 
@@ -56,8 +49,6 @@
 		flex-direction: row;
 		align-items: center;
 		justify-content: space-between;
-
-		padding: 10px 0;
 		text-align: center;
 	}
 }
