@@ -454,7 +454,6 @@ ol {
 }
 .controller__center {
   display: grid;
-  grid-template-rows: 2fr 1fr;
   justify-items: center;
   align-items: center;
   overflow: auto;
