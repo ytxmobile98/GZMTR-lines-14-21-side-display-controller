@@ -6,7 +6,7 @@ This is a demo website of an interactive destination sign controller, adapting t
 
 This demo uses **React** to handle the interaction parts, and uses **LessCSS** to style the components.
 
-**Main page: [click to view](https://bit.ly/1421LED)**
+**Main page: [click to view](https://bit.ly/1421LED)** (this page is in Chinese)
 
 **Note:** The trains currently running on Guangzhou Metro Lines 14 & 21 are NOT equipped with side destination signs. Please check the platform display to ensure boarding the correct train when you travel on these two lines.
 
