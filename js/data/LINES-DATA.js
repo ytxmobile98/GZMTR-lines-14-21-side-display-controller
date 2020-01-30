@@ -36,6 +36,7 @@ const loadLinesInfo = async () => {
 };
 
 // Interface for getting info for individual lines
+// NOTE: all members are static functions; instantiation of this object type is NOT allowed
 class LineInfoWrapper {
 
 	constructor() {
