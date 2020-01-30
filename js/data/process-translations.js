@@ -5,15 +5,11 @@ import { TranslationPair } from "./translation-pairs.js";
 
 import { parseDataFields } from "./parse-data-fields.js";
 
+// This function processes the .tsv files translation data
+// @text: the text content of the .tsv file
+// @subclass: a subclass of TranslationPair, with a "Chinese" key and a "English" key in each of its instances
+// return: a map from Chinese names (keys) to translation pairs (values)
 const processTranslations = (text, SubClass, fieldSeparator = "\t", newLine = "\n") => {
-
-	/* This function processes the .tsv files translation data.
-
-		@text: the text content of the .tsv file
-		@subclass: a subclass of TranslationPair, with a "Chinese" key and a "English" key in each of its instances
-
-		return: an map from Chinese names (keys) to translation pairs (values)
-	*/
 
 	TypeChecker.checkIsPrototypeOf(TranslationPair, SubClass);
 
