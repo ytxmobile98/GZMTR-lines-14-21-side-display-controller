@@ -14,7 +14,7 @@ const LINES_INFO = new Map();
 // Initial loading, read data from external data file
 const loadLinesInfo = async () => {
 	await (async () => {
-		const linesBasicInfoText = await makeRequest("RAW-DATA/LINES-BASIC-INFO.csv");
+		const linesBasicInfoText = await makeRequest("RAW-DATA/LINES-BASIC-INFO.tsv");
 		const linesBasicInfo = parseDataFields(linesBasicInfoText);
 		linesBasicInfo.forEach((item) => {
 			const newLineInfo = new LineInfo(...(item.slice(0, 4)));
@@ -23,7 +23,7 @@ const loadLinesInfo = async () => {
 	})();
 
 	await (async () => {
-		const linesFiltersText = await makeRequest("RAW-DATA/LINES-FILTERS.csv");
+		const linesFiltersText = await makeRequest("RAW-DATA/LINES-FILTERS.tsv");
 		const linesFiltersData = parseDataFields(linesFiltersText);
 		linesFiltersData.forEach((item) => {
 			const newFilter = new Filter(...(item.slice(0, 5)));

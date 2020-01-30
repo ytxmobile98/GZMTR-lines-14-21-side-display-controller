@@ -18,13 +18,13 @@ const readTranslationsData = async () => {
 
 	await Promise.all([
 		(async () => {
-			const serviceTypesText = await makeRequest("./RAW-DATA/SERVICE-TYPES.csv");
+			const serviceTypesText = await makeRequest("./RAW-DATA/SERVICE-TYPES.tsv");
 			Object.assign(SERVICE_TYPES, processTranslations(serviceTypesText, ServiceType));
 			Object.freeze(SERVICE_TYPES);
 		})(),
 
 		(async () => {
-			const destText = await makeRequest("./RAW-DATA/DESTINATIONS.csv");
+			const destText = await makeRequest("./RAW-DATA/DESTINATIONS.tsv");
 			Object.assign(DESTINATIONS, processTranslations(destText, Station));
 			Object.freeze(DESTINATIONS);
 		})(),
