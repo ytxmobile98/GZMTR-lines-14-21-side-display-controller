@@ -12,7 +12,7 @@ import { processTranslations } from "./process-translations.js";
 const SERVICE_TYPES = {};
 const DESTINATIONS = {};
 
-// Initial loading, read data from external data file
+// initial loading, read data from external data file
 const readTranslationsData = async () => {
 	const mimeType = "text/csv";
 
@@ -33,6 +33,8 @@ const readTranslationsData = async () => {
 	console.log(`SERVICE_TYPES: `, SERVICE_TYPES);
 	console.log(`DESTINATIONS: `, DESTINATIONS);
 };
+
+// below are utility functions
 
 const getServiceType = (serviceTypeChinese) => {
 	return SERVICE_TYPES[serviceTypeChinese];
