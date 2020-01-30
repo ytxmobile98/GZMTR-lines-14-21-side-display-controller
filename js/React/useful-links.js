@@ -4,6 +4,7 @@ import { LinkButton, LinkButtonsContainer } from "./link-buttons.js";
 
 class UsefulLinks extends React.PureComponent {
   render() {
+    // Note: the starting point of the relative paths below is "index.html" in the PROJECT ROOT DIRECTORY
     return React.createElement(LinkButtonsContainer, null, React.createElement(LinkButton, {
       url: "https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller",
       image: "icons/GitHub.svg",
@@ -16,6 +17,10 @@ class UsefulLinks extends React.PureComponent {
       url: "https://reactjs.org/",
       image: "icons/React.svg",
       title: "React"
+    }), React.createElement(LinkButton, {
+      url: "http://lesscss.org/",
+      image: "icons/LessCSS.svg",
+      title: "LessCSS"
     }), React.createElement(LinkButton, {
       url: "https://material.io/tools/color/",
       image: "icons/material-color-tools-logo.svg",

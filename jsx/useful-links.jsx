@@ -4,6 +4,9 @@ import { LinkButton, LinkButtonsContainer } from "./link-buttons.js";
 
 class UsefulLinks extends React.PureComponent {
 	render() {
+
+		// Note: the starting point of the relative paths below is "index.html" in the PROJECT ROOT DIRECTORY
+
 		return (
 			<LinkButtonsContainer>
 				<LinkButton
@@ -20,6 +23,11 @@ class UsefulLinks extends React.PureComponent {
 					url="https://reactjs.org/"
 					image="icons/React.svg"
 					title="React"
+				/>
+				<LinkButton
+					url="http://lesscss.org/"
+					image="icons/LessCSS.svg"
+					title="LessCSS"
 				/>
 				<LinkButton
 					url="https://material.io/tools/color/"
