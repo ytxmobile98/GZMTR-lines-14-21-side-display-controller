@@ -2,7 +2,9 @@
 
 const makeRequest = (url, mimeType = "text/plain") => {
 
-	// This function acts an API for making asynchronous XML HTTP requests.
+	/* This function acts an API for making asynchronous XML HTTP requests.
+		Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/Promise
+	*/
 
 	return new Promise((resolve, reject) => {
 		const xhr = new XMLHttpRequest();
