@@ -8,7 +8,8 @@ import { Filter } from "./filter-classes.js";
 
 import { mapTextListToServiceTypes, mapTextListToDests } from "./TRANSLATIONS-DATA.js";
 
-// This class stores the information used by a line, to be used on destination selector filters and LED display output
+// this class stores the information used by a line
+// to be used on destination selector filters and LED display output
 class LineInfo {
 	constructor(lineName, isPassengerService, destList, serviceTypesList, filters = undefined) {
 

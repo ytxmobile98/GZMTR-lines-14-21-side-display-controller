@@ -7,6 +7,8 @@ import { Station } from "./station-classes.js";
 
 import { getServiceType, mapTextListToDests } from "./TRANSLATIONS-DATA.js";
 
+// this class stores the information for a filter
+// filters appear on the destination selector, so that the train conductors can more easily get the list of the most commonly selected destinations, and then tap on the destination they want to display
 class Filter {
 	constructor(lineName, filterName, destList, serviceTypeChinese, crossLineServiceTypeChinese) {
 		this.lineName = String(lineName);
