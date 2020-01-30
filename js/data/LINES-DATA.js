@@ -52,7 +52,7 @@ class LineInfoWrapper {
 		throw new Error(`LineInfoWrapper may not be instantiated`);
 	}
 
-	// Fundamental service info: destination and service type
+	// fundamental service info: destination and service type
 
 	static getDefaultLine() {
 		return "不载客";
@@ -78,7 +78,7 @@ class LineInfoWrapper {
 		return this.getServiceType("不载客");
 	}
 
-	// Get line information
+	// get line information
 
 	static getLines() {
 		const lines = Array.from(LINES_INFO.keys());
@@ -112,7 +112,7 @@ class LineInfoWrapper {
 		return serviceTypes;
 	}
 
-	// Get filter information
+	// get filter information
 
 	static getFilter(line, filterName) {
 		const filters = this.getLineFilters(line);
