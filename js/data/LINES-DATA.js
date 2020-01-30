@@ -19,10 +19,12 @@ const loadLinesInfo = async () => {
 		const linesBasicInfoText = await makeRequest("RAW-DATA/LINES-BASIC-INFO.tsv");
 		const linesBasicInfo = parseDataFields(linesBasicInfoText);
 		// convert basic info into structured data
-		// argument order: line, isPassengerService, destList, serviceTypesList, filters
 		linesBasicInfo.forEach((item) => {
+			// LineInfo constructor argument order: lineName, isPassengerService, destList, serviceTypesList, filters
 			const newLineInfo = new LineInfo(...(item.slice(0, 4)));
-			LINES_INFO.set(item[0], newLineInfo);
+
+			const lineName = item[0];
+			LINES_INFO.set(lineName, newLineInfo);
 		});
 	})();
 
@@ -33,9 +35,11 @@ const loadLinesInfo = async () => {
 		const linesFiltersData = parseDataFields(linesFiltersText);
 		// create filters and add them to each line
 		linesFiltersData.forEach((item) => {
+			// Filter constructor argument order: lineName, filterName, destList, serviceTypeChinese, crossLineServiceTypeChinese
 			const newFilter = new Filter(...(item.slice(0, 5)));
-			const line_name = newFilter.lineName;
-			LINES_INFO.get(line_name).addFilter(newFilter);
+
+			const lineName = newFilter.lineName;
+			LINES_INFO.get(lineName).addFilter(newFilter);
 		})
 	})();
 
