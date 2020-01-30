@@ -37,11 +37,16 @@ const isHeaderRow = (arr, regexp = /^!/g) => {
 const parseDataFields = (text, fieldSeparator = "\t", newLine = "\n") => {
 	text = String(text);
 	const rows = text.split(newLine);
+
 	const result = rows.map((row) => {
+		// for each row, get the list of columns
+		// columns are separated by fieldSeparator
+		// for each field enclosed with quotation marks, remove quotation marks
 		return row.split(fieldSeparator).map(item => getQuotedFieldData(item));
 	}).filter((row) => {
 		return !(isEmptyRow(row) || isHeaderRow(row));
 	});
+
 	return result;
 }
 
