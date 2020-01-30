@@ -17,21 +17,24 @@ const readTranslationsData = async () => {
 	const mimeType = "text/csv";
 
 	await Promise.all([
-		(async () => {
-			const serviceTypesText = await makeRequest("./RAW-DATA/SERVICE-TYPES.tsv");
-			Object.assign(SERVICE_TYPES, processTranslations(serviceTypesText, ServiceType));
-			Object.freeze(SERVICE_TYPES);
-		})(),
-
+		// read destinations
 		(async () => {
 			const destText = await makeRequest("./RAW-DATA/DESTINATIONS.tsv");
 			Object.assign(DESTINATIONS, processTranslations(destText, Station));
 			Object.freeze(DESTINATIONS);
 		})(),
+
+		// read service types
+		(async () => {
+			const serviceTypesText = await makeRequest("./RAW-DATA/SERVICE-TYPES.tsv");
+			Object.assign(SERVICE_TYPES, processTranslations(serviceTypesText, ServiceType));
+			Object.freeze(SERVICE_TYPES);
+		})(),
 	]);
 
-	console.log(`SERVICE_TYPES: `, SERVICE_TYPES);
-	console.log(`DESTINATIONS: `, DESTINATIONS);
+	// ensure that the data are read in properly
+	console.info(`DESTINATIONS: `, DESTINATIONS);
+	console.info(`SERVICE_TYPES: `, SERVICE_TYPES);
 };
 
 // below are utility functions

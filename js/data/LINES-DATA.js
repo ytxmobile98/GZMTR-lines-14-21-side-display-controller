@@ -11,31 +11,40 @@ import { readTranslationsData, getServiceType, getDestination } from "./TRANSLAT
 
 const LINES_INFO = new Map();
 
-// Initial loading, read data from external data file
+// initial loading, read data from external data file
 const loadLinesInfo = async () => {
+	// get basic information about the lines
 	await (async () => {
+		// read in data for each line
 		const linesBasicInfoText = await makeRequest("RAW-DATA/LINES-BASIC-INFO.tsv");
 		const linesBasicInfo = parseDataFields(linesBasicInfoText);
+		// convert basic info into structured data
+		// argument order: line, isPassengerService, destList, serviceTypesList, filters
 		linesBasicInfo.forEach((item) => {
 			const newLineInfo = new LineInfo(...(item.slice(0, 4)));
 			LINES_INFO.set(item[0], newLineInfo);
 		});
 	})();
 
+	// get filters data
 	await (async () => {
+		// read in data for filters
 		const linesFiltersText = await makeRequest("RAW-DATA/LINES-FILTERS.tsv");
 		const linesFiltersData = parseDataFields(linesFiltersText);
+		// create filters and add them to each line
 		linesFiltersData.forEach((item) => {
 			const newFilter = new Filter(...(item.slice(0, 5)));
-			LINES_INFO.get(newFilter.getLine()).addFilter(newFilter);
+			const line_name = newFilter.getLineName();
+			LINES_INFO.get(line_name).addFilter(newFilter);
 		})
 	})();
 
+	// ensure that the data are read in properly
 	Object.freeze(LINES_INFO);
-	console.log(`LINES_INFO: `, LINES_INFO);
+	console.info(`LINES_INFO: `, LINES_INFO);
 };
 
-// Interface for getting info for individual lines
+// interfaces for getting info for individual lines
 // NOTE: all members are static functions; instantiation of this object type is NOT allowed
 class LineInfoWrapper {
 

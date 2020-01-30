@@ -8,9 +8,9 @@ import { Station } from "./station-classes.js";
 import { getServiceType, mapTextListToDests } from "./TRANSLATIONS-DATA.js";
 
 class Filter {
-	constructor(line, name, destList, serviceTypeChinese, crossLineServiceTypeChinese) {
-		this.line = String(line);
-		this.name = String(name);
+	constructor(lineName, filterName, destList, serviceTypeChinese, crossLineServiceTypeChinese) {
+		this.lineName = String(lineName);
+		this.filterName = String(filterName);
 		this.destinations = mapTextListToDests(String(destList));
 		this.serviceType = getServiceType(String(serviceTypeChinese));
 		this.crossLineServiceType = getServiceType(String(crossLineServiceTypeChinese));
@@ -18,12 +18,12 @@ class Filter {
 		Object.freeze(this);
 	}
 
-	getLine() {
-		return this.line;
+	getLineName() {
+		return this.lineName;
 	}
 
-	getName() {
-		return this.name;
+	getFilterName() {
+		return this.filterName;
 	}
 }
 
