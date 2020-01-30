@@ -14,7 +14,7 @@ const DESTINATIONS = {};
 
 // initial loading, read data from external data file
 const readTranslationsData = async () => {
-	const mimeType = "text/csv";
+	const mimeType = "text/tab-separated-values";
 
 	await Promise.all([
 		// read destinations
