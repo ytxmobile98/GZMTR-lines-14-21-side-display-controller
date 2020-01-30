@@ -44,6 +44,9 @@ const getDestination = (destNameChinese) => {
 	return DESTINATIONS[destNameChinese];
 };
 
+// This function maps a string of service types to an array of Chinese-English translation pairs (type ServiceType)
+// @text: the text string of service types, each item separated by @separator (default is comma ",")
+// return: an array of Chinese-English translation pairs (type ServiceType)
 const mapTextListToServiceTypes = (text, separator = ",") => {
 	const listText = String(text).split(separator);
 	return listText.map((text) => {
@@ -53,6 +56,9 @@ const mapTextListToServiceTypes = (text, separator = ",") => {
 	});
 }
 
+// This function maps a string of destination names to an array of Chinese-English translation pairs (type Station)
+// @text: the text string of destinations, each item separated by @separator (default is comma ",")
+// return: an array of Chinese-English translation pairs (type Station)
 const mapTextListToDests = (text, separator = ",") => {
 	const listText = String(text).split(separator);
 	return listText.map((text) => {
