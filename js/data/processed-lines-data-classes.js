@@ -22,7 +22,9 @@ class LineInfo {
 		Object.freeze(this);
 
 		if (filters instanceof Array) {
-			this.addFilters(filters);
+			filters.forEach((filter) => {
+				this.addFilter(filter);
+			});
 		}
 	}
 
