@@ -41,4 +41,5 @@ echo -e "\nPress ^C to exit\n"
 # For the anatomy of the line below, see:
 # https://reactjs.org/docs/add-react-to-a-website.html
 # https://babeljs.io/docs/en/babel-node
+# https://babeljs.io/docs/en/babel-preset-react
 npx babel --presets @babel/preset-react --watch "$watchDir" --out-dir "$outputDir" --extensions "$ext"
