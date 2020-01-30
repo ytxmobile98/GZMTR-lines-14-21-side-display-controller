@@ -23,11 +23,11 @@ then
 	rootPath="$4"
 fi
 
-echo -e "Usage: sh less-compile.sh [lessDir [cssDir [mainFile [rootPath]]]]\n"
-
-echo -e "LESS directiory: $(realpath "$lessDir")"
-echo -e "CSS directory: $(realpath "$cssDir")"
-echo -e "Main file: $(realpath "$mainFile")"
+echo -e "Usage: bash less-compile.sh [lessDir [cssDir [mainFile [rootPath]]]]\n"
+echo -e "[LESS directiory]\n$(realpath "$lessDir")\n"
+echo -e "[CSS directory]\n$(realpath "$cssDir")\n"
+echo -e "[Main file]\n$(realpath "$mainFile")\n"
+echo -e "[Root path]\n$(realpath "$rootPath")\n"
 
 read -p "Continue? (y/n): " -r reply
 # See: https://thoughtbot.com/blog/the-unix-shells-humble-if
