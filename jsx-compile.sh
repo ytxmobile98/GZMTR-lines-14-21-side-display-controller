@@ -25,8 +25,8 @@ then
 	watchDir="$3"
 fi
 
-echo -e "\n[File extension]\n$(realpath "$ext")\n"
-echo -e "[Output directory] (where the compiled js files are located)\n $(realpath "$outputDir")\n"
+echo -e "\n[File extension]\n$ext\n"
+echo -e "[Output directory] (where the compiled js files are located)\n$(realpath "$outputDir")\n"
 echo -e "[Watch directory] (where you should have $ext files)\n$(realpath "$watchDir")\n"
 
 read -p "Continue? (y/n): " -r reply
