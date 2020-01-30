@@ -9,9 +9,9 @@ import { Filter } from "./filter-classes.js";
 import { mapTextListToServiceTypes, mapTextListToDests } from "./TRANSLATIONS-DATA.js";
 
 class LineInfo {
-	constructor(line, isPassengerService, destList, serviceTypesList, filters = undefined) {
+	constructor(lineName, isPassengerService, destList, serviceTypesList, filters = undefined) {
 
-		this.line = String(line || "");
+		this.lineName = String(lineName || "");
 		this.isPassengerService = !!(String(isPassengerService).match(/true/gi));
 		this.destList = mapTextListToDests(String(destList));
 		this.serviceTypes = mapTextListToServiceTypes(String(serviceTypesList));
