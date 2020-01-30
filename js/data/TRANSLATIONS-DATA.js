@@ -36,10 +36,14 @@ const readTranslationsData = async () => {
 
 // below are utility functions
 
+// return: a service type in Chinese-English translation pair (type ServiceType)
+// if not found, return undefined
 const getServiceType = (serviceTypeChinese) => {
 	return SERVICE_TYPES[serviceTypeChinese];
 };
 
+// return: a destination in Chinese-English translation pair (type Station)
+// if not found, return undefined
 const getDestination = (destNameChinese) => {
 	return DESTINATIONS[destNameChinese];
 };
