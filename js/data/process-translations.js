@@ -6,6 +6,15 @@ import { TranslationPair } from "./translation-pairs.js";
 import { parseDataFields } from "./parse-data-fields.js";
 
 const processTranslations = (text, SubClass, fieldSeparator = "\t", newLine = "\n") => {
+
+	/* This function processes the .tsv files translation data.
+
+		@text: the text content of the .tsv file
+		@subclass: a subclass of TranslationPair, with a "Chinese" key and a "English" key in each of its instances
+
+		return: an map from Chinese names (keys) to translation pairs (values)
+	*/
+
 	TypeChecker.checkIsPrototypeOf(TranslationPair, SubClass);
 
 	let dataArray = parseDataFields(text, fieldSeparator, newLine);
@@ -28,7 +37,7 @@ const processTranslations = (text, SubClass, fieldSeparator = "\t", newLine = "\
 		return String(str).split(fieldSeparator);
 	});
 
-	// use Chinese fields as key
+	// use Chinese field names as keys
 	const translations = {};
 	dataArray.forEach((row) => {
 		translations[row[0]] = new SubClass(...row);
