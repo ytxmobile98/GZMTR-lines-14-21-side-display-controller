@@ -44,6 +44,7 @@ const parseDataFields = (text, fieldSeparator = "\t", newLine = "\n") => {
 		// for each field enclosed with quotation marks, remove quotation marks
 		return row.split(fieldSeparator).map(item => getQuotedFieldData(item));
 	}).filter((row) => {
+		// ignore empty rows
 		return !(isEmptyRow(row) || isHeaderRow(row));
 	});
 
