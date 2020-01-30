@@ -6,7 +6,7 @@ import { TranslationPair } from "./translation-pairs.js";
 import { ServiceType } from "./service-type-classes.js";
 import { Station } from "./station-classes.js";
 
-import { makeRequest } from "./request-raw-data.js";
+import { makeRequest } from "./make-XMLHttpRequest.js";
 import { processTranslations } from "./process-translations.js";
 
 const SERVICE_TYPES = {};
