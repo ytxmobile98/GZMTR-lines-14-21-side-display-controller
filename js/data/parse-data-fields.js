@@ -4,9 +4,9 @@ import { TypeChecker } from "../type-checker.js";
 
 const getQuotedFieldData = (field) => {
 	field = String(field);
+	// strip the first and last quotation marks
 	const quoted_re = /".*"|'.*'/g;
 	if (field.match(quoted_re)) {
-		// strip the first and last quotation marks
 		field = field.slice(1, -1);
 	}
 	return field;
