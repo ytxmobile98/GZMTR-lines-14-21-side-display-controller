@@ -34,6 +34,9 @@ const isHeaderRow = (arr, regexp = /^!/g) => {
 	return true;
 }
 
+// This function parses the data fields from a .tsv file
+// empty rows and header rows are ignored
+// return: an array (rows) of arrays (columns) of parsed data
 const parseDataFields = (text, fieldSeparator = "\t", newLine = "\n") => {
 	text = String(text);
 	const rows = text.split(newLine);
@@ -44,7 +47,7 @@ const parseDataFields = (text, fieldSeparator = "\t", newLine = "\n") => {
 		// for each field enclosed with quotation marks, remove quotation marks
 		return row.split(fieldSeparator).map(item => getQuotedFieldData(item));
 	}).filter((row) => {
-		// ignore empty rows
+		// ignore empty rows and header rows
 		return !(isEmptyRow(row) || isHeaderRow(row));
 	});
 
