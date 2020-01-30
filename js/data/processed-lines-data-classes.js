@@ -28,7 +28,7 @@ class LineInfo {
 
 	addFilter(filter) {
 		TypeChecker.checkInstanceOf(filter, Filter);
-		this.filters.set(filter.getFilterName(), filter);
+		this.filters.set(filter.filterName, filter);
 	}
 }
 

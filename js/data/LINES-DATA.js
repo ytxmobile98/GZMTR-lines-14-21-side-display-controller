@@ -34,7 +34,7 @@ const loadLinesInfo = async () => {
 		// create filters and add them to each line
 		linesFiltersData.forEach((item) => {
 			const newFilter = new Filter(...(item.slice(0, 5)));
-			const line_name = newFilter.getLineName();
+			const line_name = newFilter.lineName;
 			LINES_INFO.get(line_name).addFilter(newFilter);
 		})
 	})();

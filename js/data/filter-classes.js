@@ -19,14 +19,6 @@ class Filter {
 
 		Object.freeze(this);
 	}
-
-	getLineName() {
-		return this.lineName;
-	}
-
-	getFilterName() {
-		return this.filterName;
-	}
 }
 
 export { Filter };
