@@ -7,26 +7,27 @@
 
 .modal-dialog {
 
+	@side-space: 5%;
+
+	@header-size: 48px;
+	@footer-size: 72px;
+
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	left: 5%;
-	right: 5%;
+	left: @side-space;
+	right: @side-space;
 
 	font-size: 20px;
 	padding: 0.5em;
 
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-rows: @header-size auto @footer-size;
 
 	background-color: @controller-base-color;
 
 	&__header {
-
-		@header-size: 48px;
-
-		flex-basis: @header-size;
-
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -68,26 +69,19 @@
 	&__center {
 		@basic-text-size: 24px;
 
-		flex-grow: 1;
 		overflow-x: hidden;
 		overflow-y: auto;
 		margin: 0.5em auto;
 		width: 90%;
-		align-self: center;
 
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		justify-items: center;
 		align-items: center;
-		justify-content: space-between;
 
 		font-size: @basic-text-size;
 	}
 
 	&__footer {
-		@footer-size: 60px;
-
-		flex-basis: @footer-size;
-
 		display: flex;
 		flex-direction: row;
 		align-items: baseline;
@@ -96,12 +90,10 @@
 		font-size: 0.5 * @footer-size;
 
 		&__button {
-			margin: 0.25em;
-			padding: 0.5em;
 			min-width: 5em;
 
 			font-family: inherit;
-			font-size: 0.8em;
+			font-size: 0.75em;
 		}
 	}
 }

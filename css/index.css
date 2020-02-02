@@ -220,12 +220,12 @@ ol {
   right: 5%;
   font-size: 20px;
   padding: 0.5em;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: 48px auto 72px;
   background-color: #121212;
 }
 .modal-dialog__header {
-  flex-basis: 48px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -256,32 +256,26 @@ ol {
   background-image: url("../icons/material-icon-close.svg");
 }
 .modal-dialog__center {
-  flex-grow: 1;
   overflow-x: hidden;
   overflow-y: auto;
   margin: 0.5em auto;
   width: 90%;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  justify-items: center;
   align-items: center;
-  justify-content: space-between;
   font-size: 24px;
 }
 .modal-dialog__footer {
-  flex-basis: 60px;
   display: flex;
   flex-direction: row;
   align-items: baseline;
   justify-content: flex-end;
-  font-size: 30px;
+  font-size: 36px;
 }
 .modal-dialog__footer__button {
-  margin: 0.25em;
-  padding: 0.5em;
   min-width: 5em;
   font-family: inherit;
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 .modal {
   position: absolute;
@@ -393,7 +387,7 @@ ol {
 }
 .button--primary {
   margin: 0.5em;
-  padding: 0.5em;
+  padding: 0.25em;
   background-color: #424242;
 }
 .button--primary:enabled:hover,
@@ -402,7 +396,7 @@ ol {
 }
 .button--action {
   margin: 0.5em;
-  padding: 0.5em;
+  padding: 0.25em;
   background-color: #1E88E5;
 }
 .button--action:enabled:hover,
@@ -438,7 +432,7 @@ ol {
 .controller {
   position: relative;
   display: grid;
-  grid-template-rows: 90px auto 80px;
+  grid-template-rows: 100px auto 80px;
   justify-items: center;
   width: 800px;
   height: 480px;
@@ -456,7 +450,8 @@ ol {
   display: grid;
   justify-items: center;
   align-items: center;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   width: 90%;
 }
 .controller__bottom {
