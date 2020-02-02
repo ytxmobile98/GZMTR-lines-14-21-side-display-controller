@@ -12,11 +12,13 @@
 
 	@controller-screen-width: 800px;
 	@controller-screen-height: 480px;
+	@top-height: 100px;
+	@bottom-height: 80px;
 
 	position: relative;
 
 	display: grid;
-	grid-template-rows: 90px auto 80px;
+	grid-template-rows: @top-height auto @bottom-height;
 	justify-items: center;
 
 	width: @controller-screen-width;
@@ -39,7 +41,8 @@
 		justify-items: center;
 		align-items: center;
 
-		overflow: auto;
+		overflow-x: hidden;
+		overflow-y: auto;
 		width: 90%;
 	}
 
