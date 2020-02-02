@@ -6,8 +6,8 @@ body {
   align-items: center;
   align-content: center;
   justify-content: center;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: black;
+  color: white;
   font-family: "Unifont", monospace;
 }
 button {
@@ -17,13 +17,13 @@ button {
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
-  color: #ffffff;
+  color: white;
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
 }
 button:disabled {
-  color: #bdbdbd;
+  color: #BDBDBD;
   cursor: not-allowed;
 }
 p,
@@ -42,18 +42,18 @@ ol {
 }
 [data-js-service-type="普通"] {
   flex-basis: 25%;
-  background-color: #ff0000;
-  color: #ffffff;
+  background-color: red;
+  color: white;
 }
 [data-js-service-type="快速"] {
   flex-basis: 25%;
-  background-color: #008000;
-  color: #ffffff;
+  background-color: green;
+  color: white;
 }
 [data-js-service-type="特别服务"] {
   flex-basis: 25%;
-  background-color: #ffd700;
-  color: #000000;
+  background-color: gold;
+  color: black;
 }
 .LED__container {
   width: 480px;
@@ -131,16 +131,16 @@ ol {
   display: none;
 }
 .radio-button-group__radio:checked + .radio-button-group__text-button {
-  background-color: #1e88e5;
-  color: #ffffff;
+  background-color: #1E88E5;
+  color: white;
 }
 .radio-button-group__radio:checked:disabled + .radio-button-group__text-button {
   background-color: #757575;
-  color: #ffffff;
+  color: white;
 }
 .radio-button-group__radio:not(:checked) + .radio-button-group__text-button:hover,
 .radio-button-group__radio:not(:checked) + .radio-button-group__text-button:focus {
-  background-color: #0d47a1;
+  background-color: #0D47A1;
 }
 .radio-button-group__text-button {
   line-height: inherit;
@@ -148,10 +148,10 @@ ol {
   text-align: inherit;
 }
 .radio-button-group__text-button:disabled {
-  color: #bdbdbd;
+  color: #BDBDBD;
 }
 .radio-button-group__text-button[data-js-has-border] {
-  border: 2px solid #1e88e5;
+  border: 2px solid #1E88E5;
 }
 .radio-button-group__text-button[data-js-has-border]:disabled {
   border-color: #757575;
@@ -179,7 +179,7 @@ ol {
   font-size: 20px;
 }
 .set-destination-grid__item {
-  border: 1px solid #ffffff;
+  border: 1px solid white;
   grid-auto-flow: row;
   grid-auto-rows: min-content;
 }
@@ -301,54 +301,54 @@ ol {
 }
 .modal__close-button {
   flex-grow: 1;
-  color: #ffffff;
+  color: white;
   font-family: inherit;
   font-size: 36px;
 }
 .modal__close-button:focus,
 .modal__close-button:hover {
-  color: #ffca28;
+  color: #FFCA28;
   background-color: rgba(0, 0, 255, 0.2);
 }
 [data-js-status-display-switch="开"] {
-  color: #40c4ff;
+  color: #40C4FF;
 }
 [data-js-status-display-switch="关"] {
   color: #757575;
 }
 [data-js-status-display-mode="自动"] {
-  color: #00e676;
+  color: #00E676;
 }
 [data-js-status-display-mode="手动"] {
-  color: #ff1744;
+  color: #FF1744;
 }
 [data-js-status-line="不载客"] {
   background-color: #424242;
-  color: #ffffff;
+  color: white;
 }
 [data-js-status-line="14号线"] {
   background-color: #792720;
-  color: #ffffff;
+  color: white;
 }
 [data-js-status-line="21号线"] {
   background-color: #230b55;
-  color: #ffffff;
+  color: white;
 }
 [data-js-status-service-type="不载客"] {
   background-color: #424242;
-  color: #ffffff;
+  color: white;
 }
 [data-js-status-service-type="普通"] {
-  background-color: #ff0000;
-  color: #ffffff;
+  background-color: red;
+  color: white;
 }
 [data-js-status-service-type="快速"] {
-  background-color: #008000;
-  color: #ffffff;
+  background-color: green;
+  color: white;
 }
 [data-js-status-service-type="特别服务"] {
-  background-color: #ffd700;
-  color: #000000;
+  background-color: gold;
+  color: black;
 }
 .status__container {
   width: 90%;
@@ -403,11 +403,11 @@ ol {
 .button--action {
   margin: 0.5em;
   padding: 0.5em;
-  background-color: #1e88e5;
+  background-color: #1E88E5;
 }
 .button--action:enabled:hover,
 .button--action:enabled:focus {
-  background-color: #42a5f5;
+  background-color: #42A5F5;
 }
 .master-buttons__container {
   display: flex;
@@ -468,9 +468,9 @@ ol {
 }
 .notes {
   font-size: 20px;
-  color: #ffffff;
+  color: white;
 }
 .notes--warning {
   font-size: 20px;
-  color: #ffca28;
+  color: #FFCA28;
 }
