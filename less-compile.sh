@@ -37,4 +37,4 @@ then
 	exit
 fi
 
-npx less-watch-compiler "$lessDir" "$cssDir" --main-file "$mainFile" --less-args rootpath="$rootPath",--rewrite-urls=all
+npx less-watch-compiler "$lessDir" "$cssDir" --main-file "$mainFile" --less-args rootpath="$rootPath",rewrite-urls=all
