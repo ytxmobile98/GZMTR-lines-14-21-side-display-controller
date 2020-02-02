@@ -24,6 +24,7 @@
 	display: grid;
 	grid-auto-flow: column;
 	grid-template-rows: @header-size auto @footer-size;
+	grid-row-gap: 1em;
 
 	background-color: @controller-base-color;
 
@@ -71,13 +72,13 @@
 
 		overflow-x: hidden;
 		overflow-y: auto;
-		margin: 0.5em auto;
 		width: 90%;
+		justify-self: center;
 
 		display: grid;
-		justify-items: center;
-		align-items: center;
+		grid-auto-flow: column;
 		grid-template-rows: 100%;
+		justify-items: center;
 
 		font-size: @basic-text-size;
 	}

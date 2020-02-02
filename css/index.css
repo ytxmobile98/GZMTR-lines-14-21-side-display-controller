@@ -223,6 +223,7 @@ ol {
   display: grid;
   grid-auto-flow: column;
   grid-template-rows: 48px auto 72px;
+  grid-row-gap: 1em;
   background-color: #121212;
 }
 .modal-dialog__header {
@@ -258,12 +259,12 @@ ol {
 .modal-dialog__center {
   overflow-x: hidden;
   overflow-y: auto;
-  margin: 0.5em auto;
   width: 90%;
+  justify-self: center;
   display: grid;
-  justify-items: center;
-  align-items: center;
+  grid-auto-flow: column;
   grid-template-rows: 100%;
+  justify-items: center;
   font-size: 24px;
 }
 .modal-dialog__footer {
