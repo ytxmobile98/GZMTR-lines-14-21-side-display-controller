@@ -6,8 +6,8 @@ body {
   align-items: center;
   align-content: center;
   justify-content: center;
-  background-color: black;
-  color: white;
+  background-color: #000000;
+  color: #ffffff;
   font-family: "Unifont", monospace;
 }
 button {
@@ -17,13 +17,13 @@ button {
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
-  color: white;
+  color: #ffffff;
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
 }
 button:disabled {
-  color: #BDBDBD;
+  color: #bdbdbd;
   cursor: not-allowed;
 }
 p,
@@ -33,7 +33,7 @@ ol {
 }
 @font-face {
   font-family: "Unifont";
-  src: local("Unifont"), url("../fonts/unifont.woff2") format("woff2"), url("../fonts/unifont.woff2") format("woff");
+  src: local("Unifont"), url("../fonts/unifont.woff2") format("woff2"), url("../fonts/unifont.woff") format("woff");
 }
 [data-js-service-type] {
   flex-basis: 0;
@@ -42,18 +42,18 @@ ol {
 }
 [data-js-service-type="普通"] {
   flex-basis: 25%;
-  background-color: red;
-  color: white;
+  background-color: #ff0000;
+  color: #ffffff;
 }
 [data-js-service-type="快速"] {
   flex-basis: 25%;
-  background-color: green;
-  color: white;
+  background-color: #008000;
+  color: #ffffff;
 }
 [data-js-service-type="特别服务"] {
   flex-basis: 25%;
-  background-color: gold;
-  color: black;
+  background-color: #ffd700;
+  color: #000000;
 }
 .LED__container {
   width: 480px;
@@ -131,16 +131,16 @@ ol {
   display: none;
 }
 .radio-button-group__radio:checked + .radio-button-group__text-button {
-  background-color: #1E88E5;
-  color: white;
+  background-color: #1e88e5;
+  color: #ffffff;
 }
 .radio-button-group__radio:checked:disabled + .radio-button-group__text-button {
   background-color: #757575;
-  color: white;
+  color: #ffffff;
 }
 .radio-button-group__radio:not(:checked) + .radio-button-group__text-button:hover,
 .radio-button-group__radio:not(:checked) + .radio-button-group__text-button:focus {
-  background-color: #0D47A1;
+  background-color: #0d47a1;
 }
 .radio-button-group__text-button {
   line-height: inherit;
@@ -148,10 +148,10 @@ ol {
   text-align: inherit;
 }
 .radio-button-group__text-button:disabled {
-  color: #BDBDBD;
+  color: #bdbdbd;
 }
 .radio-button-group__text-button[data-js-has-border] {
-  border: 2px solid #1E88E5;
+  border: 2px solid #1e88e5;
 }
 .radio-button-group__text-button[data-js-has-border]:disabled {
   border-color: #757575;
@@ -179,7 +179,7 @@ ol {
   font-size: 20px;
 }
 .set-destination-grid__item {
-  border: 1px solid white;
+  border: 1px solid #ffffff;
   grid-auto-flow: row;
   grid-auto-rows: min-content;
 }
@@ -301,54 +301,54 @@ ol {
 }
 .modal__close-button {
   flex-grow: 1;
-  color: white;
+  color: #ffffff;
   font-family: inherit;
   font-size: 36px;
 }
 .modal__close-button:focus,
 .modal__close-button:hover {
-  color: #FFCA28;
+  color: #ffca28;
   background-color: rgba(0, 0, 255, 0.2);
 }
 [data-js-status-display-switch="开"] {
-  color: #40C4FF;
+  color: #40c4ff;
 }
 [data-js-status-display-switch="关"] {
   color: #757575;
 }
 [data-js-status-display-mode="自动"] {
-  color: #00E676;
+  color: #00e676;
 }
 [data-js-status-display-mode="手动"] {
-  color: #FF1744;
+  color: #ff1744;
 }
 [data-js-status-line="不载客"] {
   background-color: #424242;
-  color: white;
+  color: #ffffff;
 }
 [data-js-status-line="14号线"] {
   background-color: #792720;
-  color: white;
+  color: #ffffff;
 }
 [data-js-status-line="21号线"] {
   background-color: #230b55;
-  color: white;
+  color: #ffffff;
 }
 [data-js-status-service-type="不载客"] {
   background-color: #424242;
-  color: white;
+  color: #ffffff;
 }
 [data-js-status-service-type="普通"] {
-  background-color: red;
-  color: white;
+  background-color: #ff0000;
+  color: #ffffff;
 }
 [data-js-status-service-type="快速"] {
-  background-color: green;
-  color: white;
+  background-color: #008000;
+  color: #ffffff;
 }
 [data-js-status-service-type="特别服务"] {
-  background-color: gold;
-  color: black;
+  background-color: #ffd700;
+  color: #000000;
 }
 .status__container {
   width: 90%;
@@ -403,11 +403,11 @@ ol {
 .button--action {
   margin: 0.5em;
   padding: 0.5em;
-  background-color: #1E88E5;
+  background-color: #1e88e5;
 }
 .button--action:enabled:hover,
 .button--action:enabled:focus {
-  background-color: #42A5F5;
+  background-color: #42a5f5;
 }
 .master-buttons__container {
   display: flex;
@@ -468,9 +468,9 @@ ol {
 }
 .notes {
   font-size: 20px;
-  color: white;
+  color: #ffffff;
 }
 .notes--warning {
   font-size: 20px;
-  color: #FFCA28;
+  color: #ffca28;
 }
