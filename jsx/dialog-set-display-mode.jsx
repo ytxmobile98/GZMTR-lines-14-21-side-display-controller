@@ -122,30 +122,34 @@ class SetDisplayModeDialog extends React.Component {
 			>
 
 				<div className="set-display-mode__container">
-					<RadioGroup header="显示模式">
-						{displayModeItems}
-					</RadioGroup>
 
-					<RadioGroup header="左侧">
-						{leftDisplay}
-					</RadioGroup>
+					<div className="set-display-mode__switches">
+						<RadioGroup header="显示模式">
+							{displayModeItems}
+						</RadioGroup>
 
-					<RadioGroup header="右侧">
-						{rightDisplay}
-					</RadioGroup>
-				</div>
+						<RadioGroup header="左侧">
+							{leftDisplay}
+						</RadioGroup>
 
-				<div className="notes set-display-mode__notes">
-					<p>
-						自动模式下，方向幕开启条件：
-					</p>
-					<ol>
-						<li>车速不高于30 km/h；</li>
-						<li>进站时，面向站台一侧的方向幕将会开启。</li>
-					</ol>
-					<p className="notes--warning">
-						注意：手动模式仅供在车厂测试设备时使用；运营时请始终使用自动模式。
-					</p>
+						<RadioGroup header="右侧">
+							{rightDisplay}
+						</RadioGroup>
+					</div>
+
+					<div className="notes set-display-mode__notes">
+						<p>
+							自动模式下，方向幕开启条件：
+						</p>
+						<ol>
+							<li>车速不高于30 km/h；</li>
+							<li>进站时，面向站台一侧的方向幕将会开启。</li>
+						</ol>
+						<p className="notes--warning">
+							注意：手动模式仅供在车厂测试设备时使用；运营时请始终使用自动模式。
+						</p>
+					</div>
+
 				</div>
 
 			</Dialog>

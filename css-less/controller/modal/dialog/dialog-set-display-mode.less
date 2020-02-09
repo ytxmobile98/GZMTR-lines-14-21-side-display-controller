@@ -1,14 +1,22 @@
-.set-display-mode__container {
-	display: grid;
-	grid-auto-flow: row;
-	grid-template-columns: repeat(2, auto);
-	grid-gap: 0.5em 1em;
-	align-items: baseline;
+.set-display-mode {
+	&__container {
+		display: grid;
+		grid-row-gap: 1em;
 
-	padding: 0.5em;
-	line-height: 1.5em;
-}
+		max-width: 80%;
+	}
 
-.set-display-mode__notes {
-	max-width: 75%;
+	&__switches {
+		display: grid;
+		grid-auto-flow: row;
+		grid-template-columns: repeat(2, auto);
+		grid-gap: 0.5em 1em;
+		align-items: baseline;
+
+		padding: 0.5em;
+		line-height: 1.5em;
+	}
+
+	&__notes {
+	}
 }

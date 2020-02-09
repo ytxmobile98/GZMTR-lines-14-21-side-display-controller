@@ -158,15 +158,17 @@ ol {
 }
 .set-display-mode__container {
   display: grid;
+  grid-row-gap: 1em;
+  max-width: 80%;
+}
+.set-display-mode__switches {
+  display: grid;
   grid-auto-flow: row;
   grid-template-columns: repeat(2, auto);
   grid-gap: 0.5em 1em;
   align-items: baseline;
   padding: 0.5em;
   line-height: 1.5em;
-}
-.set-display-mode__notes {
-  max-width: 75%;
 }
 .set-destination-grid__container {
   height: 100%;
@@ -262,7 +264,6 @@ ol {
   width: 90%;
   justify-self: center;
   display: grid;
-  grid-auto-flow: column;
   grid-template-rows: 100%;
   justify-items: center;
   font-size: 24px;
