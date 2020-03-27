@@ -25,5 +25,7 @@
     "braces": "^2.3.2",
     "less-watch-compiler": "^1.13.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "minimist": "^1.2.5"
+  }
 }
