@@ -14,7 +14,7 @@ import { MonitorArea, DisplayModeGrid, TrainInfoGrid } from "./monitor-grids.js"
 import { MasterButton, MasterButtonsContainer } from "./master-buttons.js";
 // Controller bottom area
 import { Clock } from "./clock.js";
-import { WarningNote } from './warning-note.js';
+import { WarningNote } from "./warning-note.js";
 import { UsefulLinks } from "./useful-links.js";
 
 // Controller modal dialogs
