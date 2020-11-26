@@ -1,3 +1,8 @@
+echo "Usage: bash less-compile.sh [lessDir [cssDir [mainFile [rootPath]]]]"
+echo "This shell script will watch the changes of the .less files, and compile them into .css files."
+echo "When you finish, press ^C to exit."
+echo ""
+
 lessDir="./css-less"
 cssDir="./css"
 mainFile="index.less"
@@ -23,7 +28,6 @@ then
 	rootPath="$4"
 fi
 
-echo -e "Usage: bash less-compile.sh [lessDir [cssDir [mainFile [rootPath]]]]\n"
 echo -e "[LESS directiory]\n$(realpath "$lessDir")\n"
 echo -e "[CSS directory]\n$(realpath "$cssDir")\n"
 echo -e "[Main file]\n$(realpath "$mainFile")\n"

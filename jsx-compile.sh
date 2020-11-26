@@ -1,9 +1,10 @@
-echo -e "Usage: bash jsx-compile.sh [outputDir [watchDir [extension]]]\n"
-
-echo -e "NOTE: If you have not yet initialized the jsx compile environment, please run the following commands first:"
-echo -e "npm init -y"
-echo -e "npm install --save-dev @babel/cli @babel/preset-react"
-echo -e "See: https://reactjs.org/docs/add-react-to-a-website.html"
+echo "Usage: bash jsx-compile.sh [outputDir [watchDir [extension]]]"
+echo "This shell script will watch the changes of the .jsx files, and compile them into .js files."
+echo ""
+echo "NOTE: If you have not yet initialized the jsx compile environment, please run the following commands first:"
+echo "$ npm init -y"
+echo "$ npm install --save-dev @babel/cli @babel/preset-react"
+echo "See: https://reactjs.org/docs/add-react-to-a-website.html"
 
 outputDir="./js/React"
 watchDir="./jsx"
@@ -27,7 +28,7 @@ fi
 echo ""
 echo -e "[File extension]\n$ext\n"
 echo -e "[Watch directory] (where you should have your $ext files)\n$(realpath "$watchDir")\n"
-echo -e "[Output directory] (where the compiled js files are located)\n$(realpath "$outputDir")\n"
+echo -e "[Output directory] (where the compiled .js files are located)\n$(realpath "$outputDir")\n"
 
 read -p "Continue? (y/n): " -r reply
 # See: https://thoughtbot.com/blog/the-unix-shells-humble-if
