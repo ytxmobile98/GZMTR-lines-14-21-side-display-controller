@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/ytx21cn/GZMTR-lines-14-21-side-display-controller#readme",
   "devDependencies": {
+    "@types/react": "^17.0.15",
+    "@types/react-dom": "^17.0.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.3.5"
