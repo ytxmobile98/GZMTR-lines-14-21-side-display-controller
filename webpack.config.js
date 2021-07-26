@@ -4,12 +4,14 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const isProduction = process.env.NODE_ENV == "production";
+
+// input directories and files
 const src = path.resolve(__dirname, "src");
 const entry = `${src}/ts/index.tsx`;
 const index = `${src}/index.html`
-const dist = path.resolve(__dirname, "dist");
-
-const isProduction = process.env.NODE_ENV == "production";
+// output directory
+const outputDir = path.resolve(__dirname, isProduction ? "docs" : "dist");
 
 const stylesHandler = isProduction
   ? MiniCssExtractPlugin.loader
@@ -18,7 +20,7 @@ const stylesHandler = isProduction
 const config = {
   entry: entry,
   output: {
-    path: dist
+    path: outputDir
   },
   devServer: {
     open: true,
