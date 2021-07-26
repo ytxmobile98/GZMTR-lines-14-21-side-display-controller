@@ -10,6 +10,10 @@ Icon download:
 Download:
 * [React](https://reactjs.org)
 
+# TypeScript logo
+Download:
+* [TypeScript branding](https://www.typescriptlang.org/branding/)
+
 # Google Material Design
 Material icons download:
 * [Material Design Icons](https://material.io/icons/)
