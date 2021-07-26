@@ -1,14 +1,15 @@
 {
-  "extends": "@tsconfig/node10/tsconfig.json",
+  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src/ts",
-    "outDir": "docs/js",
     "lib": [
       "es2018",
       "DOM"
     ],
     "jsx": "react"
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "node_modules",
     "**/*.spec.ts"
