@@ -19,3 +19,4 @@ Configuration files:
 
 Scripts you may run:
 * Watching mode: `npm run watch`
+* Serving mode: `npm run serve`
