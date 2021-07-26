@@ -1,0 +1,20 @@
+{
+  "extends": "@tsconfig/node10/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src/ts",
+    "outDir": "docs/js",
+    "lib": [
+      "es2018",
+      "DOM"
+    ],
+    "jsx": "react"
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents"
+  }
+}
