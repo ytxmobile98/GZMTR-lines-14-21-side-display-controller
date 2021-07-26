@@ -4,6 +4,11 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const src = path.resolve(__dirname, "src");
+const entry = `${src}/ts/index.tsx`;
+const index = `${src}/index.html`
+const dist = path.resolve(__dirname, "dist");
+
 const isProduction = process.env.NODE_ENV == "production";
 
 const stylesHandler = isProduction
@@ -11,9 +16,9 @@ const stylesHandler = isProduction
   : "style-loader";
 
 const config = {
-  entry: "./src/index.tsx",
+  entry: entry,
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: dist
   },
   devServer: {
     open: true,
@@ -21,7 +26,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: index,
     }),
 
     // Add your plugins here
