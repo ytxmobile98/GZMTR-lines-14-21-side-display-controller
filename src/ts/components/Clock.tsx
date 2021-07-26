@@ -12,7 +12,7 @@ const getDateStrs = (date: Date): [string, string, string] => {
   return [dateStr, dayStr, timeStr];
 }
 
-export function Clock() {
+export default function Clock() {
   const [date, setDate] = useState(new Date());
 
   const tick = () => {
