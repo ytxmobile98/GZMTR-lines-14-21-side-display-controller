@@ -18,6 +18,9 @@ const stylesHandler = isProduction
   : "style-loader";
 
 const config = {
+  watchOptions: {
+    poll: 1000
+  },
   entry: entry,
   output: {
     path: outputDir
