@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const days = ["日", "一", "二", "三", "四", "五", "六"].map((input: string): string => `星期${input}`);
 
-const padZeros = (i: number) => i.toString().padStart(2, "0");
+const padZeros = (i: number): string => i.toString().padStart(2, "0");
 
 const getDateStrs = (date: Date): [string, string, string] => {
   const dateStr = `${date.getFullYear()}-${padZeros(date.getMonth() + 1)}-${padZeros(date.getDate())}`;
@@ -13,13 +13,13 @@ const getDateStrs = (date: Date): [string, string, string] => {
 }
 
 export default function Clock() {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = React.useState(new Date());
 
   const tick = () => {
     setDate(new Date());
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     const timer = window.setTimeout(tick, 10);
     return () => {
       window.clearTimeout(timer);
